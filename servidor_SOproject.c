@@ -15,6 +15,7 @@
 MYSQL *conn;
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 
+
 typedef struct{
 	char nombre[20];
 	int socket;
@@ -25,6 +26,7 @@ typedef struct{
 }ListaJugadoresConectados;
 
 ListaJugadoresConectados miLista;
+
 
 void Login(char contrasena[100], char nombre[100],char respuesta[100],int socket){
 	
