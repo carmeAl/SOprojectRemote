@@ -9,3 +9,10 @@ Cliente-Servidor y Consultas básicas
 - **Verificada** por Genis
 - **Comunicada** por Xavier (https://drive.google.com/file/d/1uoq72CN8TQ_KMeXK7K_CJEI_cPOgABUe/view)
 - **Descanso** por Victoria
+
+### Versión 2
+Servidor concurrente, Lista de conectados y Exclusión mutua
+- **Generada** por Victoria
+- **Verificada** por Xavier
+- **Comunicada** por Carme (https://drive.google.com/file/d/1UUhhqjsA70mLFfFUHmjPm5kv1kXkataR/view?usp=sharing)
+- **Descanso** por Genis
