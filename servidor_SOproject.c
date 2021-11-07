@@ -330,11 +330,13 @@ void EliminarJugadorListaCon(char* nombre){
 	
 }
 void CharJugCon(char respuesta[100]){
+	pthread_mutex_lock(&mutex);
 	sprintf(respuesta,"%d,",miLista.num);
 	for(int i=0;i<miLista.num;i++){
 		sprintf(respuesta,"%s%s,",respuesta,miLista.Lista[i].nombre);
 	}
 	respuesta[strlen(respuesta)-1]='\0';
+	pthread_mutex_unlock(&mutex);
 }
 
 void *AtenderCliente (void *socket){
