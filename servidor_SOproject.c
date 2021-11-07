@@ -15,6 +15,7 @@
 MYSQL *conn;
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 
+//comentario para el git
 
 typedef struct{
 	char nombre[20];
