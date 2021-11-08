@@ -8,6 +8,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <mysql.h>
+#include <my_global.h>
 
 #include <ctype.h>
 #include <pthread.h>
@@ -29,7 +30,7 @@ typedef struct{
 ListaJugadoresConectados miLista;
 
 
-void Login(char contrasena[100], char nombre[100],char respuesta[100],int socket){
+void Login(char contrasena[100], char nombre[100],char respuesta[100]){
 	
 	int err;
 	MYSQL_RES *resultado;
@@ -56,12 +57,6 @@ void Login(char contrasena[100], char nombre[100],char respuesta[100],int socket
 		sprintf(respuesta,"NO");
 	else{
 		sprintf(respuesta,"%s",row[0]);
-		//AnadirJugadorListaConectados
-		pthread_mutex_lock(&mutex);
-		strcpy(miLista.Lista[miLista.num].nombre,nombre);
-		miLista.Lista[miLista.num].socket=socket;
-		miLista.num++;
-		pthread_mutex_unlock(&mutex);
 	}
 }
 void Register(char contrasena[100], char nombre [100],char respuesta[100]){
@@ -314,7 +309,11 @@ void VSJugador(char nombre[100],int idUsuario,char respuesta[100]){
 		}
 	}
 }
-
+void AnadirJugadorListaConectados(char nombre[100],int socket){
+	strcpy(miLista.Lista[miLista.num].nombre,nombre);
+	miLista.Lista[miLista.num].socket=socket;
+	miLista.num++;
+}
 void EliminarJugadorListaCon(char* nombre){
 	int encontrado=0;
 	int i=0;
@@ -402,7 +401,8 @@ void *AtenderCliente (void *socket){
 		else if (codigo ==11){ //Aquí se hace el login
 			p = strtok( NULL, "/");
 			strcpy(contrasena,p);
-			Login(contrasena,nombre,respuesta,*s);
+			Login(contrasena,nombre,respuesta);
+			AnadirJugadorListaConectados(nombre,*s);
 			// cerrar la conexion con el servidor MYSQL 
 			/*				mysql_close (conn);*/
 		}
@@ -480,7 +480,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(9211);
+	serv_adr.sin_port = htons(5060);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
 	
@@ -499,7 +499,7 @@ int main(int argc, char *argv[])
 		exit (1);
 	}
 	//inicializar la conexion
-	conn = mysql_real_connect (conn, "localhost","root", "mysql", "BBDDv1",0, NULL, 0);
+	conn = mysql_real_connect (conn, "shiva2.upc.edu","root", "mysql", "T4BBDD",0, NULL, 0);
 	if (conn==NULL) {
 		printf ("Error al inicializar la conexi??n: %u %s\n", 
 				mysql_errno(conn), mysql_error(conn));
