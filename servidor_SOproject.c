@@ -402,7 +402,9 @@ void *AtenderCliente (void *socket){
 			p = strtok( NULL, "/");
 			strcpy(contrasena,p);
 			Login(contrasena,nombre,respuesta);
+			pthread_mutex_lock(&mutex);
 			AnadirJugadorListaConectados(nombre,*s);
+			pthread_mutex_unlock(&mutex);
 			// cerrar la conexion con el servidor MYSQL 
 			/*				mysql_close (conn);*/
 		}
