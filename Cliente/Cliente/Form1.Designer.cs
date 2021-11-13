@@ -53,7 +53,6 @@ namespace Cliente
             this.label5 = new System.Windows.Forms.Label();
             this.button_con = new System.Windows.Forms.Button();
             this.button_descon = new System.Windows.Forms.Button();
-            this.button_mostrar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Iniciar.SuspendLayout();
@@ -308,23 +307,12 @@ namespace Cliente
             this.button_descon.UseVisualStyleBackColor = true;
             this.button_descon.Click += new System.EventHandler(this.button_descon_Click);
             // 
-            // button_mostrar
-            // 
-            this.button_mostrar.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_mostrar.Location = new System.Drawing.Point(117, 376);
-            this.button_mostrar.Name = "button_mostrar";
-            this.button_mostrar.Size = new System.Drawing.Size(259, 37);
-            this.button_mostrar.TabIndex = 5;
-            this.button_mostrar.Text = "Mostrar lista de conectados";
-            this.button_mostrar.UseVisualStyleBackColor = true;
-            this.button_mostrar.Click += new System.EventHandler(this.button_mostrar_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre});
-            this.dataGridView1.Location = new System.Drawing.Point(523, 336);
+            this.dataGridView1.Location = new System.Drawing.Point(502, 317);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(145, 266);
             this.dataGridView1.TabIndex = 6;
@@ -340,7 +328,6 @@ namespace Cliente
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 614);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button_mostrar);
             this.Controls.Add(this.button_descon);
             this.Controls.Add(this.button_con);
             this.Controls.Add(this.Consultas);
@@ -387,7 +374,6 @@ namespace Cliente
         private System.Windows.Forms.RadioButton Consulta_32;
         private System.Windows.Forms.TextBox textBox_nombre_consultas;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button_mostrar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
     }
