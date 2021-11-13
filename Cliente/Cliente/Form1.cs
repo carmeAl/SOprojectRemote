@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
+
 
 namespace Cliente
 {
@@ -16,9 +18,12 @@ namespace Cliente
         public int id_usuario;
         public bool conectado = false;
         Socket server;
+        Thread atender;
         public Form1()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;//Necesario para que los elementos de los formularios puedan ser 
+            //accedidos desde threads diferentes a los que los crearon
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,9 +31,92 @@ namespace Cliente
             Consultas.Visible = false;
             Registrarse.Visible = false;
             dataGridView1.Visible = false;
-            button_mostrar.Visible = false;
         }
+        private void AtenderServidor()
+        {
+            while (true)
+            {
+                //Recibimos mensaje del servidor
+                byte[] msg2 = new byte[80];
+                server.Receive(msg2);
+                string[] trozos = Encoding.ASCII.GetString(msg2).Split('/');
+                int codigo = Convert.ToInt32(trozos[0]);
+                string mensaje = trozos[1].Split('\0')[0];
+                switch (codigo)
+                {
+                    case 21: //respuesta a registrarse
+                        if (mensaje == "SI")
+                            MessageBox.Show("Registrado");
+                        else
+                            MessageBox.Show("Usuario ya esta registrado, escriba otro usuario");
+                        Registrarse.Visible = false;
+                        Iniciar.Visible = true;
+                        break;
 
+                    case 11: // respuesta a iniciar
+                        if (mensaje != "NO")
+                        {
+                            id_usuario = Convert.ToInt32(mensaje);
+                            MessageBox.Show("Bienvenido");
+                            Iniciar.Visible = false;
+                            Consultas.Visible = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usuario no encontrado, escriba bien el usuario y la contraseña, o " +
+                                "registrese");
+                        }
+                        break;
+
+                    case 32: //respuesta consulta partidas consecutivas
+                        if (mensaje == "-1")
+                            MessageBox.Show("El jugador no existe o no ha jugado ninguna partida");
+                        else
+                            MessageBox.Show("El jugador ha ganado " + mensaje + " partidas consecutivas");
+                        break;
+
+                    case 33: //respuesta consulta suma de los puntos del jugador introducido
+                        if (mensaje == "-1")
+                            MessageBox.Show("No hay informacion");
+                        else
+                            MessageBox.Show("El jugador " + textBox_nombre_consultas.Text + " tiene una suma de puntos = " + mensaje);
+                        break;
+
+                    case 34: //respuesta consulta lista de jugadores que han ganado contra el jugador introducido
+                        if (mensaje == "-1")
+                            MessageBox.Show("No hay informacion sobre jugadores que hayan ganado contra el jugador buscado");
+                        else
+                            MessageBox.Show(textBox_nombre_consultas.Text + " ha perdido contra: " + mensaje);
+                        break;
+
+                    case 35: //respuesta consulta lista de IDs de partidas que el usuario ha tenido contra el jugador introducido
+                        if ((mensaje == "-1") || (mensaje == null))
+                            MessageBox.Show("No hay informacion");
+                        else
+                            MessageBox.Show("Tus partidas jugadas contra " + textBox_nombre_consultas.Text + " son: " + mensaje);
+                        break;
+
+                    case 36: //respuesta lista de conectados
+                        if (mensaje != null && mensaje != "")
+                        {
+                            string[] partes = mensaje.Split(',');
+                            int num = Convert.ToInt32(partes[0]);
+                            int i = 0;
+                            while (i < num)
+                            {
+                                int n = dataGridView1.Rows.Add();
+                                dataGridView1.Rows[n].Cells[0].Value = partes[i + 1];
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ha ocurrido un error");
+                        }
+                        break;
+                }
+            }
+        }
         private void button_registrarse_Click(object sender, EventArgs e)
         {
 
@@ -38,17 +126,6 @@ namespace Cliente
                 // Enviamos al servidor el nombre tecleado
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
-
-                //Recibimos la respuesta del servidor
-                byte[] msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                if (mensaje == "SI")
-                    MessageBox.Show("Registrado");
-                else
-                    MessageBox.Show("Usuario ya esta registrado, escriba otro usuario");
-                Registrarse.Visible = false;
-                Iniciar.Visible = true;
             }
             else
             {
@@ -89,6 +166,10 @@ namespace Cliente
                 MessageBox.Show("No he podido conectar con el servidor");
                 return;
             }
+            //pongo en marcha el thread que atenderà los mensajes del servidor 
+            ThreadStart ts = delegate { AtenderServidor(); };
+            atender = new Thread(ts);
+            atender.Start();
         }
 
         private void button_descon_Click(object sender, EventArgs e)
@@ -102,13 +183,13 @@ namespace Cliente
                 server.Send(msg);
 
                 // Nos desconectamos
+                atender.Abort();
                 this.BackColor = Color.Gray;
                 server.Shutdown(SocketShutdown.Both);
                 server.Close();
                 conectado = false;
                 Consultas.Visible = false;
                 dataGridView1.Visible = false;
-                button_mostrar.Visible = false;
                 Iniciar.Visible = true;
                 Registrarse.Visible = false;
             }
@@ -136,24 +217,6 @@ namespace Cliente
                     // Enviamos al servidor el nombre tecleado
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
-
-                    //Recibimos la respuesta del servidor
-                    byte[] msg2 = new byte[80];
-                    server.Receive(msg2);
-                    mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                    if (mensaje != "NO")
-                    {
-                        id_usuario = Convert.ToInt32(mensaje);
-                        MessageBox.Show("Bienvenido");
-                        Iniciar.Visible = false;
-                        Consultas.Visible = true;
-                        button_mostrar.Visible = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Usuario no encontrado, escriba bien el usuario y la contraseña, o " +
-                            "registrese");
-                    }
                 }
                 else
                 {
@@ -179,68 +242,30 @@ namespace Cliente
                         // Enviamos al servidor el nombre tecleado con un vector de bytes
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
-
-                        //Recibimos la respuesta del servidor
-                        byte[] msg2 = new byte[80];
-                        server.Receive(msg2);
-                        //Converit de bytes a ASCII
-                        mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                        if (mensaje == "-1")
-                            MessageBox.Show("El jugador no existe o no ha jugado ninguna partida");
-                        else
-                            MessageBox.Show("El jugador ha ganado " + mensaje + " partidas consecutivas");
                     }
                     else if (Consulta_33.Checked)
                     {
-                        // Quiere saber si el nombre es bonito
+                        // Suma de los puntos del jugador introducido
                         string mensaje = "33/" + textBox_nombre_consultas.Text;
                         // Enviamos al servidor el nombre tecleado
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
-
-                        //Recibimos la respuesta del servidor
-                        byte[] msg2 = new byte[80];
-                        server.Receive(msg2);
-                        mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                        if (mensaje == "-1")
-                            MessageBox.Show("No hay informacion");
-                        else
-                            MessageBox.Show("El jugador " + textBox_nombre_consultas.Text + " tiene una suma de puntos = " + mensaje);
                     }
                     else if (Consulta_34.Checked)
                     {
-                        // Quiere saber la longitud
+                        // Lista de los jugadores que han ganado contra el introducido
                         string mensaje = "34/" + textBox_nombre_consultas.Text;
                         // Enviamos al servidor el nombre tecleado con un vector de bytes
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
-
-                        //Recibimos la respuesta del servidor
-                        byte[] msg2 = new byte[100];
-                        server.Receive(msg2);
-                        //Converit de bytes a ASCII
-                        mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                        if (mensaje == "-1")
-                            MessageBox.Show("No hay informacion sobre jugadores que hayan ganado contra el jugador buscado");
-                        else
-                            MessageBox.Show(textBox_nombre_consultas.Text + " ha perdido contra: " + mensaje);
                     }
                     else if (Consulta_35.Checked)
                     {
-                        // Quiere saber si el nombre es bonito
+                        // Lista de IDs de partidas que el usuario ha tenido con el jugador introducido
                         string mensaje = "35/" + textBox_nombre_consultas.Text + "/" + id_usuario;
                         // Enviamos al servidor el nombre tecleado
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
-
-                        //Recibimos la respuesta del servidor
-                        byte[] msg2 = new byte[80];
-                        server.Receive(msg2);
-                        mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                        if ((mensaje == "-1") || (mensaje == null))
-                            MessageBox.Show("No hay informacion");
-                        else
-                            MessageBox.Show("Tus partidas jugadas contra " + textBox_nombre_consultas.Text + " son: " + mensaje);
                     }
                 }
                 else
@@ -255,48 +280,6 @@ namespace Cliente
             }
         }
 
-        private void button_mostrar_Click(object sender, EventArgs e)
-        {
-            if (conectado) { 
-                dataGridView1.Visible = true;
-            dataGridView1.Rows.Clear();
-            // Quiere saber la lista de conectados
-            string mensaje = "36/";
-            // Enviamos al servidor el nombre tecleado con un vector de bytes
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            //Converit de bytes a ASCII
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-
-
-            if (mensaje != null && mensaje != "")
-            {
-                string[] partes = mensaje.Split(',');
-                int num = Convert.ToInt32(partes[0]);
-                int i = 0;
-                while (i<num)
-                {
-                    int n= dataGridView1.Rows.Add();
-                    dataGridView1.Rows[n].Cells[0].Value = partes[i+1];
-                    i++;
-                }
-            }
-            else
-            {
-             MessageBox.Show("Ha ocurrido un error");
-            }
-            }
-            else
-            {
-                MessageBox.Show("No estas conectado al servidor");
-            }
-        }
-        
-
     private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (conectado)
@@ -308,6 +291,7 @@ namespace Cliente
                 server.Send(msg);
 
                 // Nos desconectamos
+                atender.Abort();
                 this.BackColor = Color.Gray;
                 server.Shutdown(SocketShutdown.Both);
                 server.Close();
