@@ -331,7 +331,7 @@ void EliminarJugadorListaCon(char* nombre){
 	}
 	
 }
-void CharJugCon(char respuesta[100]){
+void CharJugCon(char respuesta[100]){ //Respuesta "NumeroJugadores,Nombre1,Nombre2,Nombre3" (char)
 	pthread_mutex_lock(&mutex);
 	sprintf(respuesta,"%d,",miLista.num);
 	for(int i=0;i<miLista.num;i++){
@@ -379,22 +379,22 @@ void *AtenderCliente (void *socket){
 		// Ya tenemos el c?digo de la petici?n
 		char nombre[20];
 		char contrasena[100];
-		if (codigo!=36) // Conseguir el nombre
-		{
-			p = strtok( NULL, "/");
-			
-			if(p!=NULL){
-				strcpy (nombre, p);
-				// Ya tenemos el nombre
+		
+		p = strtok( NULL, "/");
+		
+		if(p!=NULL){
+			strcpy (nombre, p);
+			// Ya tenemos el nombre
 				printf ("Codigo: %d, Nombre: %s\n", codigo, nombre);
-			}
 		}
+		
 		
 		if (codigo ==0){//petici?n de desconexi?n
 			if(nombre!=NULL){
 				pthread_mutex_lock(&mutex);
 				EliminarJugadorListaCon(nombre);
 				pthread_mutex_unlock(&mutex);
+				CharJugCon(respuesta);
 			}
 			terminar=1;
 		}
@@ -407,6 +407,9 @@ void *AtenderCliente (void *socket){
 			pthread_mutex_unlock(&mutex);
 			// cerrar la conexion con el servidor MYSQL 
 			/*				mysql_close (conn);*/
+			if (respuesta!="NO"){
+				CharJugCon(respuesta);
+			}
 		}
 		else if (codigo ==21){
 			char consulta[100];
@@ -443,18 +446,12 @@ void *AtenderCliente (void *socket){
 			VSJugador(nombre, idUsuario, respuesta);
 			
 		}
-		else if (codigo==36){//Peticion 36 Lista de NOMBRES de jugadores conectados 
-			//Peticion "36/"
-			//Respuesta "NumeroJugadores,Nombre1,Nombre2,Nombre3" (char)
-			CharJugCon(respuesta);
-			
-		}
-		if (codigo !=0)
-		{
-			printf ("Respuesta: %s\n", respuesta);
-			// Enviamos respuesta
-			write (sock_conn,respuesta, strlen(respuesta));
-		}
+		
+		
+		printf ("Respuesta: %s\n", respuesta);
+		// Enviamos respuesta
+		write (sock_conn,respuesta, strlen(respuesta));
+		
 	}
 	// Se acabo el servicio para este cliente
 	close(sock_conn); 
