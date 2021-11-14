@@ -20,6 +20,6 @@ Servidor concurrente, Lista de conectados y Exclusión mutua
 ### Versión 3
 Lista de conectados como notificacion
 - Generada por Genís
-- Verificada por Carme
+- Verificada por Carme (https://drive.google.com/file/d/1YnwQUntzQHPkERtRQQzDIxwfhIWklF9N/view?usp=sharing)
 - Comunicada por Victoria
 - Descanso por Xavier
