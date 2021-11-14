@@ -160,17 +160,25 @@ namespace Cliente
         private void button_registrarse_Click(object sender, EventArgs e)
         {
 
-            if (((textBox_nombre_re.Text.Length > 1) && (textBox_contra_re.Text.Length > 1)) && ((textBox_nombre_re.Text != "") && (textBox_contra_re.Text != "")))
+            if (conectado)
             {
-                string mensaje = "21/" + textBox_nombre_re.Text + "/" + textBox_contra_re.Text;
-                // Enviamos al servidor el nombre tecleado
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
+                if (((textBox_nombre_re.Text.Length > 1) && (textBox_contra_re.Text.Length > 1)) && ((textBox_nombre_re.Text != "") && (textBox_contra_re.Text != "")))
+                {
+                    string mensaje = "21/" + textBox_nombre_re.Text + "/" + textBox_contra_re.Text;
+                    // Enviamos al servidor el nombre tecleado
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+                }
+                else
+                {
+                    MessageBox.Show("El nombre debe tener mas de un caracter");
+                }
             }
             else
             {
-                MessageBox.Show("El nombre debe tener mas de un caracter");
+                MessageBox.Show("No esta conectado con el servidor");
             }
+            
             
         }
 
