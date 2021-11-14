@@ -19,6 +19,9 @@ namespace Cliente
         public bool conectado = false;
         Socket server;
         Thread atender;
+
+        delegate void DelegadoParaEscribir(string mensaje);
+
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +35,31 @@ namespace Cliente
             Registrarse.Visible = false;
             dataGridView1.Visible = false;
         }
+
+        public void PonDataGridView(string mensaje )
+        {
+            if (mensaje != null && mensaje != "")
+            {
+
+                dataGridView1.Rows.Clear();
+                string[] partes = mensaje.Split(',');
+                int num = Convert.ToInt32(partes[0]);
+                int i = 0;
+                while (i < num)
+                {
+                    int n = dataGridView1.Rows.Add();
+                    dataGridView1.Rows[n].Cells[0].Value = partes[i + 1];
+                    i++;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error");
+            }
+            
+        }
+        
+
         private void AtenderServidor()
         {
             while (true)
@@ -60,6 +88,8 @@ namespace Cliente
                             MessageBox.Show("Bienvenido");
                             Iniciar.Visible = false;
                             Consultas.Visible = true;
+                            dataGridView1.Visible = true;
+
                         }
                         else
                         {
@@ -97,22 +127,8 @@ namespace Cliente
                         break;
 
                     case 36: //respuesta lista de conectados
-                        if (mensaje != null && mensaje != "")
-                        {
-                            string[] partes = mensaje.Split(',');
-                            int num = Convert.ToInt32(partes[0]);
-                            int i = 0;
-                            while (i < num)
-                            {
-                                int n = dataGridView1.Rows.Add();
-                                dataGridView1.Rows[n].Cells[0].Value = partes[i + 1];
-                                i++;
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ha ocurrido un error");
-                        }
+                        DelegadoParaEscribir delegado = new DelegadoParaEscribir(PonDataGridView);
+                        dataGridView1.Invoke(delegado, new object[] { mensaje });
                         break;
                 }
             }

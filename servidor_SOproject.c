@@ -402,6 +402,7 @@ void *AtenderCliente (void *socket){
 				pthread_mutex_lock(&mutex);
 				EliminarJugadorListaCon(nombre);
 				pthread_mutex_unlock(&mutex);
+				CharJugCon(notificacion);
 				notificado=1;
 			}
 			terminar=1;
@@ -467,8 +468,12 @@ void *AtenderCliente (void *socket){
 			strcat(cabecera,notificacion);
 			//sprintf(notificacion,"36/%s",notificacion);
 			printf("Notificación:%s\n",cabecera);
-			write (sock_conn,cabecera, strlen(cabecera));
+			for(int j=0;j<miLista.num;j++){
+				write (miLista.Lista[j].socket,cabecera, strlen(cabecera));
+			}
+			
 		}
+		notificado=0;
 		
 	}
 	// Se acabo el servicio para este cliente

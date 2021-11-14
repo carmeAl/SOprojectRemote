@@ -28,3 +28,13 @@ C:\Users\GENIS\Desktop\ProyectoSO\SOversión\Cliente\Cliente\obj\Debug\Cliente.c
 C:\Users\GENIS\Desktop\ProyectoSO\SOversión\Cliente\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
 C:\Users\GENIS\Desktop\ProyectoSO\SOversión\Cliente\Cliente\obj\Debug\Cliente.exe
 C:\Users\GENIS\Desktop\ProyectoSO\SOversión\Cliente\Cliente\obj\Debug\Cliente.pdb
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\bin\Debug\Cliente.exe.config
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\bin\Debug\Cliente.exe
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\bin\Debug\Cliente.pdb
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\obj\Debug\Cliente.csproj.AssemblyReference.cache
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\obj\Debug\Cliente.Form1.resources
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\obj\Debug\Cliente.Properties.Resources.resources
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\obj\Debug\Cliente.csproj.GenerateResource.cache
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\obj\Debug\Cliente.exe
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOprojectRemonte_dev-v3\Cliente\Cliente\obj\Debug\Cliente.pdb
