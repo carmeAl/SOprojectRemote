@@ -21,11 +21,13 @@ namespace Cliente
         Thread atender;
 
         delegate void DelegadoParaEscribir(string mensaje);
+        delegate void DelegadoGB(GroupBox mensaje);
+        delegate void DelegadoDGV(DataGridView mensaje);
 
         public Form1()
         {
             InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false;//Necesario para que los elementos de los formularios puedan ser 
+            //CheckForIllegalCrossThreadCalls = false;//Necesario para que los elementos de los formularios puedan ser 
             //accedidos desde threads diferentes a los que los crearon
         }
 
@@ -58,7 +60,22 @@ namespace Cliente
             }
             
         }
-        
+        public void PonVisibleGB(GroupBox nombre)
+        {
+            nombre.Visible = true;
+        }
+        public void PonVisibleDGV(DataGridView nombre)
+        {
+            nombre.Visible = true;
+        }
+        public void PonNoVisibleGB(GroupBox nombre)
+        {
+            nombre.Visible = false;
+        }
+        public void PonNoVisibleDGV(DataGridView nombre)
+        {
+            nombre.Visible = false;
+        }
 
         private void AtenderServidor()
         {
@@ -72,23 +89,19 @@ namespace Cliente
                 string mensaje = trozos[1].Split('\0')[0];
                 switch (codigo)
                 {
-                    case 21: //respuesta a registrarse
-                        if (mensaje == "SI")
-                            MessageBox.Show("Registrado");
-                        else
-                            MessageBox.Show("Usuario ya esta registrado, escriba otro usuario");
-                        Registrarse.Visible = false;
-                        Iniciar.Visible = true;
-                        break;
-
+              
                     case 11: // respuesta a iniciar
                         if (mensaje != "NO")
                         {
                             id_usuario = Convert.ToInt32(mensaje);
                             MessageBox.Show("Bienvenido");
-                            Iniciar.Visible = false;
-                            Consultas.Visible = true;
-                            dataGridView1.Visible = true;
+                            DelegadoGB delegado1111 = new DelegadoGB(PonNoVisibleGB);
+                            Iniciar.Invoke(delegado1111, new object[] { Iniciar });
+                            DelegadoGB delegado1112 = new DelegadoGB(PonVisibleGB);
+                            Consultas.Invoke(delegado1112, new object[] { Consultas });
+                            DelegadoDGV delegado112 = new DelegadoDGV(PonVisibleDGV);
+                            dataGridView1.Invoke(delegado112, new object[] { dataGridView1 });
+                            
 
                         }
                         else
@@ -96,6 +109,17 @@ namespace Cliente
                             MessageBox.Show("Usuario no encontrado, escriba bien el usuario y la contraseña, o " +
                                 "registrese");
                         }
+                        break;
+
+                    case 21: //respuesta a registrarse
+                        if (mensaje == "SI")
+                            MessageBox.Show("Registrado");
+                        else
+                            MessageBox.Show("Usuario ya esta registrado, escriba otro usuario");
+                        DelegadoGB delegado211 = new DelegadoGB(PonNoVisibleGB);
+                        Registrarse.Invoke(delegado211, new object[] { Registrarse });
+                        DelegadoGB delegado212 = new DelegadoGB(PonVisibleGB);
+                        Iniciar.Invoke(delegado212, new object[] { Iniciar });
                         break;
 
                     case 32: //respuesta consulta partidas consecutivas
@@ -127,8 +151,8 @@ namespace Cliente
                         break;
 
                     case 36: //respuesta lista de conectados
-                        DelegadoParaEscribir delegado = new DelegadoParaEscribir(PonDataGridView);
-                        dataGridView1.Invoke(delegado, new object[] { mensaje });
+                        DelegadoParaEscribir delegado36 = new DelegadoParaEscribir(PonDataGridView);
+                        dataGridView1.Invoke(delegado36, new object[] { mensaje });
                         break;
                 }
             }
