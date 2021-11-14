@@ -30,7 +30,7 @@ typedef struct{
 ListaJugadoresConectados miLista;
 
 
-void Login(char contrasena[100], char nombre[100],char respuesta[100]){
+void Login(char contrasena[100], char nombre[100],char respuesta[512]){
 	
 	int err;
 	MYSQL_RES *resultado;
@@ -54,12 +54,12 @@ void Login(char contrasena[100], char nombre[100],char respuesta[100]){
 	resultado = mysql_store_result (conn); 
 	row = mysql_fetch_row (resultado);
 	if (row == NULL)
-		sprintf(respuesta,"NO");
+		sprintf(respuesta,"11/NO");
 	else{
-		sprintf(respuesta,"%s",row[0]);
+		sprintf(respuesta,"11/%s",row[0]);
 	}
 }
-void Register(char contrasena[100], char nombre [100],char respuesta[100]){
+void Register(char contrasena[100], char nombre [100],char respuesta[512]){
 	
 	int err;
 	MYSQL_RES *resultado;
@@ -108,17 +108,17 @@ void Register(char contrasena[100], char nombre [100],char respuesta[100]){
 			printf ("Error al insertar datos de la base %u %s\n",
 					mysql_errno(conn), mysql_error(conn));
 			exit (1);
-			sprintf(respuesta,"NO");					}
+			sprintf(respuesta,"21/NO");					}
 		else
-			sprintf(respuesta,"SI");
+			sprintf(respuesta,"21/SI");
 		pthread_mutex_unlock(&mutex);
 	}
 	else{
-		sprintf(respuesta,"NO");
+		sprintf(respuesta,"21/NO");
 	}
 	
 }
-void PartidasConsecutivas( char nombre [100],char respuesta[100]){
+void PartidasConsecutivas( char nombre [100],char respuesta[512]){
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -144,7 +144,7 @@ void PartidasConsecutivas( char nombre [100],char respuesta[100]){
 	
 	if (row == NULL){
 		printf ("No se han obtenido datos en la consulta\n");
-		sprintf(respuesta,"%s","-1");
+		sprintf(respuesta,"32/%s","-1");
 	}
 	else{
 		int consecutivo=0;
@@ -163,11 +163,11 @@ void PartidasConsecutivas( char nombre [100],char respuesta[100]){
 			}
 			row = mysql_fetch_row (resultado);
 		}
-		sprintf(respuesta,"%d",max);
+		sprintf(respuesta,"32/%d",max);
 	}
 }
 
-void PuntosTotales(char nombre[100],char respuesta[100]){
+void PuntosTotales(char nombre[100],char respuesta[512]){
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -188,14 +188,14 @@ void PuntosTotales(char nombre[100],char respuesta[100]){
 	resultado = mysql_store_result (conn);
 	row = mysql_fetch_row (resultado);
 	if ((row == NULL)||(row[0]==NULL)){
-		sprintf(respuesta,"%s","-1");
+		sprintf(respuesta,"33/%s","-1");
 	}
 	else{
-		sprintf(respuesta,"%s", row[0]);
+		sprintf(respuesta,"33/%s", row[0]);
 	}
 }
 
-void PerdidoContra(char nombre[100],char respuesta[100]){
+void PerdidoContra(char nombre[100],char respuesta[512]){
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -220,7 +220,7 @@ void PerdidoContra(char nombre[100],char respuesta[100]){
 	resultado = mysql_store_result (conn); 
 	row = mysql_fetch_row (resultado);
 	if (row == NULL)
-		sprintf (respuesta,"%s","-1");
+		sprintf (respuesta,"34/%s","-1");
 	else{
 		int i=0;
 		while(row !=NULL){
@@ -229,10 +229,13 @@ void PerdidoContra(char nombre[100],char respuesta[100]){
 			sprintf (respuesta,"%s%s/", respuesta,row[0]);
 			row = mysql_fetch_row (resultado);
 		}
+		char auxiliar[512];
+		strcpy(auxiliar,respuesta);
+		sprintf (respuesta,"35/%s",auxiliar);
 	}
 }
 
-void VSJugador(char nombre[100],int idUsuario,char respuesta[100]){
+void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
 	int err;
 	MYSQL_RES *resultado;
 	MYSQL_ROW rowS;
@@ -305,7 +308,9 @@ void VSJugador(char nombre[100],int idUsuario,char respuesta[100]){
 			if (k==0){
 				sprintf (respuesta,"%s","-1");
 			}
-			
+			char auxiliar[512];
+			strcpy(auxiliar,respuesta);
+			sprintf (respuesta,"35/%s", auxiliar);
 		}
 	}
 }
@@ -331,7 +336,7 @@ void EliminarJugadorListaCon(char* nombre){
 	}
 	
 }
-void CharJugCon(char respuesta[100]){ //Respuesta "NumeroJugadores,Nombre1,Nombre2,Nombre3" (char)
+void CharJugCon(char respuesta[512]){ //Respuesta "NumeroJugadores,Nombre1,Nombre2,Nombre3" (char)
 	pthread_mutex_lock(&mutex);
 	sprintf(respuesta,"%d,",miLista.num);
 	for(int i=0;i<miLista.num;i++){
@@ -339,6 +344,7 @@ void CharJugCon(char respuesta[100]){ //Respuesta "NumeroJugadores,Nombre1,Nombr
 	}
 	respuesta[strlen(respuesta)-1]='\0';
 	pthread_mutex_unlock(&mutex);
+	
 }
 
 void *AtenderCliente (void *socket){
@@ -356,6 +362,8 @@ void *AtenderCliente (void *socket){
 	
 	char peticion[512];
 	char respuesta[512];
+	char notificacion[512];
+	int notificado=0;
 	// Entramos en un bucle para atender todas las peticiones de este cliente
 	//hasta que se desconecte
 	while (terminar ==0){	
@@ -394,7 +402,7 @@ void *AtenderCliente (void *socket){
 				pthread_mutex_lock(&mutex);
 				EliminarJugadorListaCon(nombre);
 				pthread_mutex_unlock(&mutex);
-				CharJugCon(respuesta);
+				notificado=1;
 			}
 			terminar=1;
 		}
@@ -405,11 +413,12 @@ void *AtenderCliente (void *socket){
 			pthread_mutex_lock(&mutex);
 			AnadirJugadorListaConectados(nombre,*s);
 			pthread_mutex_unlock(&mutex);
+			if(respuesta!="NO"){
+				CharJugCon(notificacion);
+				notificado=1;
+			}
 			// cerrar la conexion con el servidor MYSQL 
 			/*				mysql_close (conn);*/
-			if (respuesta!="NO"){
-				CharJugCon(respuesta);
-			}
 		}
 		else if (codigo ==21){
 			char consulta[100];
@@ -449,8 +458,17 @@ void *AtenderCliente (void *socket){
 		
 		
 		printf ("Respuesta: %s\n", respuesta);
+		printf("Notificación:%s\n",notificacion);
 		// Enviamos respuesta
 		write (sock_conn,respuesta, strlen(respuesta));
+		if(notificado==1)
+		{
+			char cabecera[512]="36/";
+			strcat(cabecera,notificacion);
+			//sprintf(notificacion,"36/%s",notificacion);
+			printf("Notificación:%s\n",cabecera);
+			write (sock_conn,cabecera, strlen(cabecera));
+		}
 		
 	}
 	// Se acabo el servicio para este cliente
@@ -464,6 +482,8 @@ int main(int argc, char *argv[])
 	struct sockaddr_in serv_adr;
 	char peticion[512];
 	char respuesta[512];
+	char notificacion[512];
+	
 	miLista.num=0;
 	// INICIALITZACIONS
 	// Obrim el socket
@@ -479,7 +499,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(5060);
+	serv_adr.sin_port = htons(50060);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
 	
@@ -493,14 +513,14 @@ int main(int argc, char *argv[])
 	//Creamos una conexion al servidor MYSQL 
 	conn = mysql_init(NULL);
 	if (conn==NULL) {
-		printf ("Error al crear la conexi??n: %u %s\n", 
+		printf ("Error al crear la conexion: %u %s\n", 
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
 	//inicializar la conexion
-	conn = mysql_real_connect (conn, "shiva2.upc.edu","root", "mysql", "T4BBDD",0, NULL, 0);
+	conn = mysql_real_connect (conn, "shiva2.upc.es","root", "mysql", "T4BBDD",0, NULL, 0);
 	if (conn==NULL) {
-		printf ("Error al inicializar la conexi??n: %u %s\n", 
+		printf ("Error al inicializar la conexion: %u %s\n", 
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
