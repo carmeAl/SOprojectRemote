@@ -27,8 +27,6 @@ namespace Cliente
         public Form1()
         {
             InitializeComponent();
-            //CheckForIllegalCrossThreadCalls = false;//Necesario para que los elementos de los formularios puedan ser 
-            //accedidos desde threads diferentes a los que los crearon
         }
 
         private void Form1_Load(object sender, EventArgs e)
