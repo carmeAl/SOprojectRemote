@@ -16,6 +16,9 @@
 MYSQL *conn;
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 
+int *sockets;
+
+
 //comentario para el git
 
 typedef struct{
@@ -29,10 +32,13 @@ typedef struct{
 
 ListaJugadoresConectados miLista;
 
+
 typedef struct {
 	int oc; //o indica que la entrada está libre y 1 que está ocupada
-	char nombre [30];
-	int puntos;
+	char nombre1 [30];
+	char nombre2 [30];
+	int socket1;
+	int socket2;
 } TEntrada;
 
 typedef TEntrada TablaPartidas [100];
@@ -341,6 +347,7 @@ void EliminarJugadorListaCon(char* nombre){
 			encontrado=1;
 			int j=i;
 			for(j;j<miLista.num;j++){
+				sockets[j]=sockets[j+1];
 				strcpy(miLista.Lista[j].nombre,miLista.Lista[j+1].nombre);
 				miLista.Lista[j].socket=miLista.Lista[j+1].socket;
 			}
@@ -545,9 +552,13 @@ int main(int argc, char *argv[])
 	}
 	
 	int i=0;
-	int *sockets;
+	
+
+	pthread_t *thread;
+	thread= (pthread_t *) calloc(miLista.num+1,sizeof(pthread_t));
+	
 	sockets= (int *) calloc(miLista.num+1,sizeof(int));
-	pthread_t thread[100];
+
 	// Bucle infinito
 	for (;;){
 		printf ("Escuchando\n");
