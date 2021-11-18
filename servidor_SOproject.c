@@ -29,6 +29,20 @@ typedef struct{
 
 ListaJugadoresConectados miLista;
 
+typedef struct {
+	int oc; //o indica que la entrada está libre y 1 que está ocupada
+	char nombre [30];
+	int puntos;
+} TEntrada;
+
+typedef TEntrada TablaPartidas [100];
+
+void Inicializar (TablaPartidas tabla)
+{
+	int i;
+	for (i=0; i<100; i++)
+		tabla[i].oc=0;
+}
 
 void Login(char contrasena[100], char nombre[100],char respuesta[512]){
 	
@@ -531,7 +545,8 @@ int main(int argc, char *argv[])
 	}
 	
 	int i=0;
-	int sockets[100];
+	int *sockets;
+	sockets= (int *) calloc(miLista.num+1,sizeof(int));
 	pthread_t thread[100];
 	// Bucle infinito
 	for (;;){
