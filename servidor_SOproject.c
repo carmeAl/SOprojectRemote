@@ -16,6 +16,9 @@
 MYSQL *conn;
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 
+int *sockets;
+
+
 //comentario para el git
 
 typedef struct{
@@ -29,6 +32,23 @@ typedef struct{
 
 ListaJugadoresConectados miLista;
 
+
+typedef struct {
+	int oc; //0 indica que la entrada está libre y 1 que está ocupada
+	char nombre1 [30];
+	char nombre2 [30];
+	int socket1;
+	int socket2;
+} TEntrada;
+
+TEntrada TablaPartidasActivas [100];
+
+void Inicializar (TEntrada tabla[100])
+{
+	int i;
+	for (i=0; i<100; i++)
+		tabla[i].oc=0;
+}
 
 void Login(char contrasena[100], char nombre[100],char respuesta[512]){
 	
@@ -327,6 +347,7 @@ void EliminarJugadorListaCon(char* nombre){
 			encontrado=1;
 			int j=i;
 			for(j;j<miLista.num;j++){
+				sockets[j]=sockets[j+1];
 				strcpy(miLista.Lista[j].nombre,miLista.Lista[j+1].nombre);
 				miLista.Lista[j].socket=miLista.Lista[j+1].socket;
 			}
@@ -347,6 +368,123 @@ void CharJugCon(char respuesta[512]){ //Respuesta "NumeroJugadores,Nombre1,Nombr
 	
 }
 
+int SocketNomJug(char* nombre){ //Devuelve el socket del nombre del jugador que se introduce como parametro, 
+	//devuelve -1 si no lo ha encontrado
+	int encontrado=0;
+	int i=0;
+	while ((encontrado==0)&(i<miLista.num)){
+		if (strcmp(nombre,miLista.Lista[i].nombre)==0){
+			encontrado=1;
+		}
+		else{
+			i++;
+		}
+	}
+	if (encontrado==0){
+		return (miLista.Lista[i].socket);
+	}
+	else{
+		return(-1);
+	}
+}
+void EnviarListaJugadoresConectados(char* notificacion){
+	printf("Notificación:%s\n",notificacion);
+	char cabecera[512]="36/";
+	strcat(cabecera,notificacion);
+	//sprintf(notificacion,"36/%s",notificacion);
+	printf("Notificación:%s\n",cabecera);
+	for(int j=0;j<miLista.num;j++){
+		write (miLista.Lista[j].socket,cabecera, strlen(cabecera));
+	}
+}
+void EnviarInvitacion(char *p,char *notificacion,char *nombre){
+	char *NomInv=strtok(p,",");
+	strcpy(notificacion,"41/");
+	strcat(notificacion,nombre);
+	while(NomInv!=NULL){
+		int sock=SocketNomJug(NomInv);
+		if (sock!=-1){
+			write (sock,notificacion, strlen(notificacion));
+			printf("Invitacion enviada a %s",NomInv);
+		}
+		else{
+			printf("41/ Jugador %s no encontrado",NomInv);
+		}
+		NomInv=strtok(p,",");
+	}
+}
+void EnviarIDPartida(char *nombreCreador,char *nombreInvitado,int IDpartida){
+	char notificacion[500];
+	strcpy(notificacion,"43/");
+	strcat(notificacion,nombreCreador);
+	strcat(notificacion,"/");
+	strcat(notificacion,nombreInvitado);
+	strcat(notificacion,"/");
+	sprintf(notificacion,"%s%d",notificacion,IDpartida);
+	write (SocketNomJug(nombreCreador),notificacion, strlen(notificacion));
+	write (SocketNomJug(nombreInvitado),notificacion, strlen(notificacion));	
+}
+void PonerPartidaDeTablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
+	int encontrado=0;
+	int i=0;
+	while((encontrado==0)&&(i<100)){
+		if (TablaPartidasActivas[i].oc==0){
+			encontrado=1;
+			TablaPartidasActivas[i].oc=1;
+			strcpy(TablaPartidasActivas[i].nombre1,nombreCreador);
+			strcpy(TablaPartidasActivas[i].nombre2,nombreInvitado);
+			TablaPartidasActivas[i].socket1=SocketNomJug(nombreCreador);
+			TablaPartidasActivas[i].socket2=SocketNomJug(nombreInvitado);
+			EnviarIDPartida(nombreCreador,nombreInvitado,i);
+		}
+		else{
+			i++;
+		}
+	}
+	if (encontrado==0){
+		printf("NO se ha podido poner la partida en la tabla de partidas activas");
+	}
+	else if(encontrado==1){
+		printf("Partida introducida en la tabla de partidas activas SARISFACTORIAMENTE");
+	}
+	
+	
+}
+void EliminarPartdiaDeTablaPartidasActivas(int IDPartida){
+	TablaPartidasActivas[IDPartida].oc=0;
+}
+void EnviarMSN(char * notificacion,int IDPartida,char *nombre,char *msn){
+	strcpy(notificacion,"44/");
+	if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre1)==0){
+		sprintf(notificacion,"%s/%d/%s",notificacion,IDPartida,msn);
+		write (SocketNomJug(TablaPartidasActivas[IDPartida].nombre2),notificacion, strlen(notificacion));
+		printf("Se ha enviado a %s el msn: %s",TablaPartidasActivas[IDPartida].nombre2,notificacion);
+	}
+	else if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre2)==0){
+		sprintf(notificacion,"%s/%d/%s",notificacion,IDPartida,msn);
+		write (SocketNomJug(TablaPartidasActivas[IDPartida].nombre1),notificacion, strlen(notificacion));
+		printf("Se ha enviado a %s el msn: %s",TablaPartidasActivas[IDPartida].nombre1,notificacion);
+	}
+	else{
+		printf("No se ha podido enviar el MSN");
+	}
+}
+void EnviarCancelacion(char * notificacion,int IDPartida,char *nombre){
+	strcpy(notificacion,"45/");
+	if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre1)==0){
+		sprintf(notificacion,"%s/%d",notificacion,IDPartida);
+		write (SocketNomJug(TablaPartidasActivas[IDPartida].nombre2),notificacion, strlen(notificacion));
+		printf("Se ha enviado a %s la cancelacion",TablaPartidasActivas[IDPartida].nombre2);
+	}
+	else if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre2)==0){
+		sprintf(notificacion,"%s/%d",notificacion,IDPartida);
+		write (SocketNomJug(TablaPartidasActivas[IDPartida].nombre1),notificacion, strlen(notificacion));
+		printf("Se ha enviado a %s la cancelacion",TablaPartidasActivas[IDPartida].nombre1);
+	}
+	else{
+		printf("No se ha podido enviar la cancelacion");
+	}
+}
 void *AtenderCliente (void *socket){
 	//bucle de atencion al cliente
 	int terminar=0;
@@ -388,6 +526,7 @@ void *AtenderCliente (void *socket){
 		char nombre[20];
 		char contrasena[100];
 		
+		
 		p = strtok( NULL, "/");
 		
 		if(p!=NULL){
@@ -403,7 +542,7 @@ void *AtenderCliente (void *socket){
 				EliminarJugadorListaCon(nombre);
 				pthread_mutex_unlock(&mutex);
 				CharJugCon(notificacion);
-				notificado=1;
+				EnviarListaJugadoresConectados(notificacion);
 			}
 			terminar=1;
 		}
@@ -416,7 +555,7 @@ void *AtenderCliente (void *socket){
 				AnadirJugadorListaConectados(nombre,*s);
 				pthread_mutex_unlock(&mutex);
 				CharJugCon(notificacion);
-				notificado=1;
+				EnviarListaJugadoresConectados(notificacion);
 			}
 			// cerrar la conexion con el servidor MYSQL 
 			/*				mysql_close (conn);*/
@@ -458,22 +597,47 @@ void *AtenderCliente (void *socket){
 		}
 		
 		
+		else if (codigo ==41){ //Cliente envia "41/NombreJugadorQueHaCreadoPartida/JugadorInvitado1,JI2,JI3"
+			//Servidor envia "41/NombreJugadorQueHaCreadoPartida"
+			//Procedimiento de invitacion
+			p = strtok( NULL, "/");
+			EnviarInvitacion(p,notificacion,nombre);
+		}
+		
+		else if (codigo ==42){ //Cliente envia "42/NombreJugadorQueHaCreadoPartida/JugadorQueHaAceptadoORechazado/SIoNO"
+			//Servidor envia "42/JugadorQueHaAceptadoORechazado/SIoNO"
+			char *nombreInvitado=strtok( NULL, "/");
+			char *SIoNO=strtok( NULL, "/");
+			strcpy(notificacion,"42/");
+			strcat(notificacion,nombreInvitado);
+			strcat(notificacion,"/");
+			strcat(notificacion,SIoNO);
+			int sock=SocketNomJug(nombre);
+			write (sock,notificacion, strlen(notificacion));
+			if (strcmp(SIoNO,"SI")==0){
+				PonerPartidaDeTablaPartidasActivas(nombre,nombreInvitado);
+				
+			}
+		}
+		else if (codigo ==44){ //Cliente envia "44/IDPartida/NombreQuienEnviaMsn/Msn"
+			//Servidor envia "44/IDPartida/Msn
+			int IDPartida=atoi(nombre);
+			char *NombreQuienEnviaMsn=strtok(NULL,"/");
+			char *Msn=strtok(NULL,"/");
+			EnviarMSN(notificacion,IDPartida,NombreQuienEnviaMsn,Msn);
+		}
+		else if (codigo ==45){ //Cliente envia "45/IDPartida/NombreQuienEnviaCancelacion"
+			//Servidor envia "45/IDPartida"
+			int IDPartida=atoi(nombre);
+			char *NombreQuienEnviaCancelacion=strtok(NULL,"/");
+			EnviarCancelacion(notificacion,IDPartida,NombreQuienEnviaCancelacion);
+		}
+		
 		printf ("Respuesta: %s\n", respuesta);
-		printf("Notificación:%s\n",notificacion);
+		
 		// Enviamos respuesta
 		write (sock_conn,respuesta, strlen(respuesta));
-		if(notificado==1)
-		{
-			char cabecera[512]="36/";
-			strcat(cabecera,notificacion);
-			//sprintf(notificacion,"36/%s",notificacion);
-			printf("Notificación:%s\n",cabecera);
-			for(int j=0;j<miLista.num;j++){
-				write (miLista.Lista[j].socket,cabecera, strlen(cabecera));
-			}
-			
-		}
-		notificado=0;
+		
 		
 	}
 	// Se acabo el servicio para este cliente
@@ -531,8 +695,13 @@ int main(int argc, char *argv[])
 	}
 	
 	int i=0;
-	int sockets[100];
-	pthread_t thread[100];
+	
+
+	pthread_t *thread;
+	thread= (pthread_t *) calloc(miLista.num+1,sizeof(pthread_t));
+	
+	sockets= (int *) calloc(miLista.num+1,sizeof(int));
+
 	// Bucle infinito
 	for (;;){
 		printf ("Escuchando\n");

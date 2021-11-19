@@ -344,5 +344,10 @@ namespace Cliente
                 conectado = false;
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
