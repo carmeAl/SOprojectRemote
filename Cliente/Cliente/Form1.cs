@@ -17,6 +17,10 @@ namespace Cliente
     {
         public int id_usuario;
         public bool conectado = false;
+        string invitado;
+        string contrincante;
+        string credaor_partida;
+        int id_partida;
         Socket server;
         Thread atender;
 
@@ -34,6 +38,9 @@ namespace Cliente
             Consultas.Visible = false;
             Registrarse.Visible = false;
             dataGridView1.Visible = false;
+            conversacion.Visible = false;
+            button_invitar.Visible = false;
+            button_salircon.Visible = false;
         }
 
         public void PonDataGridView(string mensaje )
@@ -151,6 +158,50 @@ namespace Cliente
                     case 36: //respuesta lista de conectados
                         DelegadoParaEscribir delegado36 = new DelegadoParaEscribir(PonDataGridView);
                         dataGridView1.Invoke(delegado36, new object[] { mensaje });
+                        break;
+                    case 41: //Recive invitacion
+                        string nombre = mensaje;
+                        string mensaje_not;
+                        DialogResult r = MessageBox.Show(nombre + "te ha invitado a un juego.\n ¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
+                        if (r == DialogResult.Yes)
+                        {
+                            mensaje_not = "42/" + nombre + textBox_nombre_in.Text + "/Si";
+                        }
+                        else
+                        {
+                            mensaje_not = "42/" + nombre + textBox_nombre_in.Text + "/No";
+
+                        }
+                        // Enviamos al servidor el nombre tecleado con un vector de bytes
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        break;
+                    case 42: //respuesta a la invitacion enviada
+                        string[] trozos2 = mensaje.Split('/');
+                        contrincante = trozos2[0];
+                        string mensaje2 = trozos2[1];
+                        if (mensaje2 == "Si")
+                        {
+                            conversacion.Visible = true;
+                            textBox_con.Visible = true;
+                            button_enviar.Visible = true;
+                            button_salircon.Visible = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show(contrincante + " ha rechazado tu invitación");
+                        }
+                        break;
+                    case 43: //recivir el id de la partida
+                        string[] trozos3 = mensaje.Split('/');
+                        credaor_partida = trozos3[0];
+                        contrincante = trozos3[1];
+                        id_partida = Convert.ToInt32(trozos3[2]);
+                        break;
+                    case 44: //recive conversación
+                        string[] trozos4 = mensaje.Split('/');
+                        id_partida = Convert.ToInt32(trozos4[0]);
+                        conversacion.Items.Add(contrincante + ": " + trozos4[1]);
                         break;
                 }
             }
@@ -344,10 +395,48 @@ namespace Cliente
                 conectado = false;
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button_invitar_Click(object sender, EventArgs e)
         {
+            // Lista de IDs de partidas que el usuario ha tenido con el jugador introducido
+            string mensaje = "41/" + textBox_nombre_in.Text + "/" + invitado;
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                invitado = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("No has seleccionado bien al jugador");
+            }
+        }
+
+        private void button_enviar_Click(object sender, EventArgs e)
+        {
+            conversacion.Items.Add(textBox_nombre_in.Text + ": " + textBox_con);
+            // Envias el mensaje
+            string mensaje = "44/" + id_partida + "/" + textBox_nombre_in.Text + "/" + textBox_con;
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
+
+        private void button_salircon_Click(object sender, EventArgs e)
+        {
+            // Envias que te desconectas de la conversación
+            string mensaje = "45/" + id_partida;
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            conversacion.Visible = false;
+            textBox_con.Visible = false;
+            button_enviar.Visible = false;
+            button_salircon.Visible = false;
         }
     }
 }

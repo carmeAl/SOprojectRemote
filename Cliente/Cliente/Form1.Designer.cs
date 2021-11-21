@@ -55,9 +55,11 @@ namespace Cliente
             this.button_descon = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.conversacion = new System.Windows.Forms.ListBox();
+            this.button_enviar = new System.Windows.Forms.Button();
+            this.textBox_con = new System.Windows.Forms.TextBox();
+            this.button_invitar = new System.Windows.Forms.Button();
+            this.button_salircon = new System.Windows.Forms.Button();
             this.Iniciar.SuspendLayout();
             this.Registrarse.SuspendLayout();
             this.Consultas.SuspendLayout();
@@ -73,21 +75,18 @@ namespace Cliente
             this.Iniciar.Controls.Add(this.label3);
             this.Iniciar.Controls.Add(this.textBox_contra_in);
             this.Iniciar.Controls.Add(this.textBox_nombre_in);
-            this.Iniciar.Location = new System.Drawing.Point(753, 18);
-            this.Iniciar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Iniciar.Location = new System.Drawing.Point(502, 12);
             this.Iniciar.Name = "Iniciar";
-            this.Iniciar.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Iniciar.Size = new System.Drawing.Size(404, 206);
+            this.Iniciar.Size = new System.Drawing.Size(269, 134);
             this.Iniciar.TabIndex = 0;
             this.Iniciar.TabStop = false;
             this.Iniciar.Text = "Iniciar";
             // 
             // button_registro
             // 
-            this.button_registro.Location = new System.Drawing.Point(36, 146);
-            this.button_registro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_registro.Location = new System.Drawing.Point(24, 95);
             this.button_registro.Name = "button_registro";
-            this.button_registro.Size = new System.Drawing.Size(112, 35);
+            this.button_registro.Size = new System.Drawing.Size(75, 23);
             this.button_registro.TabIndex = 5;
             this.button_registro.Text = "Registrarse";
             this.button_registro.UseVisualStyleBackColor = true;
@@ -95,10 +94,9 @@ namespace Cliente
             // 
             // button_iniciar
             // 
-            this.button_iniciar.Location = new System.Drawing.Point(266, 146);
-            this.button_iniciar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_iniciar.Location = new System.Drawing.Point(177, 95);
             this.button_iniciar.Name = "button_iniciar";
-            this.button_iniciar.Size = new System.Drawing.Size(112, 35);
+            this.button_iniciar.Size = new System.Drawing.Size(75, 23);
             this.button_iniciar.TabIndex = 4;
             this.button_iniciar.Text = "Iniciar";
             this.button_iniciar.UseVisualStyleBackColor = true;
@@ -107,37 +105,33 @@ namespace Cliente
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 97);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(35, 63);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 20);
+            this.label4.Size = new System.Drawing.Size(64, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Contraseña:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 51);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(35, 33);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 20);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Nombre:";
             // 
             // textBox_contra_in
             // 
-            this.textBox_contra_in.Location = new System.Drawing.Point(168, 92);
-            this.textBox_contra_in.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox_contra_in.Location = new System.Drawing.Point(112, 60);
             this.textBox_contra_in.Name = "textBox_contra_in";
-            this.textBox_contra_in.Size = new System.Drawing.Size(148, 26);
+            this.textBox_contra_in.Size = new System.Drawing.Size(100, 20);
             this.textBox_contra_in.TabIndex = 1;
             // 
             // textBox_nombre_in
             // 
-            this.textBox_nombre_in.Location = new System.Drawing.Point(168, 46);
-            this.textBox_nombre_in.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox_nombre_in.Location = new System.Drawing.Point(112, 30);
             this.textBox_nombre_in.Name = "textBox_nombre_in";
-            this.textBox_nombre_in.Size = new System.Drawing.Size(148, 26);
+            this.textBox_nombre_in.Size = new System.Drawing.Size(100, 20);
             this.textBox_nombre_in.TabIndex = 0;
             // 
             // Registrarse
@@ -149,21 +143,18 @@ namespace Cliente
             this.Registrarse.Controls.Add(this.textBox_nombre_re);
             this.Registrarse.Controls.Add(this.label2);
             this.Registrarse.Controls.Add(this.label1);
-            this.Registrarse.Location = new System.Drawing.Point(753, 234);
-            this.Registrarse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Registrarse.Location = new System.Drawing.Point(502, 152);
             this.Registrarse.Name = "Registrarse";
-            this.Registrarse.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Registrarse.Size = new System.Drawing.Size(404, 225);
+            this.Registrarse.Size = new System.Drawing.Size(269, 146);
             this.Registrarse.TabIndex = 1;
             this.Registrarse.TabStop = false;
             this.Registrarse.Text = "Registrarse";
             // 
             // button_volver
             // 
-            this.button_volver.Location = new System.Drawing.Point(32, 166);
-            this.button_volver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_volver.Location = new System.Drawing.Point(21, 108);
             this.button_volver.Name = "button_volver";
-            this.button_volver.Size = new System.Drawing.Size(112, 35);
+            this.button_volver.Size = new System.Drawing.Size(75, 23);
             this.button_volver.TabIndex = 5;
             this.button_volver.Text = "Volver";
             this.button_volver.UseVisualStyleBackColor = true;
@@ -171,10 +162,9 @@ namespace Cliente
             // 
             // button_registrarse
             // 
-            this.button_registrarse.Location = new System.Drawing.Point(266, 166);
-            this.button_registrarse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_registrarse.Location = new System.Drawing.Point(177, 108);
             this.button_registrarse.Name = "button_registrarse";
-            this.button_registrarse.Size = new System.Drawing.Size(112, 35);
+            this.button_registrarse.Size = new System.Drawing.Size(75, 23);
             this.button_registrarse.TabIndex = 4;
             this.button_registrarse.Text = "Registrarse";
             this.button_registrarse.UseVisualStyleBackColor = true;
@@ -182,37 +172,33 @@ namespace Cliente
             // 
             // textBox_contra_re
             // 
-            this.textBox_contra_re.Location = new System.Drawing.Point(153, 95);
-            this.textBox_contra_re.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox_contra_re.Location = new System.Drawing.Point(102, 62);
             this.textBox_contra_re.Name = "textBox_contra_re";
-            this.textBox_contra_re.Size = new System.Drawing.Size(148, 26);
+            this.textBox_contra_re.Size = new System.Drawing.Size(100, 20);
             this.textBox_contra_re.TabIndex = 3;
             // 
             // textBox_nombre_re
             // 
-            this.textBox_nombre_re.Location = new System.Drawing.Point(153, 48);
-            this.textBox_nombre_re.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox_nombre_re.Location = new System.Drawing.Point(102, 31);
             this.textBox_nombre_re.Name = "textBox_nombre_re";
-            this.textBox_nombre_re.Size = new System.Drawing.Size(148, 26);
+            this.textBox_nombre_re.Size = new System.Drawing.Size(100, 20);
             this.textBox_nombre_re.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 100);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(18, 65);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 20);
+            this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Contraseña:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 48);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(18, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 20);
+            this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre:";
             // 
@@ -226,21 +212,18 @@ namespace Cliente
             this.Consultas.Controls.Add(this.Consulta_32);
             this.Consultas.Controls.Add(this.textBox_nombre_consultas);
             this.Consultas.Controls.Add(this.label5);
-            this.Consultas.Location = new System.Drawing.Point(18, 115);
-            this.Consultas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Consultas.Location = new System.Drawing.Point(12, 75);
             this.Consultas.Name = "Consultas";
-            this.Consultas.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Consultas.Size = new System.Drawing.Size(716, 454);
+            this.Consultas.Size = new System.Drawing.Size(477, 295);
             this.Consultas.TabIndex = 2;
             this.Consultas.TabStop = false;
             this.Consultas.Text = "Consultas";
             // 
             // button_sol
             // 
-            this.button_sol.Location = new System.Drawing.Point(291, 357);
-            this.button_sol.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_sol.Location = new System.Drawing.Point(194, 232);
             this.button_sol.Name = "button_sol";
-            this.button_sol.Size = new System.Drawing.Size(112, 35);
+            this.button_sol.Size = new System.Drawing.Size(75, 23);
             this.button_sol.TabIndex = 6;
             this.button_sol.Text = "Solicitar";
             this.button_sol.UseVisualStyleBackColor = true;
@@ -249,10 +232,9 @@ namespace Cliente
             // Consulta_35
             // 
             this.Consulta_35.AutoSize = true;
-            this.Consulta_35.Location = new System.Drawing.Point(62, 292);
-            this.Consulta_35.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Consulta_35.Location = new System.Drawing.Point(41, 190);
             this.Consulta_35.Name = "Consulta_35";
-            this.Consulta_35.Size = new System.Drawing.Size(560, 24);
+            this.Consulta_35.Size = new System.Drawing.Size(377, 17);
             this.Consulta_35.TabIndex = 5;
             this.Consulta_35.TabStop = true;
             this.Consulta_35.Text = "Lista de IDs de partidas que el usuario ha tenido con el jugador introducido";
@@ -261,10 +243,9 @@ namespace Cliente
             // Consulta_34
             // 
             this.Consulta_34.AutoSize = true;
-            this.Consulta_34.Location = new System.Drawing.Point(62, 245);
-            this.Consulta_34.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Consulta_34.Location = new System.Drawing.Point(41, 159);
             this.Consulta_34.Name = "Consulta_34";
-            this.Consulta_34.Size = new System.Drawing.Size(512, 24);
+            this.Consulta_34.Size = new System.Drawing.Size(345, 17);
             this.Consulta_34.TabIndex = 4;
             this.Consulta_34.TabStop = true;
             this.Consulta_34.Text = "Lista de los jugadores que han ganado contra el jugador introducido";
@@ -273,10 +254,9 @@ namespace Cliente
             // Consulta_33
             // 
             this.Consulta_33.AutoSize = true;
-            this.Consulta_33.Location = new System.Drawing.Point(62, 191);
-            this.Consulta_33.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Consulta_33.Location = new System.Drawing.Point(41, 124);
             this.Consulta_33.Name = "Consulta_33";
-            this.Consulta_33.Size = new System.Drawing.Size(339, 24);
+            this.Consulta_33.Size = new System.Drawing.Size(228, 17);
             this.Consulta_33.TabIndex = 3;
             this.Consulta_33.TabStop = true;
             this.Consulta_33.Text = "Suma de los puntos del jugador introducido";
@@ -285,10 +265,9 @@ namespace Cliente
             // Consulta_32
             // 
             this.Consulta_32.AutoSize = true;
-            this.Consulta_32.Location = new System.Drawing.Point(62, 138);
-            this.Consulta_32.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Consulta_32.Location = new System.Drawing.Point(41, 90);
             this.Consulta_32.Name = "Consulta_32";
-            this.Consulta_32.Size = new System.Drawing.Size(418, 24);
+            this.Consulta_32.Size = new System.Drawing.Size(283, 17);
             this.Consulta_32.TabIndex = 2;
             this.Consulta_32.TabStop = true;
             this.Consulta_32.Text = "Partidas consecutivas ganadas del jugador introducido";
@@ -296,30 +275,27 @@ namespace Cliente
             // 
             // textBox_nombre_consultas
             // 
-            this.textBox_nombre_consultas.Location = new System.Drawing.Point(312, 52);
-            this.textBox_nombre_consultas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox_nombre_consultas.Location = new System.Drawing.Point(208, 34);
             this.textBox_nombre_consultas.Name = "textBox_nombre_consultas";
-            this.textBox_nombre_consultas.Size = new System.Drawing.Size(272, 26);
+            this.textBox_nombre_consultas.Size = new System.Drawing.Size(183, 20);
             this.textBox_nombre_consultas.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(56, 49);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(37, 32);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(223, 36);
+            this.label5.Size = new System.Drawing.Size(144, 23);
             this.label5.TabIndex = 0;
             this.label5.Text = "Nombre jugador:";
             // 
             // button_con
             // 
             this.button_con.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_con.Location = new System.Drawing.Point(162, 45);
-            this.button_con.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_con.Location = new System.Drawing.Point(108, 29);
             this.button_con.Name = "button_con";
-            this.button_con.Size = new System.Drawing.Size(180, 62);
+            this.button_con.Size = new System.Drawing.Size(120, 40);
             this.button_con.TabIndex = 3;
             this.button_con.Text = "Conectar";
             this.button_con.UseVisualStyleBackColor = true;
@@ -328,10 +304,9 @@ namespace Cliente
             // button_descon
             // 
             this.button_descon.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_descon.Location = new System.Drawing.Point(370, 45);
-            this.button_descon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button_descon.Location = new System.Drawing.Point(247, 29);
             this.button_descon.Name = "button_descon";
-            this.button_descon.Size = new System.Drawing.Size(180, 62);
+            this.button_descon.Size = new System.Drawing.Size(120, 40);
             this.button_descon.TabIndex = 4;
             this.button_descon.Text = "Desconectar";
             this.button_descon.UseVisualStyleBackColor = true;
@@ -342,12 +317,12 @@ namespace Cliente
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre});
-            this.dataGridView1.Location = new System.Drawing.Point(753, 488);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(502, 317);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(218, 409);
+            this.dataGridView1.Size = new System.Drawing.Size(188, 266);
             this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Nombre
             // 
@@ -356,50 +331,73 @@ namespace Cliente
             this.Nombre.Name = "Nombre";
             this.Nombre.Width = 150;
             // 
-            // listBox1
+            // conversacion
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(18, 587);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(716, 264);
-            this.listBox1.TabIndex = 7;
-            this.listBox1.Visible = false;
+            this.conversacion.FormattingEnabled = true;
+            this.conversacion.Location = new System.Drawing.Point(12, 382);
+            this.conversacion.Margin = new System.Windows.Forms.Padding(2);
+            this.conversacion.Name = "conversacion";
+            this.conversacion.Size = new System.Drawing.Size(479, 173);
+            this.conversacion.TabIndex = 7;
+            this.conversacion.Visible = false;
             // 
-            // button2
+            // button_enviar
             // 
-            this.button2.Location = new System.Drawing.Point(618, 878);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 32);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Enviar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_enviar.Location = new System.Drawing.Point(412, 570);
+            this.button_enviar.Margin = new System.Windows.Forms.Padding(2);
+            this.button_enviar.Name = "button_enviar";
+            this.button_enviar.Size = new System.Drawing.Size(77, 21);
+            this.button_enviar.TabIndex = 9;
+            this.button_enviar.Text = "Enviar";
+            this.button_enviar.UseVisualStyleBackColor = true;
+            this.button_enviar.Visible = false;
+            this.button_enviar.Click += new System.EventHandler(this.button_enviar_Click);
             // 
-            // textBox1
+            // textBox_con
             // 
-            this.textBox1.Location = new System.Drawing.Point(18, 884);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(570, 26);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.Visible = false;
+            this.textBox_con.Location = new System.Drawing.Point(12, 571);
+            this.textBox_con.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_con.Name = "textBox_con";
+            this.textBox_con.Size = new System.Drawing.Size(381, 20);
+            this.textBox_con.TabIndex = 10;
+            this.textBox_con.Visible = false;
+            // 
+            // button_invitar
+            // 
+            this.button_invitar.Location = new System.Drawing.Point(713, 407);
+            this.button_invitar.Name = "button_invitar";
+            this.button_invitar.Size = new System.Drawing.Size(75, 23);
+            this.button_invitar.TabIndex = 11;
+            this.button_invitar.Text = "Invitar";
+            this.button_invitar.UseVisualStyleBackColor = true;
+            this.button_invitar.Click += new System.EventHandler(this.button_invitar_Click);
+            // 
+            // button_salircon
+            // 
+            this.button_salircon.Location = new System.Drawing.Point(389, 603);
+            this.button_salircon.Name = "button_salircon";
+            this.button_salircon.Size = new System.Drawing.Size(128, 23);
+            this.button_salircon.TabIndex = 12;
+            this.button_salircon.Text = "Salir de la conversación";
+            this.button_salircon.UseVisualStyleBackColor = true;
+            this.button_salircon.Click += new System.EventHandler(this.button_salircon_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 945);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(800, 638);
+            this.Controls.Add(this.button_salircon);
+            this.Controls.Add(this.button_invitar);
+            this.Controls.Add(this.textBox_con);
+            this.Controls.Add(this.button_enviar);
+            this.Controls.Add(this.conversacion);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_descon);
             this.Controls.Add(this.button_con);
             this.Controls.Add(this.Consultas);
             this.Controls.Add(this.Registrarse);
             this.Controls.Add(this.Iniciar);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -444,9 +442,11 @@ namespace Cliente
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox conversacion;
+        private System.Windows.Forms.Button button_enviar;
+        private System.Windows.Forms.TextBox textBox_con;
+        private System.Windows.Forms.Button button_invitar;
+        private System.Windows.Forms.Button button_salircon;
     }
 }
 
