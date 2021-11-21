@@ -155,6 +155,8 @@ namespace Cliente_SOproject
             this.labelLRegistrar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelLRegistrar.UseMnemonic = false;
             this.labelLRegistrar.Click += new System.EventHandler(this.labelLRegistrar_Click);
+            this.labelLRegistrar.MouseEnter += new System.EventHandler(this.labelLRegistrar_MouseEnter);
+            this.labelLRegistrar.MouseLeave += new System.EventHandler(this.labelLRegistrar_MouseLeave);
             // 
             // pictureBoxLIniciar
             // 
@@ -166,6 +168,9 @@ namespace Cliente_SOproject
             this.pictureBoxLIniciar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLIniciar.TabIndex = 9;
             this.pictureBoxLIniciar.TabStop = false;
+            this.pictureBoxLIniciar.Click += new System.EventHandler(this.pictureBoxLIniciar_Click);
+            this.pictureBoxLIniciar.MouseEnter += new System.EventHandler(this.pictureBoxLIniciar_MouseEnter);
+            this.pictureBoxLIniciar.MouseLeave += new System.EventHandler(this.pictureBoxLIniciar_MouseLeave);
             // 
             // textBoxLContraseña
             // 
@@ -176,6 +181,8 @@ namespace Cliente_SOproject
             this.textBoxLContraseña.Size = new System.Drawing.Size(150, 23);
             this.textBoxLContraseña.TabIndex = 8;
             this.textBoxLContraseña.Text = "CONTRASEÑA";
+            this.textBoxLContraseña.Enter += new System.EventHandler(this.textBoxLContraseña_Enter);
+            this.textBoxLContraseña.Leave += new System.EventHandler(this.textBoxLContraseña_Leave);
             // 
             // textBoxLNombre
             // 
@@ -186,7 +193,8 @@ namespace Cliente_SOproject
             this.textBoxLNombre.Size = new System.Drawing.Size(150, 23);
             this.textBoxLNombre.TabIndex = 7;
             this.textBoxLNombre.Text = "USUARIO";
-            this.textBoxLNombre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBoxLNombre_MouseDown);
+            this.textBoxLNombre.Enter += new System.EventHandler(this.textBoxLNombre_Enter);
+            this.textBoxLNombre.Leave += new System.EventHandler(this.textBoxLNombre_Leave);
             // 
             // pictureBoxLLFondo
             // 
@@ -228,6 +236,8 @@ namespace Cliente_SOproject
             this.pictureBoxRVolver.TabIndex = 15;
             this.pictureBoxRVolver.TabStop = false;
             this.pictureBoxRVolver.Click += new System.EventHandler(this.pictureBoxRVolver_Click);
+            this.pictureBoxRVolver.MouseEnter += new System.EventHandler(this.pictureBoxRVolver_MouseEnter);
+            this.pictureBoxRVolver.MouseLeave += new System.EventHandler(this.pictureBoxRVolver_MouseLeave);
             // 
             // pictureBoxRRegistrarse
             // 
@@ -239,6 +249,8 @@ namespace Cliente_SOproject
             this.pictureBoxRRegistrarse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxRRegistrarse.TabIndex = 12;
             this.pictureBoxRRegistrarse.TabStop = false;
+            this.pictureBoxRRegistrarse.MouseEnter += new System.EventHandler(this.pictureBoxRRegistrarse_MouseEnter);
+            this.pictureBoxRRegistrarse.MouseLeave += new System.EventHandler(this.pictureBoxRRegistrarse_MouseLeave);
             // 
             // textBoxRContraseña
             // 
@@ -249,6 +261,8 @@ namespace Cliente_SOproject
             this.textBoxRContraseña.Size = new System.Drawing.Size(150, 23);
             this.textBoxRContraseña.TabIndex = 11;
             this.textBoxRContraseña.Text = "CONTRASEÑA";
+            this.textBoxRContraseña.Enter += new System.EventHandler(this.textBoxRContraseña_Enter);
+            this.textBoxRContraseña.Leave += new System.EventHandler(this.textBoxRContraseña_Leave);
             // 
             // textBoxRUsuario
             // 
@@ -259,6 +273,8 @@ namespace Cliente_SOproject
             this.textBoxRUsuario.Size = new System.Drawing.Size(150, 23);
             this.textBoxRUsuario.TabIndex = 10;
             this.textBoxRUsuario.Text = "USUARIO";
+            this.textBoxRUsuario.Enter += new System.EventHandler(this.textBoxRUsuario_Enter);
+            this.textBoxRUsuario.Leave += new System.EventHandler(this.textBoxRUsuario_Leave);
             // 
             // pictureBox3
             // 
@@ -301,6 +317,8 @@ namespace Cliente_SOproject
             this.pictureBoxMCrearPartida.TabIndex = 13;
             this.pictureBoxMCrearPartida.TabStop = false;
             this.pictureBoxMCrearPartida.Click += new System.EventHandler(this.pictureBoxMCrearPartida_Click);
+            this.pictureBoxMCrearPartida.MouseEnter += new System.EventHandler(this.pictureBoxMCrearPartida_MouseEnter);
+            this.pictureBoxMCrearPartida.MouseLeave += new System.EventHandler(this.pictureBoxMCrearPartida_MouseLeave);
             // 
             // pictureBoxMPerfil
             // 
@@ -312,6 +330,8 @@ namespace Cliente_SOproject
             this.pictureBoxMPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMPerfil.TabIndex = 12;
             this.pictureBoxMPerfil.TabStop = false;
+            this.pictureBoxMPerfil.MouseEnter += new System.EventHandler(this.pictureBoxMPerfil_MouseEnter);
+            this.pictureBoxMPerfil.MouseLeave += new System.EventHandler(this.pictureBoxMPerfil_MouseLeave);
             // 
             // pictureBoxMDesconectar
             // 
@@ -336,6 +356,8 @@ namespace Cliente_SOproject
             this.pictureBoxMConfiguracion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMConfiguracion.TabIndex = 10;
             this.pictureBoxMConfiguracion.TabStop = false;
+            this.pictureBoxMConfiguracion.MouseEnter += new System.EventHandler(this.pictureBoxMConfiguracion_MouseEnter);
+            this.pictureBoxMConfiguracion.MouseLeave += new System.EventHandler(this.pictureBoxMConfiguracion_MouseLeave);
             // 
             // pictureBoxMSocial
             // 
@@ -347,6 +369,8 @@ namespace Cliente_SOproject
             this.pictureBoxMSocial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMSocial.TabIndex = 9;
             this.pictureBoxMSocial.TabStop = false;
+            this.pictureBoxMSocial.MouseEnter += new System.EventHandler(this.pictureBoxMSocial_MouseEnter);
+            this.pictureBoxMSocial.MouseLeave += new System.EventHandler(this.pictureBoxMSocial_MouseLeave);
             // 
             // pictureBox2
             // 
@@ -391,6 +415,8 @@ namespace Cliente_SOproject
             this.pictureBoxCInvitar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCInvitar.TabIndex = 18;
             this.pictureBoxCInvitar.TabStop = false;
+            this.pictureBoxCInvitar.MouseEnter += new System.EventHandler(this.pictureBoxCInvitar_MouseEnter);
+            this.pictureBoxCInvitar.MouseLeave += new System.EventHandler(this.pictureBoxCInvitar_MouseLeave);
             // 
             // panel5
             // 
@@ -478,6 +504,8 @@ namespace Cliente_SOproject
             this.pictureBoxCVolver.TabIndex = 16;
             this.pictureBoxCVolver.TabStop = false;
             this.pictureBoxCVolver.Click += new System.EventHandler(this.pictureBoxCVolver_Click);
+            this.pictureBoxCVolver.MouseEnter += new System.EventHandler(this.pictureBoxCVolver_MouseEnter);
+            this.pictureBoxCVolver.MouseLeave += new System.EventHandler(this.pictureBoxCVolver_MouseLeave);
             // 
             // panel4
             // 
@@ -509,6 +537,8 @@ namespace Cliente_SOproject
             this.textBoxCLimTiempo.Size = new System.Drawing.Size(43, 19);
             this.textBoxCLimTiempo.TabIndex = 11;
             this.textBoxCLimTiempo.Text = "60";
+            this.textBoxCLimTiempo.Enter += new System.EventHandler(this.textBoxCLimTiempo_Enter);
+            this.textBoxCLimTiempo.Leave += new System.EventHandler(this.textBoxCLimTiempo_Leave);
             // 
             // label4
             // 
@@ -540,6 +570,8 @@ namespace Cliente_SOproject
             this.textBoxCNumPreg.Size = new System.Drawing.Size(43, 19);
             this.textBoxCNumPreg.TabIndex = 11;
             this.textBoxCNumPreg.Text = "10";
+            this.textBoxCNumPreg.Enter += new System.EventHandler(this.textBoxCNumPreg_Enter);
+            this.textBoxCNumPreg.Leave += new System.EventHandler(this.textBoxCNumPreg_Leave);
             // 
             // label3
             // 
