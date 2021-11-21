@@ -5,7 +5,6 @@ C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Clien
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\bin\Debug\netcoreapp3.1\Cliente_SOproject.dll
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\bin\Debug\netcoreapp3.1\Cliente_SOproject.pdb
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\obj\Debug\netcoreapp3.1\Cliente_SOproject.csproj.AssemblyReference.cache
-C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\obj\Debug\netcoreapp3.1\Cliente_SOproject.Menu.resources
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\obj\Debug\netcoreapp3.1\Cliente_SOproject.Partida.resources
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\obj\Debug\netcoreapp3.1\Cliente_SOproject.Properties.Resources.resources
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\obj\Debug\netcoreapp3.1\Cliente_SOproject.csproj.GenerateResource.cache
@@ -16,3 +15,4 @@ C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Clien
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\obj\Debug\netcoreapp3.1\Cliente_SOproject.dll
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\obj\Debug\netcoreapp3.1\Cliente_SOproject.pdb
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\obj\Debug\netcoreapp3.1\Cliente_SOproject.genruntimeconfig.cache
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\Cliente_SOproject\Cliente_SOproject\obj\Debug\netcoreapp3.1\Cliente_SOproject.FormMenu.resources

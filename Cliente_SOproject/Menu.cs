@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
 
 namespace Cliente_SOproject
 {
-    public partial class Menu : Form
+    public partial class FormMenu : Form
     {
-        public Menu()
+        public FormMenu()
         {
             InitializeComponent();
             //Image img = Image.FromFile("C:/Users/calca/Downloads/giphy.gif");
@@ -23,11 +24,11 @@ namespace Cliente_SOproject
 
         private void pictureBox7_MouseEnter(object sender, EventArgs e)
         {
-            pictureBox7.Image = SetAlpha((Bitmap)pictureBox7.Image, 150);
+            pictureBoxMDesconectar.Image = SetAlpha((Bitmap)pictureBoxMDesconectar.Image, 150);
         }
         private void pictureBox7_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox7.Image = SetAlpha((Bitmap)pictureBox7.Image, 1000);
+            pictureBoxMDesconectar.Image = SetAlpha((Bitmap)pictureBoxMDesconectar.Image, 1000);
         }
 
         static Bitmap SetAlpha(Bitmap bmpIn, int alpha)
@@ -54,7 +55,29 @@ namespace Cliente_SOproject
             return bmpOut;
         }
 
+        //NAVIEGACION
+        private void labelLRegistrar_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageRegister;
+
+        private void pictureBoxRVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageLogin;
+
+        private void pictureBoxMCrearPartida_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageCrearPartida;
+
+        private void pictureBoxCVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageMenu;
+
+
+
+        //DISEÑO
         
+        private void textBoxLNombre_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (textBoxLNombre.Text == "USUARIO")
+            {
+                textBoxLNombre.Text = "";
+                textBoxLNombre.ForeColor = Color.Black;
+            }
+        }
+
+       
     }
 }
 
