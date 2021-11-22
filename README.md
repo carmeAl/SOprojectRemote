@@ -30,3 +30,4 @@ Tabla de partidas: Invitaciones
 - Verificada por Victoria
 - Comunicada por Carme (https://drive.google.com/file/d/1UUhhqjsA70mLFfFUHmjPm5kv1kXkataR/view?usp=sharing)
 - Descanso por Genis
+
