@@ -38,9 +38,8 @@ namespace Cliente
             Consultas.Visible = false;
             Registrarse.Visible = false;
             dataGridView1.Visible = false;
-            conversacion.Visible = false;
-            button_invitar.Visible = false;
-            button_salircon.Visible = false;
+            groupBoxListaCon.Visible = false;
+            groupBoxChat.Visible = false;
         }
 
         public void PonDataGridView(string mensaje )
@@ -81,6 +80,10 @@ namespace Cliente
         {
             nombre.Visible = false;
         }
+        public void PonMSN(string mensaje)
+        {
+            conversacion.Items.Add(contrincante + ": " + mensaje);
+        }
 
         private void AtenderServidor()
         {
@@ -89,9 +92,13 @@ namespace Cliente
                 //Recibimos mensaje del servidor
                 byte[] msg2 = new byte[80];
                 server.Receive(msg2);
-                string[] trozos = Encoding.ASCII.GetString(msg2).Split('/');
-                int codigo = Convert.ToInt32(trozos[0]);
-                string mensaje = trozos[1].Split('\0')[0];
+                string[] trozos = Encoding.ASCII.GetString(msg2).Split('\0');
+                string[] trozos1 = trozos[0].Split('/');
+                int codigo = Convert.ToInt32(trozos1[0]);
+                
+                //string mensaje = trozos[trozos.Length-1].Split('\0')[0];
+                
+                string mensaje = trozos1[1];
                 switch (codigo)
                 {
               
@@ -104,6 +111,8 @@ namespace Cliente
                             Iniciar.Invoke(delegado1111, new object[] { Iniciar });
                             DelegadoGB delegado1112 = new DelegadoGB(PonVisibleGB);
                             Consultas.Invoke(delegado1112, new object[] { Consultas });
+                            DelegadoGB delegado1113 = new DelegadoGB(PonVisibleGB);
+                            Consultas.Invoke(delegado1113, new object[] { groupBoxListaCon });
                             DelegadoDGV delegado112 = new DelegadoDGV(PonVisibleDGV);
                             dataGridView1.Invoke(delegado112, new object[] { dataGridView1 });
                             
@@ -162,14 +171,16 @@ namespace Cliente
                     case 41: //Recive invitacion
                         string nombre = mensaje;
                         string mensaje_not;
-                        DialogResult r = MessageBox.Show(nombre + "te ha invitado a un juego.\n ¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
+                        DialogResult r = MessageBox.Show(nombre + " te ha invitado a un juego.\n ¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
                         if (r == DialogResult.Yes)
                         {
-                            mensaje_not = "42/" + nombre + textBox_nombre_in.Text + "/Si";
+                            mensaje_not = "42/" + nombre + "/" + textBox_nombre_in.Text + "/Si";
+                            DelegadoGB delegado411 = new DelegadoGB(PonVisibleGB);
+                            groupBoxChat.Invoke(delegado411, new object[] { groupBoxChat });
                         }
                         else
                         {
-                            mensaje_not = "42/" + nombre + textBox_nombre_in.Text + "/No";
+                            mensaje_not = "42/" + nombre + "/" + textBox_nombre_in.Text + "/No";
 
                         }
                         // Enviamos al servidor el nombre tecleado con un vector de bytes
@@ -177,31 +188,41 @@ namespace Cliente
                         server.Send(msg);
                         break;
                     case 42: //respuesta a la invitacion enviada
-                        string[] trozos2 = mensaje.Split('/');
-                        contrincante = trozos2[0];
-                        string mensaje2 = trozos2[1];
+                        string mensaje2 = trozos1[2];
                         if (mensaje2 == "Si")
                         {
-                            conversacion.Visible = true;
-                            textBox_con.Visible = true;
-                            button_enviar.Visible = true;
-                            button_salircon.Visible = true;
+                            DelegadoGB delegado421 = new DelegadoGB(PonVisibleGB);
+                            groupBoxChat.Invoke(delegado421, new object[] { groupBoxChat });
+                            
                         }
                         else
                         {
-                            MessageBox.Show(contrincante + " ha rechazado tu invitación");
+                            MessageBox.Show(trozos1[1] + " ha rechazado tu invitación");
                         }
                         break;
                     case 43: //recivir el id de la partida
-                        string[] trozos3 = mensaje.Split('/');
-                        credaor_partida = trozos3[0];
-                        contrincante = trozos3[1];
-                        id_partida = Convert.ToInt32(trozos3[2]);
+                        
+                        credaor_partida = trozos1[1];
+                        if (credaor_partida == textBox_nombre_in.Text)
+                        {
+                            contrincante = trozos1[2];
+                        }
+                        else
+                        {
+                            contrincante = trozos1[1];
+                        }
+                        
+                        id_partida = Convert.ToInt32(trozos1[3]);
                         break;
                     case 44: //recive conversación
-                        string[] trozos4 = mensaje.Split('/');
-                        id_partida = Convert.ToInt32(trozos4[0]);
-                        conversacion.Items.Add(contrincante + ": " + trozos4[1]);
+                        id_partida = Convert.ToInt32(trozos1[1]);
+                        DelegadoParaEscribir delegado441=new DelegadoParaEscribir(PonMSN);
+                        conversacion.Invoke(delegado441, new object[] { trozos1[2] });
+                        //conversacion.Items.Add(contrincante + ": " + trozos1[2]);
+                        break;
+                    case 45: //recive cancelacion
+                        DelegadoGB delegado451 = new DelegadoGB(PonNoVisibleGB);
+                        groupBoxChat.Invoke(delegado451, new object[] { groupBoxChat });
                         break;
                 }
             }
@@ -395,48 +416,42 @@ namespace Cliente
                 conectado = false;
             }
         }
-        private void button_invitar_Click(object sender, EventArgs e)
+        
+
+
+        private void button_salircon_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button_invitar_Click_1(object sender, EventArgs e)
         {
             // Lista de IDs de partidas que el usuario ha tenido con el jugador introducido
+            invitado = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             string mensaje = "41/" + textBox_nombre_in.Text + "/" + invitado;
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button_enviar_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                invitado = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            }
-            catch
-            {
-                MessageBox.Show("No has seleccionado bien al jugador");
-            }
-        }
-
-        private void button_enviar_Click(object sender, EventArgs e)
-        {
-            conversacion.Items.Add(textBox_nombre_in.Text + ": " + textBox_con);
+            conversacion.Items.Add(textBox_nombre_in.Text + ": " + textBox_con.Text);
             // Envias el mensaje
-            string mensaje = "44/" + id_partida + "/" + textBox_nombre_in.Text + "/" + textBox_con;
+            string mensaje = "44/" + id_partida + "/" + textBox_nombre_in.Text + "/" + textBox_con.Text;
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }
 
-        private void button_salircon_Click(object sender, EventArgs e)
+        private void button_salircon_Click_1(object sender, EventArgs e)
         {
             // Envias que te desconectas de la conversación
-            string mensaje = "45/" + id_partida;
+            string mensaje = "45/" + id_partida+"/"+ textBox_nombre_in.Text;
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-            conversacion.Visible = false;
-            textBox_con.Visible = false;
-            button_enviar.Visible = false;
-            button_salircon.Visible = false;
+            groupBoxChat.Visible = false;
         }
     }
 }

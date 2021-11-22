@@ -380,42 +380,48 @@ int SocketNomJug(char* nombre){ //Devuelve el socket del nombre del jugador que 
 			i++;
 		}
 	}
-	if (encontrado==0){
+	if (encontrado==1){
 		return (miLista.Lista[i].socket);
 	}
 	else{
 		return(-1);
 	}
 }
-void EnviarListaJugadoresConectados(char* notificacion,int ListaSockets[100],int contador){
+void EnviarListaJugadoresConectados(char* notificacion,int ListaSockets[100],char c[3]){
 	printf("Notificación:%s\n",notificacion);
 	char cabecera[512]="36/";
+	
 	strcat(cabecera,notificacion);
 	//sprintf(notificacion,"36/%s",notificacion);
 	printf("Notificación:%s\n",cabecera);
+	sprintf(notificacion,"%s",cabecera);
+	int contador=0;
 	for(int j=0;j<miLista.num;j++){
 		ListaSockets[j]=miLista.Lista[j].socket;
 		contador++;
 	}
+	sprintf(c,"%d",contador);
 }
-void EnviarInvitacion(char *p,char *notificacion,char *nombre,int ListaSockets[100],int contador){
+void EnviarInvitacion(char *p,char *notificacion,char *nombre,int ListaSockets[100],char * c){
 	char *NomInv=strtok(p,",");
 	strcpy(notificacion,"41/");
 	strcat(notificacion,nombre);
+	int contador=0;
 	while(NomInv!=NULL){
 		int sock=SocketNomJug(NomInv);
 		if (sock!=-1){
 			ListaSockets[0]=sock;
 			contador++;
-			printf("Invitacion enviada a %s",NomInv);
+			printf("Invitacion enviada a %s\n",NomInv);
 		}
 		else{
-			printf("41/ Jugador %s no encontrado",NomInv);
+			printf("41/ Jugador %s no encontrado\n",NomInv);
 		}
-		NomInv=strtok(p,",");
+		NomInv=strtok(NULL,",");
 	}
+	sprintf(c,"%d",contador);
 }
-void EnviarIDPartida(char *notificacion,char *nombreCreador,char *nombreInvitado,int IDpartida,int ListaSockets[100],int contador){
+void EnviarIDPartida(char *notificacion,char *nombreCreador,char *nombreInvitado,int IDpartida,int ListaSockets[100],char *c){
 	strcpy(notificacion,"43/");
 	strcat(notificacion,nombreCreador);
 	strcat(notificacion,"/");
@@ -424,9 +430,9 @@ void EnviarIDPartida(char *notificacion,char *nombreCreador,char *nombreInvitado
 	sprintf(notificacion,"%s%d",notificacion,IDpartida);
 	ListaSockets[0]=SocketNomJug(nombreCreador);
 	ListaSockets[1]=SocketNomJug(nombreInvitado);
-	contador=2;
+	sprintf(c,"%d",2);;
 }
-int PonerPartidaDeTablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
+int PonerPartidaATablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
 	int encontrado=0;
 	int i=0;
 	int IDPartida=-1;
@@ -445,10 +451,10 @@ int PonerPartidaDeTablaPartidasActivas(char *nombreCreador,char *nombreInvitado)
 		}
 	}
 	if (encontrado==0){
-		printf("NO se ha podido poner la partida en la tabla de partidas activas");
+		printf("NO se ha podido poner la partida en la tabla de partidas activas\n");
 	}
 	else if(encontrado==1){
-		printf("Partida introducida en la tabla de partidas activas SARISFACTORIAMENTE");
+		printf("Partida introducida en la tabla de partidas activas SARISFACTORIAMENTE\n");
 	}
 	return IDPartida;
 	
@@ -457,41 +463,46 @@ int PonerPartidaDeTablaPartidasActivas(char *nombreCreador,char *nombreInvitado)
 void EliminarPartdiaDeTablaPartidasActivas(int IDPartida){
 	TablaPartidasActivas[IDPartida].oc=0;
 }
-void EnviarMSN(char * notificacion,int IDPartida,char *nombre,char *msn,int ListaSockets[100],int contador){
-	strcpy(notificacion,"44/");
+void EnviarMSN(char * notificacion,char * idP,char *nombre,char *msn,int ListaSockets[100],char *c){
+	strcpy(notificacion,"44");
+	int contador=0;
+	int IDPartida=atoi(idP);
 	if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre1)==0){
 		sprintf(notificacion,"%s/%d/%s",notificacion,IDPartida,msn);
 		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre2);
 		contador++;
-		printf("Se ha enviado a %s el msn: %s",TablaPartidasActivas[IDPartida].nombre2,notificacion);
+		printf("44/Se ha enviado a %s el msn: %s\n",TablaPartidasActivas[IDPartida].nombre2,notificacion);
 	}
 	else if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre2)==0){
 		sprintf(notificacion,"%s/%d/%s",notificacion,IDPartida,msn);
 		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre1);
 		contador++;
-		printf("Se ha enviado a %s el msn: %s",TablaPartidasActivas[IDPartida].nombre1,notificacion);
+		printf("44/Se ha enviado a %s el msn: %s\n",TablaPartidasActivas[IDPartida].nombre1,notificacion);
 	}
 	else{
-		printf("No se ha podido enviar el MSN");
+		printf("44/No se ha podido enviar el MSN\n");
 	}
+	sprintf(c,"%d",contador);
 }
-void EnviarCancelacion(char * notificacion,int IDPartida,char *nombre,int ListaSockets[100],int contador){
-	strcpy(notificacion,"45/");
+void EnviarCancelacion(char * notificacion,int IDPartida,char *nombre,int ListaSockets[100],char * c){
+	strcpy(notificacion,"45");
+	int contador=0;
 	if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre1)==0){
 		sprintf(notificacion,"%s/%d",notificacion,IDPartida);
 		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre2);
 		contador++;
-		printf("Se ha enviado a %s la cancelacion",TablaPartidasActivas[IDPartida].nombre2);
+		printf("Se ha enviado a %s la cancelacion\n",TablaPartidasActivas[IDPartida].nombre2);
 	}
 	else if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre2)==0){
 		sprintf(notificacion,"%s/%d",notificacion,IDPartida);
 		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre2);
 		contador++;
-		printf("Se ha enviado a %s la cancelacion",TablaPartidasActivas[IDPartida].nombre1);
+		printf("Se ha enviado a %s la cancelacion\n",TablaPartidasActivas[IDPartida].nombre1);
 	}
 	else{
-		printf("No se ha podido enviar la cancelacion");
+		printf("No se ha podido enviar la cancelacion\n");
 	}
+	sprintf(c,"%d",contador);
 }
 void *AtenderCliente (void *socket){
 	//bucle de atencion al cliente
@@ -505,6 +516,7 @@ void *AtenderCliente (void *socket){
 	int *s;
 	s=(int *) socket;
 	sock_conn=*s;
+	
 	
 	char peticion[512];
 	
@@ -529,13 +541,13 @@ void *AtenderCliente (void *socket){
 		int codigo =  atoi (p);
 		// Ya tenemos el c?digo de la petici?n
 		
-		char respuesta[512];
-		char notificacion[512];
+		char respuesta[512]="H";
+		char notificacion[512]="H";
 		char nombre[20];
 		char contrasena[100];
 		
 		int ListaSockets[100];
-		int contador=0;
+		char contador[3];
 		
 		
 		p = strtok( NULL, "/");
@@ -624,9 +636,10 @@ void *AtenderCliente (void *socket){
 			strcat(respuesta,"/");
 			strcat(respuesta,SIoNO);
 			int sock=SocketNomJug(nombre);
-			ListaSockets[0]=sock;
-			if (strcmp(SIoNO,"SI")==0){
-				int IDPartida=PonerPartidaDeTablaPartidasActivas(nombre,nombreInvitado);
+			write (sock,respuesta, strlen(respuesta));
+			sprintf(respuesta,"H");
+			if (strcmp(SIoNO,"Si")==0){
+				int IDPartida=PonerPartidaATablaPartidasActivas(nombre,nombreInvitado);
 				EnviarIDPartida(notificacion,nombre,nombreInvitado,IDPartida,ListaSockets,contador);	
 			}
 			
@@ -636,7 +649,9 @@ void *AtenderCliente (void *socket){
 			int IDPartida=atoi(nombre);
 			char *NombreQuienEnviaMsn=strtok(NULL,"/");
 			char *Msn=strtok(NULL,"/");
-			EnviarMSN(notificacion,IDPartida,NombreQuienEnviaMsn,Msn,ListaSockets,contador);
+			char idP[10];
+			sprintf(idP,"%d",IDPartida);
+			EnviarMSN(notificacion,idP,NombreQuienEnviaMsn,Msn,ListaSockets,contador);
 		}
 		else if (codigo ==45){ //Cliente envia "45/IDPartida/NombreQuienEnviaCancelacion"
 			//Servidor envia "45/IDPartida"
@@ -646,17 +661,23 @@ void *AtenderCliente (void *socket){
 		}
 		
 		printf ("Respuesta: %s\n", respuesta);
+		printf ("notificacion: %s\n", notificacion);
 		
 		// Enviamos respuesta
-		if(notificacion!=NULL){
+		
+		if(strcmp(respuesta,"H")!=0){
+			write (sock_conn,respuesta, strlen(respuesta));
+			printf ("respuesta enviada\n");
+		}
+		if(strcmp(notificacion,"H")!=0){
 			int indice=0;
-			while(indice<contador){
+			printf("socket0:%d\n",ListaSockets[indice]);
+			while(indice< atoi(contador)){
+				printf("Contador:%s\n",contador);
 				write (ListaSockets[indice],notificacion, strlen(notificacion));
 				indice++;
 			}
-		}
-		if(respuesta!=NULL){
-			write (sock_conn,respuesta, strlen(respuesta));
+			printf ("notificacion enviada\n");
 		}
 		
 		
@@ -678,7 +699,7 @@ int main(int argc, char *argv[])
 	// INICIALITZACIONS
 	// Obrim el socket
 	if ((sock_listen = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-		printf("Error creant socket");
+		printf("Error creant socket\n");
 	// Fem el bind al port
 	
 	
@@ -691,10 +712,10 @@ int main(int argc, char *argv[])
 	// establecemos el puerto de escucha
 	serv_adr.sin_port = htons(50060);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
-		printf ("Error al bind");
+		printf ("Error al bind\n");
 	
 	if (listen(sock_listen, 3) < 0)
-		printf("Error en el Listen");
+		printf("Error en el Listen\n");
 	
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
