@@ -53,12 +53,21 @@ namespace Cliente
             this.label5 = new System.Windows.Forms.Label();
             this.button_con = new System.Windows.Forms.Button();
             this.button_descon = new System.Windows.Forms.Button();
+            this.groupBoxListaCon = new System.Windows.Forms.GroupBox();
+            this.button_invitar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBoxChat = new System.Windows.Forms.GroupBox();
+            this.button_salircon = new System.Windows.Forms.Button();
+            this.conversacion = new System.Windows.Forms.ListBox();
+            this.textBox_con = new System.Windows.Forms.TextBox();
+            this.button_enviar = new System.Windows.Forms.Button();
             this.Iniciar.SuspendLayout();
             this.Registrarse.SuspendLayout();
             this.Consultas.SuspendLayout();
+            this.groupBoxListaCon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBoxChat.SuspendLayout();
             this.SuspendLayout();
             // 
             // Iniciar
@@ -307,27 +316,103 @@ namespace Cliente
             this.button_descon.UseVisualStyleBackColor = true;
             this.button_descon.Click += new System.EventHandler(this.button_descon_Click);
             // 
+            // groupBoxListaCon
+            // 
+            this.groupBoxListaCon.Controls.Add(this.button_invitar);
+            this.groupBoxListaCon.Controls.Add(this.dataGridView1);
+            this.groupBoxListaCon.Location = new System.Drawing.Point(540, 307);
+            this.groupBoxListaCon.Name = "groupBoxListaCon";
+            this.groupBoxListaCon.Size = new System.Drawing.Size(231, 319);
+            this.groupBoxListaCon.TabIndex = 13;
+            this.groupBoxListaCon.TabStop = false;
+            this.groupBoxListaCon.Text = "¿Con quien quieres jugar?";
+            // 
+            // button_invitar
+            // 
+            this.button_invitar.Location = new System.Drawing.Point(75, 290);
+            this.button_invitar.Name = "button_invitar";
+            this.button_invitar.Size = new System.Drawing.Size(75, 23);
+            this.button_invitar.TabIndex = 13;
+            this.button_invitar.Text = "Invitar";
+            this.button_invitar.UseVisualStyleBackColor = true;
+            this.button_invitar.Click += new System.EventHandler(this.button_invitar_Click_1);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre});
-            this.dataGridView1.Location = new System.Drawing.Point(502, 317);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 18);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(145, 266);
-            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(188, 266);
+            this.dataGridView1.TabIndex = 12;
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Personas conectadas";
+            this.Nombre.MinimumWidth = 8;
             this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 150;
+            // 
+            // groupBoxChat
+            // 
+            this.groupBoxChat.Controls.Add(this.button_enviar);
+            this.groupBoxChat.Controls.Add(this.textBox_con);
+            this.groupBoxChat.Controls.Add(this.conversacion);
+            this.groupBoxChat.Controls.Add(this.button_salircon);
+            this.groupBoxChat.Location = new System.Drawing.Point(12, 376);
+            this.groupBoxChat.Name = "groupBoxChat";
+            this.groupBoxChat.Size = new System.Drawing.Size(522, 264);
+            this.groupBoxChat.TabIndex = 14;
+            this.groupBoxChat.TabStop = false;
+            this.groupBoxChat.Text = "Chat";
+            // 
+            // button_salircon
+            // 
+            this.button_salircon.Location = new System.Drawing.Point(382, 236);
+            this.button_salircon.Name = "button_salircon";
+            this.button_salircon.Size = new System.Drawing.Size(128, 23);
+            this.button_salircon.TabIndex = 16;
+            this.button_salircon.Text = "Salir de la conversación";
+            this.button_salircon.UseVisualStyleBackColor = true;
+            this.button_salircon.Click += new System.EventHandler(this.button_salircon_Click_1);
+            // 
+            // conversacion
+            // 
+            this.conversacion.FormattingEnabled = true;
+            this.conversacion.Location = new System.Drawing.Point(5, 18);
+            this.conversacion.Margin = new System.Windows.Forms.Padding(2);
+            this.conversacion.Name = "conversacion";
+            this.conversacion.Size = new System.Drawing.Size(479, 173);
+            this.conversacion.TabIndex = 17;
+            // 
+            // textBox_con
+            // 
+            this.textBox_con.Location = new System.Drawing.Point(5, 203);
+            this.textBox_con.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_con.Name = "textBox_con";
+            this.textBox_con.Size = new System.Drawing.Size(381, 20);
+            this.textBox_con.TabIndex = 18;
+            // 
+            // button_enviar
+            // 
+            this.button_enviar.Location = new System.Drawing.Point(407, 203);
+            this.button_enviar.Margin = new System.Windows.Forms.Padding(2);
+            this.button_enviar.Name = "button_enviar";
+            this.button_enviar.Size = new System.Drawing.Size(77, 21);
+            this.button_enviar.TabIndex = 19;
+            this.button_enviar.Text = "Enviar";
+            this.button_enviar.UseVisualStyleBackColor = true;
+            this.button_enviar.Click += new System.EventHandler(this.button_enviar_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 614);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(800, 638);
+            this.Controls.Add(this.groupBoxChat);
+            this.Controls.Add(this.groupBoxListaCon);
             this.Controls.Add(this.button_descon);
             this.Controls.Add(this.button_con);
             this.Controls.Add(this.Consultas);
@@ -343,7 +428,10 @@ namespace Cliente
             this.Registrarse.PerformLayout();
             this.Consultas.ResumeLayout(false);
             this.Consultas.PerformLayout();
+            this.groupBoxListaCon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBoxChat.ResumeLayout(false);
+            this.groupBoxChat.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -374,8 +462,15 @@ namespace Cliente
         private System.Windows.Forms.RadioButton Consulta_32;
         private System.Windows.Forms.TextBox textBox_nombre_consultas;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox groupBoxListaCon;
+        private System.Windows.Forms.Button button_invitar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.GroupBox groupBoxChat;
+        private System.Windows.Forms.Button button_salircon;
+        private System.Windows.Forms.Button button_enviar;
+        private System.Windows.Forms.TextBox textBox_con;
+        private System.Windows.Forms.ListBox conversacion;
     }
 }
 

@@ -23,3 +23,10 @@ Lista de conectados como notificacion
 - Verificada por Carme
 - Comunicada por Victoria (https://drive.google.com/file/d/1YnwQUntzQHPkERtRQQzDIxwfhIWklF9N/view?usp=sharing)
 - Descanso por Xavier
+
+### Versión 4
+Tabla de partidas: Invitaciones
+- Generada por Xavier
+- Verificada por Victoria
+- Comunicada por Carme (https://drive.google.com/file/d/1UUhhqjsA70mLFfFUHmjPm5kv1kXkataR/view?usp=sharing)
+- Descanso por Genis
