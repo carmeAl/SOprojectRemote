@@ -68,3 +68,13 @@ C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.c
 C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
 C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.exe
 C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.pdb
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\bin\Debug\Cliente.exe.config
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\bin\Debug\Cliente.exe
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\bin\Debug\Cliente.pdb
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.csproj.AssemblyReference.cache
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.Form1.resources
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.Properties.Resources.resources
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.csproj.GenerateResource.cache
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.exe
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.pdb

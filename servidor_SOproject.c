@@ -243,15 +243,13 @@ void PerdidoContra(char nombre[100],char respuesta[512]){
 		sprintf (respuesta,"34/%s","-1");
 	else{
 		int i=0;
+		sprintf (respuesta,"34/");
 		while(row !=NULL){
 			// El resultado debe ser una matriz con una sola fila
 			// y una columna que contiene el nombre
 			sprintf (respuesta,"%s%s/", respuesta,row[0]);
 			row = mysql_fetch_row (resultado);
 		}
-		char auxiliar[512];
-		strcpy(auxiliar,respuesta);
-		sprintf (respuesta,"35/%s",auxiliar);
 	}
 }
 
@@ -279,7 +277,7 @@ void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
 	int y=0;
 	if ((rowS == NULL)||(rowS[0]==NULL)){
 		printf ("No se han obtenido datos en la consulta\n");
-		sprintf(respuesta,"%s","-1");
+		sprintf(respuesta,"%s","35/-1");
 	}
 	else{
 		while (rowS !=NULL) {
@@ -297,7 +295,7 @@ void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
 		err=mysql_query (conn, consulta); 
 		if (err!=0) {
 			printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
-			sprintf (respuesta,"%s","-1");
+			sprintf (respuesta,"%s","35/-1");
 			exit (1);
 		}
 		//recogemos el resultado de la consulta 
@@ -306,7 +304,7 @@ void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
 		int i=0;
 		int j=0;
 		if ((rowI == NULL)||(rowI[0]==NULL))
-			sprintf (respuesta,"%s","-1");
+			sprintf (respuesta,"%s","35/-1");
 		else{
 			while (rowI !=NULL) {
 				// El resultado debe ser una matriz con 3 filas
@@ -317,6 +315,7 @@ void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
 			}
 			j=i;
 			int k=0;
+			sprintf (respuesta,"35/");
 			for (x=0;x<y;x++){
 				for (i=0;i<j;i++){
 					if(idPS[x]==idPI[i]){
@@ -328,9 +327,6 @@ void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
 			if (k==0){
 				sprintf (respuesta,"%s","-1");
 			}
-			char auxiliar[512];
-			strcpy(auxiliar,respuesta);
-			sprintf (respuesta,"35/%s", auxiliar);
 		}
 	}
 }
@@ -495,7 +491,7 @@ void EnviarCancelacion(char * notificacion,int IDPartida,char *nombre,int ListaS
 	}
 	else if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre2)==0){
 		sprintf(notificacion,"%s/%d",notificacion,IDPartida);
-		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre2);
+		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre1);
 		contador++;
 		printf("Se ha enviado a %s la cancelacion\n",TablaPartidasActivas[IDPartida].nombre1);
 	}

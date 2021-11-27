@@ -28,5 +28,13 @@ Lista de conectados como notificacion
 Tabla de partidas: Invitaciones
 - Generada por Xavier
 - Verificada por Victoria
-- Comunicada por Carme (https://drive.google.com/file/d/1UUhhqjsA70mLFfFUHmjPm5kv1kXkataR/view?usp=sharing)
+- Comunicada por Carme (https://drive.google.com/file/d/1Uy80lsvRJZ93XVSoLjq8e1FsqTOqT2Q-/view)
 - Descanso por Genis
+
+
+### Versión 5
+Protección Cross-Threading y Múltiples Formularios
+- Generada por Victoria
+- Verificada por Xavier
+- Comunicada por Genis()
+- Descanso por Carme
