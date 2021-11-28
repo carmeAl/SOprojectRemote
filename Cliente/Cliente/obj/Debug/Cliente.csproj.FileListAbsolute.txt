@@ -58,3 +58,23 @@ C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOPro
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOProjectRemote\Cliente\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOProjectRemote\Cliente\Cliente\obj\Debug\Cliente.exe
 C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\SOProjectRemote\Cliente\Cliente\obj\Debug\Cliente.pdb
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\bin\Debug\Cliente.exe.config
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\bin\Debug\Cliente.exe
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\bin\Debug\Cliente.pdb
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.csprojAssemblyReference.cache
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.Form1.resources
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.Properties.Resources.resources
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.csproj.GenerateResource.cache
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.exe
+C:\Users\xavi\Desktop\SOprojectRemote-master\Cliente\Cliente\obj\Debug\Cliente.pdb
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\bin\Debug\Cliente.exe.config
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\bin\Debug\Cliente.exe
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\bin\Debug\Cliente.pdb
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.csproj.AssemblyReference.cache
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.Form1.resources
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.Properties.Resources.resources
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.csproj.GenerateResource.cache
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.csproj.CoreCompileInputs.cache
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.exe
+C:\Users\Jana\Desktop\SO\Version5\Cliente\Cliente\obj\Debug\Cliente.pdb

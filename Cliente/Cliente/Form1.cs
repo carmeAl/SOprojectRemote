@@ -26,6 +26,8 @@ namespace Cliente
 
         delegate void DelegadoParaEscribir(string mensaje);
         delegate void DelegadoGB(GroupBox mensaje);
+        delegate void DelegadoGBR(ListBox mensaje);
+        delegate void DelegadoGBT(TextBox mensaje);
         delegate void DelegadoDGV(DataGridView mensaje);
 
         public Form1()
@@ -67,6 +69,7 @@ namespace Cliente
         public void PonVisibleGB(GroupBox nombre)
         {
             nombre.Visible = true;
+
         }
         public void PonVisibleDGV(DataGridView nombre)
         {
@@ -75,6 +78,14 @@ namespace Cliente
         public void PonNoVisibleGB(GroupBox nombre)
         {
             nombre.Visible = false;
+        }
+        public void Refresca(ListBox nombre)
+        {
+            nombre.Items.Clear(); 
+        }
+        public void BorraText(TextBox nombre)
+        {
+            nombre.Clear();
         }
         public void PonNoVisibleDGV(DataGridView nombre)
         {
@@ -175,6 +186,10 @@ namespace Cliente
                         DialogResult r = MessageBox.Show(nombre + " te ha invitado a un juego.\n ¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
                         if (r == DialogResult.Yes)
                         {
+                            DelegadoGBR delegado1114 = new DelegadoGBR(Refresca);
+                            Consultas.Invoke(delegado1114, new object[] { conversacion });
+                            DelegadoGBT delegado1115 = new DelegadoGBT(BorraText);
+                            Consultas.Invoke(delegado1115, new object[] { textBox_con });
                             mensaje_not = "42/" + nombre + "/" + textBox_nombre_in.Text + "/Si";
                             DelegadoGB delegado411 = new DelegadoGB(PonVisibleGB);
                             groupBoxChat.Invoke(delegado411, new object[] { groupBoxChat });
@@ -182,7 +197,6 @@ namespace Cliente
                         else
                         {
                             mensaje_not = "42/" + nombre + "/" + textBox_nombre_in.Text + "/No";
-
                         }
                         // Enviamos al servidor el nombre tecleado con un vector de bytes
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
@@ -307,8 +321,9 @@ namespace Cliente
                 server.Shutdown(SocketShutdown.Both);
                 server.Close();
                 conectado = false;
+                groupBoxChat.Visible = false;
+                groupBoxListaCon.Visible = false;
                 Consultas.Visible = false;
-                dataGridView1.Visible = false;
                 Iniciar.Visible = true;
                 Registrarse.Visible = false;
             }
@@ -427,12 +442,48 @@ namespace Cliente
 
         private void button_invitar_Click_1(object sender, EventArgs e)
         {
+            DelegadoGBT delegado1115 = new DelegadoGBT(BorraText);
+            Consultas.Invoke(delegado1115, new object[] { textBox_con });
+            DelegadoGBR delegado1114 = new DelegadoGBR(Refresca);
+            Consultas.Invoke(delegado1114, new object[] { conversacion });
             // Lista de IDs de partidas que el usuario ha tenido con el jugador introducido
-            invitado = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            string mensaje = "41/" + textBox_nombre_in.Text + "/" + invitado;
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
+            try 
+            {
+                
+                if (dataGridView1.CurrentRow.Cells[0].Value==null)//.ToString()
+                {
+                    MessageBox.Show("Selecciona a alguien");
+                }
+
+                else
+                {
+                    invitado = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                    string creador = textBox_nombre_in.Text;
+                    if (invitado == creador)
+                    {
+                        MessageBox.Show("No te puedes invitar a ti mismo");
+
+                    }
+                    else
+                    {
+                        string mensaje = "41/" + textBox_nombre_in.Text + "/" + invitado;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                        server.Send(msg);
+
+                    }
+
+                }
+                
+               
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Selecciona a una persona");
+            }
+            
+            
+            
         }
 
         private void button_enviar_Click_1(object sender, EventArgs e)
@@ -443,6 +494,8 @@ namespace Cliente
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
+            DelegadoGBT delegado1115 = new DelegadoGBT(BorraText);
+            Consultas.Invoke(delegado1115, new object[] { textBox_con });
         }
 
         private void button_salircon_Click_1(object sender, EventArgs e)
@@ -452,6 +505,7 @@ namespace Cliente
             // Enviamos al servidor el nombre tecleado
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
+
             groupBoxChat.Visible = false;
         }
     }
