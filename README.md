@@ -36,5 +36,5 @@ Tabla de partidas: Invitaciones
 Protección Cross-Threading y Múltiples Formularios
 - Generada por Victoria
 - Verificada por Xavier
-- Comunicada por Genis()
+- Comunicada por Genis(https://drive.google.com/file/d/1nd3Dgfq-6PmCckaASzJN0SZ3JScNjBKU/view?ts=61a2c597)
 - Descanso por Carme
