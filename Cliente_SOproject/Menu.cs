@@ -26,6 +26,7 @@ namespace Cliente_SOproject
         {
             InitializeComponent();
             tabControl1.SelectedTab = tabPageLogin;
+            
         }
 
 
@@ -34,6 +35,11 @@ namespace Cliente_SOproject
 
         delegate void DelegadoDGV(DataGridView mensaje);
         delegate void DelegadoParaEscribir(string mensaje);
+        delegate void DelegadoParaCambiarTab(TabPage nameTab);
+        delegate void DelegadoLabel(Label nameLabel);
+        delegate void DelegadoColorLabel(Label nameLabel, Color color);
+        delegate void DelegadoParaEscribirLabel(string msn, Label nameLabel);
+
         public void PonDataGridView(string mensaje)
         {
             if (mensaje != null && mensaje != "")
@@ -56,6 +62,72 @@ namespace Cliente_SOproject
             }
 
         }
+        public void CambiarTab(TabPage nameTab)
+        {
+            tabControl1.SelectedTab = nameTab;
+        }
+        public void PonVisibleLabel(Label nameLabel)
+        {
+            nameLabel.Visible = true;
+        }
+        public void PonNoVisibleLabel(Label nameLabel)
+        {
+            nameLabel.Visible = false;
+        }
+        public void EscribirLabel(string msn, Label nameLabel)
+        {
+            nameLabel.Text = msn;
+        }
+        public void CambiarColorLabel(Label nameLabel, Color color)
+        {
+            nameLabel.ForeColor = color;
+        }
+
+        public void ConectarServidor()
+        {
+            //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
+            //al que deseamos conectarnos
+            IPAddress direc = IPAddress.Parse("147.83.117.22");
+            IPEndPoint ipep = new IPEndPoint(direc, 50060);
+
+
+            //Creamos el socket 
+            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            try
+            {
+                server.Connect(ipep);//Intentamos conectar el socket
+                conectado = true;
+
+            }
+            catch (SocketException)
+            {
+                //Si hay excepcion imprimimos error y salimos del programa con return 
+                MessageBox.Show("No he podido conectar con el servidor");
+                return;
+            }
+            //pongo en marcha el thread que atenderà los mensajes del servidor 
+            ThreadStart ts = delegate { AtenderServidor(); };
+            atender = new Thread(ts);
+            atender.Start();
+        }
+        public void DesconectarServidor()
+        {
+            if (conectado)
+            {
+                //Mensaje de desconexión
+                string mensaje = "0/" + textBoxLNombre.Text;
+
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+
+                // Nos desconectamos
+                atender.Abort();
+                server.Shutdown(SocketShutdown.Both);
+                server.Close();
+                conectado = false;
+            }
+        }
+
         //THREAD
         private void AtenderServidor()
         {
@@ -74,21 +146,43 @@ namespace Cliente_SOproject
                         if (mensaje != "NO")
                         {
                             id_usuario = Convert.ToInt32(mensaje);
-                            MessageBox.Show("Bienvenido");
-                            tabControl1.SelectedTab = tabPageMenu;
+                            DelegadoParaCambiarTab delegado111 = new DelegadoParaCambiarTab(CambiarTab);
+                            tabPageMenu.Invoke(delegado111, new object[] { tabPageMenu });
+                            DelegadoLabel delegado112 = new DelegadoLabel(PonNoVisibleLabel);
+                            labelLUsuarioNoEncontrado.Invoke(delegado112, new object[] { labelLUsuarioNoEncontrado });
                         }
                         else
                         {
-                            MessageBox.Show("Usuario no encontrado, escriba bien el usuario y la contraseña, o " +
-                                "registrese");
+                            
+                            DelegadoParaEscribirLabel delegado113 = new DelegadoParaEscribirLabel(EscribirLabel);
+                            labelLUsuarioNoEncontrado.Invoke(delegado113, new object[] { "Usuario no encontrado, escriba bien el usuario y/o la contraseña, o registrase", labelLUsuarioNoEncontrado });
+                            DelegadoLabel delegado114 = new DelegadoLabel(PonVisibleLabel);
+                            labelLUsuarioNoEncontrado.Invoke(delegado114, new object[] { labelLUsuarioNoEncontrado });
+                            DesconectarServidor();
                         }
                         break;
 
                     case 21: //respuesta a registrarse
                         if (mensaje == "SI")
-                            MessageBox.Show("Registrado");
+                        {
+                            DelegadoParaEscribirLabel delegado211 = new DelegadoParaEscribirLabel(EscribirLabel);
+                            labelRUsuarioError.Invoke(delegado211, new object[] { "Registrado de manera exitosa, ya puedes iniciar sesion en la pantalla de INICIO", labelRUsuarioError });
+                            DelegadoColorLabel delegado212 = new DelegadoColorLabel(CambiarColorLabel);
+                            labelRUsuarioError.Invoke(delegado212, new object[] { labelRUsuarioError, Color.Green });
+                            DelegadoLabel delegado213 = new DelegadoLabel(PonVisibleLabel);
+                            labelRUsuarioError.Invoke(delegado213, new object[] { labelRUsuarioError });
+                            DesconectarServidor();
+                        }
                         else
-                            MessageBox.Show("Usuario ya esta registrado, escriba otro usuario");
+                        {
+                            DelegadoParaEscribirLabel delegado214 = new DelegadoParaEscribirLabel(EscribirLabel);
+                            labelRUsuarioError.Invoke(delegado214, new object[] { "Usuario ya esta registrado, escriba otro usuario", labelRUsuarioError });
+                            DelegadoColorLabel delegado215 = new DelegadoColorLabel(CambiarColorLabel);
+                            labelRUsuarioError.Invoke(delegado215, new object[] { labelRUsuarioError, Color.Red });
+                            DelegadoLabel delegado216 = new DelegadoLabel(PonVisibleLabel);
+                            labelRUsuarioError.Invoke(delegado216, new object[] { labelRUsuarioError });
+                            DesconectarServidor();
+                        } 
                         break;
 
                     case 36: //respuesta lista de conectados
@@ -102,32 +196,8 @@ namespace Cliente_SOproject
         //NAVIEGACION
         private void pictureBoxLIniciar_Click(object sender, EventArgs e)
         {
-            //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
-            //al que deseamos conectarnos
-            IPAddress direc = IPAddress.Parse("147.83.117.22");
-            IPEndPoint ipep = new IPEndPoint(direc, 50060);
 
-
-            //Creamos el socket 
-            server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
-            {
-                server.Connect(ipep);//Intentamos conectar el socket
-                MessageBox.Show("Conectado");
-                conectado = true;
-
-            }
-            catch (SocketException)
-            {
-                //Si hay excepcion imprimimos error y salimos del programa con return 
-                MessageBox.Show("No he podido conectar con el servidor");
-                return;
-            }
-            //pongo en marcha el thread que atenderà los mensajes del servidor 
-            ThreadStart ts = delegate { AtenderServidor(); };
-            atender = new Thread(ts);
-            atender.Start();
-
+            ConectarServidor();
             if (conectado)
             {
                 if ((textBoxLNombre.ForeColor != Color.FromArgb(173, 188, 236) ) && (textBoxLContraseña.ForeColor != Color.FromArgb(173, 188, 236)))
@@ -139,22 +209,100 @@ namespace Cliente_SOproject
                 }
                 else
                 {
-                    MessageBox.Show("Los campos de nombre o contraseña estan vacios");
+                    labelLUsuarioNoEncontrado.Text="Los campos de nombre o contraseña estan vacios";
+                    labelLUsuarioNoEncontrado.Visible = true;
                 }
             }
             else
             {
-                MessageBox.Show("No estas conectado al servidor");
+                labelLUsuarioNoEncontrado.Text = "No se ha podido conectar al servidor";
+                labelLUsuarioNoEncontrado.Visible = true;
             }
         }
-        private void labelLRegistrar_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageRegister;
+        private void pictureBoxRRegistrarse_Click(object sender, EventArgs e)
+        {
+            ConectarServidor();
+            if (conectado)
+            {
+                if ((textBoxRUsuario.ForeColor != Color.FromArgb(173, 188, 236)) && (textBoxRContraseña.ForeColor != Color.FromArgb(173, 188, 236)))
+                {
+                    //Puede que de error porque debe ser superior a un caracter
+                    string mensaje = "21/" + textBoxRUsuario.Text + "/" + textBoxRContraseña.Text;
+                    // Enviamos al servidor el nombre tecleado
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+                }
+                else
+                {
+                    labelRUsuarioError.Text = "El nombre debe tener mas de un caracter";
+                    labelRUsuarioError.Visible = true;
+                }
+            }
+            else
+            {
+                labelLUsuarioNoEncontrado.Text = "Error al conectarse con el servidor";
+            }
+        }
 
-        private void pictureBoxRVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageLogin;
+        private void FormMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (conectado)
+            {
+                //Mensaje de desconexión
+                string mensaje = "0/" + textBoxLNombre.Text;
 
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+
+                // Nos desconectamos
+                atender.Abort();
+                this.BackColor = Color.Gray;
+                server.Shutdown(SocketShutdown.Both);
+                server.Close();
+                conectado = false;
+
+            }
+            this.Close();
+        }
+
+
+        private void labelLRegistrar_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageRegister; 
+            labelLUsuarioNoEncontrado.Visible = false;
+        }
+        private void pictureBoxRVolver_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageLogin;
+            DesconectarServidor();
+        }
         private void pictureBoxMCrearPartida_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageCrearPartida;
+        private void pictureBoxMPerfil_Click(object sender, EventArgs e)
+        {
+            labelPNombre.Text = textBoxLNombre.Text;
+            labelPId.Text = Convert.ToString(id_usuario);
+        }
+        private void pictureBoxMDesconectar_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageLogin;
+            if (conectado)
+            {
+                //Mensaje de desconexión
+                string mensaje = "0/" + textBoxLNombre.Text;
+
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+
+                // Nos desconectamos
+                atender.Abort();
+                server.Shutdown(SocketShutdown.Both);
+                server.Close();
+                conectado = false;
+            }
+        }
 
         private void pictureBoxCVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageMenu;
-
+        
 
 
         //DISEÑO

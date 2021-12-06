@@ -29,17 +29,19 @@ namespace Cliente_SOproject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
+            this.labelLUsuarioNoEncontrado = new System.Windows.Forms.Label();
             this.labelLRegistrar = new System.Windows.Forms.Label();
             this.pictureBoxLIniciar = new System.Windows.Forms.PictureBox();
             this.textBoxLContraseña = new System.Windows.Forms.TextBox();
             this.textBoxLNombre = new System.Windows.Forms.TextBox();
             this.pictureBoxLLFondo = new System.Windows.Forms.PictureBox();
             this.tabPageRegister = new System.Windows.Forms.TabPage();
+            this.labelRUsuarioError = new System.Windows.Forms.Label();
             this.pictureBoxRVolver = new System.Windows.Forms.PictureBox();
             this.pictureBoxRRegistrarse = new System.Windows.Forms.PictureBox();
             this.textBoxRContraseña = new System.Windows.Forms.TextBox();
@@ -79,7 +81,31 @@ namespace Cliente_SOproject
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.tabPagePerfil = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.labelPPartidasJugadas = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.labelPPartidasPerdidas = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.labelPPartidasGanadas = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.labelPMaximoPuntos = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.labelPPuntosActuales = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.labelPId = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.labelPNombre = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panelNombres = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPageLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLIniciar)).BeginInit();
@@ -108,6 +134,13 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.tabPagePerfil.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -117,7 +150,9 @@ namespace Cliente_SOproject
             this.tabControl1.Controls.Add(this.tabPageMenu);
             this.tabControl1.Controls.Add(this.tabPageCrearPartida);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPagePerfil);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.ItemSize = new System.Drawing.Size(50, 20);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Name = "tabControl1";
@@ -129,6 +164,7 @@ namespace Cliente_SOproject
             // tabPageLogin
             // 
             this.tabPageLogin.BackColor = System.Drawing.Color.White;
+            this.tabPageLogin.Controls.Add(this.labelLUsuarioNoEncontrado);
             this.tabPageLogin.Controls.Add(this.labelLRegistrar);
             this.tabPageLogin.Controls.Add(this.pictureBoxLIniciar);
             this.tabPageLogin.Controls.Add(this.textBoxLContraseña);
@@ -139,6 +175,19 @@ namespace Cliente_SOproject
             this.tabPageLogin.Size = new System.Drawing.Size(626, 258);
             this.tabPageLogin.TabIndex = 0;
             this.tabPageLogin.Text = "Login";
+            // 
+            // labelLUsuarioNoEncontrado
+            // 
+            this.labelLUsuarioNoEncontrado.AutoSize = true;
+            this.labelLUsuarioNoEncontrado.BackColor = System.Drawing.Color.Black;
+            this.labelLUsuarioNoEncontrado.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelLUsuarioNoEncontrado.ForeColor = System.Drawing.Color.Red;
+            this.labelLUsuarioNoEncontrado.Location = new System.Drawing.Point(108, 62);
+            this.labelLUsuarioNoEncontrado.Name = "labelLUsuarioNoEncontrado";
+            this.labelLUsuarioNoEncontrado.Size = new System.Drawing.Size(397, 15);
+            this.labelLUsuarioNoEncontrado.TabIndex = 2;
+            this.labelLUsuarioNoEncontrado.Text = "Usuario no encontrado, escriba bien el usuario y/o la contraseña, o registrase";
+            this.labelLUsuarioNoEncontrado.Visible = false;
             // 
             // labelLRegistrar
             // 
@@ -213,6 +262,7 @@ namespace Cliente_SOproject
             // 
             // tabPageRegister
             // 
+            this.tabPageRegister.Controls.Add(this.labelRUsuarioError);
             this.tabPageRegister.Controls.Add(this.pictureBoxRVolver);
             this.tabPageRegister.Controls.Add(this.pictureBoxRRegistrarse);
             this.tabPageRegister.Controls.Add(this.textBoxRContraseña);
@@ -225,6 +275,19 @@ namespace Cliente_SOproject
             this.tabPageRegister.TabIndex = 1;
             this.tabPageRegister.Text = "Register";
             this.tabPageRegister.UseVisualStyleBackColor = true;
+            // 
+            // labelRUsuarioError
+            // 
+            this.labelRUsuarioError.AutoSize = true;
+            this.labelRUsuarioError.BackColor = System.Drawing.Color.Black;
+            this.labelRUsuarioError.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelRUsuarioError.ForeColor = System.Drawing.Color.Red;
+            this.labelRUsuarioError.Location = new System.Drawing.Point(126, 64);
+            this.labelRUsuarioError.Name = "labelRUsuarioError";
+            this.labelRUsuarioError.Size = new System.Drawing.Size(397, 15);
+            this.labelRUsuarioError.TabIndex = 16;
+            this.labelRUsuarioError.Text = "Usuario no encontrado, escriba bien el usuario y/o la contraseña, o registrase";
+            this.labelRUsuarioError.Visible = false;
             // 
             // pictureBoxRVolver
             // 
@@ -249,6 +312,7 @@ namespace Cliente_SOproject
             this.pictureBoxRRegistrarse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxRRegistrarse.TabIndex = 12;
             this.pictureBoxRRegistrarse.TabStop = false;
+            this.pictureBoxRRegistrarse.Click += new System.EventHandler(this.pictureBoxRRegistrarse_Click);
             this.pictureBoxRRegistrarse.MouseEnter += new System.EventHandler(this.pictureBoxRRegistrarse_MouseEnter);
             this.pictureBoxRRegistrarse.MouseLeave += new System.EventHandler(this.pictureBoxRRegistrarse_MouseLeave);
             // 
@@ -330,6 +394,7 @@ namespace Cliente_SOproject
             this.pictureBoxMPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMPerfil.TabIndex = 12;
             this.pictureBoxMPerfil.TabStop = false;
+            this.pictureBoxMPerfil.Click += new System.EventHandler(this.pictureBoxMPerfil_Click);
             this.pictureBoxMPerfil.MouseEnter += new System.EventHandler(this.pictureBoxMPerfil_MouseEnter);
             this.pictureBoxMPerfil.MouseLeave += new System.EventHandler(this.pictureBoxMPerfil_MouseLeave);
             // 
@@ -343,6 +408,7 @@ namespace Cliente_SOproject
             this.pictureBoxMDesconectar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMDesconectar.TabIndex = 11;
             this.pictureBoxMDesconectar.TabStop = false;
+            this.pictureBoxMDesconectar.Click += new System.EventHandler(this.pictureBoxMDesconectar_Click);
             this.pictureBoxMDesconectar.MouseEnter += new System.EventHandler(this.pictureBox7_MouseEnter);
             this.pictureBoxMDesconectar.MouseLeave += new System.EventHandler(this.pictureBox7_MouseLeave);
             // 
@@ -432,47 +498,48 @@ namespace Cliente_SOproject
             // dataGridViewListaCon
             // 
             this.dataGridViewListaCon.AllowUserToAddRows = false;
+            this.dataGridViewListaCon.AllowUserToDeleteRows = false;
             this.dataGridViewListaCon.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
             this.dataGridViewListaCon.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewListaCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListaCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewListaCon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewListaCon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewListaCon.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewListaCon.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewListaCon.Location = new System.Drawing.Point(15, 43);
             this.dataGridViewListaCon.Name = "dataGridViewListaCon";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewListaCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewListaCon.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListaCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewListaCon.RowTemplate.Height = 25;
             this.dataGridViewListaCon.Size = new System.Drawing.Size(175, 150);
             this.dataGridViewListaCon.TabIndex = 2;
             // 
             // Column1
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.HeaderText = "";
+            this.Column1.HeaderText = "Jugadores conectados";
             this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
+            this.Column1.ReadOnly = true;
             // 
             // label7
             // 
@@ -723,6 +790,217 @@ namespace Cliente_SOproject
             this.pictureBox5.TabIndex = 5;
             this.pictureBox5.TabStop = false;
             // 
+            // tabPagePerfil
+            // 
+            this.tabPagePerfil.Controls.Add(this.pictureBox6);
+            this.tabPagePerfil.Controls.Add(this.panel9);
+            this.tabPagePerfil.Controls.Add(this.panel8);
+            this.tabPagePerfil.Controls.Add(this.panel7);
+            this.tabPagePerfil.Controls.Add(this.panel6);
+            this.tabPagePerfil.Controls.Add(this.pictureBox4);
+            this.tabPagePerfil.Location = new System.Drawing.Point(4, 24);
+            this.tabPagePerfil.Name = "tabPagePerfil";
+            this.tabPagePerfil.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePerfil.Size = new System.Drawing.Size(626, 258);
+            this.tabPagePerfil.TabIndex = 5;
+            this.tabPagePerfil.Text = "Perfil";
+            this.tabPagePerfil.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
+            this.panel8.Controls.Add(this.labelPPartidasJugadas);
+            this.panel8.Controls.Add(this.label19);
+            this.panel8.Controls.Add(this.labelPPartidasPerdidas);
+            this.panel8.Controls.Add(this.label21);
+            this.panel8.Controls.Add(this.labelPPartidasGanadas);
+            this.panel8.Controls.Add(this.label23);
+            this.panel8.Location = new System.Drawing.Point(8, 114);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(607, 36);
+            this.panel8.TabIndex = 9;
+            // 
+            // labelPPartidasJugadas
+            // 
+            this.labelPPartidasJugadas.AutoSize = true;
+            this.labelPPartidasJugadas.Location = new System.Drawing.Point(546, 10);
+            this.labelPPartidasJugadas.Name = "labelPPartidasJugadas";
+            this.labelPPartidasJugadas.Size = new System.Drawing.Size(44, 15);
+            this.labelPPartidasJugadas.TabIndex = 5;
+            this.labelPPartidasJugadas.Text = "label18";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(431, 10);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(109, 15);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "Partidas jugadas:";
+            // 
+            // labelPPartidasPerdidas
+            // 
+            this.labelPPartidasPerdidas.AutoSize = true;
+            this.labelPPartidasPerdidas.Location = new System.Drawing.Point(336, 10);
+            this.labelPPartidasPerdidas.Name = "labelPPartidasPerdidas";
+            this.labelPPartidasPerdidas.Size = new System.Drawing.Size(44, 15);
+            this.labelPPartidasPerdidas.TabIndex = 3;
+            this.labelPPartidasPerdidas.Text = "label20";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(215, 10);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(115, 15);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Partidas perdidas:";
+            // 
+            // labelPPartidasGanadas
+            // 
+            this.labelPPartidasGanadas.AutoSize = true;
+            this.labelPPartidasGanadas.Location = new System.Drawing.Point(124, 10);
+            this.labelPPartidasGanadas.Name = "labelPPartidasGanadas";
+            this.labelPPartidasGanadas.Size = new System.Drawing.Size(44, 15);
+            this.labelPPartidasGanadas.TabIndex = 1;
+            this.labelPPartidasGanadas.Text = "label22";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label23.Location = new System.Drawing.Point(9, 10);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(109, 15);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Partidas ganadas:";
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
+            this.panel7.Controls.Add(this.label17);
+            this.panel7.Controls.Add(this.labelPMaximoPuntos);
+            this.panel7.Controls.Add(this.label13);
+            this.panel7.Controls.Add(this.labelPPuntosActuales);
+            this.panel7.Controls.Add(this.label15);
+            this.panel7.Location = new System.Drawing.Point(8, 72);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(409, 36);
+            this.panel7.TabIndex = 8;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(431, 10);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(0, 15);
+            this.label17.TabIndex = 4;
+            // 
+            // labelPMaximoPuntos
+            // 
+            this.labelPMaximoPuntos.AutoSize = true;
+            this.labelPMaximoPuntos.Location = new System.Drawing.Point(330, 10);
+            this.labelPMaximoPuntos.Name = "labelPMaximoPuntos";
+            this.labelPMaximoPuntos.Size = new System.Drawing.Size(44, 15);
+            this.labelPMaximoPuntos.TabIndex = 3;
+            this.labelPMaximoPuntos.Text = "label12";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(215, 10);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(109, 15);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Máximo de puntos:";
+            // 
+            // labelPPuntosActuales
+            // 
+            this.labelPPuntosActuales.AutoSize = true;
+            this.labelPPuntosActuales.Location = new System.Drawing.Point(118, 10);
+            this.labelPPuntosActuales.Name = "labelPPuntosActuales";
+            this.labelPPuntosActuales.Size = new System.Drawing.Size(44, 15);
+            this.labelPPuntosActuales.TabIndex = 1;
+            this.labelPPuntosActuales.Text = "label14";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(9, 10);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(103, 15);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Puntos actuales:";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
+            this.panel6.Controls.Add(this.labelPId);
+            this.panel6.Controls.Add(this.label11);
+            this.panel6.Controls.Add(this.labelPNombre);
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Location = new System.Drawing.Point(8, 24);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(168, 42);
+            this.panel6.TabIndex = 7;
+            // 
+            // labelPId
+            // 
+            this.labelPId.AutoSize = true;
+            this.labelPId.Location = new System.Drawing.Point(41, 19);
+            this.labelPId.Name = "labelPId";
+            this.labelPId.Size = new System.Drawing.Size(49, 15);
+            this.labelPId.TabIndex = 3;
+            this.labelPId.Text = "labelPId";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(4, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(25, 15);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "ID:";
+            // 
+            // labelPNombre
+            // 
+            this.labelPNombre.AutoSize = true;
+            this.labelPNombre.Location = new System.Drawing.Point(60, 4);
+            this.labelPNombre.Name = "labelPNombre";
+            this.labelPNombre.Size = new System.Drawing.Size(83, 15);
+            this.labelPNombre.TabIndex = 1;
+            this.labelPNombre.Text = "labelPNombre";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(4, 4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(55, 15);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Nombre: ";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox4.Image = global::Cliente_SOproject.Properties.Resources.giphy__1_;
+            this.pictureBox4.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(620, 252);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            // 
             // panelNombres
             // 
             this.panelNombres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(210)))));
@@ -731,6 +1009,44 @@ namespace Cliente_SOproject
             this.panelNombres.Name = "panelNombres";
             this.panelNombres.Size = new System.Drawing.Size(634, 10);
             this.panelNombres.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
+            this.panel9.Controls.Add(this.label25);
+            this.panel9.Controls.Add(this.label26);
+            this.panel9.Location = new System.Drawing.Point(450, 156);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(168, 94);
+            this.panel9.TabIndex = 10;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(60, 4);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(0, 15);
+            this.label25.TabIndex = 1;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label26.Location = new System.Drawing.Point(4, 4);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(103, 15);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Carta más usada:";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
+            this.pictureBox6.Location = new System.Drawing.Point(8, 216);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(125, 34);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 17;
+            this.pictureBox6.TabStop = false;
             // 
             // FormMenu
             // 
@@ -741,6 +1057,7 @@ namespace Cliente_SOproject
             this.Controls.Add(this.tabControl1);
             this.Name = "FormMenu";
             this.Text = "NombreJuego";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMenu_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.tabPageLogin.ResumeLayout(false);
             this.tabPageLogin.PerformLayout();
@@ -777,6 +1094,17 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.tabPagePerfil.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -828,9 +1156,35 @@ namespace Cliente_SOproject
         private System.Windows.Forms.PictureBox pictureBoxCInvitar;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dataGridViewListaCon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelLUsuarioNoEncontrado;
+        private System.Windows.Forms.Label labelRUsuarioError;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.TabPage tabPagePerfil;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label labelPNombre;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label labelPMaximoPuntos;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labelPPuntosActuales;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label labelPId;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label labelPPartidasJugadas;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label labelPPartidasPerdidas;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label labelPPartidasGanadas;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
     }
 }
 
