@@ -218,15 +218,11 @@ void PuntosTotales(char nombre[100],char respuesta[512]){
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	char consulta [200];
-	printf("%s\n",nombre);
 	sprintf(consulta,"SELECT sum(participacion.puntos) FROM (participacion, jugador) WHERE jugador.nombre = '%s' AND jugador.id = participacion.idJ", nombre);
-	printf("%s\n",nombre);
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
-		printf("%s\n",nombre);
-		printf ("Error al consultar datos de la base %u %s\n",
+		printf ("PuntosTotales Error al consultar datos de la base %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
-		
 		exit (1);
 	}
 	//recogemos el resultado de la consulta 
@@ -246,12 +242,9 @@ int MaxPuntos(char nombre[100]){
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	char consulta [200];
-	printf("MaxPuntos%s\n",nombre);
 	sprintf(consulta,"SELECT (participacion.puntos) FROM (participacion, jugador) WHERE jugador.nombre = '%s' AND jugador.id = participacion.idJ", nombre);
-	printf("MaxPuntos%s\n",nombre);
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
-		printf("%s\n",nombre);
 		printf ("MaxPuntos Error al consultar datos de la base %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
 		return -1;
@@ -283,9 +276,7 @@ int PartidasGanadas(char *idJ,char *nombre){
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	char consulta [200];
-	printf("%s\n",idJ);
 	sprintf(consulta,"SELECT COUNT(*) FROM (participacion, partidas) WHERE participacion.idJ = %s AND participacion.idP = partidas.id AND partidas.ganador='%s'", idJ,nombre);
-	printf("%s\n",nombre);
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
 		printf ("PartdiasGanadas Error al consultar datos de la base %u %s\n",
@@ -308,9 +299,8 @@ int PartidasPerdidas(char *idJ,char *nombre){
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	char consulta [200];
-	printf("%s\n",idJ);
 	sprintf(consulta,"SELECT COUNT(*) FROM (participacion, partidas) WHERE participacion.idJ = %s AND participacion.idP = partidas.id AND partidas.ganador!='%s'", idJ,nombre);
-	printf("%s\n",nombre);
+
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
 		printf ("PartidasPerdidas Error al consultar datos de la base %u %s\n",
@@ -333,12 +323,10 @@ int PartidasJugadas(char *idJ){
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	char consulta [200];
-	printf("%s\n",idJ);
 	sprintf(consulta,"SELECT COUNT(participacion.idP) FROM (participacion) WHERE participacion.idJ = %s", idJ);
-	printf("%s\n",idJ);
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
-		printf ("Error al consultar datos de la base %u %s\n",
+		printf ("PartidasJugadas Error al consultar datos de la base %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
 		return -1;
 	}
@@ -358,9 +346,8 @@ void CartaMasUsada(char *idJ, char *carta){
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	char consulta [200];
-	printf("%s\n",idJ);
 	sprintf(consulta,"SELECT (participacion.personaje) FROM (participacion) WHERE participacion.idJ = %s ORDER BY participacion.personaje DESC LIMIT 1", idJ);
-	printf("%s\n",idJ);
+
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
 		printf ("CartaMasUsada Error al consultar datos de la base %u %s\n",
@@ -378,7 +365,7 @@ void CartaMasUsada(char *idJ, char *carta){
 		strcpy(carta,row[0]);
 	}
 }
-void Ranking(char *respuesta){
+void Ranking(char *resp){
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -389,14 +376,14 @@ void Ranking(char *respuesta){
 	if (err!=0) {
 		printf ("Ranking Error al consultar datos de la base %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
-		sprintf(respuesta,"-1");
+		sprintf(resp,"-1");
 		exit (1);
 	}
 	//recogemos el resultado de la consulta 
 	resultado = mysql_store_result (conn);
 	row = mysql_fetch_row (resultado);
 	if ((row == NULL)||(row[0]==NULL)){
-		sprintf(respuesta,"-1");
+		sprintf(resp,"-1");
 	}
 	else{
 		char puntos[512];
@@ -404,10 +391,10 @@ void Ranking(char *respuesta){
 			// El resultado debe ser una matriz con una sola fila
 			// y una columna que contiene el nombre
 			PuntosTotales(row[0],puntos);
-			sprintf(respuesta,"%s%s,%s,",respuesta,row[0],puntos);
+			sprintf(resp,"%s%s,%s,",resp,row[0],puntos);
 			row = mysql_fetch_row (resultado);
 		}
-		respuesta[strlen(respuesta)-1]='\0';
+		resp[strlen(resp)-1]='\0';
 	}
 }
 void PerdidoContra(char nombre[100],char respuesta[512]){
@@ -448,7 +435,7 @@ void PerdidoContra(char nombre[100],char respuesta[512]){
 	}
 }
 
-void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
+void VSJugador(char nombre[100],int idUsuario,char * res){
 	int err;
 	MYSQL_RES *resultado;
 	MYSQL_ROW rowS;
@@ -456,73 +443,35 @@ void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
 	char consulta [200];
 	int idPI[100];
 	int idPS[100];
-	// Ahora vamos a buscar el ID de las partidas que ha jugado el jugador contincante
+	char idJVs[20];
+	BuscarIdUsurio(nombre,idJVs);
+	// Ahora vamos a buscar el ID de las partidas que tienen en comun los dos jugadores
 	// construimos la consulta SQL
-	sprintf (consulta,"SELECT participacion.idP FROM (participacion) WHERE participacion.idJ IN ( SELECT jugador.id FROM (jugador) WHERE jugador.nombre = '%s')",nombre);
-	// hacemos la consulta 
+	sprintf(consulta,"SELECT participacion.idP FROM participacion WHERE idJ = %d AND participacion.idP IN (SELECT participacion.idP FROM participacion WHERE idJ = %d)",atoi(idJVs),idUsuario);
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
-		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+		printf ("VSJugador Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
 	//recogemos el resultado de la consulta 
 	resultado = mysql_store_result (conn); 
 	rowS = mysql_fetch_row (resultado);
+	
 	int x=0;
 	int y=0;
 	if ((rowS == NULL)||(rowS[0]==NULL)){
 		printf ("No se han obtenido datos en la consulta\n");
-		strcpy(respuesta,"0");
+		strcpy(res,"0");
 	}
 	else{
 		while (rowS !=NULL) {
-			// El resultado debe ser una matriz con 3 filas
-			// y una columna que contiene el id de partida
-			idPS[x]=atoi(rowS[0]);
-			x++;
+			sprintf(res,"%s%s,",res,rowS[0]);
+			printf("partida:%d\n",atoi(rowS[0]));
 			rowS = mysql_fetch_row (resultado);
 		}
-		y=x;
-		// Ahora vamos a buscar las IDs de las partidas que ha jugado el jugador solicitante
-		// construimos la consulta SQL
-		sprintf (consulta,"SELECT participacion.idP FROM participacion WHERE idJ = %d",idUsuario);
-		// hacemos la consulta 
-		err=mysql_query (conn, consulta); 
-		if (err!=0) {
-			printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
-			sprintf (respuesta,"%s","-1");
-			exit (1);
-		}
-		//recogemos el resultado de la consulta 
-		resultado = mysql_store_result (conn); 
-		rowI = mysql_fetch_row (resultado);
-		int i=0;
-		int j=0;
-		if ((rowI == NULL)||(rowI[0]==NULL))
-			strcpy (respuesta,"0");
-		else{
-			while (rowI !=NULL) {
-				// El resultado debe ser una matriz con 3 filas
-				// y una columna que contiene el id de partida
-				idPI[i]=atoi(rowI[0]);
-				i++;
-				rowI = mysql_fetch_row (resultado);
-			}
-			j=i;
-			int k=0;
-			for (x=0;x<y;x++){
-				for (i=0;i<j;i++){
-					if(idPS[x]==idPI[i]){
-						sprintf(respuesta,"%s%d,",respuesta,idPS[x]);
-						printf("%s",respuesta);
-						k=1;
-					}
-				}
-			}
-			if (k==0){
-				strcpy (respuesta,"0");
-			}
-		}
+		
+		res[strlen(res)-1]='\0';
+		printf("Dentro codgigo: %s\n",res);
 	}
 }
 void AnadirJugadorListaConectados(char nombre[100],int socket){
@@ -825,14 +774,14 @@ void *AtenderCliente (void *socket){
 			sprintf(respuesta,"37/%s/%d/%d/%d/%d/%s",respuesta1,MaxPunt,PartGanadas,PartPerdidas,PartJugadas,respuesta2);
 		}
 		else if (codigo ==38){
-			char respuesta1[512];
+			char respuesta1[512]="";
 			Ranking(respuesta1);
 			sprintf(respuesta,"38/%s",respuesta1);
 		}
 		else if (codigo==39){//Recibe "39/nomreUsuario/idUsuario/NombreVs"
-			char respuesta1[20];
-			char respuesta2[500];
-			char respuesta3[20];
+			char respuesta1[20]="";
+			char respuesta2[500]="";
+			char respuesta3[20]="";
 			char *idJ = strtok( NULL, "/");
 			char *nombreVs = strtok( NULL, "/");
 			char idJVs[20];
@@ -844,12 +793,15 @@ void *AtenderCliente (void *socket){
 			int PartJugadas=PartidasJugadas(idJVs);
 			int PartGanadasVs=PartidasGanadas(idJVs,nombre);
 			int PartPerdidasVs=PartidasGanadas(idJ,nombreVs);
+			printf("Antes codgio: %s\n",respuesta2);
 			VSJugador(nombre, atoi(idJVs), respuesta2);
+			printf("Fuera codgio: %s\n",respuesta2);
 			int PartJugadasVs=0;
 			char *p = strtok( respuesta2, ",");
-			if((strcmp(p,"0")!=0)||(strcmp(p,"-1")!=0))
+			if((strcmp(p,"0")!=0)&&(strcmp(p,"-1")!=0))
 			{
 				while (p!=NULL){
+					printf("39 codP %s\n",p);
 					PartJugadasVs++;
 					p = strtok( NULL, ",");
 				}
@@ -863,10 +815,8 @@ void *AtenderCliente (void *socket){
 			//Procedimiento de invitacion
 			p = strtok( NULL, "/");
 			char *parametros = strtok( NULL, "/");
-			printf("%s",p);
 			char notificacion1[512];
 			EnviarInvitacion(p,notificacion1,nombre,ListaSockets,contador);
-			printf("%s",parametros);
 			sprintf(notificacion,"%s/%s",notificacion1,parametros);
 		}
 		
@@ -914,9 +864,7 @@ void *AtenderCliente (void *socket){
 		}
 		if(strcmp(notificacion,"H")!=0){
 			int indice=0;
-			printf("socket0:%d\n",ListaSockets[indice]);
 			while(indice< atoi(contador)){
-				printf("Contador:%s\n",contador);
 				write (ListaSockets[indice],notificacion, strlen(notificacion));
 				indice++;
 			}
