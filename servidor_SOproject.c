@@ -858,11 +858,16 @@ void *AtenderCliente (void *socket){
 			sprintf(respuesta,"39/%s/%s/%s/%d/%d/%d/%d/%d/%d/%d/%s",nombreVs,idJVs,respuesta1,MaxPunt,PartGanadas,PartPerdidas,PartJugadas,PartGanadasVs,PartPerdidasVs,PartJugadasVs,respuesta3);
 		}
 		
-		else if (codigo ==41){ //Cliente envia "41/NombreJugadorQueHaCreadoPartida/JugadorInvitado1,JI2,JI3"
-			//Servidor envia "41/NombreJugadorQueHaCreadoPartida"
+		else if (codigo ==41){ //Cliente envia "41/NombreJugadorQueHaCreadoPartida/JugadorInvitado1,JI2,JI3/Parametros,Partida"
+			//Servidor envia "41/NombreJugadorQueHaCreadoPartida/Parametros,Partida"
 			//Procedimiento de invitacion
 			p = strtok( NULL, "/");
-			EnviarInvitacion(p,notificacion,nombre,ListaSockets,contador);
+			char *parametros = strtok( NULL, "/");
+			printf("%s",p);
+			char notificacion1[512];
+			EnviarInvitacion(p,notificacion1,nombre,ListaSockets,contador);
+			printf("%s",parametros);
+			sprintf(notificacion,"%s/%s",notificacion1,parametros);
 		}
 		
 		else if (codigo ==42){ //Cliente envia "42/NombreJugadorQueHaCreadoPartida/JugadorQueHaAceptadoORechazado/SIoNO"

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\calca\\Google Drive (calcalabejaranouni1@gmail.com)\\2021-2022-1\\SO\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
+      "projectUniqueName": "C:\\Users\\calca\\Google Drive (calcalabejaranouni1@gmail.com)\\2021-2022-1\\SO\\V6\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
       "projectName": "Cliente_SOproject",
-      "projectPath": "C:\\Users\\calca\\Google Drive (calcalabejaranouni1@gmail.com)\\2021-2022-1\\SO\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
+      "projectPath": "C:\\Users\\calca\\Google Drive (calcalabejaranouni1@gmail.com)\\2021-2022-1\\SO\\V6\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
       "packagesPath": "C:\\Users\\calca\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\calca\\Google Drive (calcalabejaranouni1@gmail.com)\\2021-2022-1\\SO\\Cliente_SOproject\\Cliente_SOproject\\obj\\",
+      "outputPath": "C:\\Users\\calca\\Google Drive (calcalabejaranouni1@gmail.com)\\2021-2022-1\\SO\\V6\\Cliente_SOproject\\Cliente_SOproject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\calca\\AppData\\Roaming\\NuGet\\NuGet.Config",

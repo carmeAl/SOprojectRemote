@@ -29,9 +29,9 @@ namespace Cliente_SOproject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
             this.labelLUsuarioNoEncontrado = new System.Windows.Forms.Label();
@@ -56,6 +56,7 @@ namespace Cliente_SOproject
             this.pictureBoxMSocial = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPageCrearPartida = new System.Windows.Forms.TabPage();
+            this.labelCError = new System.Windows.Forms.Label();
             this.pictureBoxCInvitar = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewListaCon = new System.Windows.Forms.DataGridView();
@@ -117,11 +118,11 @@ namespace Cliente_SOproject
             this.tabPagePerfilRival = new System.Windows.Forms.TabPage();
             this.panel16 = new System.Windows.Forms.Panel();
             this.labelPRPartidasJugadasVs = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
+            this.labelPRPartJugVs = new System.Windows.Forms.Label();
             this.labelPRPartidasPerdidasVs = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
+            this.labelPRPartPerdVs = new System.Windows.Forms.Label();
             this.labelPRPartidasGanadasVs = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
+            this.labelPRPartGanVs = new System.Windows.Forms.Label();
             this.pictureBoxPRVolver = new System.Windows.Forms.PictureBox();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
@@ -522,6 +523,7 @@ namespace Cliente_SOproject
             // 
             // tabPageCrearPartida
             // 
+            this.tabPageCrearPartida.Controls.Add(this.labelCError);
             this.tabPageCrearPartida.Controls.Add(this.pictureBoxCInvitar);
             this.tabPageCrearPartida.Controls.Add(this.panel5);
             this.tabPageCrearPartida.Controls.Add(this.pictureBoxCVolver);
@@ -540,6 +542,19 @@ namespace Cliente_SOproject
             this.tabPageCrearPartida.Text = "CrearPartida";
             this.tabPageCrearPartida.UseVisualStyleBackColor = true;
             // 
+            // labelCError
+            // 
+            this.labelCError.AutoSize = true;
+            this.labelCError.BackColor = System.Drawing.Color.Black;
+            this.labelCError.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelCError.ForeColor = System.Drawing.Color.Red;
+            this.labelCError.Location = new System.Drawing.Point(200, 238);
+            this.labelCError.Name = "labelCError";
+            this.labelCError.Size = new System.Drawing.Size(207, 15);
+            this.labelCError.TabIndex = 20;
+            this.labelCError.Text = "No se ha podido conectar con el servidor";
+            this.labelCError.Visible = false;
+            // 
             // pictureBoxCInvitar
             // 
             this.pictureBoxCInvitar.Image = global::Cliente_SOproject.Properties.Resources.Purple_and_Black_Neon_Sci_Fi_Twitch_Panel;
@@ -549,6 +564,7 @@ namespace Cliente_SOproject
             this.pictureBoxCInvitar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCInvitar.TabIndex = 18;
             this.pictureBoxCInvitar.TabStop = false;
+            this.pictureBoxCInvitar.Click += new System.EventHandler(this.pictureBoxCInvitar_Click);
             this.pictureBoxCInvitar.MouseEnter += new System.EventHandler(this.pictureBoxCInvitar_MouseEnter);
             this.pictureBoxCInvitar.MouseLeave += new System.EventHandler(this.pictureBoxCInvitar_MouseLeave);
             // 
@@ -569,36 +585,36 @@ namespace Cliente_SOproject
             this.dataGridViewListaCon.AllowUserToDeleteRows = false;
             this.dataGridViewListaCon.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
             this.dataGridViewListaCon.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewListaCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListaCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewListaCon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewListaCon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewListaCon.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewListaCon.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewListaCon.Location = new System.Drawing.Point(15, 43);
             this.dataGridViewListaCon.Name = "dataGridViewListaCon";
             this.dataGridViewListaCon.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewListaCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListaCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewListaCon.RowTemplate.Height = 25;
             this.dataGridViewListaCon.Size = new System.Drawing.Size(175, 150);
             this.dataGridViewListaCon.TabIndex = 2;
@@ -734,13 +750,13 @@ namespace Cliente_SOproject
             this.comboBoxCMapa.FormattingEnabled = true;
             this.comboBoxCMapa.Items.AddRange(new object[] {
             "ANIMALES",
-            "COMPAÑEROS CLASE",
-            "CAPÍTALES MUNDIALES"});
+            "COMPANEROS CLASE",
+            "CAPITALES MUNDIALES"});
             this.comboBoxCMapa.Location = new System.Drawing.Point(64, 7);
             this.comboBoxCMapa.Name = "comboBoxCMapa";
             this.comboBoxCMapa.Size = new System.Drawing.Size(122, 23);
             this.comboBoxCMapa.TabIndex = 8;
-            this.comboBoxCMapa.Text = "COMPAÑEROS CLASE";
+            this.comboBoxCMapa.Text = "COMPANEROS CLASE";
             // 
             // label2
             // 
@@ -767,13 +783,13 @@ namespace Cliente_SOproject
             this.comboBoxCSugPreg.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxCSugPreg.FormattingEnabled = true;
             this.comboBoxCSugPreg.Items.AddRange(new object[] {
-            "SÍ",
+            "SI",
             "NO"});
             this.comboBoxCSugPreg.Location = new System.Drawing.Point(136, 7);
             this.comboBoxCSugPreg.Name = "comboBoxCSugPreg";
             this.comboBoxCSugPreg.Size = new System.Drawing.Size(50, 23);
             this.comboBoxCSugPreg.TabIndex = 8;
-            this.comboBoxCSugPreg.Text = "SÍ";
+            this.comboBoxCSugPreg.Text = "SI";
             // 
             // label1
             // 
@@ -800,14 +816,14 @@ namespace Cliente_SOproject
             this.comboBoxCNivel.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxCNivel.FormattingEnabled = true;
             this.comboBoxCNivel.Items.AddRange(new object[] {
-            "FÁCIL",
+            "FACIL",
             "MEDIO",
-            "DIFICÍL"});
+            "DIFICIL"});
             this.comboBoxCNivel.Location = new System.Drawing.Point(70, 7);
             this.comboBoxCNivel.Name = "comboBoxCNivel";
             this.comboBoxCNivel.Size = new System.Drawing.Size(79, 23);
             this.comboBoxCNivel.TabIndex = 8;
-            this.comboBoxCNivel.Text = "FÁCIL";
+            this.comboBoxCNivel.Text = "FACIL";
             // 
             // labelCNivel
             // 
@@ -1220,11 +1236,11 @@ namespace Cliente_SOproject
             // 
             this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
             this.panel16.Controls.Add(this.labelPRPartidasJugadasVs);
-            this.panel16.Controls.Add(this.label39);
+            this.panel16.Controls.Add(this.labelPRPartJugVs);
             this.panel16.Controls.Add(this.labelPRPartidasPerdidasVs);
-            this.panel16.Controls.Add(this.label41);
+            this.panel16.Controls.Add(this.labelPRPartPerdVs);
             this.panel16.Controls.Add(this.labelPRPartidasGanadasVs);
-            this.panel16.Controls.Add(this.label43);
+            this.panel16.Controls.Add(this.labelPRPartGanVs);
             this.panel16.Location = new System.Drawing.Point(8, 156);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(607, 36);
@@ -1240,15 +1256,15 @@ namespace Cliente_SOproject
             this.labelPRPartidasJugadasVs.TabIndex = 5;
             this.labelPRPartidasJugadasVs.Text = "-";
             // 
-            // label39
+            // labelPRPartJugVs
             // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label39.Location = new System.Drawing.Point(413, 10);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(163, 15);
-            this.label39.TabIndex = 4;
-            this.label39.Text = "Partidas jugadas vs Carme:";
+            this.labelPRPartJugVs.AutoSize = true;
+            this.labelPRPartJugVs.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPRPartJugVs.Location = new System.Drawing.Point(413, 10);
+            this.labelPRPartJugVs.Name = "labelPRPartJugVs";
+            this.labelPRPartJugVs.Size = new System.Drawing.Size(163, 15);
+            this.labelPRPartJugVs.TabIndex = 4;
+            this.labelPRPartJugVs.Text = "Partidas jugadas vs Carme:";
             // 
             // labelPRPartidasPerdidasVs
             // 
@@ -1260,15 +1276,15 @@ namespace Cliente_SOproject
             this.labelPRPartidasPerdidasVs.TabIndex = 3;
             this.labelPRPartidasPerdidasVs.Text = "-";
             // 
-            // label41
+            // labelPRPartPerdVs
             // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label41.Location = new System.Drawing.Point(205, 10);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(169, 15);
-            this.label41.TabIndex = 2;
-            this.label41.Text = "Partidas perdidas vs Carme:";
+            this.labelPRPartPerdVs.AutoSize = true;
+            this.labelPRPartPerdVs.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPRPartPerdVs.Location = new System.Drawing.Point(205, 10);
+            this.labelPRPartPerdVs.Name = "labelPRPartPerdVs";
+            this.labelPRPartPerdVs.Size = new System.Drawing.Size(169, 15);
+            this.labelPRPartPerdVs.TabIndex = 2;
+            this.labelPRPartPerdVs.Text = "Partidas perdidas vs Carme:";
             // 
             // labelPRPartidasGanadasVs
             // 
@@ -1280,15 +1296,15 @@ namespace Cliente_SOproject
             this.labelPRPartidasGanadasVs.TabIndex = 1;
             this.labelPRPartidasGanadasVs.Text = "-";
             // 
-            // label43
+            // labelPRPartGanVs
             // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label43.Location = new System.Drawing.Point(9, 10);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(163, 15);
-            this.label43.TabIndex = 0;
-            this.label43.Text = "Partidas ganadas vs Carme:";
+            this.labelPRPartGanVs.AutoSize = true;
+            this.labelPRPartGanVs.Font = new System.Drawing.Font("VT323", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelPRPartGanVs.Location = new System.Drawing.Point(9, 10);
+            this.labelPRPartGanVs.Name = "labelPRPartGanVs";
+            this.labelPRPartGanVs.Size = new System.Drawing.Size(163, 15);
+            this.labelPRPartGanVs.TabIndex = 0;
+            this.labelPRPartGanVs.Text = "Partidas ganadas vs Carme:";
             // 
             // pictureBoxPRVolver
             // 
@@ -1581,6 +1597,7 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSocial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPageCrearPartida.ResumeLayout(false);
+            this.tabPageCrearPartida.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCInvitar)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -1719,11 +1736,11 @@ namespace Cliente_SOproject
         private System.Windows.Forms.TabPage tabPagePerfilRival;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label labelPRPartidasJugadasVs;
-        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label labelPRPartJugVs;
         private System.Windows.Forms.Label labelPRPartidasPerdidasVs;
-        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label labelPRPartPerdVs;
         private System.Windows.Forms.Label labelPRPartidasGanadasVs;
-        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label labelPRPartGanVs;
         private System.Windows.Forms.PictureBox pictureBoxPRVolver;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label12;
@@ -1748,6 +1765,7 @@ namespace Cliente_SOproject
         private System.Windows.Forms.Label labelPRNombre;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label labelCError;
     }
 }
 

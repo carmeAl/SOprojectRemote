@@ -19,6 +19,7 @@ namespace Cliente_SOproject
     {
         public int id_usuario;
         public string nombreUsuario;
+        public string invitado;
         public bool conectado = false;
         Socket server;
         Thread atender;
@@ -67,7 +68,6 @@ namespace Cliente_SOproject
         {
             if (mensaje != null && mensaje != "")
             {
-
                 dataGridViewRanquing.Rows.Clear();
                 string[] partes = mensaje.Split(',');
                 int i = 0;
@@ -266,11 +266,40 @@ namespace Cliente_SOproject
                         labelPRPartidasPerdidas.Invoke(delegado391, new object[] { trozos1[6], labelPRPartidasPerdidas });
                         labelPRPartidasJugadas.Invoke(delegado391, new object[] { trozos1[7], labelPRPartidasJugadas });
                         labelPRPartidasGanadasVs.Invoke(delegado391, new object[] { trozos1[8], labelPRPartidasGanadasVs });
+                        labelPRPartGanVs.Invoke(delegado391, new object[] { "Partidas ganadas VS "+trozos1[1] + ":", labelPRPartGanVs });
                         labelPRPartidasPerdidasVs.Invoke(delegado391, new object[] { trozos1[9], labelPRPartidasPerdidasVs });
+                        labelPRPartPerdVs.Invoke(delegado391, new object[] { "Partidas perdidas VS " + trozos1[1] + ":", labelPRPartPerdVs });
                         labelPRPartidasJugadasVs.Invoke(delegado391, new object[] { trozos1[10], labelPRPartidasJugadasVs });
+                        labelPRPartJugVs.Invoke(delegado391, new object[] { "Partidas jugadas VS " + trozos1[1] + ":", labelPRPartJugVs });
                         label12.Invoke(delegado391, new object[] { trozos1[11], label12 });
                         DelegadoParaCambiarTab delegado392 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfilRival.Invoke(delegado392, new object[] { tabPagePerfilRival });
+                        break;
+
+                    case 41: //Recive invitacion
+                        string nombre = mensaje;
+                        string mensaje_not;
+                        string[] trozos2 = trozos1[2].Split(',');
+                        DialogResult r = MessageBox.Show(nombre + " te ha invitado a un juego.\n " + "\n"
+                            + "Nivel: " + trozos2[0] + "\n"
+                            + "Sugerir preguntas? " + trozos2[1] + "\n"
+                            + "Mapa: " + trozos2[2] + "\n"
+                            + "Límite preguntas: " + trozos2[3] + "\n"
+                            + "Límite tiempo turno: " + trozos2[4] + "segundos" + "\n" + "\n"
+                            + "¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
+                        if (r == DialogResult.Yes)
+                        {
+                           
+                            mensaje_not = "42/" + nombre + "/" + nombreUsuario + "/Si";
+                            
+                        }
+                        else
+                        {
+                            mensaje_not = "42/" + nombre + "/" + nombreUsuario  + "/No";
+                        }
+                        // Enviamos al servidor el nombre tecleado con un vector de bytes
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
                         break;
 
                 }
@@ -429,10 +458,51 @@ namespace Cliente_SOproject
             }
 
         }
+        private void pictureBoxCInvitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (dataGridViewListaCon.CurrentRow.Cells[0].Value == null)//.ToString()
+                {
+                    MessageBox.Show("Selecciona a alguien");
+                }
+
+                else
+                {
+                    invitado = dataGridViewListaCon.CurrentRow.Cells[0].Value.ToString();
+                    if (invitado == nombreUsuario)
+                    {
+                        labelCError.Text="No te puedes invitar a ti mismo";
+                        labelCError.Visible = true;
+
+                    }
+                    else
+                    {
+                        labelCError.Visible = false;
+                        string mensaje = "41/" + nombreUsuario + "/" + invitado + "/" + comboBoxCNivel.Text + "," + comboBoxCSugPreg.Text + "," + comboBoxCMapa.Text + "," + textBoxCNumPreg.Text + "," + textBoxCLimTiempo.Text;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                        server.Send(msg);
+
+                    }
+
+                }
+            }
+            catch (NullReferenceException)
+            {
+                labelCError.Text = "Selecciona a una persona";
+                labelCError.Visible = true;
+            }
+        }
 
         //NAVIEGACION
         private void pictureBoxMCrearPartida_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageCrearPartida;
-        private void pictureBoxCVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageMenu;
+        private void pictureBoxCVolver_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageMenu;
+            labelCError.Visible = false;
+        }
         private void pictureBoxPVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageMenu;
         private void pictureBoxSVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageMenu;
         private void pictureBoxPRVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageSocial;
