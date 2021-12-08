@@ -29,9 +29,9 @@ namespace Cliente_SOproject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
             this.labelLUsuarioNoEncontrado = new System.Windows.Forms.Label();
@@ -82,7 +82,6 @@ namespace Cliente_SOproject
             this.labelCNivel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPageSocial = new System.Windows.Forms.TabPage();
-            this.panel11 = new System.Windows.Forms.Panel();
             this.pictureBoxSVolver = new System.Windows.Forms.PictureBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -585,36 +584,36 @@ namespace Cliente_SOproject
             this.dataGridViewListaCon.AllowUserToDeleteRows = false;
             this.dataGridViewListaCon.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
             this.dataGridViewListaCon.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewListaCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListaCon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewListaCon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewListaCon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewListaCon.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewListaCon.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewListaCon.Location = new System.Drawing.Point(15, 43);
             this.dataGridViewListaCon.Name = "dataGridViewListaCon";
             this.dataGridViewListaCon.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewListaCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListaCon.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewListaCon.RowTemplate.Height = 25;
             this.dataGridViewListaCon.Size = new System.Drawing.Size(175, 150);
             this.dataGridViewListaCon.TabIndex = 2;
@@ -851,7 +850,6 @@ namespace Cliente_SOproject
             // 
             // tabPageSocial
             // 
-            this.tabPageSocial.Controls.Add(this.panel11);
             this.tabPageSocial.Controls.Add(this.pictureBoxSVolver);
             this.tabPageSocial.Controls.Add(this.panel10);
             this.tabPageSocial.Controls.Add(this.pictureBox5);
@@ -862,13 +860,6 @@ namespace Cliente_SOproject
             this.tabPageSocial.TabIndex = 4;
             this.tabPageSocial.Text = "Social";
             this.tabPageSocial.UseVisualStyleBackColor = true;
-            // 
-            // panel11
-            // 
-            this.panel11.Location = new System.Drawing.Point(8, 17);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(219, 181);
-            this.panel11.TabIndex = 18;
             // 
             // pictureBoxSVolver
             // 
@@ -887,9 +878,9 @@ namespace Cliente_SOproject
             // 
             this.panel10.Controls.Add(this.label10);
             this.panel10.Controls.Add(this.dataGridViewRanquing);
-            this.panel10.Location = new System.Drawing.Point(399, 17);
+            this.panel10.Location = new System.Drawing.Point(200, 28);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(219, 222);
+            this.panel10.Size = new System.Drawing.Size(288, 222);
             this.panel10.TabIndex = 6;
             // 
             // label10
@@ -914,7 +905,7 @@ namespace Cliente_SOproject
             this.dataGridViewRanquing.Name = "dataGridViewRanquing";
             this.dataGridViewRanquing.ReadOnly = true;
             this.dataGridViewRanquing.RowTemplate.Height = 25;
-            this.dataGridViewRanquing.Size = new System.Drawing.Size(192, 179);
+            this.dataGridViewRanquing.Size = new System.Drawing.Size(261, 179);
             this.dataGridViewRanquing.TabIndex = 0;
             this.dataGridViewRanquing.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRanquing_CellClick);
             // 
@@ -974,6 +965,8 @@ namespace Cliente_SOproject
             this.pictureBoxPVolver.TabIndex = 17;
             this.pictureBoxPVolver.TabStop = false;
             this.pictureBoxPVolver.Click += new System.EventHandler(this.pictureBoxPVolver_Click);
+            this.pictureBoxPVolver.MouseEnter += new System.EventHandler(this.pictureBoxPVolver_MouseEnter);
+            this.pictureBoxPVolver.MouseLeave += new System.EventHandler(this.pictureBoxPVolver_MouseLeave);
             // 
             // panel9
             // 
@@ -1725,7 +1718,6 @@ namespace Cliente_SOproject
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.PictureBox pictureBoxSVolver;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label10;

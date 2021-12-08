@@ -560,6 +560,8 @@ namespace Cliente_SOproject
         private void pictureBoxSVolver_MouseLeave(object sender, EventArgs e) => pictureBoxSVolver.Image = SetAlpha((Bitmap)pictureBoxSVolver.Image, 1000);
         private void pictureBoxPRVolver_MouseEnter(object sender, EventArgs e) => pictureBoxPRVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 150);
         private void pictureBoxPRVolver_MouseLeave(object sender, EventArgs e) => pictureBoxPRVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 1000);
+        private void pictureBoxPVolver_MouseEnter(object sender, EventArgs e) => pictureBoxPVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 150);
+        private void pictureBoxPVolver_MouseLeave(object sender, EventArgs e) => pictureBoxPVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 1000);
 
         private void textBoxLNombre_Enter(object sender, EventArgs e)
         {
