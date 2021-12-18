@@ -23,7 +23,7 @@ namespace Cliente_SOproject
         public bool conectado = false;
         Socket server;
         Thread atender;
-
+        List<Partida> formularios = new List<Partida>();
         public FormMenu()
         {
             InitializeComponent();
@@ -41,6 +41,7 @@ namespace Cliente_SOproject
         delegate void DelegadoLabel(Label nameLabel);
         delegate void DelegadoColorLabel(Label nameLabel, Color color);
         delegate void DelegadoParaEscribirLabel(string msn, Label nameLabel);
+        delegate void DelegadoPartida(Partida partida);
 
         public void PonDataGridView(string mensaje)
         {
@@ -113,8 +114,15 @@ namespace Cliente_SOproject
         {
             nameLabel.ForeColor = color;
         }
-
-        public void ConectarServidor()
+        public void IniciarPartida()
+        {
+            int cont = formularios.Count+1;
+            Partida partida = new Partida(cont,server);
+            formularios.Add(partida);
+            partida.ShowDialog();
+            
+        }
+            public void ConectarServidor()
         {
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
@@ -170,11 +178,16 @@ namespace Cliente_SOproject
                 string[] trozos = Encoding.ASCII.GetString(msg2).Split('\0');
                 string[] trozos1 = trozos[0].Split('/');
                 int codigo = Convert.ToInt32(trozos1[0]);
-                string mensaje = trozos1[1];
+                int Nform = Convert.ToInt32(trozos1[1]);
+                string mensaje = trozos1[2];
+   
+                
+               
                 switch (codigo)
                 {
 
                     case 11: // respuesta a iniciar
+                        
                         if (mensaje != "NO")
                         {
                             id_usuario = Convert.ToInt32(mensaje);
@@ -223,29 +236,29 @@ namespace Cliente_SOproject
                         break;
                     case 37:
                         DelegadoParaEscribirLabel delegado371 = new DelegadoParaEscribirLabel(EscribirLabel);
-                        if (trozos1[1] != "-1")
-                        {
-                            labelPPuntosActuales.Invoke(delegado371, new object[] { trozos1[1], labelPPuntosActuales });
-                        }
                         if (trozos1[2] != "-1")
                         {
-                            labelPMaximoPuntos.Invoke(delegado371, new object[] { trozos1[2], labelPMaximoPuntos });
+                            labelPPuntosActuales.Invoke(delegado371, new object[] { trozos1[2], labelPPuntosActuales });
                         }
                         if (trozos1[3] != "-1")
                         {
-                            labelPPartidasGanadas.Invoke(delegado371, new object[] { trozos1[3], labelPPartidasGanadas });
+                            labelPMaximoPuntos.Invoke(delegado371, new object[] { trozos1[3], labelPMaximoPuntos });
                         }
                         if (trozos1[4] != "-1")
                         {
-                            labelPPartidasPerdidas.Invoke(delegado371, new object[] { trozos1[4], labelPPartidasPerdidas });
+                            labelPPartidasGanadas.Invoke(delegado371, new object[] { trozos1[4], labelPPartidasGanadas });
                         }
                         if (trozos1[5] != "-1")
                         {
-                            labelPPartidasJugadas.Invoke(delegado371, new object[] { trozos1[5], labelPPartidasJugadas });
+                            labelPPartidasPerdidas.Invoke(delegado371, new object[] { trozos1[5], labelPPartidasPerdidas });
                         }
                         if (trozos1[6] != "-1")
                         {
-                            label9.Invoke(delegado371, new object[] { trozos1[6], label9 });
+                            labelPPartidasJugadas.Invoke(delegado371, new object[] { trozos1[6], labelPPartidasJugadas });
+                        }
+                        if (trozos1[7] != "-1")
+                        {
+                            label9.Invoke(delegado371, new object[] { trozos1[7], label9 });
                         }
                         DelegadoParaCambiarTab delegado372 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfil.Invoke(delegado372, new object[] { tabPagePerfil });
@@ -275,11 +288,11 @@ namespace Cliente_SOproject
                         DelegadoParaCambiarTab delegado392 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfilRival.Invoke(delegado392, new object[] { tabPagePerfilRival });
                         break;
-
+                    
                     case 41: //Recive invitacion
                         string nombre = mensaje;
                         string mensaje_not;
-                        string[] trozos2 = trozos1[2].Split(',');
+                        string[] trozos2 = trozos1[3].Split(',');
                         DialogResult r = MessageBox.Show(nombre + " te ha invitado a un juego.\n " + "\n"
                             + "Nivel: " + trozos2[0] + "\n"
                             + "Sugerir preguntas? " + trozos2[1] + "\n"
@@ -291,7 +304,10 @@ namespace Cliente_SOproject
                         {
                            
                             mensaje_not = "42/" + nombre + "/" + nombreUsuario + "/Si";
-                            
+
+                            ThreadStart ts = delegate { IniciarPartida(); };
+                            Thread T = new Thread(ts);
+                            T.Start();
                         }
                         else
                         {
@@ -302,6 +318,9 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         break;
 
+                    case 51:
+                        formularios[Nform].MoverCarta(mensaje);
+                        break;
                 }
             }
         }

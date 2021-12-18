@@ -6,8 +6,8 @@
       "version": "3.1.0"
     },
     "additionalProbingPaths": [
-      "C:\\Users\\calca\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\calca\\.nuget\\packages"
+      "C:\\Users\\xavi\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\xavi\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

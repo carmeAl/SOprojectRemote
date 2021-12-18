@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\calca\\.nuget\\packages\\": {}
+    "C:\\Users\\xavi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\calca\\Google Drive (calcalabejaranouni1@gmail.com)\\2021-2022-1\\SO\\V6\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
+      "projectUniqueName": "C:\\Users\\xavi\\Downloads\\SOprojectRemote-ClienteMenu (1)\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
       "projectName": "Cliente_SOproject",
-      "projectPath": "C:\\Users\\calca\\Google Drive (calcalabejaranouni1@gmail.com)\\2021-2022-1\\SO\\V6\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
-      "packagesPath": "C:\\Users\\calca\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\calca\\Google Drive (calcalabejaranouni1@gmail.com)\\2021-2022-1\\SO\\V6\\Cliente_SOproject\\Cliente_SOproject\\obj\\",
+      "projectPath": "C:\\Users\\xavi\\Downloads\\SOprojectRemote-ClienteMenu (1)\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
+      "packagesPath": "C:\\Users\\xavi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\xavi\\Downloads\\SOprojectRemote-ClienteMenu (1)\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\calca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\xavi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -32,7 +32,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -44,7 +43,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -63,7 +61,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
