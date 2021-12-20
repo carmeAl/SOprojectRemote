@@ -74,9 +74,9 @@ void Login(char contrasena[100], char nombre[100],char respuesta[512]){
 	resultado = mysql_store_result (conn); 
 	row = mysql_fetch_row (resultado);
 	if (row == NULL)
-		sprintf(respuesta,"11/NO");
+		sprintf(respuesta,"11/0/NO");
 	else{
-		sprintf(respuesta,"11/%s",row[0]);
+		sprintf(respuesta,"11/0/%s",row[0]);
 	}
 }
 void Register(char contrasena[100], char nombre [100],char respuesta[512]){
@@ -128,15 +128,40 @@ void Register(char contrasena[100], char nombre [100],char respuesta[512]){
 			printf ("Error al insertar datos de la base %u %s\n",
 					mysql_errno(conn), mysql_error(conn));
 			exit (1);
-			sprintf(respuesta,"21/NO");					}
+			sprintf(respuesta,"21/0/NO");					}
 		else
-			sprintf(respuesta,"21/SI");
+			sprintf(respuesta,"21/0/SI");
 		pthread_mutex_unlock(&mutex);
 	}
 	else{
-		sprintf(respuesta,"21/NO");
+		sprintf(respuesta,"21/0/NO");
 	}
 	
+}
+void BuscarIdUsurio(char *nombre,char *idJ){//Busca el id del jugador con el nombre introducido
+	int err;
+	// Estructura especial para almacenar resultados de consultas 
+	MYSQL_RES *resultado;
+	MYSQL_ROW row;
+	char consulta [200];
+	sprintf(consulta,"SELECT jugador.id FROM (jugador) WHERE jugador.nombre = '%s'", nombre);
+	
+	err=mysql_query (conn, consulta); 
+	if (err!=0) {
+		printf ("BuscarIdUsuario Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		sprintf(idJ,"-1");
+		exit (1);
+	}
+	//recogemos el resultado de la consulta 
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	if ((row == NULL)||(row[0]==NULL)){
+		sprintf(idJ,"-1");
+	}
+	else{
+		strcpy(idJ, row[0]);
+	}
 }
 void PartidasConsecutivas( char nombre [100],char respuesta[512]){
 	int err;
@@ -164,7 +189,7 @@ void PartidasConsecutivas( char nombre [100],char respuesta[512]){
 	
 	if (row == NULL){
 		printf ("No se han obtenido datos en la consulta\n");
-		sprintf(respuesta,"32/%s","-1");
+		sprintf(respuesta,"32/0/%s","-1");
 	}
 	else{
 		int consecutivo=0;
@@ -183,7 +208,7 @@ void PartidasConsecutivas( char nombre [100],char respuesta[512]){
 			}
 			row = mysql_fetch_row (resultado);
 		}
-		sprintf(respuesta,"32/%d",max);
+		sprintf(respuesta,"32/0/%d",max);
 	}
 }
 
@@ -193,28 +218,185 @@ void PuntosTotales(char nombre[100],char respuesta[512]){
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	char consulta [200];
-	printf("%s\n",nombre);
 	sprintf(consulta,"SELECT sum(participacion.puntos) FROM (participacion, jugador) WHERE jugador.nombre = '%s' AND jugador.id = participacion.idJ", nombre);
-	printf("%s\n",nombre);
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
-		printf("%s\n",nombre);
-		printf ("Error al consultar datos de la base %u %s\n",
+		printf ("PuntosTotales Error al consultar datos de la base %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
-		
 		exit (1);
 	}
 	//recogemos el resultado de la consulta 
 	resultado = mysql_store_result (conn);
 	row = mysql_fetch_row (resultado);
 	if ((row == NULL)||(row[0]==NULL)){
-		sprintf(respuesta,"33/%s","-1");
+		strcpy(respuesta,"0");
 	}
 	else{
-		sprintf(respuesta,"33/%s", row[0]);
+		strcpy(respuesta, row[0]);
 	}
 }
 
+int MaxPuntos(char nombre[100]){
+	int err;
+	// Estructura especial para almacenar resultados de consultas 
+	MYSQL_RES *resultado;
+	MYSQL_ROW row;
+	char consulta [200];
+	sprintf(consulta,"SELECT (participacion.puntos) FROM (participacion, jugador) WHERE jugador.nombre = '%s' AND jugador.id = participacion.idJ", nombre);
+	err=mysql_query (conn, consulta); 
+	if (err!=0) {
+		printf ("MaxPuntos Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		return -1;
+	}
+	//recogemos el resultado de la consulta 
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	if ((row == NULL)||(row[0]==NULL)){
+		return 0;
+	}
+	else{
+		int valor;
+		int suma=0;
+		while(row !=NULL){
+			// El resultado debe ser una matriz con una sola fila
+			// y una columna que contiene el nombre
+			valor=atoi(row[0]);
+			if (suma+valor>suma){
+				suma=suma+valor;
+			}
+			row = mysql_fetch_row (resultado);
+		}
+		return suma;
+	}
+}
+int PartidasGanadas(char *idJ,char *nombre){
+	int err;
+	// Estructura especial para almacenar resultados de consultas 
+	MYSQL_RES *resultado;
+	MYSQL_ROW row;
+	char consulta [200];
+	sprintf(consulta,"SELECT COUNT(*) FROM (participacion, partidas) WHERE participacion.idJ = %s AND participacion.idP = partidas.id AND partidas.ganador='%s'", idJ,nombre);
+	err=mysql_query (conn, consulta); 
+	if (err!=0) {
+		printf ("PartdiasGanadas Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		return -1;
+	}
+	//recogemos el resultado de la consulta 
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	if ((row == NULL)||(row[0]==NULL)){
+		return 0;
+	}
+	else{
+		return (atoi(row[0]));
+	}
+}
+int PartidasPerdidas(char *idJ,char *nombre){
+	int err;
+	// Estructura especial para almacenar resultados de consultas 
+	MYSQL_RES *resultado;
+	MYSQL_ROW row;
+	char consulta [200];
+	sprintf(consulta,"SELECT COUNT(*) FROM (participacion, partidas) WHERE participacion.idJ = %s AND participacion.idP = partidas.id AND partidas.ganador!='%s'", idJ,nombre);
+
+	err=mysql_query (conn, consulta); 
+	if (err!=0) {
+		printf ("PartidasPerdidas Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		return -1;
+	}
+	//recogemos el resultado de la consulta 
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	if ((row == NULL)||(row[0]==NULL)){
+		return 0;
+	}
+	else{
+		return (atoi(row[0]));
+	}
+}
+int PartidasJugadas(char *idJ){
+	int err;
+	// Estructura especial para almacenar resultados de consultas 
+	MYSQL_RES *resultado;
+	MYSQL_ROW row;
+	char consulta [200];
+	sprintf(consulta,"SELECT COUNT(participacion.idP) FROM (participacion) WHERE participacion.idJ = %s", idJ);
+	err=mysql_query (conn, consulta); 
+	if (err!=0) {
+		printf ("PartidasJugadas Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		return -1;
+	}
+	//recogemos el resultado de la consulta 
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	if ((row == NULL)||(row[0]==NULL)){
+		return 0;
+	}
+	else{
+		return (atoi(row[0]));
+	}
+}
+void CartaMasUsada(char *idJ, char *carta){
+	int err;
+	// Estructura especial para almacenar resultados de consultas 
+	MYSQL_RES *resultado;
+	MYSQL_ROW row;
+	char consulta [200];
+	sprintf(consulta,"SELECT (participacion.personaje) FROM (participacion) WHERE participacion.idJ = %s ORDER BY participacion.personaje DESC LIMIT 1", idJ);
+
+	err=mysql_query (conn, consulta); 
+	if (err!=0) {
+		printf ("CartaMasUsada Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		sprintf(carta,"-1");
+		exit (1);
+	}
+	//recogemos el resultado de la consulta 
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	if ((row == NULL)||(row[0]==NULL)){
+		strcpy(carta,"0");
+	}
+	else{
+		strcpy(carta,row[0]);
+	}
+}
+void Ranking(char *resp){
+	int err;
+	// Estructura especial para almacenar resultados de consultas 
+	MYSQL_RES *resultado;
+	MYSQL_ROW row;
+	char consulta [200];
+	sprintf(consulta,"SELECT (jugador.nombre) FROM (jugador)");
+	err=mysql_query (conn, consulta); 
+	if (err!=0) {
+		printf ("Ranking Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		sprintf(resp,"-1");
+		exit (1);
+	}
+	//recogemos el resultado de la consulta 
+	resultado = mysql_store_result (conn);
+	row = mysql_fetch_row (resultado);
+	if ((row == NULL)||(row[0]==NULL)){
+		sprintf(resp,"-1");
+	}
+	else{
+		char puntos[512];
+		while(row !=NULL){
+			// El resultado debe ser una matriz con una sola fila
+			// y una columna que contiene el nombre
+			PuntosTotales(row[0],puntos);
+			sprintf(resp,"%s%s,%s,",resp,row[0],puntos);
+			row = mysql_fetch_row (resultado);
+		}
+		resp[strlen(resp)-1]='\0';
+	}
+}
 void PerdidoContra(char nombre[100],char respuesta[512]){
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
@@ -240,10 +422,10 @@ void PerdidoContra(char nombre[100],char respuesta[512]){
 	resultado = mysql_store_result (conn); 
 	row = mysql_fetch_row (resultado);
 	if (row == NULL)
-		sprintf (respuesta,"34/%s","-1");
+		sprintf (respuesta,"34/0/%s","-1");
 	else{
 		int i=0;
-		sprintf (respuesta,"34/");
+		sprintf (respuesta,"34/0/");
 		while(row !=NULL){
 			// El resultado debe ser una matriz con una sola fila
 			// y una columna que contiene el nombre
@@ -253,7 +435,7 @@ void PerdidoContra(char nombre[100],char respuesta[512]){
 	}
 }
 
-void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
+void VSJugador(char nombre[100],int idUsuario,char * res){
 	int err;
 	MYSQL_RES *resultado;
 	MYSQL_ROW rowS;
@@ -261,73 +443,35 @@ void VSJugador(char nombre[100],int idUsuario,char respuesta[512]){
 	char consulta [200];
 	int idPI[100];
 	int idPS[100];
-	// Ahora vamos a buscar el ID de las partidas que ha jugado el jugador contincante
+	char idJVs[20];
+	BuscarIdUsurio(nombre,idJVs);
+	// Ahora vamos a buscar el ID de las partidas que tienen en comun los dos jugadores
 	// construimos la consulta SQL
-	sprintf (consulta,"SELECT participacion.idP FROM (participacion) WHERE participacion.idJ IN ( SELECT jugador.id FROM (jugador) WHERE jugador.nombre = '%s')",nombre);
-	// hacemos la consulta 
+	sprintf(consulta,"SELECT participacion.idP FROM participacion WHERE idJ = %d AND participacion.idP IN (SELECT participacion.idP FROM participacion WHERE idJ = %d)",atoi(idJVs),idUsuario);
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
-		printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+		printf ("VSJugador Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
 	//recogemos el resultado de la consulta 
 	resultado = mysql_store_result (conn); 
 	rowS = mysql_fetch_row (resultado);
+	
 	int x=0;
 	int y=0;
 	if ((rowS == NULL)||(rowS[0]==NULL)){
 		printf ("No se han obtenido datos en la consulta\n");
-		sprintf(respuesta,"%s","35/-1");
+		strcpy(res,"0");
 	}
 	else{
 		while (rowS !=NULL) {
-			// El resultado debe ser una matriz con 3 filas
-			// y una columna que contiene el id de partida
-			idPS[x]=atoi(rowS[0]);
-			x++;
+			sprintf(res,"%s%s,",res,rowS[0]);
+			printf("partida:%d\n",atoi(rowS[0]));
 			rowS = mysql_fetch_row (resultado);
 		}
-		y=x;
-		// Ahora vamos a buscar las IDs de las partidas que ha jugado el jugador solicitante
-		// construimos la consulta SQL
-		sprintf (consulta,"SELECT participacion.idP FROM participacion WHERE idJ = %d",idUsuario);
-		// hacemos la consulta 
-		err=mysql_query (conn, consulta); 
-		if (err!=0) {
-			printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
-			sprintf (respuesta,"%s","35/-1");
-			exit (1);
-		}
-		//recogemos el resultado de la consulta 
-		resultado = mysql_store_result (conn); 
-		rowI = mysql_fetch_row (resultado);
-		int i=0;
-		int j=0;
-		if ((rowI == NULL)||(rowI[0]==NULL))
-			sprintf (respuesta,"%s","35/-1");
-		else{
-			while (rowI !=NULL) {
-				// El resultado debe ser una matriz con 3 filas
-				// y una columna que contiene el id de partida
-				idPI[i]=atoi(rowI[0]);
-				i++;
-				rowI = mysql_fetch_row (resultado);
-			}
-			j=i;
-			int k=0;
-			sprintf (respuesta,"35/");
-			for (x=0;x<y;x++){
-				for (i=0;i<j;i++){
-					if(idPS[x]==idPI[i]){
-						sprintf(respuesta,"%s%d,",respuesta,idPS[x]);
-						k=1;
-					}
-				}
-			}
-			if (k==0){
-				sprintf (respuesta,"%s","-1");
-			}
-		}
+		
+		res[strlen(res)-1]='\0';
+		printf("Dentro codgigo: %s\n",res);
 	}
 }
 void AnadirJugadorListaConectados(char nombre[100],int socket){
@@ -385,7 +529,7 @@ int SocketNomJug(char* nombre){ //Devuelve el socket del nombre del jugador que 
 }
 void EnviarListaJugadoresConectados(char* notificacion,int ListaSockets[100],char c[3]){
 	printf("Notificación:%s\n",notificacion);
-	char cabecera[512]="36/";
+	char cabecera[512]="36/0/";
 	
 	strcat(cabecera,notificacion);
 	//sprintf(notificacion,"36/%s",notificacion);
@@ -400,7 +544,7 @@ void EnviarListaJugadoresConectados(char* notificacion,int ListaSockets[100],cha
 }
 void EnviarInvitacion(char *p,char *notificacion,char *nombre,int ListaSockets[100],char * c){
 	char *NomInv=strtok(p,",");
-	strcpy(notificacion,"41/");
+	strcpy(notificacion,"41/0/");
 	strcat(notificacion,nombre);
 	int contador=0;
 	while(NomInv!=NULL){
@@ -411,14 +555,14 @@ void EnviarInvitacion(char *p,char *notificacion,char *nombre,int ListaSockets[1
 			printf("Invitacion enviada a %s\n",NomInv);
 		}
 		else{
-			printf("41/ Jugador %s no encontrado\n",NomInv);
+			printf("41/0/ Jugador %s no encontrado\n",NomInv);
 		}
 		NomInv=strtok(NULL,",");
 	}
 	sprintf(c,"%d",contador);
 }
 void EnviarIDPartida(char *notificacion,char *nombreCreador,char *nombreInvitado,int IDpartida,int ListaSockets[100],char *c){
-	strcpy(notificacion,"43/");
+	strcpy(notificacion,"43/0/");
 	strcat(notificacion,nombreCreador);
 	strcat(notificacion,"/");
 	strcat(notificacion,nombreInvitado);
@@ -459,18 +603,19 @@ int PonerPartidaATablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
 void EliminarPartdiaDeTablaPartidasActivas(int IDPartida){
 	TablaPartidasActivas[IDPartida].oc=0;
 }
-void EnviarMSN(char * notificacion,char * idP,char *nombre,char *msn,int ListaSockets[100],char *c){
-	strcpy(notificacion,"44");
+void EnviarMSN(char * notificacion,char * idP,char *nombre,char *msn,int ListaSockets[100],char *c,int Nform){
+	strcpy(notificacion,"44/");
 	int contador=0;
 	int IDPartida=atoi(idP);
+	sprintf(notificacion,"%s%d/",notificacion,Nform);
 	if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre1)==0){
-		sprintf(notificacion,"%s/%d/%s",notificacion,IDPartida,msn);
+		sprintf(notificacion,"%s%d/%s",notificacion,IDPartida,msn);
 		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre2);
 		contador++;
 		printf("44/Se ha enviado a %s el msn: %s\n",TablaPartidasActivas[IDPartida].nombre2,notificacion);
 	}
 	else if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre2)==0){
-		sprintf(notificacion,"%s/%d/%s",notificacion,IDPartida,msn);
+		sprintf(notificacion,"%s%d/%s",notificacion,IDPartida,msn);
 		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre1);
 		contador++;
 		printf("44/Se ha enviado a %s el msn: %s\n",TablaPartidasActivas[IDPartida].nombre1,notificacion);
@@ -481,16 +626,16 @@ void EnviarMSN(char * notificacion,char * idP,char *nombre,char *msn,int ListaSo
 	sprintf(c,"%d",contador);
 }
 void EnviarCancelacion(char * notificacion,int IDPartida,char *nombre,int ListaSockets[100],char * c){
-	strcpy(notificacion,"45");
+	strcpy(notificacion,"45/0/");
 	int contador=0;
 	if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre1)==0){
-		sprintf(notificacion,"%s/%d",notificacion,IDPartida);
+		sprintf(notificacion,"%s%d",notificacion,IDPartida);
 		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre2);
 		contador++;
 		printf("Se ha enviado a %s la cancelacion\n",TablaPartidasActivas[IDPartida].nombre2);
 	}
 	else if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre2)==0){
-		sprintf(notificacion,"%s/%d",notificacion,IDPartida);
+		sprintf(notificacion,"%s%d",notificacion,IDPartida);
 		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre1);
 		contador++;
 		printf("Se ha enviado a %s la cancelacion\n",TablaPartidasActivas[IDPartida].nombre1);
@@ -551,7 +696,7 @@ void *AtenderCliente (void *socket){
 		if(p!=NULL){
 			strcpy (nombre, p);
 			// Ya tenemos el nombre
-				printf ("Codigo: %d, Nombre: %s\n", codigo, nombre);
+			printf ("Codigo: %d, Nombre: %s\n", codigo, nombre);
 		}
 		
 		
@@ -569,7 +714,7 @@ void *AtenderCliente (void *socket){
 			p = strtok( NULL, "/");
 			strcpy(contrasena,p);
 			Login(contrasena,nombre,respuesta);
-			if(strcmp(respuesta,"11/NO")!=0){
+			if(strcmp(respuesta,"11/0/NO")!=0){
 				pthread_mutex_lock(&mutex);
 				AnadirJugadorListaConectados(nombre,*s);
 				pthread_mutex_unlock(&mutex);
@@ -597,7 +742,9 @@ void *AtenderCliente (void *socket){
 			//Respuesta "Puntos" (enetro)
 			//Respuesta -1 si el jugador no existe
 			// construimos la consulta SQL
-			PuntosTotales( nombre,respuesta);
+			char respuesta1[512];
+			PuntosTotales( nombre,respuesta1);
+			sprintf(respuesta,"33/0/%s",respuesta1);
 			
 		}
 		else if (codigo ==34){ //Peticion Lista nombre jugadores que han ganado contra el jugador introducido
@@ -614,20 +761,71 @@ void *AtenderCliente (void *socket){
 			VSJugador(nombre, idUsuario, respuesta);
 			
 		}
+		else if (codigo ==37){ //Cliente envia "37/nombre/idJ"
+			//Servidor envia "37/PuntosTotales/PuntosMax..."
+			char respuesta1[20];
+			char respuesta2[20];
+			char *idJ = strtok( NULL, "/");
+			PuntosTotales(nombre,respuesta1);
+			int MaxPunt=MaxPuntos(nombre);
+			int PartGanadas=PartidasGanadas(idJ,nombre);
+			int PartPerdidas=PartidasPerdidas(idJ,nombre);
+			int PartJugadas=PartidasJugadas(idJ);
+			CartaMasUsada(idJ,respuesta2);
+			sprintf(respuesta,"37/0/%s/%d/%d/%d/%d/%s",respuesta1,MaxPunt,PartGanadas,PartPerdidas,PartJugadas,respuesta2);
+		}
+		else if (codigo ==38){
+			char respuesta1[512]="";
+			Ranking(respuesta1);
+			sprintf(respuesta,"38/0/%s",respuesta1);
+		}
+		else if (codigo==39){//Recibe "39/nomreUsuario/idUsuario/NombreVs"
+			char respuesta1[20]="";
+			char respuesta2[500]="";
+			char respuesta3[20]="";
+			char *idJ = strtok( NULL, "/");
+			char *nombreVs = strtok( NULL, "/");
+			char idJVs[20];
+			BuscarIdUsurio(nombreVs,idJVs);
+			PuntosTotales(nombreVs,respuesta1);
+			int MaxPunt=MaxPuntos(nombreVs);
+			int PartGanadas=PartidasGanadas(idJVs,nombreVs);
+			int PartPerdidas=PartidasPerdidas(idJVs,nombreVs);
+			int PartJugadas=PartidasJugadas(idJVs);
+			int PartGanadasVs=PartidasGanadas(idJVs,nombre);
+			int PartPerdidasVs=PartidasGanadas(idJ,nombreVs);
+			printf("Antes codgio: %s\n",respuesta2);
+			VSJugador(nombre, atoi(idJVs), respuesta2);
+			printf("Fuera codgio: %s\n",respuesta2);
+			int PartJugadasVs=0;
+			char *p = strtok( respuesta2, ",");
+			if((strcmp(p,"0")!=0)&&(strcmp(p,"-1")!=0))
+			{
+				while (p!=NULL){
+					printf("39 codP %s\n",p);
+					PartJugadasVs++;
+					p = strtok( NULL, ",");
+				}
+			}
+			CartaMasUsada(idJVs,respuesta3);
+			sprintf(respuesta,"39/0/%s/%s/%s/%d/%d/%d/%d/%d/%d/%d/%s",nombreVs,idJVs,respuesta1,MaxPunt,PartGanadas,PartPerdidas,PartJugadas,PartGanadasVs,PartPerdidasVs,PartJugadasVs,respuesta3);
+		}
 		
-		
-		else if (codigo ==41){ //Cliente envia "41/NombreJugadorQueHaCreadoPartida/JugadorInvitado1,JI2,JI3"
-			//Servidor envia "41/NombreJugadorQueHaCreadoPartida"
+		else if (codigo ==41){ //Cliente envia "41/NombreJugadorQueHaCreadoPartida/JugadorInvitado1,JI2,JI3/Parametros,Partida"
+			//Servidor envia "41/NombreJugadorQueHaCreadoPartida/Parametros,Partida"
 			//Procedimiento de invitacion
 			p = strtok( NULL, "/");
-			EnviarInvitacion(p,notificacion,nombre,ListaSockets,contador);
+			char *parametros = strtok( NULL, "/");
+			char notificacion1[512];
+			EnviarInvitacion(p,notificacion1,nombre,ListaSockets,contador);
+			sprintf(notificacion,"%s/%s",notificacion1,parametros);
 		}
 		
 		else if (codigo ==42){ //Cliente envia "42/NombreJugadorQueHaCreadoPartida/JugadorQueHaAceptadoORechazado/SIoNO"
 			//Servidor envia "42/JugadorQueHaAceptadoORechazado/SIoNO"
 			char *nombreInvitado=strtok( NULL, "/");
 			char *SIoNO=strtok( NULL, "/");
-			strcpy(respuesta,"42/");
+			strcpy(respuesta,"42/0/");
 			strcat(respuesta,nombreInvitado);
 			strcat(respuesta,"/");
 			strcat(respuesta,SIoNO);
@@ -642,12 +840,14 @@ void *AtenderCliente (void *socket){
 		}
 		else if (codigo ==44){ //Cliente envia "44/IDPartida/NombreQuienEnviaMsn/Msn"
 			//Servidor envia "44/IDPartida/Msn
+			p = strtok( NULL, "/");
+			int Nform=atoi(p);
 			int IDPartida=atoi(nombre);
 			char *NombreQuienEnviaMsn=strtok(NULL,"/");
 			char *Msn=strtok(NULL,"/");
 			char idP[10];
 			sprintf(idP,"%d",IDPartida);
-			EnviarMSN(notificacion,idP,NombreQuienEnviaMsn,Msn,ListaSockets,contador);
+			EnviarMSN(notificacion,idP,NombreQuienEnviaMsn,Msn,ListaSockets,contador,Nform);
 		}
 		else if (codigo ==45){ //Cliente envia "45/IDPartida/NombreQuienEnviaCancelacion"
 			//Servidor envia "45/IDPartida"
@@ -667,9 +867,7 @@ void *AtenderCliente (void *socket){
 		}
 		if(strcmp(notificacion,"H")!=0){
 			int indice=0;
-			printf("socket0:%d\n",ListaSockets[indice]);
 			while(indice< atoi(contador)){
-				printf("Contador:%s\n",contador);
 				write (ListaSockets[indice],notificacion, strlen(notificacion));
 				indice++;
 			}
@@ -734,12 +932,12 @@ int main(int argc, char *argv[])
 	
 	int i=0;
 	
-
+	
 	pthread_t *thread;
 	thread= (pthread_t *) calloc(miLista.num+1,sizeof(pthread_t));
 	
 	sockets= (int *) calloc(miLista.num+1,sizeof(int));
-
+	
 	// Bucle infinito
 	for (;;){
 		printf ("Escuchando\n");
