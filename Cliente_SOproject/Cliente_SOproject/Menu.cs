@@ -19,8 +19,11 @@ namespace Cliente_SOproject
     {
         public int id_usuario;
         public string nombreUsuario;
+        public string creador_partida;
         public string invitado;
         public bool conectado = false;
+        public int id_partida;
+        public string contrincante;
         Socket server;
         Thread atender;
         List<Partida> formularios = new List<Partida>();
@@ -42,7 +45,7 @@ namespace Cliente_SOproject
         delegate void DelegadoColorLabel(Label nameLabel, Color color);
         delegate void DelegadoParaEscribirLabel(string msn, Label nameLabel);
         delegate void DelegadoPartida(Partida partida);
-
+      
         public void PonDataGridView(string mensaje)
         {
             if (mensaje != null && mensaje != "")
@@ -117,7 +120,7 @@ namespace Cliente_SOproject
         public void IniciarPartida()
         {
             int cont = formularios.Count+1;
-            Partida partida = new Partida(cont,server);
+            Partida partida = new Partida(cont, server, nombreUsuario, id_partida);
             formularios.Add(partida);
             partida.ShowDialog();
             
@@ -180,9 +183,10 @@ namespace Cliente_SOproject
                 int codigo = Convert.ToInt32(trozos1[0]);
                 int Nform = Convert.ToInt32(trozos1[1]);
                 string mensaje = trozos1[2];
-   
                 
-               
+
+
+
                 switch (codigo)
                 {
 
@@ -288,11 +292,12 @@ namespace Cliente_SOproject
                         DelegadoParaCambiarTab delegado392 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfilRival.Invoke(delegado392, new object[] { tabPagePerfilRival });
                         break;
-                    
+
                     case 41: //Recive invitacion
                         string nombre = mensaje;
                         string mensaje_not;
                         string[] trozos2 = trozos1[3].Split(',');
+                        //id_partida = Convert.ToInt32(trozos1[4]);
                         DialogResult r = MessageBox.Show(nombre + " te ha invitado a un juego.\n " + "\n"
                             + "Nivel: " + trozos2[0] + "\n"
                             + "Sugerir preguntas? " + trozos2[1] + "\n"
@@ -302,7 +307,7 @@ namespace Cliente_SOproject
                             + "¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
                         if (r == DialogResult.Yes)
                         {
-                           
+
                             mensaje_not = "42/" + nombre + "/" + nombreUsuario + "/Si";
 
                             ThreadStart ts = delegate { IniciarPartida(); };
@@ -311,15 +316,46 @@ namespace Cliente_SOproject
                         }
                         else
                         {
-                            mensaje_not = "42/" + nombre + "/" + nombreUsuario  + "/No";
+                            mensaje_not = "42/" + nombre + "/" + nombreUsuario + "/No";
                         }
                         // Enviamos al servidor el nombre tecleado con un vector de bytes
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
                         break;
+                    case 42:
+                        string mensaje2 = trozos1[3];
+                        if (mensaje2 == "Si")
+                        {
+                            ThreadStart ts = delegate { IniciarPartida(); };
+                            Thread T = new Thread(ts);
+                            T.Start();
 
+                        }
+                        else
+                        {
+                            MessageBox.Show(trozos1[2] + " ha rechazado tu invitación");
+                        }
+                        break;
+                    case 43: //enviar texto
+                        id_partida = Convert.ToInt32(trozos1[4]);
+                        creador_partida = trozos1[2];
+                        if (creador_partida == nombreUsuario)
+                        {
+                            contrincante = trozos1[3];
+                        }
+                        else
+                        {
+                            contrincante = trozos1[2];
+                        }
+
+                        break;
+                    case 44:
+                        mensaje = trozos1[3];
+                        formularios[Nform-1].EnviarTexto(mensaje, contrincante);
+
+                        break;
                     case 51:
-                        formularios[Nform].MoverCarta(mensaje);
+                        formularios[Nform-1].MoverCarta(mensaje);
                         break;
                 }
             }

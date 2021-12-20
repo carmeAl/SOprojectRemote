@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xavi\\Downloads\\SOprojectRemote-ClienteMenu (1)\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
+      "projectUniqueName": "C:\\Users\\xavi\\Desktop\\SO projecto\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
       "projectName": "Cliente_SOproject",
-      "projectPath": "C:\\Users\\xavi\\Downloads\\SOprojectRemote-ClienteMenu (1)\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
+      "projectPath": "C:\\Users\\xavi\\Desktop\\SO projecto\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\Cliente_SOproject.csproj",
       "packagesPath": "C:\\Users\\xavi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xavi\\Downloads\\SOprojectRemote-ClienteMenu (1)\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\obj\\",
+      "outputPath": "C:\\Users\\xavi\\Desktop\\SO projecto\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\xavi\\AppData\\Roaming\\NuGet\\NuGet.Config",

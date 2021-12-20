@@ -15,26 +15,24 @@ namespace Cliente_SOproject
     {
         int Nform;
         Socket server;
-        public Partida(int Nform, Socket server)
+        string nombreUsuario;
+        int id_partida;
+        string rival;
+        string texto;
+        delegate void DelegadoParaEscribir(string rival, string texto);
+
+        public Partida(int Nform, Socket server, string nombreUsuario, int id_partida)
         {
             InitializeComponent();
             this.Nform = Nform;
             this.server = server;
+            this.nombreUsuario = nombreUsuario;
+            this.id_partida = id_partida;
         }
 
         private void Partida_Load(object sender, EventArgs e)
         {
-            //PictureBox pic = new PictureBox();
-            //pic.Width = 20;
-            //pic.Height = 20;
-            //pic.ClientSize = new Size(20, 20);
-
-            //pic.Location = new Point(50, 50);
-            //pic.SizeMode = PictureBoxSizeMode.StretchImage;
-            //Bitmap image = new Bitmap("p.png");
-            pictureBox2.Image = Image.FromFile("C:\\Users\xavi\\Downloads\\SOprojectRemote-ClienteMenu (1)\\SOprojectRemote-ClienteMenu\\Cliente_SOproject\\Cliente_SOproject\\Resources");
-            //pictureBox2.Image = Image.FromFile("p");
-            //pictureBox2.Image = Resources.Online_lime_icon.ToBitmap()
+            pictureBox2.Image = Properties.Resources.p;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -56,10 +54,31 @@ namespace Cliente_SOproject
         {
 
         }
-
         public void MoverCarta(string mensaje)
         {
 
+        }
+        public void EnviarTexto(string mensaje, string rival)
+        {
+            this.rival = rival;
+            this.texto = mensaje;
+            DelegadoParaEscribir delegado441 = new DelegadoParaEscribir(PonMSN);
+            conversacion.Invoke(delegado441, new object[] { rival,texto });
+        }
+        public void PonMSN(string rival,string mensaje)
+        {
+            conversacion.Items.Add(rival + ": " + mensaje);
+        }
+
+        private void button_enviar_Click(object sender, EventArgs e)
+        {
+            conversacion.Items.Add(nombreUsuario + ": " + textBox_con.Text);
+            // Envias el mensaje
+            string mensaje = "44/" +  id_partida + "/"+ Nform + "/" + nombreUsuario + "/" + textBox_con.Text;
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            textBox_con.Clear();
         }
     }
 }
