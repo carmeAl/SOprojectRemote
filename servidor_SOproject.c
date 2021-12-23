@@ -79,6 +79,44 @@ void Login(char contrasena[100], char nombre[100],char respuesta[512]){
 		sprintf(respuesta,"11/0/%s",row[0]);
 	}
 }
+void RandomizeV(int n,int v[16],char listafrase[512]){
+	int i, n,aux,k;
+	time_t t;
+	n = 16;
+	srand((unsigned) time(&t));
+	for( i = 0 ; i < n ; i++ ) 
+	{
+		v[i]=30;
+	}
+	for( i = 0 ; i < n ; i++ ) 
+	{
+		k=0;
+		aux=rand() % 26;
+		while( k < n){
+			
+			if(v[k]==aux)
+			{
+				aux=rand() % 26;
+				k=0;
+			}
+			else{
+				k=k+1;
+			}
+			
+		}
+		printf("%d\n",i);
+		v[i]=aux;
+	}
+	
+	printf("Ahora los valores del vector\n");
+	sprintf(listafrase,"%d,",n);
+	for( i = 0 ; i < n ; i++ ) 
+	{
+		sprintf(listafrase,"%s%d,",listafrase,v[i]);
+	}
+	listafrase[strlen(listafrase)-1]='\0';
+	}
+
 void Register(char contrasena[100], char nombre [100],char respuesta[512]){
 	
 	int err;
@@ -562,16 +600,22 @@ void EnviarInvitacion(char *p,char *notificacion,char *nombre,int ListaSockets[1
 	sprintf(c,"%d",contador);
 }
 void EnviarIDPartida(char *notificacion,char *nombreCreador,char *nombreInvitado,int IDpartida,int ListaSockets[100],char *c){
-	strcpy(notificacion,"43/0/");
+	strcpy(notificacion,"43/");
 	strcat(notificacion,nombreCreador);
 	strcat(notificacion,"/");
 	strcat(notificacion,nombreInvitado);
 	strcat(notificacion,"/");
 	sprintf(notificacion,"%s%d",notificacion,IDpartida);
+	int v[16];
+	int n=16;
+	char fr[512];
+	RandomizeV(n,v,fr);
+	sprintf(notificacion,"%s/%s",notificacion,fr);
 	ListaSockets[0]=SocketNomJug(nombreCreador);
 	ListaSockets[1]=SocketNomJug(nombreInvitado);
-	sprintf(c,"%d",2);;
+	sprintf(c,"%d",2);
 }
+
 int PonerPartidaATablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
 	int encontrado=0;
 	int i=0;
