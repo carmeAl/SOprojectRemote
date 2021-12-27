@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace Cliente_SOproject
 {
@@ -79,6 +83,73 @@ namespace Cliente_SOproject
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
             textBox_con.Clear();
+        }
+
+        static Bitmap SetAlpha(Bitmap bmpIn, int alpha)
+        {
+            Bitmap bmpOut = new Bitmap(bmpIn.Width, bmpIn.Height);
+            float a = alpha / 255f;
+            Rectangle r = new Rectangle(0, 0, bmpIn.Width, bmpIn.Height);
+
+            float[][] matrixItems = {
+            new float[] {1, 0, 0, 0, 0},
+            new float[] {0, 1, 0, 0, 0},
+            new float[] {0, 0, 1, 0, 0},
+            new float[] {0, 0, 0, a, 0},
+            new float[] {0, 0, 0, 0, 1}};
+
+            ColorMatrix colorMatrix = new ColorMatrix(matrixItems);
+
+            ImageAttributes imageAtt = new ImageAttributes();
+            imageAtt.SetColorMatrix(colorMatrix, ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+
+            using (Graphics g = Graphics.FromImage(bmpOut))
+                g.DrawImage(bmpIn, r, r.X, r.Y, r.Width, r.Height, GraphicsUnit.Pixel, imageAtt);
+
+            return bmpOut;
+        }
+        PictureBox CartasName;
+        int Opacidad;
+        int siguiente;
+        Image ImageCarta;
+        bool UPCCarta2=false;
+        
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            if (!UPCCarta2)
+                UPCCarta2 = true;
+            else
+                UPCCarta2 = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBox2;
+            ImageCarta = Properties.Resources.p;
+            timerFlip.Start();
+        }
+
+        private void timerFlip_Tick_1(object sender, EventArgs e)
+        {
+            if ((Opacidad > 0) && (siguiente==0))
+            {
+                CartasName.Image = SetAlpha((Bitmap)CartasName.Image, Opacidad);
+                Opacidad -= 50;
+            }
+            else
+            {
+                
+                if (UPCCarta2)
+                {
+                    CartasName.Image = Properties.Resources.UPClogo;
+                    siguiente = 1;
+                }   
+                else if (!UPCCarta2)
+                {
+                    CartasName.Image = ImageCarta;
+                    siguiente = 1;
+                }
+                CartasName.Image = SetAlpha((Bitmap)CartasName.Image, Opacidad);
+                Opacidad += 50;
+            }
         }
     }
 }

@@ -125,7 +125,7 @@ namespace Cliente_SOproject
             partida.ShowDialog();
             
         }
-            public void ConectarServidor()
+        public void ConectarServidor()
         {
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
@@ -164,6 +164,7 @@ namespace Cliente_SOproject
 
                 // Nos desconectamos
                 atender.Abort();
+                
                 server.Shutdown(SocketShutdown.Both);
                 server.Close();
                 conectado = false;
@@ -476,7 +477,7 @@ namespace Cliente_SOproject
                 server.Send(msg);
 
                 // Nos desconectamos
-                atender.Abort();
+                atender.Interrupt();
                 server.Shutdown(SocketShutdown.Both);
                 server.Close();
                 conectado = false;
@@ -540,6 +541,10 @@ namespace Cliente_SOproject
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
 
+                        ThreadStart ts = delegate { PonerEnMarchaFormulario(); };
+                        Thread T = new Thread(ts);
+                        T.Start();
+
                     }
 
                 }
@@ -549,6 +554,15 @@ namespace Cliente_SOproject
                 labelCError.Text = "Selecciona a una persona";
                 labelCError.Visible = true;
             }
+        }
+
+        private void PonerEnMarchaFormulario()
+        {
+            int cont = formularios.Count;
+            Partida FormPartida = new Partida(cont, server, nombreUsuario, id_usuario);
+            formularios.Add(FormPartida);
+            FormPartida.ShowDialog();
+            
         }
 
         //NAVIEGACION
