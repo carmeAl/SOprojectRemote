@@ -119,12 +119,19 @@ namespace Cliente_SOproject
             }
             public void IniciarPartida()
             {
-                int cont = formularios.Count + 1;
-                Partida partida = new Partida(cont, server, nombreUsuario, id_partida);
-                formularios.Add(partida);
-                partida.ShowDialog();
-
+                int cont = formularios.Count;
+                Partida FormPartida = new Partida(cont, server, nombreUsuario, id_usuario);
+                formularios.Add(FormPartida);
+            FormPartida.CambiarTabDesdeMenu();
+            FormPartida.ShowDialog();
             }
+        public void PonerEnMarchaForm()
+        {
+            int cont = formularios.Count;
+            Partida FormPartida = new Partida(cont, server, nombreUsuario, id_usuario);
+            formularios.Add(FormPartida);
+            FormPartida.ShowDialog();
+        }
             public void ConectarServidor()
             {
                 //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
@@ -309,33 +316,23 @@ namespace Cliente_SOproject
                             if (r == DialogResult.Yes)
                             {
 
-                                mensaje_not = "42/" + nombre + "/" + nombreUsuario + "/Si";
+                                mensaje_not = "42/" + trozos1[1] + "/" + nombre + "/" + nombreUsuario + "/Si";
 
                                 ThreadStart ts = delegate { IniciarPartida(); };
                                 Thread T = new Thread(ts);
                                 T.Start();
+
                             }
                             else
                             {
-                                mensaje_not = "42/" + nombre + "/" + nombreUsuario + "/No";
+                                mensaje_not = "42/" + trozos1[1] + "/" + nombre + "/" + nombreUsuario + "/No";
                             }
                             // Enviamos al servidor el nombre tecleado con un vector de bytes
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             break;
                         case 42:
-                            string mensaje2 = trozos1[3];
-                            if (mensaje2 == "Si")
-                            {
-                                ThreadStart ts = delegate { IniciarPartida(); };
-                                Thread T = new Thread(ts);
-                                T.Start();
-
-                            }
-                            else
-                            {
-                                MessageBox.Show(trozos1[2] + " ha rechazado tu invitación");
-                            }
+                            formularios[Nform].RespuestaInvitacion(trozos1[2], trozos1[3]);
                             break;
                         case 43: //enviar texto
                             id_partida = Convert.ToInt32(trozos1[4]);
@@ -507,16 +504,16 @@ namespace Cliente_SOproject
                         else
                         {
                             labelCError.Visible = false;
-                            string mensaje = "41/" + nombreUsuario + "/" + invitado + "/" + comboBoxCNivel.Text + "," + comboBoxCSugPreg.Text + "," + comboBoxCMapa.Text + "," + textBoxCNumPreg.Text + "," + textBoxCLimTiempo.Text;
+                            string mensaje = "41/" + formularios.Count + "/" + nombreUsuario + "/" + invitado + "/" + comboBoxCNivel.Text + "," + comboBoxCSugPreg.Text + "," + comboBoxCMapa.Text + "," + textBoxCNumPreg.Text + "," + textBoxCLimTiempo.Text;
                             // Enviamos al servidor el nombre tecleado
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                             server.Send(msg);
 
-                            ThreadStart ts = delegate { PonerEnMarchaFormulario(); };
+                            ThreadStart ts = delegate { PonerEnMarchaForm(); };
                             Thread T = new Thread(ts);
                             T.Start();
 
-                        }
+                    }
 
                     }
                 }
@@ -527,14 +524,6 @@ namespace Cliente_SOproject
                 }
             }
 
-            private void PonerEnMarchaFormulario()
-            {
-                int cont = formularios.Count;
-                Partida FormPartida = new Partida(cont, server, nombreUsuario, id_usuario);
-                formularios.Add(FormPartida);
-                FormPartida.ShowDialog();
-
-            }
 
             //NAVIEGACION
             private void pictureBoxMCrearPartida_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageCrearPartida;
