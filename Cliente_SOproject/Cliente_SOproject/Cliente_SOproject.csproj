@@ -137,5 +137,161 @@
   <ItemGroup>
     <None Include="Resources\UPClogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pais_0.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

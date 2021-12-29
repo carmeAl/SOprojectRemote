@@ -12,6 +12,7 @@ using System.Drawing.Drawing2D;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.IO;
 
 namespace Cliente_SOproject
 {
@@ -23,21 +24,39 @@ namespace Cliente_SOproject
         int id_partida;
         string rival;
         string texto;
+        //Parametros partida
+        string nivel;
+        string sugerirPreguntas;
+        string mapa;
+        string limitePreguntas;
+        string limiteTiempo;
+        string []ListaRandom;
+        bool[] UPCCarta2= { false,false,false,false,false,false,false,false,false,
+        false,false,false};
+        public string[]ListaImagenes= { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a" };
+
         delegate void DelegadoParaEscribir(string rival, string texto);
         delegate void DelegadoParaEscribirLabel(string msn, Label nameLabel);
         delegate void DelegadoPicureBox(PictureBox namePictureBox);
         delegate void DelegadoParaCambiarTab(TabPage nameTab);
 
-        public Partida(int Nform, Socket server, string nombreUsuario, int id_partida)
-            {
-                InitializeComponent();
-                this.Nform = Nform;
-                this.server = server;
-                this.nombreUsuario = nombreUsuario;
-                this.id_partida = id_partida;
-            }
+        public Partida(int Nform, Socket server, string nombreUsuario,
+            int id_partida, string nivel, string sugerirPreguntas, string mapa,
+            string limitePreguntas, string limiteTiempo)
+        {
+            InitializeComponent();
+            this.Nform = Nform;
+            this.server = server;
+            this.nombreUsuario = nombreUsuario;
+            this.id_partida = id_partida;
+            this.nivel = nivel;
+            this.sugerirPreguntas = sugerirPreguntas;
+            this.mapa = mapa;
+            this.limitePreguntas = limitePreguntas;
+            this.limiteTiempo = limiteTiempo;
+        }
 
-     
+
         public void EscribirLabel(string msn, Label nameLabel)
         {
             nameLabel.Text = msn;
@@ -46,18 +65,67 @@ namespace Cliente_SOproject
         {
             namePictureBox.Visible = false;
         }
+        public static Bitmap GetImageByName(string imageName)
+        {
+            System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
+            string resourceName = asm.GetName().Name + ".Properties.Resources";
+            var rm = new System.Resources.ResourceManager(resourceName, asm);
+            return (Bitmap)rm.GetObject(imageName);
+
+        }
         public void CambiarTab(TabPage nameTab)
         {
+            
+
             tabControlPartida.SelectedTab = nameTab;
+            if(mapa == "ANIMALES")
+            {
+                for(int i = 0; i < 12; i++)
+                {
+                    ListaImagenes[i] = "animal_" + ListaRandom[i];
+                }
+                pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
+                pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
+                pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
+                pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
+                pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
+                pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
+                pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
+                pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
+                pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
+                pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
+                pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
+                pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
+            }
+            else if(mapa == "COMPANEROS CLASE")
+            {
+                
+            }
+            else
+            {
+                for (int i = 0; i < ListaRandom.Length; i++)
+                {
+                    ListaImagenes[i] = "pais_" + ListaRandom[i];
+                }
+                pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
+                pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
+                pictureBoxImage3.Image = GetImageByName(ListaImagenes[0]);
+                pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
+                pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
+                pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
+                pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
+                pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
+                pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
+                pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
+                pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
+                pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
+            }
         }
         public void CambiarTabDesdeMenu()
         {
             tabControlPartida.SelectedTab = tabPageTablero;
         }
-        private void Partida_Load(object sender, EventArgs e)
-            {
-                pictureBox2.Image = Properties.Resources.p;
-            }
+        
 
 
 
@@ -70,7 +138,7 @@ namespace Cliente_SOproject
         {
             if (SiNo == "Si")
             {
-                tabPageTablero.Invoke(new DelegadoParaCambiarTab(CambiarTab), new object[] { tabPageTablero });
+                tabControlPartida.Invoke(new DelegadoParaCambiarTab(CambiarTab), new object[] { tabPageTablero });
             }
             else
             {
@@ -78,6 +146,10 @@ namespace Cliente_SOproject
                 pictureBoxPEGif.Image = Properties.Resources.Cross;
                 pictureBoxPEBoton.Invoke(new DelegadoPicureBox(PonNoVisiblePictureBox), new object[] { pictureBoxPEBoton });
             }
+        }
+        public void PasarListaRandom(string lista)
+        {
+            ListaRandom = lista.Split(',');
         }
         public void EnviarTexto(string mensaje, string rival)
         {
@@ -158,23 +230,12 @@ namespace Cliente_SOproject
                 return bmpOut;
             }
             PictureBox CartasName;
+        int numCarta;
             int Opacidad;
             int siguiente;
             Image ImageCarta;
-            bool UPCCarta2 = false;
 
-            private void pictureBox2_Click_1(object sender, EventArgs e)
-            {
-                if (!UPCCarta2)
-                    UPCCarta2 = true;
-                else
-                    UPCCarta2 = false;
-                Opacidad = 500;
-                siguiente = 0;
-                CartasName = pictureBox2;
-                ImageCarta = Properties.Resources.p;
-                timerFlip.Start();
-            }
+            
 
             private void timerFlip_Tick_1(object sender, EventArgs e)
             {
@@ -186,12 +247,12 @@ namespace Cliente_SOproject
                 else
                 {
 
-                    if (UPCCarta2)
+                    if (UPCCarta2[numCarta])
                     {
                         CartasName.Image = Properties.Resources.UPClogo;
                         siguiente = 1;
                     }
-                    else if (!UPCCarta2)
+                    else if (!UPCCarta2[numCarta])
                     {
                         CartasName.Image = ImageCarta;
                         siguiente = 1;
@@ -200,6 +261,174 @@ namespace Cliente_SOproject
                     Opacidad += 50;
                 }
             }
+
+        private void pictureBoxImage1_Click(object sender, EventArgs e)
+        {
+            numCarta = 0;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage1;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage2_Click(object sender, EventArgs e)
+        {
+            numCarta = 1;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage2;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage3_Click(object sender, EventArgs e)
+        {
+            numCarta = 2;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage3;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage4_Click(object sender, EventArgs e)
+        {
+            numCarta = 3;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage4;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage5_Click(object sender, EventArgs e)
+        {
+            numCarta = 4;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage5;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage6_Click(object sender, EventArgs e)
+        {
+            numCarta = 5;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage6;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage7_Click(object sender, EventArgs e)
+        {
+            numCarta = 6;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage7;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage8_Click(object sender, EventArgs e)
+        {
+            numCarta = 7;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage8;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage9_Click(object sender, EventArgs e)
+        {
+            numCarta = 8;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage9;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage10_Click(object sender, EventArgs e)
+        {
+            numCarta = 9;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage10;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage11_Click(object sender, EventArgs e)
+        {
+            numCarta = 10;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage11;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
+
+        private void pictureBoxImage12_Click(object sender, EventArgs e)
+        {
+            numCarta = 11;
+            if (!UPCCarta2[numCarta])
+                UPCCarta2[numCarta] = true;
+            else
+                UPCCarta2[numCarta] = false;
+            Opacidad = 500;
+            siguiente = 0;
+            CartasName = pictureBoxImage12;
+            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+            timerFlip.Start();
+        }
     }
 }
 

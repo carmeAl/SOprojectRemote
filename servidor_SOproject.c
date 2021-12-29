@@ -79,10 +79,10 @@ void Login(char contrasena[100], char nombre[100],char respuesta[512]){
 		sprintf(respuesta,"11/0/%s",row[0]);
 	}
 }
-void RandomizeV(int n,int v[16],char listafrase[512]){
+void RandomizeV(int n,int v[12],char listafrase[512]){
 	int i,aux,k;
 	time_t t;
-	n = 16;
+	n = 12;
 	srand((unsigned) time(&t));
 	for( i = 0 ; i < n ; i++ ) 
 	{
@@ -600,14 +600,14 @@ void EnviarInvitacion(char *p,char *notificacion,char *nombre,int ListaSockets[1
 	sprintf(c,"%d",contador);
 }
 void EnviarIDPartida(char *notificacion,char *nombreCreador,char *nombreInvitado,int IDpartida,int ListaSockets[100],char *c,char *NumForm){
-	strcpy(notificacion,"43/");
-	strcat(notificacion,NumForm);
-	strcat(notificacion,"/");
-	strcat(notificacion,nombreCreador);
-	strcat(notificacion,"/");
-	strcat(notificacion,nombreInvitado);
-	strcat(notificacion,"/");
-	sprintf(notificacion,"%s%d",notificacion,IDpartida);
+/*	strcpy(notificacion,"43/");*/
+/*	strcat(notificacion,NumForm);*/
+/*	strcat(notificacion,"/");*/
+/*	strcat(notificacion,nombreCreador);*/
+/*	strcat(notificacion,"/");*/
+/*	strcat(notificacion,nombreInvitado);*/
+/*	strcat(notificacion,"/");*/
+	sprintf(notificacion,"%s/%d",notificacion,IDpartida);
 	
 	int v[16];
 	int n=16;
@@ -870,23 +870,27 @@ void *AtenderCliente (void *socket){
 		}
 		
 		else if (codigo ==42){ //Cliente envia "42/NumForm/NombreJugadorQueHaCreadoPartida/JugadorQueHaAceptadoORechazado/SIoNO"
-			//Servidor envia "42/NumForm/JugadorQueHaAceptadoORechazado/SIoNO"
-			//Servidor envia "43/NumForm/nombreCreador/nombreInvitado/IDpartida/listaRandom"
-			strcpy(respuesta,"42/");
-			strcat(respuesta,nombre);
-			strcat(respuesta,"/");
+			//Servidor envia "42/NumForm/nombreCreador/nombreInvitado/SIoNO/IDpartida/lista,Random"
+			strcpy(notificacion,"42/");
+			strcat(notificacion,nombre);
+			strcat(notificacion,"/");
 			char *nombre1=strtok( NULL, "/");
 			char *nombreInvitado=strtok( NULL, "/");
 			char *SIoNO=strtok( NULL, "/");
-			strcat(respuesta,nombreInvitado);
-			strcat(respuesta,"/");
-			strcat(respuesta,SIoNO);
-			int sock=SocketNomJug(nombre1);
-			write (sock,respuesta, strlen(respuesta));
-			sprintf(respuesta,"H");
+			strcat(notificacion,nombre1);
+			strcat(notificacion,"/");
+			strcat(notificacion,nombreInvitado);
+			strcat(notificacion,"/");
+			strcat(notificacion,SIoNO);
+			
 			if (strcmp(SIoNO,"Si")==0){
 				int IDPartida=PonerPartidaATablaPartidasActivas(nombre,nombreInvitado);
 				EnviarIDPartida(notificacion,nombre1,nombreInvitado,IDPartida,ListaSockets,contador,nombre);	
+			}
+			else{
+				int sock=SocketNomJug(nombre1);
+				write (sock,notificacion, strlen(notificacion));
+				sprintf(notificacion,"H");
 			}
 			
 		}

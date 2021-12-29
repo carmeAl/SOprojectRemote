@@ -24,7 +24,15 @@ namespace Cliente_SOproject
             public bool conectado = false;
             public int id_partida;
             public string contrincante;
-            Socket server;
+
+        //Parametros partida
+        string nivel;
+        string sugerirPreguntas;
+        string mapa;
+        string limitePreguntas;
+        string limiteTiempo;
+
+        Socket server;
             Thread atender;
             List<Partida> formularios = new List<Partida>();
             public Menu()
@@ -33,18 +41,20 @@ namespace Cliente_SOproject
                 tabControl1.SelectedTab = tabPageLogin;
 
             }
+        
 
 
 
-            //FUNCIONAMIENTO
+        //FUNCIONAMIENTO
 
-            delegate void DelegadoDGV(DataGridView mensaje);
+        delegate void DelegadoDGV(DataGridView mensaje);
             delegate void DelegadoParaEscribir(string mensaje);
             delegate void DelegadoParaCambiarTab(TabPage nameTab);
             delegate void DelegadoLabel(Label nameLabel);
             delegate void DelegadoColorLabel(Label nameLabel, Color color);
             delegate void DelegadoParaEscribirLabel(string msn, Label nameLabel);
             delegate void DelegadoPartida(Partida partida);
+        delegate void DelegadoIniciarPartida();
 
             public void PonDataGridView(string mensaje)
             {
@@ -120,15 +130,17 @@ namespace Cliente_SOproject
             public void IniciarPartida()
             {
                 int cont = formularios.Count;
-                Partida FormPartida = new Partida(cont, server, nombreUsuario, id_usuario);
-                formularios.Add(FormPartida);
+                Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida, 
+                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo);
+            formularios.Add(FormPartida);
             FormPartida.CambiarTabDesdeMenu();
             FormPartida.ShowDialog();
             }
         public void PonerEnMarchaForm()
         {
             int cont = formularios.Count;
-            Partida FormPartida = new Partida(cont, server, nombreUsuario, id_usuario);
+            Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
+                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo);
             formularios.Add(FormPartida);
             FormPartida.ShowDialog();
         }
@@ -313,14 +325,19 @@ namespace Cliente_SOproject
                                 + "Límite preguntas: " + trozos2[3] + "\n"
                                 + "Límite tiempo turno: " + trozos2[4] + "segundos" + "\n" + "\n"
                                 + "¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
-                            if (r == DialogResult.Yes)
+
+                        nivel = trozos2[0];
+                        sugerirPreguntas = trozos2[1];
+                        mapa = trozos2[2];
+                        limitePreguntas = trozos2[3]; 
+                        limiteTiempo = trozos2[4];
+
+                        if (r == DialogResult.Yes)
                             {
 
                                 mensaje_not = "42/" + trozos1[1] + "/" + nombre + "/" + nombreUsuario + "/Si";
 
-                                ThreadStart ts = delegate { IniciarPartida(); };
-                                Thread T = new Thread(ts);
-                                T.Start();
+                                
 
                             }
                             else
@@ -332,21 +349,35 @@ namespace Cliente_SOproject
                             server.Send(msg);
                             break;
                         case 42:
-                            formularios[Nform].RespuestaInvitacion(trozos1[2], trozos1[3]);
-                            break;
-                        case 43: //enviar texto
-                            id_partida = Convert.ToInt32(trozos1[4]);
-                            creador_partida = trozos1[2];
-                            if (creador_partida == nombreUsuario)
+                        if(trozos1[4] == "Si")
+                        {
+                            id_partida = Convert.ToInt32(trozos1[5]);
+                        }
+                        
+                        creador_partida = trozos1[2];
+                        
+                        if (creador_partida == nombreUsuario)
+                        {
+                            if (trozos1[4] == "Si")
                             {
-                                contrincante = trozos1[3];
+                                formularios[Nform].PasarListaRandom(trozos1[6]);
                             }
-                            else
-                            {
-                                contrincante = trozos1[2];
-                            }
+                            formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
+                            
+                                
+                        }
+                        else if(trozos1[4]=="Si")
+                        {
+                            ThreadStart ts = delegate { IniciarPartida(); };
+                            Thread T = new Thread(ts);
+                            T.Start();
+                            //formularios[formularios.Count].PasarListaRandom(trozos1[6]);
+                        }
+                        
 
-                            break;
+
+
+                        break;
                         case 44:
                             mensaje = trozos1[3];
                             formularios[Nform - 1].EnviarTexto(mensaje, contrincante);
@@ -504,12 +535,20 @@ namespace Cliente_SOproject
                         else
                         {
                             labelCError.Visible = false;
-                            string mensaje = "41/" + formularios.Count + "/" + nombreUsuario + "/" + invitado + "/" + comboBoxCNivel.Text + "," + comboBoxCSugPreg.Text + "," + comboBoxCMapa.Text + "," + textBoxCNumPreg.Text + "," + textBoxCLimTiempo.Text;
+                            string mensaje = "41/" + formularios.Count + "/" + nombreUsuario + "/" + invitado + 
+                            "/" + comboBoxCNivel.Text + "," + comboBoxCSugPreg.Text + "," + comboBoxCMapa.Text + 
+                            "," + textBoxCNumPreg.Text + "," + textBoxCLimTiempo.Text;
                             // Enviamos al servidor el nombre tecleado
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                             server.Send(msg);
 
-                            ThreadStart ts = delegate { PonerEnMarchaForm(); };
+                        nivel = comboBoxCNivel.Text;
+                        sugerirPreguntas = comboBoxCSugPreg.Text;
+                        mapa = comboBoxCMapa.Text;
+                        limitePreguntas = textBoxCNumPreg.Text;
+                        limiteTiempo = textBoxCLimTiempo.Text;
+
+                        ThreadStart ts = delegate { PonerEnMarchaForm(); };
                             Thread T = new Thread(ts);
                             T.Start();
 
