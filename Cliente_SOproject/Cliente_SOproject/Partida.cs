@@ -182,30 +182,6 @@ namespace Cliente_SOproject
         //////////
         //MOVIMIENTOS
         //////////
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-        public void MoverCarta(string mensaje)
-        {
-
-        }
         static Bitmap SetAlpha(Bitmap bmpIn, int alpha)
             {
                 Bitmap bmpOut = new Bitmap(bmpIn.Width, bmpIn.Height);
