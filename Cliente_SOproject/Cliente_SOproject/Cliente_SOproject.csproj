@@ -76,6 +76,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Fuentes\VT323-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -293,5 +296,78 @@
   <ItemGroup>
     <None Include="Resources\pais_0.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clase_23.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

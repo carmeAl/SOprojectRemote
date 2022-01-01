@@ -12,11 +12,16 @@ using System.Drawing.Drawing2D;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Drawing;
+//using Xamarin.Forms;
+
 
 namespace Cliente_SOproject
 {
     public partial class Menu : Form
     {
+        
+
         public int id_usuario;
         public string nombreUsuario;
         public string creador_partida;
@@ -42,6 +47,7 @@ namespace Cliente_SOproject
 
         }
 
+        
 
 
 
@@ -55,6 +61,11 @@ namespace Cliente_SOproject
         delegate void DelegadoParaEscribirLabel(string msn, Label nameLabel);
         delegate void DelegadoPartida(Partida partida);
         delegate void DelegadoIniciarPartida();
+
+
+
+        //public Font(System.Drawing.FontFamily family, float emSize, System.Drawing.FontStyle style, System.Drawing.GraphicsUnit unit, byte gdiCharSet);
+
 
         public void PonDataGridView(string mensaje)
         {
@@ -323,7 +334,7 @@ namespace Cliente_SOproject
                             + "Sugerir preguntas? " + trozos2[1] + "\n"
                             + "Mapa: " + trozos2[2] + "\n"
                             + "Límite preguntas: " + trozos2[3] + "\n"
-                            + "Límite tiempo turno: " + trozos2[4] + "segundos" + "\n" + "\n"
+                            + "Límite tiempo turno: " + trozos2[4] + " segundos" + "\n" + "\n"
                             + "¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
 
                         nivel = trozos2[0];
@@ -351,40 +362,42 @@ namespace Cliente_SOproject
                     case 42:
                         if (trozos1[4] == "Si")
                         {
+
                             id_partida = Convert.ToInt32(trozos1[5]);
-                        }
+                            creador_partida = trozos1[2];
 
-                        creador_partida = trozos1[2];
-
-                        if (creador_partida == nombreUsuario)
-                        {
-                            if (trozos1[4] == "Si")
+                            if (creador_partida == nombreUsuario)
                             {
                                 formularios[Nform].PasarListaRandom(trozos1[6]);
+                                formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
+
                             }
-                            formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
+                            else
+                            {
+                                ThreadStart ts = delegate { PonerEnMarchaForm(); };
+                                Thread T = new Thread(ts);
+                                T.Start();
+                                MessageBox.Show("No se porque va si pongo esto");
 
+                                formularios[Nform].PasarListaRandom(trozos1[6]);
+                                formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
 
+                            }
                         }
-                        else if (trozos1[4] == "Si")
-                        {
-                            ThreadStart ts = delegate { IniciarPartida(); };
-                            Thread T = new Thread(ts);
-                            T.Start();
-                            //formularios[formularios.Count].PasarListaRandom(trozos1[6]);
-                        }
-
-
-
+                        
+                        //else if (trozos1[4] == "Si")
+                        //{
+                            
+                        //}
 
                         break;
                     case 44:
                         mensaje = trozos1[3];
-                        formularios[Nform - 1].EnviarTexto(mensaje, contrincante);
+                        formularios[Nform].EnviarTexto(mensaje, contrincante);
 
                         break;
                     case 51:
-                        formularios[Nform - 1].MoverCarta(mensaje);
+                        //formularios[Nform - 1].MoverCarta(mensaje);
                         break;
                 }
             }
@@ -739,7 +752,27 @@ namespace Cliente_SOproject
             }
         }
 
+        private void ConstructFontWithString(PaintEventArgs e)
+        {
+            Font font1 = new Font("Arial", 20);
+            e.Graphics.DrawString("Arial Font", font1, Brushes.Red, new PointF(10, 10));
+        }
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            
 
+           
+        }
+
+        private void textBoxLNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxCLimTiempo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
