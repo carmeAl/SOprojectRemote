@@ -21,8 +21,9 @@ namespace Cliente_SOproject
         int Nform;
         Socket server;
         string nombreUsuario;
-        int id_partida;
+        public int id_partida;
         string rival;
+        public string nombreInvitado;
         string texto;
         int girar;
         int bloqueo=0;
@@ -43,7 +44,7 @@ namespace Cliente_SOproject
         delegate void DelegadoParaEscribir(string rival, string texto);
         delegate void DelegadoParaEscribirLabel(string msn, Label nameLabel);
         delegate void DelegadoPicureBox(PictureBox namePictureBox);
-        delegate void DelegadoParaCambiarTab(TabPage nameTab);
+        delegate void DelegadoParaCambiarTab();
         delegate void DelegadoParaEscribir2(string nombre);
 
         public Partida(int Nform, Socket server, string nombreUsuario,
@@ -85,13 +86,14 @@ namespace Cliente_SOproject
             return (Bitmap)rm.GetObject(imageName);
 
         }
-        public void CambiarTab(TabPage nameTab)
+        public void CambiarTab()
         {
 
-
-            tabControlPartida.SelectedTab = nameTab;
+            comboBoxPTChat.Text = "Extienda la lista para seleccionar pregunta";
+            tabControlPartida.SelectedTab = tabPageTablero;
             if (mapa == "ANIMALES")
             {
+                
                 for (int i = 1; i < 13; i++)
                 {
                     ListaImagenes[i - 1] = "animal_" + ListaRandom[i];
@@ -108,6 +110,19 @@ namespace Cliente_SOproject
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
+                if (sugerirPreguntas == "SI")
+                {
+                    comboBoxPTChat.Visible = true;
+                    
+                    comboBoxPTChat.Items.Add("¿El animal es mamifero?");
+                    comboBoxPTChat.Items.Add("¿El animal es carnivoro?");
+                    comboBoxPTChat.Items.Add("¿El animal es vertebrado?");
+                    comboBoxPTChat.Items.Add("¿El animal es acuatico?");
+                    comboBoxPTChat.Items.Add("¿El animal es domestico?");
+                    comboBoxPTChat.Items.Add("¿El animal es Oviparo?");
+                    comboBoxPTChat.Items.Add("¿El animal es de sangre fria?");
+                    comboBoxPTChat.Items.Add("El animal es nomada?");
+                }
             }
             else if (mapa == "COMPANEROS CLASE")
             {
@@ -127,6 +142,18 @@ namespace Cliente_SOproject
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
+                if (sugerirPreguntas == "SI")
+                {
+                    comboBoxPTChat.Visible = true;
+                    comboBoxPTChat.Items.Add("¿El nombre de la persona empieza por la letra A?");
+                    comboBoxPTChat.Items.Add("¿La persona es rubia?");
+                    comboBoxPTChat.Items.Add("¿La persona lleva gafas?");
+                    comboBoxPTChat.Items.Add("¿La persona es una chica?");
+                    comboBoxPTChat.Items.Add("¿La persona tiene barba?");
+                    comboBoxPTChat.Items.Add("¿La persona tiene el pelo largo?");
+                    comboBoxPTChat.Items.Add("¿La persona tiene la piel morena?");
+                    comboBoxPTChat.Items.Add("¿La persona tiene pircing/s?");
+                }
             }
             else
             {
@@ -146,11 +173,19 @@ namespace Cliente_SOproject
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
+                if (sugerirPreguntas == "SI")
+                {
+                    comboBoxPTChat.Visible = true;
+                    comboBoxPTChat.Items.Add("¿El pais esta en Europa?");
+                    comboBoxPTChat.Items.Add("¿En el pais se habla Español?");
+                    comboBoxPTChat.Items.Add("¿El pais es frio?");
+                    comboBoxPTChat.Items.Add("¿El pais es desertico?");
+                    comboBoxPTChat.Items.Add("¿El pais se rige por una monarquia parlamntaria?");
+                    comboBoxPTChat.Items.Add("¿La moneda del pais es el Euro?");
+                    comboBoxPTChat.Items.Add("¿Es un pais subdesarrollado?");
+                    comboBoxPTChat.Items.Add("¿La bandera del pais contiene el color rojo?");
+                }
             }
-        }
-        public void CambiarTabDesdeMenu()
-        {
-            tabControlPartida.SelectedTab = tabPageTablero;
         }
 
 
@@ -165,7 +200,7 @@ namespace Cliente_SOproject
         {
             if (SiNo == "Si")
             {
-                tabControlPartida.Invoke(new DelegadoParaCambiarTab(CambiarTab), new object[] { tabPageTablero });
+                tabControlPartida.Invoke(new DelegadoParaCambiarTab(CambiarTab), new object[] {});
             }
             else
             {
@@ -187,19 +222,27 @@ namespace Cliente_SOproject
         }
         public void PonMSN(string rival, string mensaje)
         {
-            conversacion.Items.Add(rival + ": " + mensaje);
+            conversacion.Items.Insert(0,rival + ": " + mensaje);
         }
-
         private void button_enviar_Click(object sender, EventArgs e)
         {
-            conversacion.Items.Add(nombreUsuario + ": " + textBox_con.Text);
-            // Envias el mensaje
-            string mensaje = "44/" + id_partida + "/" + Nform + "/" + nombreUsuario + "/" + textBox_con.Text;
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            textBox_con.Clear();
+            if (textBox_con.Text != "")
+            {
+                PonMSN(nombreUsuario, textBox_con.Text);
+                // Envias el mensaje
+                string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + textBox_con.Text;
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                textBox_con.Clear();
+            }
+            else
+            {
+                //Poner aqui que aparezca arriba un label que diga que escriba algo
+            }
         }
+
+
 
 
 
@@ -565,21 +608,8 @@ namespace Cliente_SOproject
             }
         }
 
-        private void button_enviar_Click_1(object sender, EventArgs e)
-        {
-            conversacion.Items.Add(nombreUsuario + ": " + textBox_con.Text);
-            // Envias el mensaje
-            string mensaje = "44/" + id_partida + "/" + Nform + "/" + nombreUsuario + "/" + textBox_con.Text;
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            textBox_con.Clear();
-        }
+        
 
-        private void tabPageTablero_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Partida_Load(object sender, EventArgs e)
         {
@@ -591,6 +621,13 @@ namespace Cliente_SOproject
         {
             bloqueo = 0;
         }
+
+        private void comboBoxPTChat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox_con.Text = comboBoxPTChat.Text;
+        }
+
+        
     }
 }
 

@@ -12,7 +12,6 @@ using System.Drawing.Drawing2D;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.Drawing;
 //using Xamarin.Forms;
 
 
@@ -138,13 +137,16 @@ namespace Cliente_SOproject
         {
             nameLabel.ForeColor = color;
         }
-        public void IniciarPartida()
+        public void IniciarPartida(string lista,string nombreInv, string IdPartida)
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
                 nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo);
             formularios.Add(FormPartida);
-            FormPartida.CambiarTabDesdeMenu();
+            FormPartida.PasarListaRandom(lista);
+            FormPartida.CambiarTab();
+            FormPartida.nombreInvitado = nombreInv;
+            FormPartida.id_partida = Convert.ToInt32(IdPartida);
             FormPartida.ShowDialog();
         }
         public void PonerEnMarchaForm()
@@ -330,18 +332,16 @@ namespace Cliente_SOproject
                         string[] trozos2 = trozos1[3].Split(',');
                         //id_partida = Convert.ToInt32(trozos1[4]);
                         DialogResult r = MessageBox.Show(nombre + " te ha invitado a un juego.\n " + "\n"
-                            + "Nivel: " + trozos2[0] + "\n"
-                            + "Sugerir preguntas? " + trozos2[1] + "\n"
-                            + "Mapa: " + trozos2[2] + "\n"
-                            + "Límite preguntas: " + trozos2[3] + "\n"
-                            + "Límite tiempo turno: " + trozos2[4] + " segundos" + "\n" + "\n"
+                            + "Mapa: " + trozos2[1] + "\n"
+                            + "Sugerir preguntas? " + trozos2[0] + "\n"
+                            + "Límite preguntas: " + trozos2[2] + "\n"
+                            + "Límite tiempo turno: " + trozos2[3] + " segundos" + "\n" + "\n"
                             + "¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
 
-                        nivel = trozos2[0];
-                        sugerirPreguntas = trozos2[1];
-                        mapa = trozos2[2];
-                        limitePreguntas = trozos2[3];
-                        limiteTiempo = trozos2[4];
+                        sugerirPreguntas = trozos2[0];
+                        mapa = trozos2[1];
+                        limitePreguntas = trozos2[2];
+                        limiteTiempo = trozos2[3];
 
                         if (r == DialogResult.Yes)
                         {
@@ -360,26 +360,34 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         break;
                     case 42:
+                        creador_partida = trozos1[2];
                         if (trozos1[4] == "Si")
                         {
 
                             id_partida = Convert.ToInt32(trozos1[5]);
-                            creador_partida = trozos1[2];
 
                             if (creador_partida == nombreUsuario)
                             {
                                 formularios[Nform].PasarListaRandom(trozos1[6]);
                                 formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
+                                formularios[Nform].id_partida = id_partida;
 
                             }
                             else
                             {
-                                ThreadStart ts = delegate { PonerEnMarchaForm(); };
+                                ThreadStart ts = delegate { IniciarPartida(trozos1[6], trozos1[3], trozos1[5]); };
                                 Thread T = new Thread(ts);
                                 T.Start();
-                                MessageBox.Show("No se porque va si pongo esto");
+                                //MessageBox.Show("No se porque va si pongo esto");
+                                
+                                
 
-                                formularios[Nform].PasarListaRandom(trozos1[6]);
+                            }
+                        }
+                        else
+                        {
+                            if (creador_partida == nombreUsuario)
+                            {
                                 formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
 
                             }
@@ -393,7 +401,23 @@ namespace Cliente_SOproject
                         break;
                     case 44:
                         mensaje = trozos1[3];
-                        formularios[Nform].EnviarTexto(mensaje, contrincante);
+                        int IdPartida = Convert.ToInt32(trozos1[1]);
+                        contrincante = trozos1[2];
+                        int i = 0;
+                        int encontrado = 0;
+                        while((i<formularios.Count)&&(encontrado == 0))
+                        {
+                            if(formularios[i].id_partida==IdPartida)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                            
+                        }
+                        formularios[i].EnviarTexto(mensaje, contrincante);
 
                         break;
                     case 51:
@@ -549,13 +573,12 @@ namespace Cliente_SOproject
                     {
                         labelCError.Visible = false;
                         string mensaje = "41/" + formularios.Count + "/" + nombreUsuario + "/" + invitado +
-                        "/" + comboBoxCNivel.Text + "," + comboBoxCSugPreg.Text + "," + comboBoxCMapa.Text +
+                        "/" + comboBoxCSugPreg.Text + "," + comboBoxCMapa.Text +
                         "," + textBoxCNumPreg.Text + "," + textBoxCLimTiempo.Text;
                         // Enviamos al servidor el nombre tecleado
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
 
-                        nivel = comboBoxCNivel.Text;
                         sugerirPreguntas = comboBoxCSugPreg.Text;
                         mapa = comboBoxCMapa.Text;
                         limitePreguntas = textBoxCNumPreg.Text;
