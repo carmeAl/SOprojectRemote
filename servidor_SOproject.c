@@ -91,12 +91,12 @@ void RandomizeV(int n,int v[12],char listafrase[512]){
 	for( i = 0 ; i < n ; i++ ) 
 	{
 		k=0;
-		aux=rand() % 26;
+		aux=rand() % 24;
 		while( k < n){
 			
 			if(v[k]==aux)
 			{
-				aux=rand() % 26;
+				aux=rand() % 24;
 				k=0;
 			}
 			else{
@@ -609,9 +609,9 @@ void EnviarIDPartida(char *notificacion,char *nombreCreador,char *nombreInvitado
 /*	strcat(notificacion,"/");*/
 	sprintf(notificacion,"%s/%d",notificacion,IDpartida);
 	
-	int v[16];
-	int n=16;
-	char fr[512];
+	int v[12];
+	int n=12;
+	char fr[512];//cambiar a 12
 	RandomizeV(n,v,fr);
 	sprintf(notificacion,"%s/%s",notificacion,fr);
 	ListaSockets[0]=SocketNomJug(nombreCreador);
@@ -650,22 +650,23 @@ int PonerPartidaATablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
 void EliminarPartdiaDeTablaPartidasActivas(int IDPartida){
 	TablaPartidasActivas[IDPartida].oc=0;
 }
-void EnviarMSN(char * notificacion,char * idP,char *nombre,char *msn,int ListaSockets[100],char *c,int Nform){
+void EnviarMSN(char * notificacion,int idP,char *nombre,char *msn,int ListaSockets[100],char *c,int Nform){
 	strcpy(notificacion,"44/");
 	int contador=0;
-	int IDPartida=atoi(idP);
+	int IDPartida=idP;
 	sprintf(notificacion,"%s%d/",notificacion,Nform);
-	if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre1)==0){
-		sprintf(notificacion,"%s%d/%s",notificacion,IDPartida,msn);
-		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre2);
+	printf("%d+%d hola\n",IDPartida,Nform);
+	if(strcmp(nombre,TablaPartidasActivas[ Nform].nombre1)==0){
+		sprintf(notificacion,"%s%d/%s",notificacion, Nform,msn);
+		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[ Nform].nombre2);
 		contador++;
-		printf("44/Se ha enviado a %s el msn: %s\n",TablaPartidasActivas[IDPartida].nombre2,notificacion);
+		printf("44/Se ha enviado a %s el msn: %s\n",TablaPartidasActivas[ Nform].nombre2,notificacion);
 	}
-	else if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre2)==0){
-		sprintf(notificacion,"%s%d/%s",notificacion,IDPartida,msn);
-		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[IDPartida].nombre1);
+	else if(strcmp(nombre,TablaPartidasActivas[ Nform].nombre2)==0){
+		sprintf(notificacion,"%s%d/%s",notificacion, Nform,msn);
+		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[ Nform].nombre1);
 		contador++;
-		printf("44/Se ha enviado a %s el msn: %s\n",TablaPartidasActivas[IDPartida].nombre1,notificacion);
+		printf("44/Se ha enviado a %s el msn: %s\n",TablaPartidasActivas[ Nform].nombre1,notificacion);
 	}
 	else{
 		printf("44/No se ha podido enviar el MSN\n");
@@ -738,6 +739,8 @@ void *AtenderCliente (void *socket){
 		char contador[3];
 		
 		
+		p = strtok( NULL, "/");
+		int Nform=atoi(p);
 		p = strtok( NULL, "/");
 		if(p!=NULL){
 			strcpy (nombre, p);
@@ -872,9 +875,10 @@ void *AtenderCliente (void *socket){
 		else if (codigo ==42){ //Cliente envia "42/NumForm/NombreJugadorQueHaCreadoPartida/JugadorQueHaAceptadoORechazado/SIoNO"
 			//Servidor envia "42/NumForm/nombreCreador/nombreInvitado/SIoNO/IDpartida/lista,Random"
 			strcpy(notificacion,"42/");
-			strcat(notificacion,nombre);
+			strcat(notificacion,Nform);
 			strcat(notificacion,"/");
-			char *nombre1=strtok( NULL, "/");
+			char *nombre1;
+			strcpy(nombre1,nombre);
 			char *nombreInvitado=strtok( NULL, "/");
 			char *SIoNO=strtok( NULL, "/");
 			strcat(notificacion,nombre1);
@@ -885,7 +889,7 @@ void *AtenderCliente (void *socket){
 			
 			if (strcmp(SIoNO,"Si")==0){
 				int IDPartida=PonerPartidaATablaPartidasActivas(nombre,nombreInvitado);
-				EnviarIDPartida(notificacion,nombre1,nombreInvitado,IDPartida,ListaSockets,contador,nombre);	
+				EnviarIDPartida(notificacion,nombre1,nombreInvitado,IDPartida,ListaSockets,contador,Nform);	
 			}
 			else{
 				int sock=SocketNomJug(nombre1);
@@ -898,12 +902,16 @@ void *AtenderCliente (void *socket){
 			//Servidor envia "44/IDPartida/Msn
 			p = strtok( NULL, "/");
 			int Nform=atoi(p);
-			int IDPartida=atoi(nombre);
-			char *NombreQuienEnviaMsn=strtok(NULL,"/");
-			char *Msn=strtok(NULL,"/");
+			int IDPartida=atoi(Nform);
+			p=strtok(NULL,"/");
+			char *NombreQuienEnviaMsn;
+			strcpy(NombreQuienEnviaMsn,p);
+			char *Msn;
+			p=strtok(NULL,"/");
+			strcpy(Msn,p);
 			char idP[10];
 			sprintf(idP,"%d",IDPartida);
-			EnviarMSN(notificacion,idP,NombreQuienEnviaMsn,Msn,ListaSockets,contador,Nform);
+			EnviarMSN(notificacion,IDPartida,NombreQuienEnviaMsn,Msn,ListaSockets,contador,Nform);
 		}
 		else if (codigo ==45){ //Cliente envia "45/IDPartida/NombreQuienEnviaCancelacion"
 			//Servidor envia "45/IDPartida"
