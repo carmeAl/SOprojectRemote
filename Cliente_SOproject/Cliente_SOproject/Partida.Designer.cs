@@ -58,9 +58,15 @@ namespace Cliente_SOproject
             this.conversacion = new System.Windows.Forms.ListBox();
             this.pictureBoxImage2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label_tiempo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timerFlip = new System.Windows.Forms.Timer(this.components);
             this.Stop = new System.Windows.Forms.Timer(this.components);
+            this.timerTurno = new System.Windows.Forms.Timer(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.button_Si = new System.Windows.Forms.Button();
+            this.button_No = new System.Windows.Forms.Button();
+            this.button_Nose = new System.Windows.Forms.Button();
             this.tabControlPartida.SuspendLayout();
             this.tabPageEsperando.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPEGif)).BeginInit();
@@ -92,7 +98,7 @@ namespace Cliente_SOproject
             this.tabControlPartida.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlPartida.Name = "tabControlPartida";
             this.tabControlPartida.SelectedIndex = 0;
-            this.tabControlPartida.Size = new System.Drawing.Size(600, 292);
+            this.tabControlPartida.Size = new System.Drawing.Size(608, 304);
             this.tabControlPartida.TabIndex = 1;
             // 
             // tabPageEsperando
@@ -126,10 +132,10 @@ namespace Cliente_SOproject
             this.labelPE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(7)))), ((int)(((byte)(173)))));
             this.labelPE.Cursor = System.Windows.Forms.Cursors.Default;
             this.labelPE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelPE.Font = new System.Drawing.Font("VT323", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPE.Location = new System.Drawing.Point(449, 75);
+            this.labelPE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPE.Location = new System.Drawing.Point(409, 80);
             this.labelPE.Name = "labelPE";
-            this.labelPE.Size = new System.Drawing.Size(80, 21);
+            this.labelPE.Size = new System.Drawing.Size(124, 20);
             this.labelPE.TabIndex = 20;
             this.labelPE.Text = "ESPERANDO ";
             // 
@@ -175,7 +181,7 @@ namespace Cliente_SOproject
             this.tabPageTablero.Location = new System.Drawing.Point(4, 22);
             this.tabPageTablero.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageTablero.Name = "tabPageTablero";
-            this.tabPageTablero.Size = new System.Drawing.Size(592, 266);
+            this.tabPageTablero.Size = new System.Drawing.Size(600, 278);
             this.tabPageTablero.TabIndex = 1;
             this.tabPageTablero.Text = "Tablero";
             // 
@@ -320,17 +326,20 @@ namespace Cliente_SOproject
             // 
             // groupBoxChat
             // 
+            this.groupBoxChat.Controls.Add(this.button_Nose);
+            this.groupBoxChat.Controls.Add(this.button_No);
+            this.groupBoxChat.Controls.Add(this.button_Si);
             this.groupBoxChat.Controls.Add(this.comboBoxPTChat);
             this.groupBoxChat.Controls.Add(this.button_enviar);
             this.groupBoxChat.Controls.Add(this.textBox_con);
             this.groupBoxChat.Controls.Add(this.conversacion);
-            this.groupBoxChat.Font = new System.Drawing.Font("VT323", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxChat.ForeColor = System.Drawing.Color.White;
             this.groupBoxChat.Location = new System.Drawing.Point(335, 85);
             this.groupBoxChat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxChat.Name = "groupBoxChat";
             this.groupBoxChat.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBoxChat.Size = new System.Drawing.Size(253, 179);
+            this.groupBoxChat.Size = new System.Drawing.Size(253, 191);
             this.groupBoxChat.TabIndex = 14;
             this.groupBoxChat.TabStop = false;
             this.groupBoxChat.Text = "Chat";
@@ -340,7 +349,7 @@ namespace Cliente_SOproject
             this.comboBoxPTChat.FormattingEnabled = true;
             this.comboBoxPTChat.Location = new System.Drawing.Point(6, 16);
             this.comboBoxPTChat.Name = "comboBoxPTChat";
-            this.comboBoxPTChat.Size = new System.Drawing.Size(238, 20);
+            this.comboBoxPTChat.Size = new System.Drawing.Size(238, 21);
             this.comboBoxPTChat.TabIndex = 3;
             this.comboBoxPTChat.Visible = false;
             this.comboBoxPTChat.SelectedIndexChanged += new System.EventHandler(this.comboBoxPTChat_SelectedIndexChanged);
@@ -352,7 +361,7 @@ namespace Cliente_SOproject
             this.button_enviar.Location = new System.Drawing.Point(47, 155);
             this.button_enviar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_enviar.Name = "button_enviar";
-            this.button_enviar.Size = new System.Drawing.Size(168, 17);
+            this.button_enviar.Size = new System.Drawing.Size(168, 21);
             this.button_enviar.TabIndex = 2;
             this.button_enviar.Text = "Enviar";
             this.button_enviar.UseVisualStyleBackColor = true;
@@ -363,18 +372,17 @@ namespace Cliente_SOproject
             this.textBox_con.Location = new System.Drawing.Point(7, 134);
             this.textBox_con.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_con.Name = "textBox_con";
-            this.textBox_con.Size = new System.Drawing.Size(237, 18);
+            this.textBox_con.Size = new System.Drawing.Size(237, 19);
             this.textBox_con.TabIndex = 1;
             // 
             // conversacion
             // 
             this.conversacion.Enabled = false;
             this.conversacion.FormattingEnabled = true;
-            this.conversacion.ItemHeight = 12;
             this.conversacion.Location = new System.Drawing.Point(6, 42);
             this.conversacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.conversacion.Name = "conversacion";
-            this.conversacion.Size = new System.Drawing.Size(238, 88);
+            this.conversacion.Size = new System.Drawing.Size(238, 82);
             this.conversacion.TabIndex = 0;
             // 
             // pictureBoxImage2
@@ -390,12 +398,23 @@ namespace Cliente_SOproject
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label_tiempo);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(600, 8);
+            this.panel1.Size = new System.Drawing.Size(608, 10);
             this.panel1.TabIndex = 2;
+            // 
+            // label_tiempo
+            // 
+            this.label_tiempo.AutoSize = true;
+            this.label_tiempo.Location = new System.Drawing.Point(522, 15);
+            this.label_tiempo.Name = "label_tiempo";
+            this.label_tiempo.Size = new System.Drawing.Size(66, 13);
+            this.label_tiempo.TabIndex = 1;
+            this.label_tiempo.Text = "label_tiempo";
             // 
             // label2
             // 
@@ -417,11 +436,59 @@ namespace Cliente_SOproject
             this.Stop.Interval = 2000;
             this.Stop.Tick += new System.EventHandler(this.Stop_Tick);
             // 
+            // timerTurno
+            // 
+            this.timerTurno.Interval = 1000;
+            this.timerTurno.Tick += new System.EventHandler(this.timerTurno_Tick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(450, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 16);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "TIEMPO:";
+            // 
+            // button_Si
+            // 
+            this.button_Si.ForeColor = System.Drawing.Color.Black;
+            this.button_Si.Location = new System.Drawing.Point(30, 132);
+            this.button_Si.Name = "button_Si";
+            this.button_Si.Size = new System.Drawing.Size(75, 23);
+            this.button_Si.TabIndex = 4;
+            this.button_Si.Text = "SI";
+            this.button_Si.UseVisualStyleBackColor = true;
+            this.button_Si.Click += new System.EventHandler(this.button_Si_Click);
+            // 
+            // button_No
+            // 
+            this.button_No.ForeColor = System.Drawing.Color.Black;
+            this.button_No.Location = new System.Drawing.Point(141, 132);
+            this.button_No.Name = "button_No";
+            this.button_No.Size = new System.Drawing.Size(75, 23);
+            this.button_No.TabIndex = 5;
+            this.button_No.Text = "NO";
+            this.button_No.UseVisualStyleBackColor = true;
+            this.button_No.Click += new System.EventHandler(this.button_No_Click);
+            // 
+            // button_Nose
+            // 
+            this.button_Nose.ForeColor = System.Drawing.Color.Black;
+            this.button_Nose.Location = new System.Drawing.Point(88, 155);
+            this.button_Nose.Name = "button_Nose";
+            this.button_Nose.Size = new System.Drawing.Size(75, 23);
+            this.button_Nose.TabIndex = 6;
+            this.button_Nose.Text = "NO SE";
+            this.button_Nose.UseVisualStyleBackColor = true;
+            this.button_Nose.Click += new System.EventHandler(this.button_Nose_Click);
+            // 
             // Partida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 292);
+            this.ClientSize = new System.Drawing.Size(608, 304);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControlPartida);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -489,5 +556,11 @@ namespace Cliente_SOproject
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Timer Stop;
         private System.Windows.Forms.ComboBox comboBoxPTChat;
+        private System.Windows.Forms.Label label_tiempo;
+        private System.Windows.Forms.Timer timerTurno;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button_Nose;
+        private System.Windows.Forms.Button button_No;
+        private System.Windows.Forms.Button button_Si;
     }
 }

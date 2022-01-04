@@ -28,12 +28,16 @@ namespace Cliente_SOproject
         int girar;
         int bloqueo=0;
         int pesao;
+        int conteo = 0;
+        bool turno;
+        bool tiempo = false;
         //Parametros partida
         string nivel;
         string sugerirPreguntas;
         string mapa;
         string limitePreguntas;
         string limiteTiempo;
+        string creador_partida;
         string[] ListaRandom;
         bool[] UPCCarta2 = { false,false,false,false,false,false,false,false,false,
         false,false,false};
@@ -49,7 +53,7 @@ namespace Cliente_SOproject
 
         public Partida(int Nform, Socket server, string nombreUsuario,
             int id_partida, string nivel, string sugerirPreguntas, string mapa,
-            string limitePreguntas, string limiteTiempo)
+            string limitePreguntas, string limiteTiempo, string creador_partida)
         {
             InitializeComponent();
             this.Nform = Nform;
@@ -61,6 +65,7 @@ namespace Cliente_SOproject
             this.mapa = mapa;
             this.limitePreguntas = limitePreguntas;
             this.limiteTiempo = limiteTiempo;
+            this.creador_partida = creador_partida;
             this.girar = 0;
 
         }
@@ -201,6 +206,7 @@ namespace Cliente_SOproject
             if (SiNo == "Si")
             {
                 tabControlPartida.Invoke(new DelegadoParaCambiarTab(CambiarTab), new object[] {});
+                timerTurno.Enabled = true;
             }
             else
             {
@@ -235,6 +241,8 @@ namespace Cliente_SOproject
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
                 textBox_con.Clear();
+                button_enviar.Visible = false;
+                textBox_con.Visible = false;
             }
             else
             {
@@ -615,6 +623,26 @@ namespace Cliente_SOproject
         {
             textBox1.Invoke(new DelegadoParaEscribir2(EscribirNombre), new object[] { nombreUsuario });
             Stop.Start();
+            conteo = Convert.ToInt32(limiteTiempo);
+            timerTurno.Enabled = true;
+            if (creador_partida == nombreUsuario)
+            {
+                turno = true;
+                textBox_con.Visible = true;
+                button_enviar.Visible = true;
+                button_Si.Visible = false;
+                button_No.Visible = false;
+                button_Nose.Visible = false;
+            }
+            else
+            {
+                turno = false;
+                textBox_con.Visible = false;
+                button_enviar.Visible = false;
+                button_Si.Visible = true;
+                button_No.Visible = true;
+                button_Nose.Visible = true;
+            }
         }
 
         private void Stop_Tick(object sender, EventArgs e)
@@ -627,7 +655,66 @@ namespace Cliente_SOproject
             textBox_con.Text = comboBoxPTChat.Text;
         }
 
-        
+        private void timerTurno_Tick(object sender, EventArgs e)
+        {
+            conteo = conteo - 1;
+            label_tiempo.Text = conteo.ToString();
+            if (conteo == 0)
+            {
+                conteo = Convert.ToInt32(limiteTiempo);
+                tiempo = true;
+            }
+            else if (conteo <= 5)
+            {
+                label_tiempo.ForeColor = Color.Red;
+            }
+            else
+            {
+                label_tiempo.ForeColor = Color.Black;
+            }
+        }
+
+        private void button_Si_Click(object sender, EventArgs e)
+        {
+            PonMSN(nombreUsuario, "Si");
+            // Envias el mensaje
+            string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si";
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            textBox_con.Clear();
+            button_Si.Visible = false;
+            button_No.Visible = false;
+            button_Nose.Visible = false;
+        }
+
+        private void button_No_Click(object sender, EventArgs e)
+        {
+            PonMSN(nombreUsuario, "No");
+            // Envias el mensaje
+            string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No";
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            textBox_con.Clear();
+            button_Si.Visible = false;
+            button_No.Visible = false;
+            button_Nose.Visible = false;
+        }
+
+        private void button_Nose_Click(object sender, EventArgs e)
+        {
+            PonMSN(nombreUsuario, "No se");
+            // Envias el mensaje
+            string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No se";
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            textBox_con.Clear();
+            button_Si.Visible = false;
+            button_No.Visible = false;
+            button_Nose.Visible = false;
+        }
     }
 }
 

@@ -45,10 +45,12 @@ namespace Cliente_SOproject
             tabControl1.SelectedTab = tabPageLogin;
 
         }
-
-        
-
-
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelLUsuarioNoEncontrado.Visible = false;
+            labelRUsuarioError.Visible = false;
+            labelCError.Visible = false;
+        }
 
         //FUNCIONAMIENTO
 
@@ -141,7 +143,7 @@ namespace Cliente_SOproject
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo);
+                nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida);
             formularios.Add(FormPartida);
             FormPartida.PasarListaRandom(lista);
             FormPartida.CambiarTab();
@@ -153,7 +155,7 @@ namespace Cliente_SOproject
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo);
+                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida);
             formularios.Add(FormPartida);
             FormPartida.ShowDialog();
         }
@@ -176,7 +178,6 @@ namespace Cliente_SOproject
             catch (SocketException)
             {
                 //Si hay excepcion imprimimos error y salimos del programa con return 
-                MessageBox.Show("No he podido conectar con el servidor");
                 return;
             }
             //pongo en marcha el thread que atenderà los mensajes del servidor 
@@ -471,6 +472,7 @@ namespace Cliente_SOproject
                 {
                     labelRUsuarioError.Text = "El nombre debe tener mas de un caracter";
                     labelRUsuarioError.Visible = true;
+
                 }
             }
             else
@@ -587,7 +589,7 @@ namespace Cliente_SOproject
                         ThreadStart ts = delegate { PonerEnMarchaForm(); };
                         Thread T = new Thread(ts);
                         T.Start();
-
+                        creador_partida = nombreUsuario;
                     }
 
                 }
@@ -780,22 +782,7 @@ namespace Cliente_SOproject
             Font font1 = new Font("Arial", 20);
             e.Graphics.DrawString("Arial Font", font1, Brushes.Red, new PointF(10, 10));
         }
-        private void Menu_Load(object sender, EventArgs e)
-        {
-            
 
-           
-        }
-
-        private void textBoxLNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxCLimTiempo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 
