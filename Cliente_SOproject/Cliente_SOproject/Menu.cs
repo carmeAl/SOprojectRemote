@@ -443,6 +443,9 @@ namespace Cliente_SOproject
                         }
                         formularios[i].CambiarColorTableroContrincante(num);
                         break;
+                    case 47:
+                        //cambiar de turno
+                        break;
                     case 51:
                         //formularios[Nform - 1].MoverCarta(mensaje);
                         break;

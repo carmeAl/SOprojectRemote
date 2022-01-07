@@ -68,8 +68,6 @@ namespace Cliente_SOproject
 
         }
 
-
-        
         public void EscribirLabel(string msn, Label nameLabel)
         {
             nameLabel.Text = msn;
@@ -224,10 +222,6 @@ namespace Cliente_SOproject
             }
             groupBoxPTTableroContrincante.Text = "Tablero de " + rival;
         }
-
-
-
-
 
         //////////
         //FUNCIONES
@@ -646,7 +640,14 @@ namespace Cliente_SOproject
         int Opacidad;
         int siguiente;
         Image ImageCarta;
-
+        private void EmpezarCronoContrincante()
+        {
+            // Envias el mensaje
+            string mensaje = "46/" + id_partida + "/" + nombreUsuario;
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
 
         private void timerFlip_Tick_1(object sender, EventArgs e)
         {
@@ -979,22 +980,21 @@ namespace Cliente_SOproject
         }
 
         
-
-
         private void Partida_Load(object sender, EventArgs e)
         {
             
             Stop.Start();
             conteo = Convert.ToInt32(limiteTiempo);
-            timerTurno.Enabled = true;
             if (creador_partida == nombreUsuario)
             {
+                EmpezarCronoContrincante();
                 turno = true;
                 textBox_con.Visible = true;
                 button_enviar.Visible = true;
                 button_Si.Visible = false;
                 button_No.Visible = false;
                 button_Nose.Visible = false;
+                timerTurno.Enabled = true;
             }
             else
             {
