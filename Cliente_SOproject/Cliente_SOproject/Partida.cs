@@ -22,7 +22,7 @@ namespace Cliente_SOproject
         Socket server;
         string nombreUsuario;
         public int id_partida;
-        string rival;
+        public string rival;
         public string nombreInvitado;
         string texto;
         int girar;
@@ -32,7 +32,6 @@ namespace Cliente_SOproject
         bool turno;
         bool tiempo = false;
         //Parametros partida
-        string nivel;
         string sugerirPreguntas;
         string mapa;
         string limitePreguntas;
@@ -60,7 +59,6 @@ namespace Cliente_SOproject
             this.server = server;
             this.nombreUsuario = nombreUsuario;
             this.id_partida = id_partida;
-            this.nivel = nivel;
             this.sugerirPreguntas = sugerirPreguntas;
             this.mapa = mapa;
             this.limitePreguntas = limitePreguntas;
@@ -71,10 +69,7 @@ namespace Cliente_SOproject
         }
 
 
-        public void EscribirNombre(string nombre)
-        {
-            textBox1.Text = nombre;
-        }
+        
         public void EscribirLabel(string msn, Label nameLabel)
         {
             nameLabel.Text = msn;
@@ -131,13 +126,13 @@ namespace Cliente_SOproject
                 {
                     comboBoxPTChat.Visible = true;
                     
-                    comboBoxPTChat.Items.Add("¿El animal es mamifero?");
-                    comboBoxPTChat.Items.Add("¿El animal es carnivoro?");
-                    comboBoxPTChat.Items.Add("¿El animal es vertebrado?");
-                    comboBoxPTChat.Items.Add("¿El animal es acuatico?");
-                    comboBoxPTChat.Items.Add("¿El animal es domestico?");
-                    comboBoxPTChat.Items.Add("¿El animal es Oviparo?");
-                    comboBoxPTChat.Items.Add("¿El animal es de sangre fria?");
+                    comboBoxPTChat.Items.Add("El animal es mamifero?");
+                    comboBoxPTChat.Items.Add("El animal es carnivoro?");
+                    comboBoxPTChat.Items.Add("El animal es vertebrado?");
+                    comboBoxPTChat.Items.Add("El animal es acuatico?");
+                    comboBoxPTChat.Items.Add("El animal es domestico?");
+                    comboBoxPTChat.Items.Add("El animal es Oviparo?");
+                    comboBoxPTChat.Items.Add("El animal es de sangre fria?");
                     comboBoxPTChat.Items.Add("El animal es nomada?");
                 }
             }
@@ -174,14 +169,14 @@ namespace Cliente_SOproject
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
-                    comboBoxPTChat.Items.Add("¿El nombre de la persona empieza por la letra A?");
-                    comboBoxPTChat.Items.Add("¿La persona es rubia?");
-                    comboBoxPTChat.Items.Add("¿La persona lleva gafas?");
-                    comboBoxPTChat.Items.Add("¿La persona es una chica?");
-                    comboBoxPTChat.Items.Add("¿La persona tiene barba?");
-                    comboBoxPTChat.Items.Add("¿La persona tiene el pelo largo?");
-                    comboBoxPTChat.Items.Add("¿La persona tiene la piel morena?");
-                    comboBoxPTChat.Items.Add("¿La persona tiene pircing/s?");
+                    comboBoxPTChat.Items.Add("El nombre de la persona empieza por la letra A?");
+                    comboBoxPTChat.Items.Add("La persona es rubia?");
+                    comboBoxPTChat.Items.Add("La persona lleva gafas?");
+                    comboBoxPTChat.Items.Add("La persona es una chica?");
+                    comboBoxPTChat.Items.Add("La persona tiene barba?");
+                    comboBoxPTChat.Items.Add("La persona tiene el pelo largo?");
+                    comboBoxPTChat.Items.Add("La persona tiene la piel morena?");
+                    comboBoxPTChat.Items.Add("La persona tiene pircing/s?");
                 }
             }
             else
@@ -217,16 +212,17 @@ namespace Cliente_SOproject
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
-                    comboBoxPTChat.Items.Add("¿El pais esta en Europa?");
-                    comboBoxPTChat.Items.Add("¿En el pais se habla Español?");
-                    comboBoxPTChat.Items.Add("¿El pais es frio?");
-                    comboBoxPTChat.Items.Add("¿El pais es desertico?");
-                    comboBoxPTChat.Items.Add("¿El pais se rige por una monarquia parlamntaria?");
-                    comboBoxPTChat.Items.Add("¿La moneda del pais es el Euro?");
-                    comboBoxPTChat.Items.Add("¿Es un pais subdesarrollado?");
-                    comboBoxPTChat.Items.Add("¿La bandera del pais contiene el color rojo?");
+                    comboBoxPTChat.Items.Add("El pais esta en Europa?");
+                    comboBoxPTChat.Items.Add("En el pais se habla Español?");
+                    comboBoxPTChat.Items.Add("El pais es frio?");
+                    comboBoxPTChat.Items.Add("El pais es desertico?");
+                    comboBoxPTChat.Items.Add("El pais se rige por una monarquia parlamntaria?");
+                    comboBoxPTChat.Items.Add("La moneda del pais es el Euro?");
+                    comboBoxPTChat.Items.Add("Es un pais subdesarrollado?");
+                    comboBoxPTChat.Items.Add("La bandera del pais contiene el color rojo?");
                 }
             }
+            groupBoxPTTableroContrincante.Text = "Tablero de " + rival;
         }
 
 
@@ -602,6 +598,13 @@ namespace Cliente_SOproject
             }
         }
 
+        internal void CambiarColorTableroContrincante(string num)
+        {
+            string textBoxName = "pictureBox" + num;
+        }
+
+
+
         //////////
         //MOVIMIENTOS
         //////////
@@ -628,6 +631,16 @@ namespace Cliente_SOproject
 
             return bmpOut;
         }
+
+        private void EnviarNumCartaServer(string numeroCarta)
+        {
+            // Envias el mensaje
+            string mensaje = "46/" + id_partida + "/" + nombreUsuario + "/" + numeroCarta;
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+        }
+
         PictureBox CartasName;
         int numCarta;
         int Opacidad;
@@ -646,16 +659,18 @@ namespace Cliente_SOproject
                 else
                 {
 
-                    if (UPCCarta2[numCarta])
+                    if ((UPCCarta2[numCarta]) && (siguiente == 0))
                     {
                         CartasName.Image = Properties.Resources.UPClogo;
                         siguiente = 1;
+                        EnviarNumCartaServer(Convert.ToString(numCarta));
                     }
-                    else if (!UPCCarta2[numCarta])
+                    else if ((!UPCCarta2[numCarta]) && (siguiente == 0))
                     {
                         CartasName.Image = ImageCarta;
                         siguiente = 1;
-                    }
+                    EnviarNumCartaServer(Convert.ToString(numCarta));
+                }
                     CartasName.Image = SetAlpha((Bitmap)CartasName.Image, Opacidad);
                     Opacidad += 100;
                 }
@@ -678,12 +693,14 @@ namespace Cliente_SOproject
                 CartasName = pictureBoxImage1;
                 ImageCarta = GetImageByName(ListaImagenes[numCarta]);
                 timerFlip.Start();
+                
             }
             else
             {
                 pesao = pesao + 1;
 
             }
+
 
         }
 
@@ -966,7 +983,7 @@ namespace Cliente_SOproject
 
         private void Partida_Load(object sender, EventArgs e)
         {
-            textBox1.Invoke(new DelegadoParaEscribir2(EscribirNombre), new object[] { nombreUsuario });
+            
             Stop.Start();
             conteo = Convert.ToInt32(limiteTiempo);
             timerTurno.Enabled = true;

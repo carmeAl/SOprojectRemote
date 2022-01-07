@@ -647,16 +647,12 @@ int PonerPartidaATablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
 void EliminarPartdiaDeTablaPartidasActivas(int IDPartida){
 	TablaPartidasActivas[IDPartida].oc=0;
 }
-void EnviarMSN(char * notificacion,int idP,char *nombre,char *msn,int ListaSockets[100],char *c,int Nform){
-	printf("%d\n",idP);
-	printf("%s\n",nombre);
+void EnviarMSN(char * notificacion,int idP,char *nombre,char *msn,int ListaSockets[100],char *c){
 	int contador=0;
-	printf("%s\n",TablaPartidasActivas[idP].nombre1);
 	sprintf(notificacion,"44/%d/%s/%s",idP,nombre,msn);
 	
 	
 	
-	printf("%s\n",TablaPartidasActivas[idP].nombre2);
 	if(strcmp(nombre,TablaPartidasActivas[idP].nombre1)==0){
 		ListaSockets[0]=SocketNomJug(TablaPartidasActivas[idP].nombre2);
 		contador++;
@@ -905,14 +901,26 @@ void *AtenderCliente (void *socket){
 			char Msn[500];
 			p=strtok(NULL,"/");
 			strcpy(Msn,p);
-			int Nform=atoi(nombre);
-			EnviarMSN(notificacion,IDPartida,NombreQuienEnviaMsn,Msn,ListaSockets,contador,Nform);
+			EnviarMSN(notificacion,IDPartida,NombreQuienEnviaMsn,Msn,ListaSockets,contador);
 		}
 		else if (codigo ==45){ //Cliente envia "45/IDPartida/NombreQuienEnviaCancelacion"
 			//Servidor envia "45/IDPartida"
 			int IDPartida=atoi(nombre);
 			char *NombreQuienEnviaCancelacion=strtok(NULL,"/");
 			EnviarCancelacion(notificacion,IDPartida,NombreQuienEnviaCancelacion,ListaSockets,contador);
+		}
+		else if (codigo ==46){ //Cliente envia "46/IDPartida/NombreQuienGira/NumeroCarta" el que gira la carta
+			//Servidor envia "46/IDPartida/NumeroCarta" al jugador que no ha girado la carta
+			
+			int IDPartida=atoi(p);
+			p=strtok(NULL,"/");
+			char NombreQuienEnviaMsn[20];
+			strcpy(NombreQuienEnviaMsn,p);
+			char Msn[500];
+			p=strtok(NULL,"/");
+			strcpy(Msn,p);
+			EnviarMSN(notificacion,IDPartida,NombreQuienEnviaMsn,Msn,ListaSockets,contador);
+			sprintf(notificacion,"46/%d/%s",IDPartida,Msn);
 		}
 		
 		printf ("Respuesta: %s\n", respuesta);

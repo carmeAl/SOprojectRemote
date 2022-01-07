@@ -139,12 +139,13 @@ namespace Cliente_SOproject
         {
             nameLabel.ForeColor = color;
         }
-        public void IniciarPartida(string lista,string nombreInv, string IdPartida)
+        public void IniciarPartida(string lista,string nombreInv, string IdPartida,string rival)
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
                 nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida);
             formularios.Add(FormPartida);
+            FormPartida.rival = rival;
             FormPartida.PasarListaRandom(lista);
             FormPartida.CambiarTab();
             FormPartida.nombreInvitado = nombreInv;
@@ -370,13 +371,15 @@ namespace Cliente_SOproject
                             if (creador_partida == nombreUsuario)
                             {
                                 formularios[Nform].PasarListaRandom(trozos1[6]);
+                                formularios[Nform].rival = trozos1[3];
                                 formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
                                 formularios[Nform].id_partida = id_partida;
+                                
 
                             }
                             else
                             {
-                                ThreadStart ts = delegate { IniciarPartida(trozos1[6], trozos1[3], trozos1[5]); };
+                                ThreadStart ts = delegate { IniciarPartida(trozos1[6], trozos1[3], trozos1[5],trozos1[2]); };
                                 Thread T = new Thread(ts);
                                 T.Start();
                                 //MessageBox.Show("No se porque va si pongo esto");
@@ -420,6 +423,25 @@ namespace Cliente_SOproject
                         }
                         formularios[i].EnviarTexto(mensaje, contrincante);
 
+                        break;
+                    case 46:
+                        IdPartida = Convert.ToInt32(trozos1[1]);
+                        string num = trozos1[2];
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == IdPartida)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+
+                        }
+                        formularios[i].CambiarColorTableroContrincante(num);
                         break;
                     case 51:
                         //formularios[Nform - 1].MoverCarta(mensaje);
