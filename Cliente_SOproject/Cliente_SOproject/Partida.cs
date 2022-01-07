@@ -104,17 +104,29 @@ namespace Cliente_SOproject
                     ListaImagenes[i - 1] = "animal_" + ListaRandom[i];
                 }
                 pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
+                poner_nombre_fotos(0, label_Imagen1, "animal");
                 pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
+                poner_nombre_fotos(1, label_Imagen2, "animal");
                 pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
+                poner_nombre_fotos(2, label_Imagen3, "animal");
                 pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
+                poner_nombre_fotos(3, label_Imagen4, "animal");
                 pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
+                poner_nombre_fotos(4, label_Imagen5, "animal");
                 pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
+                poner_nombre_fotos(5, label_Imagen6, "animal");
                 pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
+                poner_nombre_fotos(6, label_Imagen7, "animal");
                 pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
+                poner_nombre_fotos(7, label_Imagen8, "animal");
                 pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
+                poner_nombre_fotos(8, label_Imagen9, "animal");
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
+                poner_nombre_fotos(9, label_Imagen10, "animal");
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
+                poner_nombre_fotos(10, label_Imagen11, "animal");
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
+                poner_nombre_fotos(11, label_Imagen12, "animal");
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -136,17 +148,29 @@ namespace Cliente_SOproject
                     ListaImagenes[i - 1] = "clase_" + ListaRandom[i];
                 }
                 pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
+                poner_nombre_fotos(0, label_Imagen1, "clase");
                 pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
+                poner_nombre_fotos(1, label_Imagen2, "clase");
                 pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
+                poner_nombre_fotos(2, label_Imagen3, "clase");
                 pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
+                poner_nombre_fotos(3, label_Imagen4, "clase");
                 pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
+                poner_nombre_fotos(4, label_Imagen5, "clase");
                 pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
+                poner_nombre_fotos(5, label_Imagen6, "clase");
                 pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
+                poner_nombre_fotos(6, label_Imagen7, "clase");
                 pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
+                poner_nombre_fotos(7, label_Imagen8, "clase");
                 pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
+                poner_nombre_fotos(8, label_Imagen9, "clase");
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
+                poner_nombre_fotos(9, label_Imagen10, "clase");
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
+                poner_nombre_fotos(10, label_Imagen11, "clase");
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
+                poner_nombre_fotos(11, label_Imagen12, "clase");
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -167,17 +191,29 @@ namespace Cliente_SOproject
                     ListaImagenes[i - 1] = "pais_" + ListaRandom[i];
                 }
                 pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
+                poner_nombre_fotos(0, label_Imagen1, "pais");
                 pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
+                poner_nombre_fotos(1, label_Imagen2, "pais");
                 pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
+                poner_nombre_fotos(2, label_Imagen3, "pais");
                 pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
+                poner_nombre_fotos(3, label_Imagen4, "pais");
                 pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
+                poner_nombre_fotos(4, label_Imagen5, "pais");
                 pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
+                poner_nombre_fotos(5, label_Imagen6, "pais");
                 pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
+                poner_nombre_fotos(6, label_Imagen7, "pais");
                 pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
+                poner_nombre_fotos(7, label_Imagen8, "pais");
                 pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
+                poner_nombre_fotos(8, label_Imagen9, "pais");
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
+                poner_nombre_fotos(9, label_Imagen10, "pais");
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
+                poner_nombre_fotos(10, label_Imagen11, "pais");
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
+                poner_nombre_fotos(11, label_Imagen12, "pais");
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -249,13 +285,322 @@ namespace Cliente_SOproject
                 //Poner aqui que aparezca arriba un label que diga que escriba algo
             }
         }
-
-
-
-
-
-
-
+        public void poner_nombre_fotos (int i, Label label, string tipo)
+        {
+            if (tipo == "animal")
+            {
+                if (ListaImagenes[i] == "animal_0")
+                {
+                    EscribirLabel("Mariposa", label);
+                }
+                else if (ListaImagenes[i] == "animal_1")
+                {
+                    EscribirLabel("Murcielago", label);
+                }
+                else if (ListaImagenes[i] == "animal_2")
+                {
+                    EscribirLabel("Oso", label);
+                }
+                else if (ListaImagenes[i] == "animal_3")
+                {
+                    EscribirLabel("Camello", label);
+                }
+                else if (ListaImagenes[i] == "animal_4")
+                {
+                    EscribirLabel("Camaleon", label);
+                }
+                else if (ListaImagenes[i] == "animal_5")
+                {
+                    EscribirLabel("Cangrejo", label);
+                }
+                else if (ListaImagenes[i] == "animal_6")
+                {
+                    EscribirLabel("Elefante", label);
+                }
+                else if (ListaImagenes[i] == "animal_7")
+                {
+                    EscribirLabel("Flamenco", label);
+                }
+                else if (ListaImagenes[i] == "animal_8")
+                {
+                    EscribirLabel("Zorro", label);
+                }
+                else if (ListaImagenes[i] == "animal_9")
+                {
+                    EscribirLabel("Rana", label);
+                }
+                else if (ListaImagenes[i] == "animal_10")
+                {
+                    EscribirLabel("Girafa", label);
+                }
+                else if (ListaImagenes[i] == "animal_11")
+                {
+                    EscribirLabel("Erizo", label);
+                }
+                else if (ListaImagenes[i] == "animal_12")
+                {
+                    EscribirLabel("Canguro", label);
+                }
+                else if (ListaImagenes[i] == "animal_13")
+                {
+                    EscribirLabel("Leon", label);
+                }
+                else if (ListaImagenes[i] == "animal_14")
+                {
+                    EscribirLabel("Mono", label);
+                }
+                else if (ListaImagenes[i] == "animal_15")
+                {
+                    EscribirLabel("Raton", label);
+                }
+                else if (ListaImagenes[i] == "animal_16")
+                {
+                    EscribirLabel("Pulpo", label);
+                }
+                else if (ListaImagenes[i] == "animal_17")
+                {
+                    EscribirLabel("Pingüino", label);
+                }
+                else if (ListaImagenes[i] == "animal_18")
+                {
+                    EscribirLabel("Cerdo", label);
+                }
+                else if (ListaImagenes[i] == "animal_19")
+                {
+                    EscribirLabel("Conejo", label);
+                }
+                else if (ListaImagenes[i] == "animal_20")
+                {
+                    EscribirLabel("Rinoceronte", label);
+                }
+                else if (ListaImagenes[i] == "animal_21")
+                {
+                    EscribirLabel("Tiburon", label);
+                }
+                else if (ListaImagenes[i] == "animal_22")
+                {
+                    EscribirLabel("Perezoso", label);
+                }
+                else if (ListaImagenes[i] == "animal_23")
+                {
+                    EscribirLabel("Caracol", label);
+                }
+                else if (ListaImagenes[i] == "animal_24")
+                {
+                    EscribirLabel("Serpiente", label);
+                }
+                else if (ListaImagenes[i] == "animal_25")
+                {
+                    EscribirLabel("Ballena", label);
+                }
+            }
+            if (tipo == "pais")
+            {
+                if (ListaImagenes[i] == "pais_0")
+                {
+                    EscribirLabel("Grecia", label);
+                }
+                else if (ListaImagenes[i] == "pais_1")
+                {
+                    EscribirLabel("Afghanistan", label);
+                }
+                else if (ListaImagenes[i] == "pais_2")
+                {
+                    EscribirLabel("Andorra", label);
+                }
+                else if (ListaImagenes[i] == "pais_3")
+                {
+                    EscribirLabel("Argentina", label);
+                }
+                else if (ListaImagenes[i] == "pais_4")
+                {
+                    EscribirLabel("Australia", label);
+                }
+                else if (ListaImagenes[i] == "pais_5")
+                {
+                    EscribirLabel("Belgica", label);
+                }
+                else if (ListaImagenes[i] == "pais_6")
+                {
+                    EscribirLabel("Brasil", label);
+                }
+                else if (ListaImagenes[i] == "pais_7")
+                {
+                    EscribirLabel("Canada", label);
+                }
+                else if (ListaImagenes[i] == "pais_8")
+                {
+                    EscribirLabel("Chile", label);
+                }
+                else if (ListaImagenes[i] == "pais_9")
+                {
+                    EscribirLabel("China", label);
+                }
+                else if (ListaImagenes[i] == "pais_10")
+                {
+                    EscribirLabel("Costa Rica", label);
+                }
+                else if (ListaImagenes[i] == "pais_11")
+                {
+                    EscribirLabel("Egipcio", label);
+                }
+                else if (ListaImagenes[i] == "pais_12")
+                {
+                    EscribirLabel("Inglaterra", label);
+                }
+                else if (ListaImagenes[i] == "pais_13")
+                {
+                    EscribirLabel("Francia", label);
+                }
+                else if (ListaImagenes[i] == "pais_14")
+                {
+                    EscribirLabel("Alemania", label);
+                }
+                else if (ListaImagenes[i] == "pais_15")
+                {
+                    EscribirLabel("India", label);
+                }
+                else if (ListaImagenes[i] == "pais_16")
+                {
+                    EscribirLabel("Italia", label);
+                }
+                else if (ListaImagenes[i] == "pais_17")
+                {
+                    EscribirLabel("Japon", label);
+                }
+                else if (ListaImagenes[i] == "pais_18")
+                {
+                    EscribirLabel("Mexico", label);
+                }
+                else if (ListaImagenes[i] == "pais_19")
+                {
+                    EscribirLabel("Conejo", label);
+                }
+                else if (ListaImagenes[i] == "pais_20")
+                {
+                    EscribirLabel("Rinoceronte", label);
+                }
+                else if (ListaImagenes[i] == "pais_21")
+                {
+                    EscribirLabel("Tiburon", label);
+                }
+                else if (ListaImagenes[i] == "pais_22")
+                {
+                    EscribirLabel("Perezoso", label);
+                }
+                else if (ListaImagenes[i] == "pais_23")
+                {
+                    EscribirLabel("Caracol", label);
+                }
+                else if (ListaImagenes[i] == "pais_24")
+                {
+                    EscribirLabel("Serpiente", label);
+                }
+                else if (ListaImagenes[i] == "pais_25")
+                {
+                    EscribirLabel("Ballena", label);
+                }
+            }
+            if (tipo == "clase")
+            {
+                if (ListaImagenes[i] == "clase_0")
+                {
+                    EscribirLabel("Genís", label);
+                }
+                else if (ListaImagenes[i] == "clase_1")
+                {
+                    EscribirLabel("Guillem", label);
+                }
+                else if (ListaImagenes[i] == "clase_2")
+                {
+                    EscribirLabel("Alba", label);
+                }
+                else if (ListaImagenes[i] == "clase_3")
+                {
+                    EscribirLabel("Alex", label);
+                }
+                else if (ListaImagenes[i] == "clase_4")
+                {
+                    EscribirLabel("Angela", label);
+                }
+                else if (ListaImagenes[i] == "clase_5")
+                {
+                    EscribirLabel("Arnau", label);
+                }
+                else if (ListaImagenes[i] == "clase_6")
+                {
+                    EscribirLabel("Biel", label);
+                }
+                else if (ListaImagenes[i] == "clase_7")
+                {
+                    EscribirLabel("Carmen", label);
+                }
+                else if (ListaImagenes[i] == "clase_8")
+                {
+                    EscribirLabel("Ismael", label);
+                }
+                else if (ListaImagenes[i] == "clase_9")
+                {
+                    EscribirLabel("Itziar", label);
+                }
+                else if (ListaImagenes[i] == "clase_10")
+                {
+                    EscribirLabel("Jonathan", label);
+                }
+                else if (ListaImagenes[i] == "clase_11")
+                {
+                    EscribirLabel("Miguel", label);
+                }
+                else if (ListaImagenes[i] == "clase_12")
+                {
+                    EscribirLabel("Paula", label);
+                }
+                else if (ListaImagenes[i] == "clase_13")
+                {
+                    EscribirLabel("Júlia", label);
+                }
+                else if (ListaImagenes[i] == "clase_14")
+                {
+                    EscribirLabel("Maria", label);
+                }
+                else if (ListaImagenes[i] == "clase_15")
+                {
+                    EscribirLabel("Paula", label);
+                }
+                else if (ListaImagenes[i] == "clase_16")
+                {
+                    EscribirLabel("Laia", label);
+                }
+                else if (ListaImagenes[i] == "clase_17")
+                {
+                    EscribirLabel("Raúl", label);
+                }
+                else if (ListaImagenes[i] == "clase_18")
+                {
+                    EscribirLabel("Pau", label);
+                }
+                else if (ListaImagenes[i] == "clase_19")
+                {
+                    EscribirLabel("Victor", label);
+                }
+                else if (ListaImagenes[i] == "clase_20")
+                {
+                    EscribirLabel("Marc", label);
+                }
+                else if (ListaImagenes[i] == "clase_21")
+                {
+                    EscribirLabel("Xavier", label);
+                }
+                else if (ListaImagenes[i] == "clase_22")
+                {
+                    EscribirLabel("Borja", label);
+                }
+                else if (ListaImagenes[i] == "clase_23")
+                {
+                    EscribirLabel("Victòria", label);
+                }
+            }
+        }
 
         //////////
         //MOVIMIENTOS
