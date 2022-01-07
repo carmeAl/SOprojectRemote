@@ -439,7 +439,6 @@ namespace Cliente_SOproject
                             {
                                 i++;
                             }
-
                         }
                         formularios[i].CambiarColorTableroContrincante(num);
                         break;

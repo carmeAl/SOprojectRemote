@@ -979,7 +979,7 @@ namespace Cliente_SOproject
             }
         }
 
-        
+       
         private void Partida_Load(object sender, EventArgs e)
         {
             
