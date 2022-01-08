@@ -19,7 +19,7 @@ namespace Cliente_SOproject
 {
     public partial class Menu : Form
     {
-        
+
 
         public int id_usuario;
         public string nombreUsuario;
@@ -139,7 +139,7 @@ namespace Cliente_SOproject
         {
             nameLabel.ForeColor = color;
         }
-        public void IniciarPartida(string lista,string nombreInv, string IdPartida,string rival)
+        public void IniciarPartida(string lista, string nombreInv, string IdPartida, string rival)
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
@@ -374,17 +374,17 @@ namespace Cliente_SOproject
                                 formularios[Nform].rival = trozos1[3];
                                 formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
                                 formularios[Nform].id_partida = id_partida;
-                                
+
 
                             }
                             else
                             {
-                                ThreadStart ts = delegate { IniciarPartida(trozos1[6], trozos1[3], trozos1[5],trozos1[2]); };
+                                ThreadStart ts = delegate { IniciarPartida(trozos1[6], trozos1[3], trozos1[5], trozos1[2]); };
                                 Thread T = new Thread(ts);
                                 T.Start();
                                 //MessageBox.Show("No se porque va si pongo esto");
-                                
-                                
+
+
 
                             }
                         }
@@ -396,10 +396,10 @@ namespace Cliente_SOproject
 
                             }
                         }
-                        
+
                         //else if (trozos1[4] == "Si")
                         //{
-                            
+
                         //}
 
                         break;
@@ -409,9 +409,9 @@ namespace Cliente_SOproject
                         contrincante = trozos1[2];
                         int i = 0;
                         int encontrado = 0;
-                        while((i<formularios.Count)&&(encontrado == 0))
+                        while ((i < formularios.Count) && (encontrado == 0))
                         {
-                            if(formularios[i].id_partida==IdPartida)
+                            if (formularios[i].id_partida == IdPartida)
                             {
                                 encontrado = 1;
                             }
@@ -419,7 +419,7 @@ namespace Cliente_SOproject
                             {
                                 i++;
                             }
-                            
+
                         }
                         formularios[i].EnviarTexto(mensaje, contrincante);
 

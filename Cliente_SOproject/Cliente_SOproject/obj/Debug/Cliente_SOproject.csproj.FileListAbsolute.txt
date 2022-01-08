@@ -32,7 +32,6 @@ C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteM
 C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
 C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
 C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Fuentes\VT323-Regular.ttf
-C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\bin\Debug\Fuentes\VT323-Regular.ttf
 C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\bin\Debug\Fuentes\VT323-Regular.ttf
 C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
 C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
