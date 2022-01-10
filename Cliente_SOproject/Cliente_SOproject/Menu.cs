@@ -220,8 +220,6 @@ namespace Cliente_SOproject
                 string mensaje = trozos1[2];
 
 
-
-
                 switch (codigo)
                 {
 
@@ -365,17 +363,13 @@ namespace Cliente_SOproject
                         creador_partida = trozos1[2];
                         if (trozos1[4] == "Si")
                         {
-
                             id_partida = Convert.ToInt32(trozos1[5]);
-
                             if (creador_partida == nombreUsuario)
                             {
                                 formularios[Nform].PasarListaRandom(trozos1[6]);
                                 formularios[Nform].rival = trozos1[3];
                                 formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
                                 formularios[Nform].id_partida = id_partida;
-
-
                             }
                             else
                             {
@@ -383,9 +377,6 @@ namespace Cliente_SOproject
                                 Thread T = new Thread(ts);
                                 T.Start();
                                 //MessageBox.Show("No se porque va si pongo esto");
-
-
-
                             }
                         }
                         else
@@ -442,6 +433,9 @@ namespace Cliente_SOproject
 
                         }
                         formularios[i].CambiarColorTableroContrincante(num);
+                        break;
+                    case 47:
+                        
                         break;
                     case 51:
                         //formularios[Nform - 1].MoverCarta(mensaje);

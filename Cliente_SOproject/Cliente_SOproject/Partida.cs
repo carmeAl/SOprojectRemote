@@ -30,6 +30,7 @@ namespace Cliente_SOproject
         int pesao;
         int conteo = 0;
         bool turno;
+        bool Star_Stop = false;
         bool tiempo = false;
         //Parametros partida
         string sugerirPreguntas;
@@ -41,6 +42,7 @@ namespace Cliente_SOproject
         bool[] UPCCarta2 = { false,false,false,false,false,false,false,false,false,
         false,false,false};
         public string[] ListaImagenes = { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a" };
+        
 
         static readonly object _object = new object();
 
@@ -49,6 +51,7 @@ namespace Cliente_SOproject
         delegate void DelegadoPicureBox(PictureBox namePictureBox);
         delegate void DelegadoParaCambiarTab();
         delegate void DelegadoParaEscribir2(string nombre);
+        delegate void DelegadoParaVisibleLabel(Label nameLabel, bool SINO);
 
         public Partida(int Nform, Socket server, string nombreUsuario,
             int id_partida, string nivel, string sugerirPreguntas, string mapa,
@@ -68,8 +71,6 @@ namespace Cliente_SOproject
 
         }
 
-
-
         public void EscribirLabel(string msn, Label nameLabel)
         {
             nameLabel.Text = msn;
@@ -78,6 +79,11 @@ namespace Cliente_SOproject
         {
             namePictureBox.Visible = false;
         }
+        public void PonVisibleONOLabel (Label nameLabel, bool SINO)
+        {
+            nameLabel.Visible = SINO;
+        }
+
         public static Bitmap GetImageByName(string imageName)
         {
             System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
@@ -88,7 +94,6 @@ namespace Cliente_SOproject
         }
         public void CambiarTab()
         {
-
             comboBoxPTChat.Text = "Extienda la lista para seleccionar pregunta";
             tabControlPartida.SelectedTab = tabPageTablero;
             if (mapa == "ANIMALES")
@@ -223,10 +228,8 @@ namespace Cliente_SOproject
                 }
             }
             groupBoxPTTableroContrincante.Text = "Tablero de " + rival;
+            PrepararTiempo_Turno();
         }
-
-
-
 
 
         //////////
@@ -238,7 +241,7 @@ namespace Cliente_SOproject
             if (SiNo == "Si")
             {
                 tabControlPartida.Invoke(new DelegadoParaCambiarTab(CambiarTab), new object[] { });
-                timerTurno.Enabled = true;
+
             }
             else
             {
@@ -246,6 +249,31 @@ namespace Cliente_SOproject
                 pictureBoxPEGif.Image = Properties.Resources.Cross;
                 pictureBoxPEBoton.Invoke(new DelegadoPicureBox(PonNoVisiblePictureBox), new object[] { pictureBoxPEBoton });
             }
+        }
+        public void PrepararTiempo_Turno ()
+        {
+            conteo = Convert.ToInt32(limiteTiempo);
+            Star_Stop = true;
+            timerTurno.Start();
+            if (nombreUsuario == creador_partida)
+            {
+                turno = true;
+            }
+            else
+            {
+                turno = false;
+            }
+            label_turno.Visible = true;
+            label_tiempo.Visible = true;
+            label_turno.Text = creador_partida;
+            label_tiempo.Text = limiteTiempo;
+            label2.Visible = true;
+            label3.Visible = true;
+            //label_turno.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { creador_partida, label_turno });
+            //label2.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label2, true });
+            //label2.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label3, true });
+            //label_tiempo.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label_tiempo, true });
+            //label_turno.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label_turno, true });
         }
         public void PasarListaRandom(string lista)
         {
@@ -612,8 +640,7 @@ namespace Cliente_SOproject
             }
 
         }
-
-
+        
 
         //////////
         //MOVIMIENTOS
@@ -903,35 +930,17 @@ namespace Cliente_SOproject
         }
 
 
-
-
         private void Partida_Load(object sender, EventArgs e)
         {
-
             Stop.Start();
-            conteo = Convert.ToInt32(limiteTiempo);
-            timerTurno.Enabled = true;
-            if (creador_partida == nombreUsuario)
+            if (nombreUsuario == creador_partida)
             {
-                turno = true;
-                textBox_con.Visible = true;
-                button_enviar.Visible = true;
-                button_Si.Visible = false;
-                button_No.Visible = false;
-                button_Nose.Visible = false;
-            }
-            else
-            {
-                turno = false;
-                textBox_con.Visible = false;
-                button_enviar.Visible = false;
-                button_Si.Visible = true;
-                button_No.Visible = true;
-                button_Nose.Visible = true;
+                label_tiempo.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                label_turno.Visible = false;
             }
         }
-
-
 
         private void comboBoxPTChat_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -922,7 +922,19 @@ void *AtenderCliente (void *socket){
 			EnviarMSN(notificacion,IDPartida,NombreQuienEnviaMsn,Msn,ListaSockets,contador);
 			sprintf(notificacion,"46/%d/%s",IDPartida,Msn);
 		}
-		
+		else if (codigo == 47) { //Cliente envia "47/IDPartida/NombreQuienCrea/YA" el que crea la partida
+			//Servidor envia "47/IDPartida/YA" al jugador que no ha crado la partida
+
+			int IDPartida = atoi(p);
+			p = strtok(NULL, "/");
+			char NombreQuienEnviaMsn[20];
+			strcpy(NombreQuienEnviaMsn, p);
+			char Msn[500];
+			p = strtok(NULL, "/");
+			strcpy(Msn, p);
+			EnviarMSN(notificacion, IDPartida, NombreQuienEnviaMsn, Msn, ListaSockets, contador);
+			sprintf(notificacion, "46/%d/%s", IDPartida, Msn);
+		}
 		printf ("Respuesta: %s\n", respuesta);
 		printf ("notificacion: %s\n", notificacion);
 		

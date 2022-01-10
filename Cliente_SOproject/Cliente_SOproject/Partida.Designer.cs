@@ -84,6 +84,7 @@ namespace Cliente_SOproject
             this.conversacion = new System.Windows.Forms.ListBox();
             this.pictureBoxImage2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label_turno = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label_tiempo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -247,7 +248,7 @@ namespace Cliente_SOproject
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante3);
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante2);
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante1);
-            this.groupBoxPTTableroContrincante.Location = new System.Drawing.Point(449, 9);
+            this.groupBoxPTTableroContrincante.Location = new System.Drawing.Point(449, 18);
             this.groupBoxPTTableroContrincante.Name = "groupBoxPTTableroContrincante";
             this.groupBoxPTTableroContrincante.Size = new System.Drawing.Size(135, 101);
             this.groupBoxPTTableroContrincante.TabIndex = 40;
@@ -365,7 +366,7 @@ namespace Cliente_SOproject
             // label_Imagen12
             // 
             this.label_Imagen12.AutoSize = true;
-            this.label_Imagen12.Location = new System.Drawing.Point(220, 287);
+            this.label_Imagen12.Location = new System.Drawing.Point(220, 302);
             this.label_Imagen12.Name = "label_Imagen12";
             this.label_Imagen12.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen12.TabIndex = 39;
@@ -374,7 +375,7 @@ namespace Cliente_SOproject
             // label_Imagen11
             // 
             this.label_Imagen11.AutoSize = true;
-            this.label_Imagen11.Location = new System.Drawing.Point(126, 287);
+            this.label_Imagen11.Location = new System.Drawing.Point(126, 302);
             this.label_Imagen11.Name = "label_Imagen11";
             this.label_Imagen11.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen11.TabIndex = 38;
@@ -383,7 +384,7 @@ namespace Cliente_SOproject
             // label_Imagen10
             // 
             this.label_Imagen10.AutoSize = true;
-            this.label_Imagen10.Location = new System.Drawing.Point(34, 287);
+            this.label_Imagen10.Location = new System.Drawing.Point(34, 302);
             this.label_Imagen10.Name = "label_Imagen10";
             this.label_Imagen10.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen10.TabIndex = 37;
@@ -392,7 +393,7 @@ namespace Cliente_SOproject
             // label_Imagen9
             // 
             this.label_Imagen9.AutoSize = true;
-            this.label_Imagen9.Location = new System.Drawing.Point(220, 209);
+            this.label_Imagen9.Location = new System.Drawing.Point(220, 223);
             this.label_Imagen9.Name = "label_Imagen9";
             this.label_Imagen9.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen9.TabIndex = 36;
@@ -401,7 +402,7 @@ namespace Cliente_SOproject
             // label_Imagen8
             // 
             this.label_Imagen8.AutoSize = true;
-            this.label_Imagen8.Location = new System.Drawing.Point(126, 209);
+            this.label_Imagen8.Location = new System.Drawing.Point(126, 223);
             this.label_Imagen8.Name = "label_Imagen8";
             this.label_Imagen8.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen8.TabIndex = 35;
@@ -410,7 +411,7 @@ namespace Cliente_SOproject
             // label_Imagen7
             // 
             this.label_Imagen7.AutoSize = true;
-            this.label_Imagen7.Location = new System.Drawing.Point(34, 209);
+            this.label_Imagen7.Location = new System.Drawing.Point(34, 223);
             this.label_Imagen7.Name = "label_Imagen7";
             this.label_Imagen7.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen7.TabIndex = 34;
@@ -419,7 +420,7 @@ namespace Cliente_SOproject
             // label_Imagen6
             // 
             this.label_Imagen6.AutoSize = true;
-            this.label_Imagen6.Location = new System.Drawing.Point(220, 136);
+            this.label_Imagen6.Location = new System.Drawing.Point(220, 143);
             this.label_Imagen6.Name = "label_Imagen6";
             this.label_Imagen6.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen6.TabIndex = 33;
@@ -428,7 +429,7 @@ namespace Cliente_SOproject
             // label_Imagen5
             // 
             this.label_Imagen5.AutoSize = true;
-            this.label_Imagen5.Location = new System.Drawing.Point(126, 136);
+            this.label_Imagen5.Location = new System.Drawing.Point(126, 143);
             this.label_Imagen5.Name = "label_Imagen5";
             this.label_Imagen5.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen5.TabIndex = 32;
@@ -437,7 +438,7 @@ namespace Cliente_SOproject
             // label_Imagen4
             // 
             this.label_Imagen4.AutoSize = true;
-            this.label_Imagen4.Location = new System.Drawing.Point(34, 136);
+            this.label_Imagen4.Location = new System.Drawing.Point(34, 143);
             this.label_Imagen4.Name = "label_Imagen4";
             this.label_Imagen4.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen4.TabIndex = 31;
@@ -446,7 +447,7 @@ namespace Cliente_SOproject
             // label_Imagen3
             // 
             this.label_Imagen3.AutoSize = true;
-            this.label_Imagen3.Location = new System.Drawing.Point(220, 56);
+            this.label_Imagen3.Location = new System.Drawing.Point(220, 66);
             this.label_Imagen3.Name = "label_Imagen3";
             this.label_Imagen3.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen3.TabIndex = 30;
@@ -455,7 +456,7 @@ namespace Cliente_SOproject
             // label_Imagen2
             // 
             this.label_Imagen2.AutoSize = true;
-            this.label_Imagen2.Location = new System.Drawing.Point(126, 56);
+            this.label_Imagen2.Location = new System.Drawing.Point(126, 66);
             this.label_Imagen2.Name = "label_Imagen2";
             this.label_Imagen2.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen2.TabIndex = 29;
@@ -464,7 +465,7 @@ namespace Cliente_SOproject
             // label_Imagen1
             // 
             this.label_Imagen1.AutoSize = true;
-            this.label_Imagen1.Location = new System.Drawing.Point(34, 56);
+            this.label_Imagen1.Location = new System.Drawing.Point(34, 66);
             this.label_Imagen1.Name = "label_Imagen1";
             this.label_Imagen1.Size = new System.Drawing.Size(35, 13);
             this.label_Imagen1.TabIndex = 28;
@@ -472,7 +473,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage12
             // 
-            this.pictureBoxImage12.Location = new System.Drawing.Point(192, 236);
+            this.pictureBoxImage12.Location = new System.Drawing.Point(192, 251);
             this.pictureBoxImage12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage12.Name = "pictureBoxImage12";
             this.pictureBoxImage12.Size = new System.Drawing.Size(87, 49);
@@ -483,7 +484,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage11
             // 
-            this.pictureBoxImage11.Location = new System.Drawing.Point(99, 236);
+            this.pictureBoxImage11.Location = new System.Drawing.Point(99, 251);
             this.pictureBoxImage11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage11.Name = "pictureBoxImage11";
             this.pictureBoxImage11.Size = new System.Drawing.Size(87, 49);
@@ -494,7 +495,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage10
             // 
-            this.pictureBoxImage10.Location = new System.Drawing.Point(8, 236);
+            this.pictureBoxImage10.Location = new System.Drawing.Point(8, 251);
             this.pictureBoxImage10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage10.Name = "pictureBoxImage10";
             this.pictureBoxImage10.Size = new System.Drawing.Size(87, 49);
@@ -505,7 +506,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage9
             // 
-            this.pictureBoxImage9.Location = new System.Drawing.Point(192, 158);
+            this.pictureBoxImage9.Location = new System.Drawing.Point(192, 166);
             this.pictureBoxImage9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage9.Name = "pictureBoxImage9";
             this.pictureBoxImage9.Size = new System.Drawing.Size(87, 49);
@@ -516,7 +517,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage8
             // 
-            this.pictureBoxImage8.Location = new System.Drawing.Point(99, 158);
+            this.pictureBoxImage8.Location = new System.Drawing.Point(99, 166);
             this.pictureBoxImage8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage8.Name = "pictureBoxImage8";
             this.pictureBoxImage8.Size = new System.Drawing.Size(87, 49);
@@ -527,7 +528,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage7
             // 
-            this.pictureBoxImage7.Location = new System.Drawing.Point(8, 158);
+            this.pictureBoxImage7.Location = new System.Drawing.Point(8, 166);
             this.pictureBoxImage7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage7.Name = "pictureBoxImage7";
             this.pictureBoxImage7.Size = new System.Drawing.Size(87, 49);
@@ -538,7 +539,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage6
             // 
-            this.pictureBoxImage6.Location = new System.Drawing.Point(192, 82);
+            this.pictureBoxImage6.Location = new System.Drawing.Point(191, 92);
             this.pictureBoxImage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage6.Name = "pictureBoxImage6";
             this.pictureBoxImage6.Size = new System.Drawing.Size(87, 49);
@@ -549,7 +550,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage5
             // 
-            this.pictureBoxImage5.Location = new System.Drawing.Point(99, 82);
+            this.pictureBoxImage5.Location = new System.Drawing.Point(99, 92);
             this.pictureBoxImage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage5.Name = "pictureBoxImage5";
             this.pictureBoxImage5.Size = new System.Drawing.Size(87, 49);
@@ -560,7 +561,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage4
             // 
-            this.pictureBoxImage4.Location = new System.Drawing.Point(8, 82);
+            this.pictureBoxImage4.Location = new System.Drawing.Point(8, 92);
             this.pictureBoxImage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage4.Name = "pictureBoxImage4";
             this.pictureBoxImage4.Size = new System.Drawing.Size(87, 49);
@@ -571,7 +572,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage3
             // 
-            this.pictureBoxImage3.Location = new System.Drawing.Point(191, 5);
+            this.pictureBoxImage3.Location = new System.Drawing.Point(191, 14);
             this.pictureBoxImage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage3.Name = "pictureBoxImage3";
             this.pictureBoxImage3.Size = new System.Drawing.Size(88, 50);
@@ -582,7 +583,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage1
             // 
-            this.pictureBoxImage1.Location = new System.Drawing.Point(8, 5);
+            this.pictureBoxImage1.Location = new System.Drawing.Point(6, 15);
             this.pictureBoxImage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage1.Name = "pictureBoxImage1";
             this.pictureBoxImage1.Size = new System.Drawing.Size(87, 49);
@@ -687,7 +688,7 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage2
             // 
-            this.pictureBoxImage2.Location = new System.Drawing.Point(99, 5);
+            this.pictureBoxImage2.Location = new System.Drawing.Point(98, 15);
             this.pictureBoxImage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxImage2.Name = "pictureBoxImage2";
             this.pictureBoxImage2.Size = new System.Drawing.Size(87, 49);
@@ -698,14 +699,24 @@ namespace Cliente_SOproject
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label_turno);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label_tiempo);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(608, 10);
+            this.panel1.Size = new System.Drawing.Size(608, 33);
             this.panel1.TabIndex = 2;
+            // 
+            // label_turno
+            // 
+            this.label_turno.AutoSize = true;
+            this.label_turno.Location = new System.Drawing.Point(79, 11);
+            this.label_turno.Name = "label_turno";
+            this.label_turno.Size = new System.Drawing.Size(59, 13);
+            this.label_turno.TabIndex = 3;
+            this.label_turno.Text = "label_turno";
             // 
             // label3
             // 
@@ -864,5 +875,6 @@ namespace Cliente_SOproject
         private System.Windows.Forms.PictureBox pictureBoxPTTableroContrincante3;
         private System.Windows.Forms.PictureBox pictureBoxPTTableroContrincante2;
         private System.Windows.Forms.PictureBox pictureBoxPTTableroContrincante1;
+        private System.Windows.Forms.Label label_turno;
     }
 }
