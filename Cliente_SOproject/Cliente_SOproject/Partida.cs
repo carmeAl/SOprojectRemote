@@ -32,6 +32,8 @@ namespace Cliente_SOproject
         bool turno;
         bool Star_Stop = false;
         bool tiempo = false;
+        bool inicio_partida = false;
+        int id_carta;
         //Parametros partida
         string sugerirPreguntas;
         string mapa;
@@ -39,10 +41,12 @@ namespace Cliente_SOproject
         string limiteTiempo;
         string creador_partida;
         string[] ListaRandom;
+        int carta_inicial=0;
         bool[] UPCCarta2 = { false,false,false,false,false,false,false,false,false,
         false,false,false};
         public string[] ListaImagenes = { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a" };
-        
+        string mensaje_not;
+        int id_carta_rival;
 
         static readonly object _object = new object();
 
@@ -229,6 +233,9 @@ namespace Cliente_SOproject
             }
             groupBoxPTTableroContrincante.Text = "Tablero de " + rival;
             PrepararTiempo_Turno();
+
+            MessageBox.Show("Escoge una carta");
+
         }
 
 
@@ -292,21 +299,29 @@ namespace Cliente_SOproject
         }
         private void button_enviar_Click(object sender, EventArgs e)
         {
-            if (textBox_con.Text != "")
+            if (inicio_partida == true)
             {
-                PonMSN(nombreUsuario, textBox_con.Text);
-                // Envias el mensaje
-                string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + textBox_con.Text;
-                // Enviamos al servidor el nombre tecleado
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-                textBox_con.Clear();
-                button_enviar.Visible = false;
-                textBox_con.Visible = false;
+                if (textBox_con.Text != "")
+                {
+                    PonMSN(nombreUsuario, textBox_con.Text);
+                    // Envias el mensaje
+                    string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + textBox_con.Text;
+                    // Enviamos al servidor el nombre tecleado
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+                    textBox_con.Clear();
+                    button_enviar.Visible = false;
+                    textBox_con.Visible = false;
+                }
+                else
+                {
+                    //Poner aqui que aparezca arriba un label que diga que escriba algo
+                }
+                
             }
             else
             {
-                //Poner aqui que aparezca arriba un label que diga que escriba algo
+                MessageBox.Show("Espera a que empiece la partida");
             }
         }
         public void poner_nombre_fotos(int i, Label label, string tipo)
@@ -725,7 +740,24 @@ namespace Cliente_SOproject
 
         private void pictureBoxImage1_Click(object sender, EventArgs e)
         {
-            if (Opacidad >= 500)
+            if(carta_inicial==0)
+            {
+                id_carta =0;
+                DialogResult r = MessageBox.Show("Estas seguro", ":",MessageBoxButtons.YesNo);
+                if(r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
+
+                }
+                else
+                {
+                   MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }  
+            if (Opacidad >= 500 && carta_inicial == 1)
             {
                 numCarta = 0;
                 if (!UPCCarta2[numCarta])
@@ -739,16 +771,36 @@ namespace Cliente_SOproject
                 EnviarNumCartaServer(numCarta);
                 timerFlip.Start();
             }
+
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
             
-
-
 
         }
 
         private void pictureBoxImage2_Click(object sender, EventArgs e)
         {
+            if (carta_inicial == 0)
+            {
+                id_carta = 1;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
 
-            if (Opacidad >= 500)
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+
+            if (Opacidad >= 500 && carta_inicial == 1)
             {
                 numCarta = 1;
                 if (!UPCCarta2[numCarta])
@@ -762,12 +814,32 @@ namespace Cliente_SOproject
                 EnviarNumCartaServer(numCarta);
                 timerFlip.Start();
             }
-
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage3_Click(object sender, EventArgs e)
         {
-            if (Opacidad >= 500)
+            if (carta_inicial == 0)
+            {
+                id_carta = 2;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
+
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+            if (Opacidad >= 500 && carta_inicial == 1)
             {
                 numCarta = 2;
                 if (!UPCCarta2[numCarta])
@@ -781,11 +853,32 @@ namespace Cliente_SOproject
                 EnviarNumCartaServer(numCarta);
                 timerFlip.Start();
             }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage4_Click(object sender, EventArgs e)
         {
-            if (segundos == 0)
+            if (carta_inicial == 0)
+            {
+                id_carta = 3;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
+
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+            if (Opacidad >= 500 && carta_inicial == 1)
             {
                 segundos = a;
                 numCarta = 3;
@@ -800,12 +893,33 @@ namespace Cliente_SOproject
                 EnviarNumCartaServer(numCarta);
                 timerFlip.Start();
             }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage5_Click(object sender, EventArgs e)
         {
 
-            if (segundos == 0)
+            if (carta_inicial == 0)
+            {
+                id_carta = 4;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
+
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+            if (Opacidad >= 500 && carta_inicial == 1)
             {
                 segundos = a;
                 numCarta = 4;
@@ -820,113 +934,284 @@ namespace Cliente_SOproject
                 EnviarNumCartaServer(numCarta);
                 timerFlip.Start();
             }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage6_Click(object sender, EventArgs e)
         {
+            if (carta_inicial == 0)
+            {
+                id_carta = 5;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
 
-            numCarta = 5;
-            if (!UPCCarta2[numCarta])
-                UPCCarta2[numCarta] = true;
-            else
-                UPCCarta2[numCarta] = false;
-            Opacidad = 500;
-            siguiente = 0;
-            CartasName = pictureBoxImage6;
-            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
-            EnviarNumCartaServer(numCarta);
-            timerFlip.Start();
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+
+            if (Opacidad >= 500 && carta_inicial == 1)
+            {
+                numCarta = 5;
+                if (!UPCCarta2[numCarta])
+                    UPCCarta2[numCarta] = true;
+                else
+                    UPCCarta2[numCarta] = false;
+                Opacidad = 500;
+                siguiente = 0;
+                CartasName = pictureBoxImage6;
+                ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+                EnviarNumCartaServer(numCarta);
+                timerFlip.Start();
+            }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage7_Click(object sender, EventArgs e)
         {
+            if (carta_inicial == 0)
+            {
+                id_carta = 6;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
 
-            numCarta = 6;
-            if (!UPCCarta2[numCarta])
-                UPCCarta2[numCarta] = true;
-            else
-                UPCCarta2[numCarta] = false;
-            Opacidad = 500;
-            siguiente = 0;
-            CartasName = pictureBoxImage7;
-            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
-            EnviarNumCartaServer(numCarta);
-            timerFlip.Start();
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+            if (Opacidad >= 500 && carta_inicial == 1)
+            {
+                numCarta = 6;
+                if (!UPCCarta2[numCarta])
+                    UPCCarta2[numCarta] = true;
+                else
+                    UPCCarta2[numCarta] = false;
+                Opacidad = 500;
+                siguiente = 0;
+                CartasName = pictureBoxImage7;
+                ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+                EnviarNumCartaServer(numCarta);
+                timerFlip.Start();
+            }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage8_Click(object sender, EventArgs e)
         {
-            numCarta = 7;
-            if (!UPCCarta2[numCarta])
-                UPCCarta2[numCarta] = true;
-            else
-                UPCCarta2[numCarta] = false;
-            Opacidad = 500;
-            siguiente = 0;
-            CartasName = pictureBoxImage8;
-            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
-            EnviarNumCartaServer(numCarta);
-            timerFlip.Start();
+            if (carta_inicial == 0)
+            {
+                id_carta = 7;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
+
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+            if (Opacidad >= 500 && carta_inicial == 1)
+            {
+                numCarta = 7;
+                if (!UPCCarta2[numCarta])
+                    UPCCarta2[numCarta] = true;
+                else
+                    UPCCarta2[numCarta] = false;
+                Opacidad = 500;
+                siguiente = 0;
+                CartasName = pictureBoxImage8;
+                ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+                EnviarNumCartaServer(numCarta);
+                timerFlip.Start();
+            }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage9_Click(object sender, EventArgs e)
         {
-            numCarta = 8;
-            if (!UPCCarta2[numCarta])
-                UPCCarta2[numCarta] = true;
-            else
-                UPCCarta2[numCarta] = false;
-            Opacidad = 500;
-            siguiente = 0;
-            CartasName = pictureBoxImage9;
-            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
-            EnviarNumCartaServer(numCarta);
-            timerFlip.Start();
+            if (carta_inicial == 0)
+            {
+                id_carta = 8;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
+
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+            if (Opacidad >= 500 && carta_inicial == 1)
+            {
+                numCarta = 8;
+                if (!UPCCarta2[numCarta])
+                    UPCCarta2[numCarta] = true;
+                else
+                    UPCCarta2[numCarta] = false;
+                Opacidad = 500;
+                siguiente = 0;
+                CartasName = pictureBoxImage9;
+                ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+                EnviarNumCartaServer(numCarta);
+                timerFlip.Start();
+            }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage10_Click(object sender, EventArgs e)
         {
-            numCarta = 9;
-            if (!UPCCarta2[numCarta])
-                UPCCarta2[numCarta] = true;
-            else
-                UPCCarta2[numCarta] = false;
-            Opacidad = 500;
-            siguiente = 0;
-            CartasName = pictureBoxImage10;
-            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
-            EnviarNumCartaServer(numCarta);
-            timerFlip.Start();
+            if (carta_inicial == 0)
+            {
+                id_carta = 9;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
+
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+            if (Opacidad >= 500 && carta_inicial == 1)
+            {
+                numCarta = 9;
+                if (!UPCCarta2[numCarta])
+                    UPCCarta2[numCarta] = true;
+                else
+                    UPCCarta2[numCarta] = false;
+                Opacidad = 500;
+                siguiente = 0;
+                CartasName = pictureBoxImage10;
+                ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+                EnviarNumCartaServer(numCarta);
+                timerFlip.Start();
+            }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage11_Click(object sender, EventArgs e)
         {
-            numCarta = 10;
-            if (!UPCCarta2[numCarta])
-                UPCCarta2[numCarta] = true;
-            else
-                UPCCarta2[numCarta] = false;
-            Opacidad = 500;
-            siguiente = 0;
-            CartasName = pictureBoxImage11;
-            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
-            EnviarNumCartaServer(numCarta);
-            timerFlip.Start();
+            if (carta_inicial == 0)
+            {
+                id_carta = 10;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
+
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+            if (Opacidad >= 500 && carta_inicial == 1)
+            {
+                numCarta = 10;
+                if (!UPCCarta2[numCarta])
+                    UPCCarta2[numCarta] = true;
+                else
+                    UPCCarta2[numCarta] = false;
+                Opacidad = 500;
+                siguiente = 0;
+                CartasName = pictureBoxImage11;
+                ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+                EnviarNumCartaServer(numCarta);
+                timerFlip.Start();
+            }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
         private void pictureBoxImage12_Click(object sender, EventArgs e)
         {
-            numCarta = 11;
-            if (!UPCCarta2[numCarta])
-                UPCCarta2[numCarta] = true;
-            else
-                UPCCarta2[numCarta] = false;
-            Opacidad = 500;
-            siguiente = 0;
-            CartasName = pictureBoxImage12;
-            ImageCarta = GetImageByName(ListaImagenes[numCarta]);
-            EnviarNumCartaServer(numCarta);
-            timerFlip.Start();
+            if (carta_inicial == 0)
+            {
+                id_carta = 11;
+                DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                if (r == DialogResult.Yes)
+                {
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/"+ nombreUsuario + "/" + id_carta;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 2;
+
+                }
+                else
+                {
+                    MessageBox.Show("Escoge otra carta, porfi UwU");
+                }
+            }
+            if (Opacidad >= 500 && carta_inicial == 1)
+            {
+                numCarta = 11;
+                if (!UPCCarta2[numCarta])
+                    UPCCarta2[numCarta] = true;
+                else
+                    UPCCarta2[numCarta] = false;
+                Opacidad = 500;
+                siguiente = 0;
+                CartasName = pictureBoxImage12;
+                ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+                EnviarNumCartaServer(numCarta);
+                timerFlip.Start();
+            }
+            if (carta_inicial == 2)
+            {
+                carta_inicial = 1;
+            }
         }
 
 
@@ -949,8 +1234,30 @@ namespace Cliente_SOproject
 
         private void timerTurno_Tick(object sender, EventArgs e)
         {
+            int x = 0;
             conteo = conteo - 1;
             label_tiempo.Text = conteo.ToString();
+
+            if (carta_inicial != 1 && conteo == 0)
+            {
+                x = x + 1;
+                if (x == 2)
+                {
+                    //Ponerle carta random
+                }
+                else
+                {
+                    MessageBox.Show("Escoge una carta,tienes 10 segundos");
+                    conteo = 10;
+                    tiempo = true;
+                }
+            }
+            if (carta_inicial == 1 && conteo == 0)
+            {
+                MessageBox.Show("Esperando al rival");
+                conteo = Convert.ToInt32(limiteTiempo);
+                tiempo = true;
+            }
             if (conteo == 0)
             {
                 conteo = Convert.ToInt32(limiteTiempo);
@@ -963,49 +1270,90 @@ namespace Cliente_SOproject
             else
             {
                 label_tiempo.ForeColor = Color.Black;
+
             }
+           
         }
 
         private void button_Si_Click(object sender, EventArgs e)
         {
-            PonMSN(nombreUsuario, "Si");
-            // Envias el mensaje
-            string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si";
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            textBox_con.Clear();
-            button_Si.Visible = false;
-            button_No.Visible = false;
-            button_Nose.Visible = false;
+            if (inicio_partida == true)
+            {
+                PonMSN(nombreUsuario, "Si");
+                // Envias el mensaje
+                string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si";
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                textBox_con.Clear();
+                button_Si.Visible = false;
+                button_No.Visible = false;
+                button_Nose.Visible = false;
+            }
+            
         }
 
         private void button_No_Click(object sender, EventArgs e)
         {
-            PonMSN(nombreUsuario, "No");
-            // Envias el mensaje
-            string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No";
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            textBox_con.Clear();
-            button_Si.Visible = false;
-            button_No.Visible = false;
-            button_Nose.Visible = false;
+            if (inicio_partida == true)
+            {
+                PonMSN(nombreUsuario, "No");
+                // Envias el mensaje
+                string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No";
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                textBox_con.Clear();
+                button_Si.Visible = false;
+                button_No.Visible = false;
+                button_Nose.Visible = false;
+            }
         }
 
         private void button_Nose_Click(object sender, EventArgs e)
         {
-            PonMSN(nombreUsuario, "No se");
-            // Envias el mensaje
-            string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No se";
-            // Enviamos al servidor el nombre tecleado
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            textBox_con.Clear();
-            button_Si.Visible = false;
-            button_No.Visible = false;
-            button_Nose.Visible = false;
+            if (inicio_partida == true)
+            {
+                PonMSN(nombreUsuario, "No se");
+                // Envias el mensaje
+                string mensaje = "44/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No se";
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                textBox_con.Clear();
+                button_Si.Visible = false;
+                button_No.Visible = false;
+                button_Nose.Visible = false;
+            }
+        }
+
+        private void pictureBoxPEBoton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxPEBoton_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBoxPEBoton.Image = SetAlpha((Bitmap)pictureBoxPEBoton.Image, 150);
+        }
+
+        private void pictureBoxPEBoton_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBoxPEBoton.Image = SetAlpha((Bitmap)pictureBoxPEBoton.Image, 1000);
+        }
+
+        private void textBox_con_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        public void IniciarPartida(string carta)
+        {
+            
+            this.id_carta_rival= Convert.ToInt32(carta);
+            conteo = Convert.ToInt32(limiteTiempo);
+            tiempo = true;
+            inicio_partida = true;
+            MessageBox.Show("Carta rival :" + id_carta_rival);
         }
     }
 }

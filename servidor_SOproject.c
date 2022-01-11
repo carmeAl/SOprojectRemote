@@ -39,6 +39,8 @@ typedef struct {
 	char nombre2 [30];
 	int socket1;
 	int socket2;
+	int carta1;
+	int carta2;
 } TEntrada;
 
 TEntrada TablaPartidasActivas [100];
@@ -47,7 +49,11 @@ void Inicializar (TEntrada tabla[100])
 {
 	int i;
 	for (i=0; i<100; i++)
+	{
 		tabla[i].oc=0;
+		tabla[i].carta1=-1;
+		tabla[i].carta2=-1;
+	}
 }
 
 void Login(char contrasena[100], char nombre[100],char respuesta[512]){
@@ -935,6 +941,35 @@ void *AtenderCliente (void *socket){
 			EnviarMSN(notificacion, IDPartida, NombreQuienEnviaMsn, Msn, ListaSockets, contador);
 			sprintf(notificacion, "46/%d/%s", IDPartida, Msn);
 		}
+		
+		else if (codigo== 48)
+		{
+			p =strtok(NULL,"/");
+			int IDPartida = atoi(p);
+			p = strtok(NULL,"/");
+			char nombre_mandado[100];
+			strcpy(nombre_mandado,p);
+			p= strtok(NULL,"/");
+			int id_carta=atoi(p);
+			printf("Este es el nombre mandado:%s\n",nombre_mandado);
+			printf("Este es el nombre1:%s\n",TablaPartidasActivas[IDPartida].nombre1);
+			printf("Este es el nombre2:%s\n",TablaPartidasActivas[IDPartida].nombre2);
+			if(strcmp(TablaPartidasActivas[IDPartida].nombre1,nombre_mandado)==0)
+			{
+				TablaPartidasActivas[IDPartida].carta1=id_carta;
+				printf("Carta1 = %d\n",TablaPartidasActivas[IDPartida].carta1);
+			}
+			else if(strcmp(TablaPartidasActivas[IDPartida].nombre2,nombre_mandado)==0)
+			{
+				TablaPartidasActivas[IDPartida].carta2=id_carta;
+				printf("Carta2 = %d\n",TablaPartidasActivas[IDPartida].carta2);
+			}
+			printf("Este es un printeo de prueba: %d, %d\n",TablaPartidasActivas[IDPartida].carta1,TablaPartidasActivas[IDPartida].carta2);
+			if(TablaPartidasActivas[IDPartida].carta1 !=-1 && TablaPartidasActivas[IDPartida].carta2 !=-1)
+			{
+				sprintf(notificacion,"48/%d/%s/%d/%s/%d",IDPartida,TablaPartidasActivas[IDPartida].nombre1,TablaPartidasActivas[IDPartida].carta1,TablaPartidasActivas[IDPartida].nombre2,TablaPartidasActivas[IDPartida].carta2);
+			}
+		}
 		printf ("Respuesta: %s\n", respuesta);
 		printf ("notificacion: %s\n", notificacion);
 		
@@ -952,8 +987,7 @@ void *AtenderCliente (void *socket){
 			}
 			printf ("notificacion enviada\n");
 		}
-		
-		
+	
 	}
 	// Se acabo el servicio para este cliente
 	close(sock_conn); 
@@ -961,6 +995,8 @@ void *AtenderCliente (void *socket){
 
 int main(int argc, char *argv[])
 {
+	
+	Inicializar(TablaPartidasActivas);
 	
 	int sock_conn, sock_listen, ret;
 	struct sockaddr_in serv_adr;

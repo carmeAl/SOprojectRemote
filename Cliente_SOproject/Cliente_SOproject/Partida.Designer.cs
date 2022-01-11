@@ -135,7 +135,7 @@ namespace Cliente_SOproject
             this.tabControlPartida.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlPartida.Name = "tabControlPartida";
             this.tabControlPartida.SelectedIndex = 0;
-            this.tabControlPartida.Size = new System.Drawing.Size(608, 348);
+            this.tabControlPartida.Size = new System.Drawing.Size(811, 428);
             this.tabControlPartida.TabIndex = 1;
             // 
             // tabPageEsperando
@@ -144,10 +144,10 @@ namespace Cliente_SOproject
             this.tabPageEsperando.Controls.Add(this.labelPE);
             this.tabPageEsperando.Controls.Add(this.pictureBoxPEBoton);
             this.tabPageEsperando.Controls.Add(this.pictureBox13);
-            this.tabPageEsperando.Location = new System.Drawing.Point(4, 22);
+            this.tabPageEsperando.Location = new System.Drawing.Point(4, 25);
             this.tabPageEsperando.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageEsperando.Name = "tabPageEsperando";
-            this.tabPageEsperando.Size = new System.Drawing.Size(600, 322);
+            this.tabPageEsperando.Size = new System.Drawing.Size(803, 399);
             this.tabPageEsperando.TabIndex = 0;
             this.tabPageEsperando.Text = "Esperando";
             this.tabPageEsperando.UseVisualStyleBackColor = true;
@@ -156,9 +156,10 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPEGif.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(7)))), ((int)(((byte)(173)))));
             this.pictureBoxPEGif.Image = global::Cliente_SOproject.Properties.Resources.RelojArena;
-            this.pictureBoxPEGif.Location = new System.Drawing.Point(453, 119);
+            this.pictureBoxPEGif.Location = new System.Drawing.Point(604, 146);
+            this.pictureBoxPEGif.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPEGif.Name = "pictureBoxPEGif";
-            this.pictureBoxPEGif.Size = new System.Drawing.Size(47, 40);
+            this.pictureBoxPEGif.Size = new System.Drawing.Size(63, 49);
             this.pictureBoxPEGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPEGif.TabIndex = 21;
             this.pictureBoxPEGif.TabStop = false;
@@ -170,29 +171,35 @@ namespace Cliente_SOproject
             this.labelPE.Cursor = System.Windows.Forms.Cursors.Default;
             this.labelPE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelPE.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPE.Location = new System.Drawing.Point(409, 80);
+            this.labelPE.Location = new System.Drawing.Point(545, 98);
+            this.labelPE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPE.Name = "labelPE";
-            this.labelPE.Size = new System.Drawing.Size(124, 20);
+            this.labelPE.Size = new System.Drawing.Size(151, 25);
             this.labelPE.TabIndex = 20;
             this.labelPE.Text = "ESPERANDO ";
             // 
             // pictureBoxPEBoton
             // 
             this.pictureBoxPEBoton.Image = global::Cliente_SOproject.Properties.Resources.CancelarPartida;
-            this.pictureBoxPEBoton.Location = new System.Drawing.Point(399, 181);
+            this.pictureBoxPEBoton.Location = new System.Drawing.Point(532, 223);
+            this.pictureBoxPEBoton.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPEBoton.Name = "pictureBoxPEBoton";
-            this.pictureBoxPEBoton.Size = new System.Drawing.Size(172, 63);
+            this.pictureBoxPEBoton.Size = new System.Drawing.Size(229, 78);
             this.pictureBoxPEBoton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPEBoton.TabIndex = 19;
             this.pictureBoxPEBoton.TabStop = false;
+            this.pictureBoxPEBoton.Click += new System.EventHandler(this.pictureBoxPEBoton_Click);
+            this.pictureBoxPEBoton.MouseEnter += new System.EventHandler(this.pictureBoxPEBoton_MouseEnter);
+            this.pictureBoxPEBoton.MouseLeave += new System.EventHandler(this.pictureBoxPEBoton_MouseLeave);
             // 
             // pictureBox13
             // 
             this.pictureBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox13.Image = global::Cliente_SOproject.Properties.Resources.BackForm2_2;
             this.pictureBox13.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox13.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(600, 322);
+            this.pictureBox13.Size = new System.Drawing.Size(803, 399);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox13.TabIndex = 0;
             this.pictureBox13.TabStop = false;
@@ -226,10 +233,10 @@ namespace Cliente_SOproject
             this.tabPageTablero.Controls.Add(this.pictureBoxImage1);
             this.tabPageTablero.Controls.Add(this.groupBoxChat);
             this.tabPageTablero.Controls.Add(this.pictureBoxImage2);
-            this.tabPageTablero.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTablero.Location = new System.Drawing.Point(4, 25);
             this.tabPageTablero.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageTablero.Name = "tabPageTablero";
-            this.tabPageTablero.Size = new System.Drawing.Size(600, 322);
+            this.tabPageTablero.Size = new System.Drawing.Size(803, 399);
             this.tabPageTablero.TabIndex = 1;
             this.tabPageTablero.Text = "Tablero";
             // 
@@ -248,9 +255,11 @@ namespace Cliente_SOproject
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante3);
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante2);
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante1);
-            this.groupBoxPTTableroContrincante.Location = new System.Drawing.Point(449, 18);
+            this.groupBoxPTTableroContrincante.Location = new System.Drawing.Point(599, 22);
+            this.groupBoxPTTableroContrincante.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxPTTableroContrincante.Name = "groupBoxPTTableroContrincante";
-            this.groupBoxPTTableroContrincante.Size = new System.Drawing.Size(135, 101);
+            this.groupBoxPTTableroContrincante.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxPTTableroContrincante.Size = new System.Drawing.Size(180, 124);
             this.groupBoxPTTableroContrincante.TabIndex = 40;
             this.groupBoxPTTableroContrincante.TabStop = false;
             this.groupBoxPTTableroContrincante.Text = "groupBox1";
@@ -258,225 +267,249 @@ namespace Cliente_SOproject
             // pictureBoxPTTableroContrincante12
             // 
             this.pictureBoxPTTableroContrincante12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante12.Location = new System.Drawing.Point(87, 76);
+            this.pictureBoxPTTableroContrincante12.Location = new System.Drawing.Point(116, 94);
+            this.pictureBoxPTTableroContrincante12.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante12.Name = "pictureBoxPTTableroContrincante12";
-            this.pictureBoxPTTableroContrincante12.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante12.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante12.TabIndex = 11;
             this.pictureBoxPTTableroContrincante12.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante11
             // 
             this.pictureBoxPTTableroContrincante11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante11.Location = new System.Drawing.Point(65, 76);
+            this.pictureBoxPTTableroContrincante11.Location = new System.Drawing.Point(87, 94);
+            this.pictureBoxPTTableroContrincante11.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante11.Name = "pictureBoxPTTableroContrincante11";
-            this.pictureBoxPTTableroContrincante11.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante11.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante11.TabIndex = 10;
             this.pictureBoxPTTableroContrincante11.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante10
             // 
             this.pictureBoxPTTableroContrincante10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante10.Location = new System.Drawing.Point(42, 76);
+            this.pictureBoxPTTableroContrincante10.Location = new System.Drawing.Point(56, 94);
+            this.pictureBoxPTTableroContrincante10.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante10.Name = "pictureBoxPTTableroContrincante10";
-            this.pictureBoxPTTableroContrincante10.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante10.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante10.TabIndex = 9;
             this.pictureBoxPTTableroContrincante10.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante9
             // 
             this.pictureBoxPTTableroContrincante9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante9.Location = new System.Drawing.Point(87, 57);
+            this.pictureBoxPTTableroContrincante9.Location = new System.Drawing.Point(116, 70);
+            this.pictureBoxPTTableroContrincante9.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante9.Name = "pictureBoxPTTableroContrincante9";
-            this.pictureBoxPTTableroContrincante9.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante9.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante9.TabIndex = 8;
             this.pictureBoxPTTableroContrincante9.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante8
             // 
             this.pictureBoxPTTableroContrincante8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante8.Location = new System.Drawing.Point(65, 57);
+            this.pictureBoxPTTableroContrincante8.Location = new System.Drawing.Point(87, 70);
+            this.pictureBoxPTTableroContrincante8.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante8.Name = "pictureBoxPTTableroContrincante8";
-            this.pictureBoxPTTableroContrincante8.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante8.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante8.TabIndex = 7;
             this.pictureBoxPTTableroContrincante8.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante7
             // 
             this.pictureBoxPTTableroContrincante7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante7.Location = new System.Drawing.Point(42, 57);
+            this.pictureBoxPTTableroContrincante7.Location = new System.Drawing.Point(56, 70);
+            this.pictureBoxPTTableroContrincante7.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante7.Name = "pictureBoxPTTableroContrincante7";
-            this.pictureBoxPTTableroContrincante7.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante7.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante7.TabIndex = 6;
             this.pictureBoxPTTableroContrincante7.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante6
             // 
             this.pictureBoxPTTableroContrincante6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante6.Location = new System.Drawing.Point(87, 38);
+            this.pictureBoxPTTableroContrincante6.Location = new System.Drawing.Point(116, 47);
+            this.pictureBoxPTTableroContrincante6.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante6.Name = "pictureBoxPTTableroContrincante6";
-            this.pictureBoxPTTableroContrincante6.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante6.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante6.TabIndex = 5;
             this.pictureBoxPTTableroContrincante6.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante5
             // 
             this.pictureBoxPTTableroContrincante5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante5.Location = new System.Drawing.Point(65, 38);
+            this.pictureBoxPTTableroContrincante5.Location = new System.Drawing.Point(87, 47);
+            this.pictureBoxPTTableroContrincante5.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante5.Name = "pictureBoxPTTableroContrincante5";
-            this.pictureBoxPTTableroContrincante5.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante5.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante5.TabIndex = 4;
             this.pictureBoxPTTableroContrincante5.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante4
             // 
             this.pictureBoxPTTableroContrincante4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante4.Location = new System.Drawing.Point(42, 38);
+            this.pictureBoxPTTableroContrincante4.Location = new System.Drawing.Point(56, 47);
+            this.pictureBoxPTTableroContrincante4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante4.Name = "pictureBoxPTTableroContrincante4";
-            this.pictureBoxPTTableroContrincante4.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante4.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante4.TabIndex = 3;
             this.pictureBoxPTTableroContrincante4.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante3
             // 
             this.pictureBoxPTTableroContrincante3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante3.Location = new System.Drawing.Point(87, 19);
+            this.pictureBoxPTTableroContrincante3.Location = new System.Drawing.Point(116, 23);
+            this.pictureBoxPTTableroContrincante3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante3.Name = "pictureBoxPTTableroContrincante3";
-            this.pictureBoxPTTableroContrincante3.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante3.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante3.TabIndex = 2;
             this.pictureBoxPTTableroContrincante3.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante2
             // 
             this.pictureBoxPTTableroContrincante2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante2.Location = new System.Drawing.Point(65, 19);
+            this.pictureBoxPTTableroContrincante2.Location = new System.Drawing.Point(87, 23);
+            this.pictureBoxPTTableroContrincante2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante2.Name = "pictureBoxPTTableroContrincante2";
-            this.pictureBoxPTTableroContrincante2.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante2.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante2.TabIndex = 1;
             this.pictureBoxPTTableroContrincante2.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante1
             // 
             this.pictureBoxPTTableroContrincante1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
-            this.pictureBoxPTTableroContrincante1.Location = new System.Drawing.Point(42, 19);
+            this.pictureBoxPTTableroContrincante1.Location = new System.Drawing.Point(56, 23);
+            this.pictureBoxPTTableroContrincante1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPTTableroContrincante1.Name = "pictureBoxPTTableroContrincante1";
-            this.pictureBoxPTTableroContrincante1.Size = new System.Drawing.Size(16, 13);
+            this.pictureBoxPTTableroContrincante1.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante1.TabIndex = 0;
             this.pictureBoxPTTableroContrincante1.TabStop = false;
             // 
             // label_Imagen12
             // 
             this.label_Imagen12.AutoSize = true;
-            this.label_Imagen12.Location = new System.Drawing.Point(220, 302);
+            this.label_Imagen12.Location = new System.Drawing.Point(293, 372);
+            this.label_Imagen12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen12.Name = "label_Imagen12";
-            this.label_Imagen12.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen12.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen12.TabIndex = 39;
             this.label_Imagen12.Text = "label4";
             // 
             // label_Imagen11
             // 
             this.label_Imagen11.AutoSize = true;
-            this.label_Imagen11.Location = new System.Drawing.Point(126, 302);
+            this.label_Imagen11.Location = new System.Drawing.Point(168, 372);
+            this.label_Imagen11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen11.Name = "label_Imagen11";
-            this.label_Imagen11.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen11.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen11.TabIndex = 38;
             this.label_Imagen11.Text = "label4";
             // 
             // label_Imagen10
             // 
             this.label_Imagen10.AutoSize = true;
-            this.label_Imagen10.Location = new System.Drawing.Point(34, 302);
+            this.label_Imagen10.Location = new System.Drawing.Point(45, 372);
+            this.label_Imagen10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen10.Name = "label_Imagen10";
-            this.label_Imagen10.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen10.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen10.TabIndex = 37;
             this.label_Imagen10.Text = "label4";
             // 
             // label_Imagen9
             // 
             this.label_Imagen9.AutoSize = true;
-            this.label_Imagen9.Location = new System.Drawing.Point(220, 223);
+            this.label_Imagen9.Location = new System.Drawing.Point(293, 274);
+            this.label_Imagen9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen9.Name = "label_Imagen9";
-            this.label_Imagen9.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen9.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen9.TabIndex = 36;
             this.label_Imagen9.Text = "label4";
             // 
             // label_Imagen8
             // 
             this.label_Imagen8.AutoSize = true;
-            this.label_Imagen8.Location = new System.Drawing.Point(126, 223);
+            this.label_Imagen8.Location = new System.Drawing.Point(168, 274);
+            this.label_Imagen8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen8.Name = "label_Imagen8";
-            this.label_Imagen8.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen8.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen8.TabIndex = 35;
             this.label_Imagen8.Text = "label4";
             // 
             // label_Imagen7
             // 
             this.label_Imagen7.AutoSize = true;
-            this.label_Imagen7.Location = new System.Drawing.Point(34, 223);
+            this.label_Imagen7.Location = new System.Drawing.Point(45, 274);
+            this.label_Imagen7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen7.Name = "label_Imagen7";
-            this.label_Imagen7.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen7.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen7.TabIndex = 34;
             this.label_Imagen7.Text = "label4";
             // 
             // label_Imagen6
             // 
             this.label_Imagen6.AutoSize = true;
-            this.label_Imagen6.Location = new System.Drawing.Point(220, 143);
+            this.label_Imagen6.Location = new System.Drawing.Point(293, 176);
+            this.label_Imagen6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen6.Name = "label_Imagen6";
-            this.label_Imagen6.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen6.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen6.TabIndex = 33;
             this.label_Imagen6.Text = "label4";
             // 
             // label_Imagen5
             // 
             this.label_Imagen5.AutoSize = true;
-            this.label_Imagen5.Location = new System.Drawing.Point(126, 143);
+            this.label_Imagen5.Location = new System.Drawing.Point(168, 176);
+            this.label_Imagen5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen5.Name = "label_Imagen5";
-            this.label_Imagen5.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen5.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen5.TabIndex = 32;
             this.label_Imagen5.Text = "label4";
             // 
             // label_Imagen4
             // 
             this.label_Imagen4.AutoSize = true;
-            this.label_Imagen4.Location = new System.Drawing.Point(34, 143);
+            this.label_Imagen4.Location = new System.Drawing.Point(45, 176);
+            this.label_Imagen4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen4.Name = "label_Imagen4";
-            this.label_Imagen4.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen4.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen4.TabIndex = 31;
             this.label_Imagen4.Text = "label4";
             // 
             // label_Imagen3
             // 
             this.label_Imagen3.AutoSize = true;
-            this.label_Imagen3.Location = new System.Drawing.Point(220, 66);
+            this.label_Imagen3.Location = new System.Drawing.Point(293, 81);
+            this.label_Imagen3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen3.Name = "label_Imagen3";
-            this.label_Imagen3.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen3.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen3.TabIndex = 30;
             this.label_Imagen3.Text = "label4";
             // 
             // label_Imagen2
             // 
             this.label_Imagen2.AutoSize = true;
-            this.label_Imagen2.Location = new System.Drawing.Point(126, 66);
+            this.label_Imagen2.Location = new System.Drawing.Point(168, 81);
+            this.label_Imagen2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen2.Name = "label_Imagen2";
-            this.label_Imagen2.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen2.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen2.TabIndex = 29;
             this.label_Imagen2.Text = "label4";
             // 
             // label_Imagen1
             // 
             this.label_Imagen1.AutoSize = true;
-            this.label_Imagen1.Location = new System.Drawing.Point(34, 66);
+            this.label_Imagen1.Location = new System.Drawing.Point(45, 81);
+            this.label_Imagen1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen1.Name = "label_Imagen1";
-            this.label_Imagen1.Size = new System.Drawing.Size(35, 13);
+            this.label_Imagen1.Size = new System.Drawing.Size(46, 17);
             this.label_Imagen1.TabIndex = 28;
             this.label_Imagen1.Text = "label4";
             // 
             // pictureBoxImage12
             // 
-            this.pictureBoxImage12.Location = new System.Drawing.Point(192, 251);
-            this.pictureBoxImage12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage12.Location = new System.Drawing.Point(256, 309);
+            this.pictureBoxImage12.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage12.Name = "pictureBoxImage12";
-            this.pictureBoxImage12.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage12.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage12.TabIndex = 25;
             this.pictureBoxImage12.TabStop = false;
@@ -484,10 +517,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage11
             // 
-            this.pictureBoxImage11.Location = new System.Drawing.Point(99, 251);
-            this.pictureBoxImage11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage11.Location = new System.Drawing.Point(132, 309);
+            this.pictureBoxImage11.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage11.Name = "pictureBoxImage11";
-            this.pictureBoxImage11.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage11.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage11.TabIndex = 24;
             this.pictureBoxImage11.TabStop = false;
@@ -495,10 +528,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage10
             // 
-            this.pictureBoxImage10.Location = new System.Drawing.Point(8, 251);
-            this.pictureBoxImage10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage10.Location = new System.Drawing.Point(11, 309);
+            this.pictureBoxImage10.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage10.Name = "pictureBoxImage10";
-            this.pictureBoxImage10.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage10.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage10.TabIndex = 23;
             this.pictureBoxImage10.TabStop = false;
@@ -506,10 +539,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage9
             // 
-            this.pictureBoxImage9.Location = new System.Drawing.Point(192, 166);
-            this.pictureBoxImage9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage9.Location = new System.Drawing.Point(256, 204);
+            this.pictureBoxImage9.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage9.Name = "pictureBoxImage9";
-            this.pictureBoxImage9.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage9.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage9.TabIndex = 22;
             this.pictureBoxImage9.TabStop = false;
@@ -517,10 +550,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage8
             // 
-            this.pictureBoxImage8.Location = new System.Drawing.Point(99, 166);
-            this.pictureBoxImage8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage8.Location = new System.Drawing.Point(132, 204);
+            this.pictureBoxImage8.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage8.Name = "pictureBoxImage8";
-            this.pictureBoxImage8.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage8.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage8.TabIndex = 21;
             this.pictureBoxImage8.TabStop = false;
@@ -528,10 +561,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage7
             // 
-            this.pictureBoxImage7.Location = new System.Drawing.Point(8, 166);
-            this.pictureBoxImage7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage7.Location = new System.Drawing.Point(11, 204);
+            this.pictureBoxImage7.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage7.Name = "pictureBoxImage7";
-            this.pictureBoxImage7.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage7.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage7.TabIndex = 20;
             this.pictureBoxImage7.TabStop = false;
@@ -539,10 +572,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage6
             // 
-            this.pictureBoxImage6.Location = new System.Drawing.Point(191, 92);
-            this.pictureBoxImage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage6.Location = new System.Drawing.Point(255, 113);
+            this.pictureBoxImage6.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage6.Name = "pictureBoxImage6";
-            this.pictureBoxImage6.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage6.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage6.TabIndex = 19;
             this.pictureBoxImage6.TabStop = false;
@@ -550,10 +583,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage5
             // 
-            this.pictureBoxImage5.Location = new System.Drawing.Point(99, 92);
-            this.pictureBoxImage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage5.Location = new System.Drawing.Point(132, 113);
+            this.pictureBoxImage5.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage5.Name = "pictureBoxImage5";
-            this.pictureBoxImage5.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage5.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage5.TabIndex = 18;
             this.pictureBoxImage5.TabStop = false;
@@ -561,10 +594,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage4
             // 
-            this.pictureBoxImage4.Location = new System.Drawing.Point(8, 92);
-            this.pictureBoxImage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage4.Location = new System.Drawing.Point(11, 113);
+            this.pictureBoxImage4.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage4.Name = "pictureBoxImage4";
-            this.pictureBoxImage4.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage4.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage4.TabIndex = 17;
             this.pictureBoxImage4.TabStop = false;
@@ -572,10 +605,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage3
             // 
-            this.pictureBoxImage3.Location = new System.Drawing.Point(191, 14);
-            this.pictureBoxImage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage3.Location = new System.Drawing.Point(255, 17);
+            this.pictureBoxImage3.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage3.Name = "pictureBoxImage3";
-            this.pictureBoxImage3.Size = new System.Drawing.Size(88, 50);
+            this.pictureBoxImage3.Size = new System.Drawing.Size(117, 62);
             this.pictureBoxImage3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage3.TabIndex = 16;
             this.pictureBoxImage3.TabStop = false;
@@ -583,10 +616,10 @@ namespace Cliente_SOproject
             // 
             // pictureBoxImage1
             // 
-            this.pictureBoxImage1.Location = new System.Drawing.Point(6, 15);
-            this.pictureBoxImage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage1.Location = new System.Drawing.Point(8, 18);
+            this.pictureBoxImage1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage1.Name = "pictureBoxImage1";
-            this.pictureBoxImage1.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage1.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage1.TabIndex = 15;
             this.pictureBoxImage1.TabStop = false;
@@ -603,11 +636,11 @@ namespace Cliente_SOproject
             this.groupBoxChat.Controls.Add(this.conversacion);
             this.groupBoxChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxChat.ForeColor = System.Drawing.Color.White;
-            this.groupBoxChat.Location = new System.Drawing.Point(331, 124);
-            this.groupBoxChat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxChat.Location = new System.Drawing.Point(441, 153);
+            this.groupBoxChat.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.groupBoxChat.Name = "groupBoxChat";
-            this.groupBoxChat.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBoxChat.Size = new System.Drawing.Size(253, 191);
+            this.groupBoxChat.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.groupBoxChat.Size = new System.Drawing.Size(337, 235);
             this.groupBoxChat.TabIndex = 14;
             this.groupBoxChat.TabStop = false;
             this.groupBoxChat.Text = "Chat";
@@ -615,9 +648,10 @@ namespace Cliente_SOproject
             // button_Nose
             // 
             this.button_Nose.ForeColor = System.Drawing.Color.Black;
-            this.button_Nose.Location = new System.Drawing.Point(88, 155);
+            this.button_Nose.Location = new System.Drawing.Point(117, 191);
+            this.button_Nose.Margin = new System.Windows.Forms.Padding(4);
             this.button_Nose.Name = "button_Nose";
-            this.button_Nose.Size = new System.Drawing.Size(75, 23);
+            this.button_Nose.Size = new System.Drawing.Size(100, 28);
             this.button_Nose.TabIndex = 6;
             this.button_Nose.Text = "NO SE";
             this.button_Nose.UseVisualStyleBackColor = true;
@@ -626,9 +660,10 @@ namespace Cliente_SOproject
             // button_No
             // 
             this.button_No.ForeColor = System.Drawing.Color.Black;
-            this.button_No.Location = new System.Drawing.Point(141, 132);
+            this.button_No.Location = new System.Drawing.Point(188, 162);
+            this.button_No.Margin = new System.Windows.Forms.Padding(4);
             this.button_No.Name = "button_No";
-            this.button_No.Size = new System.Drawing.Size(75, 23);
+            this.button_No.Size = new System.Drawing.Size(100, 28);
             this.button_No.TabIndex = 5;
             this.button_No.Text = "NO";
             this.button_No.UseVisualStyleBackColor = true;
@@ -637,9 +672,10 @@ namespace Cliente_SOproject
             // button_Si
             // 
             this.button_Si.ForeColor = System.Drawing.Color.Black;
-            this.button_Si.Location = new System.Drawing.Point(30, 132);
+            this.button_Si.Location = new System.Drawing.Point(40, 162);
+            this.button_Si.Margin = new System.Windows.Forms.Padding(4);
             this.button_Si.Name = "button_Si";
-            this.button_Si.Size = new System.Drawing.Size(75, 23);
+            this.button_Si.Size = new System.Drawing.Size(100, 28);
             this.button_Si.TabIndex = 4;
             this.button_Si.Text = "SI";
             this.button_Si.UseVisualStyleBackColor = true;
@@ -648,9 +684,10 @@ namespace Cliente_SOproject
             // comboBoxPTChat
             // 
             this.comboBoxPTChat.FormattingEnabled = true;
-            this.comboBoxPTChat.Location = new System.Drawing.Point(6, 16);
+            this.comboBoxPTChat.Location = new System.Drawing.Point(8, 20);
+            this.comboBoxPTChat.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxPTChat.Name = "comboBoxPTChat";
-            this.comboBoxPTChat.Size = new System.Drawing.Size(238, 21);
+            this.comboBoxPTChat.Size = new System.Drawing.Size(316, 24);
             this.comboBoxPTChat.TabIndex = 3;
             this.comboBoxPTChat.Visible = false;
             this.comboBoxPTChat.SelectedIndexChanged += new System.EventHandler(this.comboBoxPTChat_SelectedIndexChanged);
@@ -659,10 +696,10 @@ namespace Cliente_SOproject
             // 
             this.button_enviar.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button_enviar.ForeColor = System.Drawing.Color.Black;
-            this.button_enviar.Location = new System.Drawing.Point(47, 155);
-            this.button_enviar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_enviar.Location = new System.Drawing.Point(63, 191);
+            this.button_enviar.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.button_enviar.Name = "button_enviar";
-            this.button_enviar.Size = new System.Drawing.Size(168, 21);
+            this.button_enviar.Size = new System.Drawing.Size(224, 26);
             this.button_enviar.TabIndex = 2;
             this.button_enviar.Text = "Enviar";
             this.button_enviar.UseVisualStyleBackColor = true;
@@ -670,28 +707,30 @@ namespace Cliente_SOproject
             // 
             // textBox_con
             // 
-            this.textBox_con.Location = new System.Drawing.Point(7, 134);
-            this.textBox_con.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox_con.Location = new System.Drawing.Point(9, 165);
+            this.textBox_con.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.textBox_con.Name = "textBox_con";
-            this.textBox_con.Size = new System.Drawing.Size(237, 19);
+            this.textBox_con.Size = new System.Drawing.Size(315, 22);
             this.textBox_con.TabIndex = 1;
+            this.textBox_con.TextChanged += new System.EventHandler(this.textBox_con_TextChanged);
             // 
             // conversacion
             // 
             this.conversacion.Enabled = false;
             this.conversacion.FormattingEnabled = true;
-            this.conversacion.Location = new System.Drawing.Point(6, 42);
-            this.conversacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.conversacion.ItemHeight = 16;
+            this.conversacion.Location = new System.Drawing.Point(8, 52);
+            this.conversacion.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.conversacion.Name = "conversacion";
-            this.conversacion.Size = new System.Drawing.Size(238, 82);
+            this.conversacion.Size = new System.Drawing.Size(316, 100);
             this.conversacion.TabIndex = 0;
             // 
             // pictureBoxImage2
             // 
-            this.pictureBoxImage2.Location = new System.Drawing.Point(98, 15);
-            this.pictureBoxImage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImage2.Location = new System.Drawing.Point(131, 18);
+            this.pictureBoxImage2.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.pictureBoxImage2.Name = "pictureBoxImage2";
-            this.pictureBoxImage2.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImage2.Size = new System.Drawing.Size(116, 60);
             this.pictureBoxImage2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImage2.TabIndex = 5;
             this.pictureBoxImage2.TabStop = false;
@@ -705,16 +744,18 @@ namespace Cliente_SOproject
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(608, 33);
+            this.panel1.Size = new System.Drawing.Size(811, 39);
             this.panel1.TabIndex = 2;
             // 
             // label_turno
             // 
             this.label_turno.AutoSize = true;
-            this.label_turno.Location = new System.Drawing.Point(79, 11);
+            this.label_turno.Location = new System.Drawing.Point(105, 14);
+            this.label_turno.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_turno.Name = "label_turno";
-            this.label_turno.Size = new System.Drawing.Size(59, 13);
+            this.label_turno.Size = new System.Drawing.Size(79, 17);
             this.label_turno.TabIndex = 3;
             this.label_turno.Text = "label_turno";
             // 
@@ -722,18 +763,20 @@ namespace Cliente_SOproject
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(450, 12);
+            this.label3.Location = new System.Drawing.Point(600, 15);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 16);
+            this.label3.Size = new System.Drawing.Size(84, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "TIEMPO:";
             // 
             // label_tiempo
             // 
             this.label_tiempo.AutoSize = true;
-            this.label_tiempo.Location = new System.Drawing.Point(522, 15);
+            this.label_tiempo.Location = new System.Drawing.Point(696, 18);
+            this.label_tiempo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_tiempo.Name = "label_tiempo";
-            this.label_tiempo.Size = new System.Drawing.Size(66, 13);
+            this.label_tiempo.Size = new System.Drawing.Size(88, 17);
             this.label_tiempo.TabIndex = 1;
             this.label_tiempo.Text = "label_tiempo";
             // 
@@ -741,9 +784,10 @@ namespace Cliente_SOproject
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 9);
+            this.label2.Location = new System.Drawing.Point(9, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "TURNO:";
             // 
@@ -763,13 +807,13 @@ namespace Cliente_SOproject
             // 
             // Partida
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 348);
+            this.ClientSize = new System.Drawing.Size(811, 428);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControlPartida);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "Partida";
             this.Text = "Partida";
             this.Load += new System.EventHandler(this.Partida_Load);
