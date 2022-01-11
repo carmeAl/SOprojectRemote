@@ -232,10 +232,8 @@ namespace Cliente_SOproject
                 }
             }
             groupBoxPTTableroContrincante.Text = "Tablero de " + rival;
-            PrepararTiempo_Turno();
-
             MessageBox.Show("Escoge una carta");
-
+            PrepararTiempo_Turno();
         }
 
 
@@ -262,25 +260,19 @@ namespace Cliente_SOproject
             conteo = Convert.ToInt32(limiteTiempo);
             Star_Stop = true;
             timerTurno.Start();
-            if (nombreUsuario == creador_partida)
-            {
-                turno = true;
-            }
-            else
-            {
-                turno = false;
-            }
+        
             label_turno.Visible = true;
             label_tiempo.Visible = true;
             label_turno.Text = creador_partida;
             label_tiempo.Text = limiteTiempo;
             label2.Visible = true;
             label3.Visible = true;
-            //label_turno.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { creador_partida, label_turno });
-            //label2.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label2, true });
-            //label2.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label3, true });
+            //label_turno.Invoke(new DelegadoParaVisibleLabel (PonVisibleONOLabel), new object[] { label_turno, true });
             //label_tiempo.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label_tiempo, true });
-            //label_turno.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label_turno, true });
+            //label_turno.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { creador_partida, label_turno});
+            //label_tiempo.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { limiteTiempo, label_tiempo});
+            //label2.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label2, true });
+            //label3.Invoke(new DelegadoParaVisibleLabel(PonVisibleONOLabel), new object[] { label3, true });
         }
         public void PasarListaRandom(string lista)
         {
@@ -312,6 +304,7 @@ namespace Cliente_SOproject
                     textBox_con.Clear();
                     button_enviar.Visible = false;
                     textBox_con.Visible = false;
+                    CambiarTurno();
                 }
                 else
                 {
@@ -592,7 +585,7 @@ namespace Cliente_SOproject
                 }
                 else if (ListaImagenes[i] == "clase_12")
                 {
-                    EscribirLabel("Paula", label);
+                    EscribirLabel("Paula C.", label);
                 }
                 else if (ListaImagenes[i] == "clase_13")
                 {
@@ -604,7 +597,7 @@ namespace Cliente_SOproject
                 }
                 else if (ListaImagenes[i] == "clase_15")
                 {
-                    EscribirLabel("Paula", label);
+                    EscribirLabel("Paula S.", label);
                 }
                 else if (ListaImagenes[i] == "clase_16")
                 {
@@ -620,7 +613,7 @@ namespace Cliente_SOproject
                 }
                 else if (ListaImagenes[i] == "clase_19")
                 {
-                    EscribirLabel("Victor", label);
+                    EscribirLabel("Victor F.", label);
                 }
                 else if (ListaImagenes[i] == "clase_20")
                 {
@@ -653,7 +646,6 @@ namespace Cliente_SOproject
             {
                 b[0].BackColor = Color.FromArgb(127, 64, 230);
             }
-
         }
         
 
@@ -1218,13 +1210,11 @@ namespace Cliente_SOproject
         private void Partida_Load(object sender, EventArgs e)
         {
             Stop.Start();
-            if (nombreUsuario == creador_partida)
-            {
-                label_tiempo.Visible = false;
-                label2.Visible = false;
-                label3.Visible = false;
-                label_turno.Visible = false;
-            }
+            label_tiempo.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            label_turno.Visible = false;
+            groupBoxChat.Visible = false;
         }
 
         private void comboBoxPTChat_SelectedIndexChanged(object sender, EventArgs e)
@@ -1272,6 +1262,25 @@ namespace Cliente_SOproject
                 label_tiempo.ForeColor = Color.Black;
 
             }
+            if (inicio_partida)
+            {
+                if (turno)
+                {
+                    groupBoxChat.Visible = true;
+                    button_No.Visible = false;
+                    button_Nose.Visible = false;
+                    button_Si.Visible = false;
+                }
+                else
+                {
+                    groupBoxChat.Visible = true;
+                    comboBoxPTChat.Visible = false;
+                    conversacion.Visible = false;
+                    textBox_con.Visible = false;
+                    button_enviar.Visible = false;
+                }
+            }
+
            
         }
 
@@ -1290,7 +1299,7 @@ namespace Cliente_SOproject
                 button_No.Visible = false;
                 button_Nose.Visible = false;
             }
-            
+            CambiarTurno();
         }
 
         private void button_No_Click(object sender, EventArgs e)
@@ -1308,6 +1317,7 @@ namespace Cliente_SOproject
                 button_No.Visible = false;
                 button_Nose.Visible = false;
             }
+            CambiarTurno();
         }
 
         private void button_Nose_Click(object sender, EventArgs e)
@@ -1325,11 +1335,7 @@ namespace Cliente_SOproject
                 button_No.Visible = false;
                 button_Nose.Visible = false;
             }
-        }
-
-        private void pictureBoxPEBoton_Click(object sender, EventArgs e)
-        {
-
+            CambiarTurno();
         }
 
         private void pictureBoxPEBoton_MouseEnter(object sender, EventArgs e)
@@ -1341,19 +1347,37 @@ namespace Cliente_SOproject
         {
             pictureBoxPEBoton.Image = SetAlpha((Bitmap)pictureBoxPEBoton.Image, 1000);
         }
-
-        private void textBox_con_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         public void IniciarPartida(string carta)
         {
             
             this.id_carta_rival= Convert.ToInt32(carta);
-            conteo = Convert.ToInt32(limiteTiempo);
-            tiempo = true;
             inicio_partida = true;
             MessageBox.Show("Carta rival :" + id_carta_rival);
+            if (nombreUsuario == creador_partida)
+            {
+                turno = true;
+            }
+            else
+            {
+                turno = false;
+            }
+        }
+        public void CambiarTurno()
+        {
+            if (turno)
+            {
+                turno = false;
+            }
+            else
+            {
+                turno = true;
+            }
+            // Envias el mensaje
+            string mensaje = "47/" + Nform + "/" + id_partida + "/YA";
+            // Enviamos al servidor el nombre tecleado
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            PrepararTiempo_Turno();
         }
     }
 }

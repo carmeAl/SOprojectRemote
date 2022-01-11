@@ -434,6 +434,22 @@ namespace Cliente_SOproject
                         }
                         formularios[i].CambiarColorTableroContrincante(num);
                         break;
+                    case 47:
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == Nform)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                        formularios[i].PrepararTiempo_Turno();
+                        break;
                     case 48:
                         string nombre1 = trozos1[2];
                         string carta1 = trozos1[3];
@@ -460,7 +476,6 @@ namespace Cliente_SOproject
                         {
                             formularios[i].IniciarPartida(carta2);
                         }
-
                         break;
                     case 51:
                         //formularios[Nform - 1].MoverCarta(mensaje);
