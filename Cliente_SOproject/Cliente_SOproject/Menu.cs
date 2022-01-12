@@ -453,8 +453,10 @@ namespace Cliente_SOproject
                     case 48:
                         string nombre1 = trozos1[2];
                         string carta1 = trozos1[3];
+                     
                         string nombre2 = trozos1[4];
                         string carta2 = trozos1[5];
+                     
                         i = 0;
                         encontrado = 0;
                         while ((i < formularios.Count) && (encontrado == 0))
@@ -468,7 +470,7 @@ namespace Cliente_SOproject
                                 i++;
                             }
                         }
-                        if (nombre1 == creador_partida)
+                        if (nombre1 == nombreUsuario)
                         {
                             formularios[i].IniciarPartida(carta1);
                         }
