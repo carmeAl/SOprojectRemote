@@ -25,10 +25,8 @@ namespace Cliente_SOproject
         public string rival;
         public string nombreInvitado;
         string texto;
-        int girar;
-        int bloqueo = 0;
-        int pesao;
         int conteo = 0;
+        int girar;
         bool turno;
         bool tiempo = false;
         //Parametros partida

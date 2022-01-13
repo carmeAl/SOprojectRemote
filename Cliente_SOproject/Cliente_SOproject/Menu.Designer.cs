@@ -837,20 +837,24 @@ namespace Cliente_SOproject
             // 
             // dataGridViewRanquing
             // 
+            this.dataGridViewRanquing.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.dataGridViewRanquing.AllowUserToAddRows = false;
             this.dataGridViewRanquing.AllowUserToDeleteRows = false;
+            this.dataGridViewRanquing.AllowUserToResizeColumns = false;
+            this.dataGridViewRanquing.AllowUserToResizeRows = false;
             this.dataGridViewRanquing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRanquing.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
             this.Puntos});
             this.dataGridViewRanquing.Location = new System.Drawing.Point(10, 24);
+            this.dataGridViewRanquing.MultiSelect = false;
             this.dataGridViewRanquing.Name = "dataGridViewRanquing";
             this.dataGridViewRanquing.ReadOnly = true;
             this.dataGridViewRanquing.RowHeadersWidth = 51;
             this.dataGridViewRanquing.RowTemplate.Height = 25;
             this.dataGridViewRanquing.Size = new System.Drawing.Size(224, 155);
             this.dataGridViewRanquing.TabIndex = 0;
-            this.dataGridViewRanquing.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRanquing_CellClick);
+            this.dataGridViewRanquing.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRanquing_CellContentClick);
             // 
             // Nombre
             // 

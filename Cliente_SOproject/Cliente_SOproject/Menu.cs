@@ -310,20 +310,20 @@ namespace Cliente_SOproject
                         break;
                     case 39:
                         DelegadoParaEscribirLabel delegado391 = new DelegadoParaEscribirLabel(EscribirLabel);
-                        labelPRNombre.Invoke(delegado391, new object[] { trozos1[1], labelPRNombre });
-                        labelPRId.Invoke(delegado391, new object[] { trozos1[2], labelPRId });
-                        labelPRPuntosActuales.Invoke(delegado391, new object[] { trozos1[3], labelPRPuntosActuales });
-                        labelPRMaxPuntos.Invoke(delegado391, new object[] { trozos1[4], labelPRMaxPuntos });
-                        labelPRPartidasGanadas.Invoke(delegado391, new object[] { trozos1[5], labelPRPartidasGanadas });
-                        labelPRPartidasPerdidas.Invoke(delegado391, new object[] { trozos1[6], labelPRPartidasPerdidas });
-                        labelPRPartidasJugadas.Invoke(delegado391, new object[] { trozos1[7], labelPRPartidasJugadas });
-                        labelPRPartidasGanadasVs.Invoke(delegado391, new object[] { trozos1[8], labelPRPartidasGanadasVs });
-                        labelPRPartGanVs.Invoke(delegado391, new object[] { "Partidas ganadas VS " + trozos1[1] + ":", labelPRPartGanVs });
-                        labelPRPartidasPerdidasVs.Invoke(delegado391, new object[] { trozos1[9], labelPRPartidasPerdidasVs });
-                        labelPRPartPerdVs.Invoke(delegado391, new object[] { "Partidas perdidas VS " + trozos1[1] + ":", labelPRPartPerdVs });
-                        labelPRPartidasJugadasVs.Invoke(delegado391, new object[] { trozos1[10], labelPRPartidasJugadasVs });
-                        labelPRPartJugVs.Invoke(delegado391, new object[] { "Partidas jugadas VS " + trozos1[1] + ":", labelPRPartJugVs });
-                        label12.Invoke(delegado391, new object[] { trozos1[11], label12 });
+                        labelPRNombre.Invoke(delegado391, new object[] { trozos1[2], labelPRNombre });
+                        labelPRId.Invoke(delegado391, new object[] { trozos1[3], labelPRId });
+                        labelPRPuntosActuales.Invoke(delegado391, new object[] { trozos1[4], labelPRPuntosActuales });
+                        labelPRMaxPuntos.Invoke(delegado391, new object[] { trozos1[5], labelPRMaxPuntos });
+                        labelPRPartidasGanadas.Invoke(delegado391, new object[] { trozos1[6], labelPRPartidasGanadas });
+                        labelPRPartidasPerdidas.Invoke(delegado391, new object[] { trozos1[7], labelPRPartidasPerdidas });
+                        labelPRPartidasJugadas.Invoke(delegado391, new object[] { trozos1[8], labelPRPartidasJugadas });
+                        labelPRPartidasGanadasVs.Invoke(delegado391, new object[] { trozos1[9], labelPRPartidasGanadasVs });
+                        labelPRPartGanVs.Invoke(delegado391, new object[] { "Partidas ganadas VS " + trozos1[2] + ":", labelPRPartGanVs });
+                        labelPRPartidasPerdidasVs.Invoke(delegado391, new object[] { trozos1[10], labelPRPartidasPerdidasVs });
+                        labelPRPartPerdVs.Invoke(delegado391, new object[] { "Partidas perdidas VS " + trozos1[2] + ":", labelPRPartPerdVs });
+                        labelPRPartidasJugadasVs.Invoke(delegado391, new object[] { trozos1[11], labelPRPartidasJugadasVs });
+                        labelPRPartJugVs.Invoke(delegado391, new object[] { "Partidas jugadas VS " + trozos1[2] + ":", labelPRPartJugVs });
+                        label12.Invoke(delegado391, new object[] { trozos1[12], label12 });
                         DelegadoParaCambiarTab delegado392 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfilRival.Invoke(delegado392, new object[] { tabPagePerfilRival });
                         break;
@@ -558,21 +558,34 @@ namespace Cliente_SOproject
                 labelMUsuarioNoEncontrado.Visible = true;
             }
         }
-        private void dataGridViewRanquing_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewRanquing_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if ((conectado) && (Convert.ToString(dataGridViewRanquing.CurrentRow.Cells[0].Value) != nombreUsuario))
+            try
             {
-                string mensaje = "39/" + nombreUsuario + "/" + id_usuario + "/" + dataGridViewRanquing.CurrentRow.Cells[0].Value;
-                // Enviamos al servidor el nombre tecleado
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
+                if ((conectado) &&
+                (Convert.ToString(dataGridViewRanquing.Rows[e.RowIndex].Cells[0].Value) != nombreUsuario) &&
+                (Convert.ToString(dataGridViewRanquing.Rows[e.RowIndex].Cells[0].Value) != "NOMBRE"))
+                {
+                    string mensaje = "39/" + nombreUsuario + "/" + id_usuario + "/" + dataGridViewRanquing.CurrentRow.Cells[0].Value;
+                    // Enviamos al servidor el nombre tecleado
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+                }
+                else
+                {
+                    if (conectado)
+                    {
+                        string mensaje = "37/" + nombreUsuario + "/" + id_usuario;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                        server.Send(msg);
+                    }
+                }
             }
-            else
+            catch
             {
-                //labelMUsuarioNoEncontrado.Text = "Error al conectarse con el servidor";
-                //labelMUsuarioNoEncontrado.Visible = true;
-            }
 
+            }
         }
         private void pictureBoxCInvitar_Click(object sender, EventArgs e)
         {
@@ -715,6 +728,7 @@ namespace Cliente_SOproject
             {
                 textBoxLContraseña.Text = "";
                 textBoxLContraseña.ForeColor = Color.Black;
+                textBoxLContraseña.UseSystemPasswordChar = true;
             }
         }
 
@@ -724,6 +738,7 @@ namespace Cliente_SOproject
             {
                 textBoxLContraseña.Text = "CONTRASEÑA";
                 textBoxLContraseña.ForeColor = Color.FromArgb(173, 188, 236);
+                textBoxLContraseña.UseSystemPasswordChar = false;
             }
         }
 
@@ -751,6 +766,7 @@ namespace Cliente_SOproject
             {
                 textBoxRContraseña.Text = "";
                 textBoxRContraseña.ForeColor = Color.Black;
+                textBoxRContraseña.UseSystemPasswordChar = true;
             }
         }
 
@@ -760,6 +776,7 @@ namespace Cliente_SOproject
             {
                 textBoxRContraseña.Text = "CONTRASEÑA";
                 textBoxRContraseña.ForeColor = Color.FromArgb(173, 188, 236);
+                textBoxRContraseña.UseSystemPasswordChar = false;
             }
         }
 
@@ -805,6 +822,7 @@ namespace Cliente_SOproject
             e.Graphics.DrawString("Arial Font", font1, Brushes.Red, new PointF(10, 10));
         }
 
+        
     }
 }
 
