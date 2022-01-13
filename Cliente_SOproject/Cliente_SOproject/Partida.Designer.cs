@@ -75,6 +75,7 @@ namespace Cliente_SOproject
             this.pictureBoxImage3 = new System.Windows.Forms.PictureBox();
             this.pictureBoxImage1 = new System.Windows.Forms.PictureBox();
             this.groupBoxChat = new System.Windows.Forms.GroupBox();
+            this.Boton_respuesta = new System.Windows.Forms.Button();
             this.button_Nose = new System.Windows.Forms.Button();
             this.button_No = new System.Windows.Forms.Button();
             this.button_Si = new System.Windows.Forms.Button();
@@ -91,7 +92,9 @@ namespace Cliente_SOproject
             this.timerFlip = new System.Windows.Forms.Timer(this.components);
             this.Stop = new System.Windows.Forms.Timer(this.components);
             this.timerTurno = new System.Windows.Forms.Timer(this.components);
-            this.Boton_respuesta = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabControlPartida.SuspendLayout();
             this.tabPageEsperando.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPEGif)).BeginInit();
@@ -125,6 +128,9 @@ namespace Cliente_SOproject
             this.groupBoxChat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage2)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPartida
@@ -148,7 +154,7 @@ namespace Cliente_SOproject
             this.tabPageEsperando.Location = new System.Drawing.Point(4, 25);
             this.tabPageEsperando.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageEsperando.Name = "tabPageEsperando";
-            this.tabPageEsperando.Size = new System.Drawing.Size(803, 399);
+            this.tabPageEsperando.Size = new System.Drawing.Size(803, 435);
             this.tabPageEsperando.TabIndex = 0;
             this.tabPageEsperando.Text = "Esperando";
             this.tabPageEsperando.UseVisualStyleBackColor = true;
@@ -199,7 +205,7 @@ namespace Cliente_SOproject
             this.pictureBox13.Location = new System.Drawing.Point(0, 0);
             this.pictureBox13.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(803, 399);
+            this.pictureBox13.Size = new System.Drawing.Size(803, 435);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox13.TabIndex = 0;
             this.pictureBox13.TabStop = false;
@@ -647,6 +653,17 @@ namespace Cliente_SOproject
             this.groupBoxChat.Text = "Chat";
             this.groupBoxChat.Enter += new System.EventHandler(this.groupBoxChat_Enter);
             // 
+            // Boton_respuesta
+            // 
+            this.Boton_respuesta.ForeColor = System.Drawing.Color.Black;
+            this.Boton_respuesta.Location = new System.Drawing.Point(85, 226);
+            this.Boton_respuesta.Name = "Boton_respuesta";
+            this.Boton_respuesta.Size = new System.Drawing.Size(168, 34);
+            this.Boton_respuesta.TabIndex = 7;
+            this.Boton_respuesta.Text = "¡ Lo sé ! ";
+            this.Boton_respuesta.UseVisualStyleBackColor = true;
+            this.Boton_respuesta.Click += new System.EventHandler(this.Boton_respuesta_Click);
+            // 
             // button_Nose
             // 
             this.button_Nose.ForeColor = System.Drawing.Color.Black;
@@ -739,6 +756,9 @@ namespace Cliente_SOproject
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.label_turno);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label_tiempo);
@@ -747,7 +767,7 @@ namespace Cliente_SOproject
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(811, 47);
+            this.panel1.Size = new System.Drawing.Size(811, 51);
             this.panel1.TabIndex = 2;
             // 
             // label_turno
@@ -806,16 +826,31 @@ namespace Cliente_SOproject
             this.timerTurno.Interval = 1000;
             this.timerTurno.Tick += new System.EventHandler(this.timerTurno_Tick);
             // 
-            // Boton_respuesta
+            // pictureBox1
             // 
-            this.Boton_respuesta.ForeColor = System.Drawing.Color.Black;
-            this.Boton_respuesta.Location = new System.Drawing.Point(85, 226);
-            this.Boton_respuesta.Name = "Boton_respuesta";
-            this.Boton_respuesta.Size = new System.Drawing.Size(168, 34);
-            this.Boton_respuesta.TabIndex = 7;
-            this.Boton_respuesta.Text = "¡ Lo sé ! ";
-            this.Boton_respuesta.UseVisualStyleBackColor = true;
-            this.Boton_respuesta.Click += new System.EventHandler(this.Boton_respuesta_Click);
+            this.pictureBox1.Location = new System.Drawing.Point(452, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(109, 53);
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(346, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 53);
+            this.pictureBox2.TabIndex = 42;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(233, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(110, 53);
+            this.pictureBox3.TabIndex = 43;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // Partida
             // 
@@ -866,6 +901,9 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -933,5 +971,8 @@ namespace Cliente_SOproject
         private System.Windows.Forms.PictureBox pictureBoxPTTableroContrincante1;
         private System.Windows.Forms.Label label_turno;
         private System.Windows.Forms.Button Boton_respuesta;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

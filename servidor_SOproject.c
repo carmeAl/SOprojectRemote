@@ -970,6 +970,30 @@ void *AtenderCliente (void *socket){
 				sprintf(notificacion,"48/%d/%s/%d/%s/%d",IDPartida,TablaPartidasActivas[IDPartida].nombre1,TablaPartidasActivas[IDPartida].carta1,TablaPartidasActivas[IDPartida].nombre2,TablaPartidasActivas[IDPartida].carta2);
 			}
 		}
+		
+		else if (codigo== 50)
+		{
+			p =strtok(NULL,"/");
+			int IDPartida = atoi(p);
+			p = strtok(NULL,"/");
+			char nombre_mandado[100];
+			strcpy(nombre_mandado,p);
+			p= strtok(NULL,"/");
+			char resultado[100];
+			strcpy(resultado,p);
+			p= strtok(NULL,"/");
+			int vidas = atoi(p);
+			if(strcmp(TablaPartidasActivas[IDPartida].nombre1,nombre_mandado)==0)
+			{
+				sprintf(notificacion,"50/%d/%s/%s/%d",IDPartida,TablaPartidasActivas[IDPartida].nombre1,resultado,vidas);
+			}
+			else
+			{
+				sprintf(notificacion,"50/%d/%s/%s/%d",IDPartida,TablaPartidasActivas[IDPartida].nombre2,resultado,vidas);
+			}
+		
+			
+		}
 		printf ("Respuesta: %s\n", respuesta);
 		printf ("notificacion: %s\n", notificacion);
 		

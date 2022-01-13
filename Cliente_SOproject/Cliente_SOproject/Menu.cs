@@ -472,15 +472,31 @@ namespace Cliente_SOproject
                         }
                         if (nombre1 == nombreUsuario)
                         {
-                            formularios[i].IniciarPartida(carta1);
+                            formularios[i].IniciarPartida(carta2);
                         }
                         else
                         {
-                            formularios[i].IniciarPartida(carta2);
+                            formularios[i].IniciarPartida(carta1);
                         }
                         break;
-                    case 51:
-                        //formularios[Nform - 1].MoverCarta(mensaje);
+                    case 50:
+                        string persona = trozos1[2];
+                        string resultado = trozos1[3];
+                        int vidas = Convert.ToInt32(trozos1[4]);
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == Nform)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                        formularios[i].Fasefinal(persona, resultado,vidas);
                         break;
                 }
             }
@@ -841,6 +857,10 @@ namespace Cliente_SOproject
             e.Graphics.DrawString("Arial Font", font1, Brushes.Red, new PointF(10, 10));
         }
 
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

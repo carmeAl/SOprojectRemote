@@ -51,6 +51,9 @@ namespace Cliente_SOproject
         int carta_seleccionada=-1;
         int vidas = 3;
         int seguridad=1;
+        string resultado;
+        int final = 0;
+        int intentos;
 
         static readonly object _object = new object();
 
@@ -222,6 +225,7 @@ namespace Cliente_SOproject
                 poner_nombre_fotos(10, label_Imagen11, "pais");
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
                 poner_nombre_fotos(11, label_Imagen12, "pais");
+     
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -739,7 +743,7 @@ namespace Cliente_SOproject
                     DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
                     if (r == DialogResult.Yes)
                     {
-                        mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                        mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta ;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
                         carta_inicial = 2;
@@ -773,83 +777,161 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (0 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
-                    carta_inicial = 1;
+                    carta_seleccionada = id_carta;
+                    if (0 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    carta_inicial = 1;
-                    groupBoxChat.Visible = true;
+                    if (0 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                      
+
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                           
+                        }
+                    }
                 }
             }
         }
 
         private void pictureBoxImage2_Click(object sender, EventArgs e)
         {
-            if (carta_inicial != 3)
+            if (final == 0)
             {
-                if (carta_inicial == 0)
+                if (carta_inicial != 3)
                 {
-                    id_carta = 1;
-                    DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                    if (r == DialogResult.Yes)
+                    if (carta_inicial == 0)
                     {
-                        mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                        server.Send(msg);
-                        carta_inicial = 2;
+                        id_carta = 1;
+                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
+                        if (r == DialogResult.Yes)
+                        {
+                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                            carta_inicial = 2;
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("Escoge otra carta, porfi UwU");
+                        }
                     }
-                    else
+
+                    if (Opacidad >= 500 && carta_inicial == 1)
                     {
-                        MessageBox.Show("Escoge otra carta, porfi UwU");
+                        numCarta = 1;
+                        if (!UPCCarta2[numCarta])
+                            UPCCarta2[numCarta] = true;
+                        else
+                            UPCCarta2[numCarta] = false;
+                        Opacidad = 500;
+                        siguiente = 0;
+                        CartasName = pictureBoxImage2;
+                        ImageCarta = GetImageByName(ListaImagenes[numCarta]);
+                        EnviarNumCartaServer(numCarta);
+                        timerFlip.Start();
                     }
-                }
+                    if (carta_inicial == 2)
+                    {
+                        carta_inicial = 1;
+                    }
 
-                if (Opacidad >= 500 && carta_inicial == 1)
-                {
-                    numCarta = 1;
-                    if (!UPCCarta2[numCarta])
-                        UPCCarta2[numCarta] = true;
-                    else
-                        UPCCarta2[numCarta] = false;
-                    Opacidad = 500;
-                    siguiente = 0;
-                    CartasName = pictureBoxImage2;
-                    ImageCarta = GetImageByName(ListaImagenes[numCarta]);
-                    EnviarNumCartaServer(numCarta);
-                    timerFlip.Start();
-                }
-                if (carta_inicial == 2)
-                {
-                    carta_inicial = 1;
-                }
-            }
-            else
-            {
-               
-                if (1 == id_carta_rival)
-                {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (final == 0)
+                    {
+
+
+                        if (1 == id_carta_rival)
+                        {
+                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                            carta_seleccionada = -1;
+                            carta_inicial = 1;
+                        }
+                        else
+                        {
+                            vidas = vidas - 1;
+                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            if (vidas == 0)
+                            {
+                                MessageBox.Show("Has perdido");
+                                mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                                server.Send(msg);
+                            }
+                            carta_seleccionada = -1;
+                            carta_inicial = 1;
+                            groupBoxChat.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        if (1 == id_carta_rival)
+                        {
+                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                           
+                        }
+                        else
+                        {
+                            intentos = intentos - 1;
+                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            if (intentos == 0)
+                            {
+                                MessageBox.Show("Has perdido");
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                                server.Send(msg);
+                              
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -896,20 +978,59 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (2 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
+
+
+                    carta_seleccionada = id_carta;
+                    if (2 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (2 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                       
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                            
+                        }
+                    }
                 }
             }
         }
@@ -959,20 +1080,57 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (3 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
+                    carta_seleccionada = id_carta;
+                    if (3 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (3 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                       
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                           
+                        }
+                    }
                 }
             }
         }
@@ -1020,20 +1178,59 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (4== id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
+
+
+                    carta_seleccionada = id_carta;
+                    if (4 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (4 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                      
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                           
+                        }
+                    }
                 }
             }
         }
@@ -1083,20 +1280,59 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (5 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
+
+
+                    carta_seleccionada = id_carta;
+                    if (5 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (5 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                      
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                           
+                        }
+                    }
                 }
             }
         }
@@ -1145,20 +1381,57 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (6 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
+                    carta_seleccionada = id_carta;
+                    if (6 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (6 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                           
+                        }
+                    }
                 }
             }
         }
@@ -1205,20 +1478,59 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (7 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
+
+
+                    carta_seleccionada = id_carta;
+                    if (7 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (7 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                       
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                           
+                        }
+                    }
                 }
             }
         }
@@ -1265,20 +1577,59 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (8 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
+
+
+                    carta_seleccionada = id_carta;
+                    if (8 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (8 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                           
+                        }
+                    }
                 }
             }
         }
@@ -1325,20 +1676,59 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (9 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
+
+
+                    carta_seleccionada = id_carta;
+                    if (9 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (9 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                       
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                          
+                        }
+                    }
                 }
             }
         }
@@ -1387,20 +1777,60 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (10 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    carta_seleccionada = -1;
+
+
+                    carta_seleccionada = id_carta;
+                    if (10 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (10 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                       
+
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                            
+                        }
+                    }
                 }
             }
         }
@@ -1449,22 +1879,59 @@ namespace Cliente_SOproject
             }
             else
             {
-                carta_seleccionada = id_carta;
-                if (11 == id_carta_rival)
+                if (final == 0)
                 {
-                    MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
-                    //mensaje el otro tiene que probar suerte
-                    carta_seleccionada = -1;
+
+
+                    carta_seleccionada = id_carta;
+                    if (11 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                        mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                    }
+                    else
+                    {
+                        vidas = vidas - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                        if (vidas == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                        }
+                        carta_seleccionada = -1;
+                        carta_inicial = 1;
+                        groupBoxChat.Visible = true;
+                    }
                 }
                 else
                 {
-                    vidas = vidas - 1;
-                    MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + "vidas");
-                    if (vidas == 0)
-                        MessageBox.Show("Has perdido");
-                    //mensaje ha ganado el otro
-                    carta_seleccionada = -1;
-                    groupBoxChat.Visible = true;
+                    if (11 == id_carta_rival)
+                    {
+                        MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                        mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                        server.Send(msg);
+                      
+                    }
+                    else
+                    {
+                        intentos = intentos - 1;
+                        MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                        if (intentos == 0)
+                        {
+                            MessageBox.Show("Has perdido");
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                            server.Send(msg);
+                
+                        }
+                    }
                 }
             }
         }
@@ -1665,6 +2132,45 @@ namespace Cliente_SOproject
             carta_inicial = 3;
             MessageBox.Show("Escoge la carta del rival");
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void Fasefinal(string nombre,string resultado,int vidas_final)
+        {
+            carta_inicial = 3;
+            if (nombre==rival && resultado=="No")
+            {
+                MessageBox.Show("Enorabuena, has ganado a " + rival);
+
+
+            }
+            else if(nombre == rival && resultado == "Si")
+            {
+                if (vidas_final <= vidas)
+                {
+                    intentos = vidas - vidas_final + 1;
+                    MessageBox.Show("Tienes " + intentos+ " para poder empatar. Escoge la carta, tienes 60 segundos");
+                    conteo = 60;
+                    final = 1;
+
+                }
+                else
+                {
+                    MessageBox.Show("Has perdido ante "+ rival);
+                    mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No";
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+
+                }
+            }
         }
     }
 }
