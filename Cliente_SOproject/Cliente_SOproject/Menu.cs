@@ -28,6 +28,7 @@ namespace Cliente_SOproject
         public bool conectado = false;
         public int id_partida;
         public string contrincante;
+        public string nombreInvitado;
 
         //Parametros partida
         string nivel;
@@ -143,7 +144,7 @@ namespace Cliente_SOproject
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida);
+                nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado);
             formularios.Add(FormPartida);
             FormPartida.rival = rival;
             FormPartida.PasarListaRandom(lista);
@@ -156,7 +157,7 @@ namespace Cliente_SOproject
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida);
+                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado);
             formularios.Add(FormPartida);
             FormPartida.ShowDialog();
         }
@@ -218,8 +219,6 @@ namespace Cliente_SOproject
                 int codigo = Convert.ToInt32(trozos1[0]);
                 int Nform = Convert.ToInt32(trozos1[1]);
                 string mensaje = trozos1[2];
-
-
 
 
                 switch (codigo)
@@ -310,20 +309,20 @@ namespace Cliente_SOproject
                         break;
                     case 39:
                         DelegadoParaEscribirLabel delegado391 = new DelegadoParaEscribirLabel(EscribirLabel);
-                        labelPRNombre.Invoke(delegado391, new object[] { trozos1[2], labelPRNombre });
-                        labelPRId.Invoke(delegado391, new object[] { trozos1[3], labelPRId });
-                        labelPRPuntosActuales.Invoke(delegado391, new object[] { trozos1[4], labelPRPuntosActuales });
-                        labelPRMaxPuntos.Invoke(delegado391, new object[] { trozos1[5], labelPRMaxPuntos });
-                        labelPRPartidasGanadas.Invoke(delegado391, new object[] { trozos1[6], labelPRPartidasGanadas });
-                        labelPRPartidasPerdidas.Invoke(delegado391, new object[] { trozos1[7], labelPRPartidasPerdidas });
-                        labelPRPartidasJugadas.Invoke(delegado391, new object[] { trozos1[8], labelPRPartidasJugadas });
-                        labelPRPartidasGanadasVs.Invoke(delegado391, new object[] { trozos1[9], labelPRPartidasGanadasVs });
-                        labelPRPartGanVs.Invoke(delegado391, new object[] { "Partidas ganadas VS " + trozos1[2] + ":", labelPRPartGanVs });
-                        labelPRPartidasPerdidasVs.Invoke(delegado391, new object[] { trozos1[10], labelPRPartidasPerdidasVs });
-                        labelPRPartPerdVs.Invoke(delegado391, new object[] { "Partidas perdidas VS " + trozos1[2] + ":", labelPRPartPerdVs });
-                        labelPRPartidasJugadasVs.Invoke(delegado391, new object[] { trozos1[11], labelPRPartidasJugadasVs });
-                        labelPRPartJugVs.Invoke(delegado391, new object[] { "Partidas jugadas VS " + trozos1[2] + ":", labelPRPartJugVs });
-                        label12.Invoke(delegado391, new object[] { trozos1[12], label12 });
+                        labelPRNombre.Invoke(delegado391, new object[] { trozos1[1], labelPRNombre });
+                        labelPRId.Invoke(delegado391, new object[] { trozos1[2], labelPRId });
+                        labelPRPuntosActuales.Invoke(delegado391, new object[] { trozos1[3], labelPRPuntosActuales });
+                        labelPRMaxPuntos.Invoke(delegado391, new object[] { trozos1[4], labelPRMaxPuntos });
+                        labelPRPartidasGanadas.Invoke(delegado391, new object[] { trozos1[5], labelPRPartidasGanadas });
+                        labelPRPartidasPerdidas.Invoke(delegado391, new object[] { trozos1[6], labelPRPartidasPerdidas });
+                        labelPRPartidasJugadas.Invoke(delegado391, new object[] { trozos1[7], labelPRPartidasJugadas });
+                        labelPRPartidasGanadasVs.Invoke(delegado391, new object[] { trozos1[8], labelPRPartidasGanadasVs });
+                        labelPRPartGanVs.Invoke(delegado391, new object[] { "Partidas ganadas VS " + trozos1[1] + ":", labelPRPartGanVs });
+                        labelPRPartidasPerdidasVs.Invoke(delegado391, new object[] { trozos1[9], labelPRPartidasPerdidasVs });
+                        labelPRPartPerdVs.Invoke(delegado391, new object[] { "Partidas perdidas VS " + trozos1[1] + ":", labelPRPartPerdVs });
+                        labelPRPartidasJugadasVs.Invoke(delegado391, new object[] { trozos1[10], labelPRPartidasJugadasVs });
+                        labelPRPartJugVs.Invoke(delegado391, new object[] { "Partidas jugadas VS " + trozos1[1] + ":", labelPRPartJugVs });
+                        label12.Invoke(delegado391, new object[] { trozos1[11], label12 });
                         DelegadoParaCambiarTab delegado392 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfilRival.Invoke(delegado392, new object[] { tabPagePerfilRival });
                         break;
@@ -350,7 +349,7 @@ namespace Cliente_SOproject
 
                             mensaje_not = "42/" + trozos1[1] + "/" + nombre + "/" + nombreUsuario + "/Si";
 
-
+                            nombreInvitado = nombreUsuario;
 
                         }
                         else
@@ -365,17 +364,13 @@ namespace Cliente_SOproject
                         creador_partida = trozos1[2];
                         if (trozos1[4] == "Si")
                         {
-
                             id_partida = Convert.ToInt32(trozos1[5]);
-
                             if (creador_partida == nombreUsuario)
                             {
                                 formularios[Nform].PasarListaRandom(trozos1[6]);
                                 formularios[Nform].rival = trozos1[3];
                                 formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
                                 formularios[Nform].id_partida = id_partida;
-
-
                             }
                             else
                             {
@@ -383,9 +378,6 @@ namespace Cliente_SOproject
                                 Thread T = new Thread(ts);
                                 T.Start();
                                 //MessageBox.Show("No se porque va si pongo esto");
-
-
-
                             }
                         }
                         else
@@ -443,8 +435,70 @@ namespace Cliente_SOproject
                         }
                         formularios[i].CambiarColorTableroContrincante(num);
                         break;
-                    case 51:
-                        //formularios[Nform - 1].MoverCarta(mensaje);
+                    case 47:
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == Nform)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                        int turno = 1;
+                        formularios[i].PrepararTiempo_Turno(turno);
+                        break;
+                    case 48:
+                        string nombre1 = trozos1[2];
+                        string carta1 = trozos1[3];
+                  
+                        string nombre2 = trozos1[4];
+                        string carta2 = trozos1[5];
+                     
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == Nform)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                        if (nombre1 == nombreUsuario)
+                        {
+                            formularios[i].IniciarPartida(carta2);
+                        }
+                        else
+                        {
+                            formularios[i].IniciarPartida(carta1);
+                        }
+                        break;
+                    case 50:
+                        string persona = trozos1[2];
+                        string resultado = trozos1[3];
+                        int vidas = Convert.ToInt32(trozos1[4]);
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == Nform)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                        formularios[i].Fasefinal(persona, resultado,vidas);
                         break;
                 }
             }
@@ -558,34 +612,21 @@ namespace Cliente_SOproject
                 labelMUsuarioNoEncontrado.Visible = true;
             }
         }
-        private void dataGridViewRanquing_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewRanquing_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if ((conectado) && (Convert.ToString(dataGridViewRanquing.CurrentRow.Cells[0].Value) != nombreUsuario))
             {
-                if ((conectado) &&
-                (Convert.ToString(dataGridViewRanquing.Rows[e.RowIndex].Cells[0].Value) != nombreUsuario) &&
-                (Convert.ToString(dataGridViewRanquing.Rows[e.RowIndex].Cells[0].Value) != "NOMBRE"))
-                {
-                    string mensaje = "39/" + nombreUsuario + "/" + id_usuario + "/" + dataGridViewRanquing.CurrentRow.Cells[0].Value;
-                    // Enviamos al servidor el nombre tecleado
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    server.Send(msg);
-                }
-                else
-                {
-                    if (conectado)
-                    {
-                        string mensaje = "37/" + nombreUsuario + "/" + id_usuario;
-                        // Enviamos al servidor el nombre tecleado
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                        server.Send(msg);
-                    }
-                }
+                string mensaje = "39/" + nombreUsuario + "/" + id_usuario + "/" + dataGridViewRanquing.CurrentRow.Cells[0].Value;
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
             }
-            catch
+            else
             {
+                //labelMUsuarioNoEncontrado.Text = "Error al conectarse con el servidor";
+                //labelMUsuarioNoEncontrado.Visible = true;
+            }
 
-            }
         }
         private void pictureBoxCInvitar_Click(object sender, EventArgs e)
         {
@@ -728,7 +769,6 @@ namespace Cliente_SOproject
             {
                 textBoxLContraseña.Text = "";
                 textBoxLContraseña.ForeColor = Color.Black;
-                textBoxLContraseña.UseSystemPasswordChar = true;
             }
         }
 
@@ -738,7 +778,6 @@ namespace Cliente_SOproject
             {
                 textBoxLContraseña.Text = "CONTRASEÑA";
                 textBoxLContraseña.ForeColor = Color.FromArgb(173, 188, 236);
-                textBoxLContraseña.UseSystemPasswordChar = false;
             }
         }
 
@@ -766,7 +805,6 @@ namespace Cliente_SOproject
             {
                 textBoxRContraseña.Text = "";
                 textBoxRContraseña.ForeColor = Color.Black;
-                textBoxRContraseña.UseSystemPasswordChar = true;
             }
         }
 
@@ -776,7 +814,6 @@ namespace Cliente_SOproject
             {
                 textBoxRContraseña.Text = "CONTRASEÑA";
                 textBoxRContraseña.ForeColor = Color.FromArgb(173, 188, 236);
-                textBoxRContraseña.UseSystemPasswordChar = false;
             }
         }
 
@@ -822,7 +859,10 @@ namespace Cliente_SOproject
             e.Graphics.DrawString("Arial Font", font1, Brushes.Red, new PointF(10, 10));
         }
 
-        
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

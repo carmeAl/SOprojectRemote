@@ -539,13 +539,13 @@ void EliminarJugadorListaCon(char* nombre){
 	
 }
 void CharJugCon(char respuesta[512]){ //Respuesta "NumeroJugadores,Nombre1,Nombre2,Nombre3" (char)
-	pthread_mutex_lock(&mutex);
+	
 	sprintf(respuesta,"%d,",miLista.num);
 	for(int i=0;i<miLista.num;i++){
 		sprintf(respuesta,"%s%s,",respuesta,miLista.Lista[i].nombre);
 	}
 	respuesta[strlen(respuesta)-1]='\0';
-	pthread_mutex_unlock(&mutex);
+	
 	
 }
 
@@ -642,6 +642,7 @@ int PonerPartidaATablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
 	}
 	if (encontrado==0){
 		printf("NO se ha podido poner la partida en la tabla de partidas activas\n");
+		
 	}
 	else if(encontrado==1){
 		printf("Partida introducida en la tabla de partidas activas SARISFACTORIAMENTE\n");
@@ -886,7 +887,9 @@ void *AtenderCliente (void *socket){
 			strcat(notificacion,SIoNO);
 			
 			if (strcmp(SIoNO,"Si")==0){
+				pthread_mutex_lock(&mutex);
 				int IDPartida=PonerPartidaATablaPartidasActivas(nombreCreador,nombreInvitado);
+				pthread_mutex_unlock(&mutex);
 				EnviarIDPartida(notificacion,nombreCreador,nombreInvitado,IDPartida,ListaSockets,contador,nombre);	
 			}
 			else{
@@ -928,9 +931,9 @@ void *AtenderCliente (void *socket){
 			EnviarMSN(notificacion,IDPartida,NombreQuienEnviaMsn,Msn,ListaSockets,contador);
 			sprintf(notificacion,"46/%d/%s",IDPartida,Msn);
 		}
-		else if (codigo == 47) { //Cliente envia "47/IDPartida/NombreQuienCrea/YA" el que crea la partida
-			//Servidor envia "47/IDPartida/YA" al jugador que no ha crado la partida
-
+		else if (codigo == 47) { //Cliente envia "47/IDPartida/NombreQuienCrea/YA" el que crea la partida.
+			//Servidor envia "47/IDPartida/YA" al jugador que no ha crado la partida.
+			
 			int IDPartida = atoi(p);
 			p = strtok(NULL, "/");
 			char NombreQuienEnviaMsn[20];
@@ -956,12 +959,16 @@ void *AtenderCliente (void *socket){
 			printf("Este es el nombre2:%s\n",TablaPartidasActivas[IDPartida].nombre2);
 			if(strcmp(TablaPartidasActivas[IDPartida].nombre1,nombre_mandado)==0)
 			{
+				pthread_mutex_lock(&mutex);
 				TablaPartidasActivas[IDPartida].carta1=id_carta;
+				pthread_mutex_unlock(&mutex);
 				printf("Carta1 = %d\n",TablaPartidasActivas[IDPartida].carta1);
 			}
 			else if(strcmp(TablaPartidasActivas[IDPartida].nombre2,nombre_mandado)==0)
 			{
+				pthread_mutex_lock(&mutex);
 				TablaPartidasActivas[IDPartida].carta2=id_carta;
+				pthread_mutex_unlock(&mutex);
 				printf("Carta2 = %d\n",TablaPartidasActivas[IDPartida].carta2);
 			}
 			printf("Este es un printeo de prueba: %d, %d\n",TablaPartidasActivas[IDPartida].carta1,TablaPartidasActivas[IDPartida].carta2);
@@ -1019,7 +1026,6 @@ void *AtenderCliente (void *socket){
 
 int main(int argc, char *argv[])
 {
-	
 	Inicializar(TablaPartidasActivas);
 	
 	int sock_conn, sock_listen, ret;
@@ -1063,7 +1069,8 @@ int main(int argc, char *argv[])
 	}
 	//inicializar la conexion
 	conn = mysql_real_connect (conn, "shiva2.upc.es","root", "mysql", "T4BBDD",0, NULL, 0);
-	if (conn==NULL) {
+	if (conn==NULL) 
+	{
 		printf ("Error al inicializar la conexion: %u %s\n", 
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
