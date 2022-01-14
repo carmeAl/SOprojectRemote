@@ -85,6 +85,7 @@ namespace Cliente_SOproject
             this.conversacion = new System.Windows.Forms.ListBox();
             this.pictureBoxImage2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -261,7 +262,7 @@ namespace Cliente_SOproject
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante3);
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante2);
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante1);
-            this.groupBoxPTTableroContrincante.Location = new System.Drawing.Point(599, 22);
+            this.groupBoxPTTableroContrincante.Location = new System.Drawing.Point(441, 23);
             this.groupBoxPTTableroContrincante.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxPTTableroContrincante.Name = "groupBoxPTTableroContrincante";
             this.groupBoxPTTableroContrincante.Padding = new System.Windows.Forms.Padding(4);
@@ -483,6 +484,7 @@ namespace Cliente_SOproject
             // label_Imagen3
             // 
             this.label_Imagen3.AutoSize = true;
+            this.label_Imagen3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label_Imagen3.Location = new System.Drawing.Point(293, 81);
             this.label_Imagen3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_Imagen3.Name = "label_Imagen3";
@@ -756,6 +758,7 @@ namespace Cliente_SOproject
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox3);
@@ -767,8 +770,18 @@ namespace Cliente_SOproject
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(811, 44);
+            this.panel1.Size = new System.Drawing.Size(811, 48);
             this.panel1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(746, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(15, 0, 15, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 17);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Rendirse";
             // 
             // pictureBox1
             // 
@@ -810,22 +823,24 @@ namespace Cliente_SOproject
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(596, 10);
+            this.label3.Location = new System.Drawing.Point(568, 24);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "TIEMPO:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label_tiempo
             // 
             this.label_tiempo.AutoSize = true;
-            this.label_tiempo.Location = new System.Drawing.Point(696, 14);
+            this.label_tiempo.Location = new System.Drawing.Point(660, 27);
             this.label_tiempo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_tiempo.Name = "label_tiempo";
             this.label_tiempo.Size = new System.Drawing.Size(88, 17);
             this.label_tiempo.TabIndex = 1;
             this.label_tiempo.Text = "label_tiempo";
+            this.label_tiempo.Click += new System.EventHandler(this.label_tiempo_Click);
             // 
             // label2
             // 
@@ -863,6 +878,7 @@ namespace Cliente_SOproject
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "Partida";
             this.Text = "Partida";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Partida_FormClosed);
             this.Load += new System.EventHandler(this.Partida_Load);
             this.tabControlPartida.ResumeLayout(false);
             this.tabPageEsperando.ResumeLayout(false);
@@ -974,5 +990,6 @@ namespace Cliente_SOproject
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label1;
     }
 }

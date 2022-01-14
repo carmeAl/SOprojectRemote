@@ -57,6 +57,8 @@ namespace Cliente_SOproject
         int rondas=0;
         int x = 0;
         public int bloqueo_turno = 0;
+        public int y=0;
+        public int terminado=0;
 
         static readonly object _object = new object();
 
@@ -791,6 +793,8 @@ namespace Cliente_SOproject
                         {
                             carta_inicial = 1;
                         }
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -802,6 +806,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -819,7 +825,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                      
+                        terminado = 1;
+                        label1.Visible = false;
+
 
                     }
                     else
@@ -832,12 +840,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                           
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+
                     }
                 }
             }
@@ -901,6 +908,8 @@ namespace Cliente_SOproject
                             server.Send(msg);
                             carta_seleccionada = -1;
                             carta_inicial = 1;
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         else
                         {
@@ -912,6 +921,8 @@ namespace Cliente_SOproject
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
+                                terminado = 1;
+                                label1.Visible = false;
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -929,7 +940,9 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                           
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
                         else
                         {
@@ -941,12 +954,11 @@ namespace Cliente_SOproject
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
-                              
+                                terminado = 1;
+                                label1.Visible = false;
+
                             }
-                            else
-                            {
-                                final = 0;
-                            }
+   
                         }
                     }
                 }
@@ -1008,6 +1020,8 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         carta_seleccionada = -1;
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1019,6 +1033,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1036,7 +1052,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                       
+                        terminado = 1;
+                        label1.Visible = false;
+
                     }
                     else
                     {
@@ -1048,12 +1066,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                            
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+   
                     }
                 }
             }
@@ -1118,6 +1135,8 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                         }
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1129,9 +1148,14 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
-                        carta_inicial = 1;
+                        if (rondas < Convert.ToInt32(limitePreguntas))
+                        {
+                            carta_inicial = 1;
+                        }
                         groupBoxChat.Visible = true;
                     }
                 }
@@ -1143,7 +1167,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                       
+                        terminado = 1;
+                        label1.Visible = false;
+
                     }
                     else
                     {
@@ -1155,12 +1181,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                           
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+    
                     }
                 }
             }
@@ -1222,6 +1247,8 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         carta_seleccionada = -1;
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1233,6 +1260,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1250,7 +1279,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                      
+                        terminado = 1;
+                        label1.Visible = false;
+
                     }
                     else
                     {
@@ -1262,12 +1293,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                           
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+
                     }
                 }
             }
@@ -1331,6 +1361,8 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         carta_seleccionada = -1;
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1342,6 +1374,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1359,7 +1393,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                      
+                        terminado = 1;
+                        label1.Visible = false;
+
                     }
                     else
                     {
@@ -1371,12 +1407,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                           
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+
                     }
                 }
             }
@@ -1437,6 +1472,8 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         carta_seleccionada = -1;
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1448,6 +1485,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1465,7 +1504,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                        
+                        terminado = 1;
+                        label1.Visible = false;
+
                     }
                     else
                     {
@@ -1477,12 +1518,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                           
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+
                     }
                 }
             }
@@ -1543,6 +1583,8 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         carta_seleccionada = -1;
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1554,6 +1596,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1571,7 +1615,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                       
+                        terminado = 1;
+                        label1.Visible = false;
+
                     }
                     else
                     {
@@ -1583,12 +1629,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                           
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+
                     }
                 }
             }
@@ -1649,6 +1694,8 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         carta_seleccionada = -1;
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1660,6 +1707,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1677,7 +1726,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                        
+                        terminado = 1;
+                        label1.Visible = false;
+
                     }
                     else
                     {
@@ -1689,12 +1740,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                           
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+   
                     }
                 }
             }
@@ -1755,6 +1805,8 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         carta_seleccionada = -1;
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1766,6 +1818,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1783,7 +1837,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                       
+                        terminado = 1;
+                        label1.Visible = false;
+
                     }
                     else
                     {
@@ -1795,12 +1851,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                          
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+  
                     }
                 }
             }
@@ -1863,6 +1918,8 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         carta_seleccionada = -1;
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1874,6 +1931,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1891,7 +1950,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                       
+                        terminado = 1;
+                        label1.Visible = false;
+
 
                     }
                     else
@@ -1904,12 +1965,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                            
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+
                     }
                 }
             }
@@ -1972,6 +2032,8 @@ namespace Cliente_SOproject
                         server.Send(msg);
                         carta_seleccionada = -1;
                         carta_inicial = 1;
+                        terminado = 1;
+                        label1.Visible = false;
                     }
                     else
                     {
@@ -1983,6 +2045,8 @@ namespace Cliente_SOproject
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
+                            terminado = 1;
+                            label1.Visible = false;
                         }
                         carta_seleccionada = -1;
                         if (rondas < Convert.ToInt32(limitePreguntas))
@@ -2000,7 +2064,9 @@ namespace Cliente_SOproject
                         mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
-                      
+                        terminado = 1;
+                        label1.Visible = false;
+
                     }
                     else
                     {
@@ -2012,12 +2078,11 @@ namespace Cliente_SOproject
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
-                
+                            terminado = 1;
+                            label1.Visible = false;
+
                         }
-                        else
-                        {
-                            final = 0;
-                        }
+    
                     }
                 }
             }
@@ -2043,37 +2108,43 @@ namespace Cliente_SOproject
         }
 
         private void timerTurno_Tick(object sender, EventArgs e)
-        {
-            int x = 0;
-            conteo = conteo - 1;
+        { 
+            if (terminado == 0) 
+            { 
+                conteo = conteo - 1;
+            }
+            else
+            {
+                label1.Visible = false;
+            }
             label_tiempo.Text = conteo.ToString();
 
-            if (carta_inicial != 1 && conteo == 0)
+            if (carta_inicial != 1 && conteo == 0 && inicio_partida == false)
             {
-                x = x + 1;
-                if (x == 2)
+                
+                if (y == 2)
                 {
-
-                        var seed = Environment.TickCount;
-                        var random = new Random(seed);
-                        var value = random.Next(0, 11);
-                        mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + value;
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                        server.Send(msg);
-                        carta_inicial = 1;
-
+                    MessageBox.Show("Escoge una carta,tienes 10 segundos, sino se escogera de forma random");
+                    conteo = 10;
+                    tiempo = true;
+                    y = 2;
                 }
                 else
                 {
-                    MessageBox.Show("Escoge una carta,tienes 10 segundos");
-                    conteo = 10;
-                    tiempo = true;
+                    var seed = Environment.TickCount;
+                    var random = new Random(seed);
+                    var value = random.Next(0, 11);
+                    MessageBox.Show("Tu carta es: " + value);
+                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + value;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                    carta_inicial = 1;
                 }
             }
             if (carta_inicial == 1 && conteo == 0 && inicio_partida==false)
             {
+                conteo = 1000;
                 MessageBox.Show("Esperando al rival");
-                conteo = Convert.ToInt32(limiteTiempo);
                 tiempo = true;
             }
             if (conteo <= 0)
@@ -2102,7 +2173,14 @@ namespace Cliente_SOproject
                     {
                         groupBoxChat.Visible = true;
                         conversacion.Visible = true;
-                        label_turno.Text = creador_partida;
+                        if (nombreUsuario == creador_partida)
+                        {
+                            label_turno.Text = rival;
+                        }
+                        else
+                        {
+                        label_turno.Text = rival;
+                        }   
                         comboBoxPTChat.Visible = false;
                         button_Nose.Visible = true;
                         button_Si.Visible = true;
@@ -2112,10 +2190,18 @@ namespace Cliente_SOproject
                        
                 }
                     else
-                    {
+                        {
                         groupBoxChat.Visible = true;
                         conversacion.Visible = true;
-                        label_turno.Text = rival;
+                        if (nombreUsuario != creador_partida)
+                        {
+                            label_turno.Text = nombreUsuario;
+                        }
+                        else
+                        {
+                        label_turno.Text = creador_partida;
+                        }
+                       
                         comboBoxPTChat.Visible = true;
                         button_Nose.Visible = false;
                         button_No.Visible = false;
@@ -2123,7 +2209,7 @@ namespace Cliente_SOproject
                         textBox_con.Visible = true;
                         button_enviar.Visible = true;
                        
-                }
+                    }
             }
 
         }
@@ -2235,9 +2321,10 @@ namespace Cliente_SOproject
             }
             else
             {
-                MessageBox.Show("Se acabaron los turnos, toca escoger la carta, tienes " + vidas + "intentos");
+                MessageBox.Show("Se acabaron los turnos, toca escoger la carta, tienes " + vidas + " intentos");
                 intentos = vidas;
                 carta_inicial = 3;
+                final = 1;
                 conteo = 1000;
     
             }
@@ -2251,10 +2338,12 @@ namespace Cliente_SOproject
 
         private void Boton_respuesta_Click(object sender, EventArgs e)
         {
-            groupBoxChat.Visible = false;
-            carta_inicial = 3;
-            MessageBox.Show("Escoge la carta del rival");
-
+            if (final == 0 && terminado!=1)
+            {
+                groupBoxChat.Visible = false;
+                carta_inicial = 3;
+                MessageBox.Show("Escoge la carta del rival");
+            }
 
         }
 
@@ -2273,6 +2362,9 @@ namespace Cliente_SOproject
             if (nombre==rival && resultado=="No")
             {
                 MessageBox.Show("Enorabuena, has ganado a " + rival);
+                // Partida_FormClosed(Partida,Close);
+                terminado = 1;
+               
 
 
             }
@@ -2293,6 +2385,8 @@ namespace Cliente_SOproject
                     mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No";
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                     server.Send(msg);
+                    terminado = 1;
+
 
                 }
             }
@@ -2306,6 +2400,30 @@ namespace Cliente_SOproject
                 CambiarTurno();
 
             }*/
+        }
+
+        private void Partida_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+            if (terminado==0 && inicio_partida ==true)
+            {
+                mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                server.Send(msg);
+
+            }
+            
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_tiempo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

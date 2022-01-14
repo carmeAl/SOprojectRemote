@@ -29,6 +29,7 @@ namespace Cliente_SOproject
         public int id_partida;
         public string contrincante;
         public string nombreInvitado;
+        public int Nform;
 
         //Parametros partida
         string nivel;
@@ -146,12 +147,15 @@ namespace Cliente_SOproject
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
                 nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado);
             formularios.Add(FormPartida);
+            Nform = formularios.Count-1;
+
             FormPartida.rival = rival;
             FormPartida.PasarListaRandom(lista);
             FormPartida.CambiarTab();
             FormPartida.nombreInvitado = nombreInv;
             FormPartida.id_partida = Convert.ToInt32(IdPartida);
             FormPartida.ShowDialog();
+            
         }
         public void PonerEnMarchaForm()
         {
@@ -159,6 +163,7 @@ namespace Cliente_SOproject
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
                     nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado);
             formularios.Add(FormPartida);
+            Nform = formularios.Count - 1;
             FormPartida.ShowDialog();
         }
         public void ConectarServidor()
@@ -217,7 +222,7 @@ namespace Cliente_SOproject
                 string[] trozos = Encoding.ASCII.GetString(msg2).Split('\0');
                 string[] trozos1 = trozos[0].Split('/');
                 int codigo = Convert.ToInt32(trozos1[0]);
-                int Nform = Convert.ToInt32(trozos1[1]);
+                //int Nform = Convert.ToInt32(trozos1[1]);
                 string mensaje = trozos1[2];
 
 
@@ -362,11 +367,13 @@ namespace Cliente_SOproject
                         break;
                     case 42:
                         creador_partida = trozos1[2];
+                        
                         if (trozos1[4] == "Si")
                         {
                             id_partida = Convert.ToInt32(trozos1[5]);
                             if (creador_partida == nombreUsuario)
                             {
+                                nombreInvitado= trozos1[3];
                                 formularios[Nform].PasarListaRandom(trozos1[6]);
                                 formularios[Nform].rival = trozos1[3];
                                 formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
@@ -377,6 +384,7 @@ namespace Cliente_SOproject
                                 ThreadStart ts = delegate { IniciarPartida(trozos1[6], trozos1[3], trozos1[5], trozos1[2]); };
                                 Thread T = new Thread(ts);
                                 T.Start();
+                                
                                 //MessageBox.Show("No se porque va si pongo esto");
                             }
                         }
@@ -423,7 +431,7 @@ namespace Cliente_SOproject
                         encontrado = 0;
                         while ((i < formularios.Count) && (encontrado == 0))
                         {
-                            if (formularios[i].id_partida == IdPartida)
+                            if (formularios[i].id_partida == id_partida)
                             {
                                 encontrado = 1;
                             }
@@ -440,7 +448,7 @@ namespace Cliente_SOproject
                         encontrado = 0;
                         while ((i < formularios.Count) && (encontrado == 0))
                         {
-                            if (formularios[i].id_partida == Nform)
+                            if (formularios[i].id_partida == Convert.ToInt32(trozos1[1]))
                             {
                                 encontrado = 1;
                             }
@@ -463,7 +471,7 @@ namespace Cliente_SOproject
                         encontrado = 0;
                         while ((i < formularios.Count) && (encontrado == 0))
                         {
-                            if (formularios[i].id_partida == Nform)
+                            if (formularios[i].id_partida == Convert.ToInt32(trozos1[1]))
                             {
                                 encontrado = 1;
                             }
@@ -482,6 +490,7 @@ namespace Cliente_SOproject
                         }
                         break;
                     case 50:
+                        id_partida= Convert.ToInt32(trozos1[1]);
                         string persona = trozos1[2];
                         string resultado = trozos1[3];
                         int vidas = Convert.ToInt32(trozos1[4]);
@@ -489,7 +498,7 @@ namespace Cliente_SOproject
                         encontrado = 0;
                         while ((i < formularios.Count) && (encontrado == 0))
                         {
-                            if (formularios[i].id_partida == Nform)
+                            if (formularios[i].id_partida == id_partida)
                             {
                                 encontrado = 1;
                             }
