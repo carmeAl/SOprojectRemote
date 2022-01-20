@@ -695,6 +695,42 @@ void EnviarCancelacion(char * notificacion,int IDPartida,char *nombre,int ListaS
 	}
 	sprintf(c,"%d",contador);
 }
+int EliminarDatosJugBaseDatos(char * idJ){//Elimina los datos del jugador con el id introducido
+	//Recibe Id de un Jugador
+	//Devuelve 0 si ha eliminado satisfactoriamente los datos, 
+	//Devuelve -1 si no eliminado los datos personales
+	//Devuelve -2 si no ha eliminado ninguna partid
+	int err;
+	char consulta[500];
+	
+	strcpy (consulta,"DELETE FROM participacion WHERE idJ ="); 
+	strcat (consulta, idJ);
+	// hacemos la consulta 
+	err=mysql_query (conn, consulta); 
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+	}
+	strcpy (consulta,"DELETE FROM jugador WHERE jugador.id ="); 
+	strcat (consulta, idJ);
+	// hacemos la consulta 
+	err=mysql_query (conn, consulta);
+	if (err!=0) {
+		printf ("Error al consultar datos de la base %u %s\n",
+				mysql_errno(conn), mysql_error(conn));
+		return -1;
+	}
+/*	strcpy (consulta,"DELETE FROM participacion WHERE idJ ="); */
+/*	strcat (consulta, idJ);*/
+	// hacemos la consulta 
+/*	err=mysql_query (conn, consulta); */
+/*	if (err!=0) {*/
+/*		printf ("Error al consultar datos de la base %u %s\n",*/
+/*				mysql_errno(conn), mysql_error(conn));*/
+/*		return -2;*/
+/*	}*/
+	return 0;
+}
 void *AtenderCliente (void *socket){
 	//bucle de atencion al cliente
 	int terminar=0;
@@ -780,6 +816,18 @@ void *AtenderCliente (void *socket){
 			Register(contrasena,nombre,respuesta);
 			// cerrar la conexion con el servidor MYSQL 
 			/*				mysql_close (conn);*/
+		}
+		else if (codigo ==22){//Codgio para darse de baja
+			//Recibe "22/IdJ"
+			//No devuelve nada
+			int res=EliminarDatosJugBaseDatos(nombre);
+			if (res==0){
+				printf("Jugador eliminado satisfactoriamente\n");
+			}
+			else{
+				printf("No se ha eliminado/encontrado el jugador\n");
+			}
+			
 		}
 		else if (codigo ==32){ //Peticion partidas consecutivas ganadas 
 			//por el Jugador cuyo nombre se recibe como "31/Xavier"
@@ -931,7 +979,7 @@ void *AtenderCliente (void *socket){
 			EnviarMSN(notificacion,IDPartida,NombreQuienEnviaMsn,Msn,ListaSockets,contador);
 			sprintf(notificacion,"46/%d/%s",IDPartida,Msn);
 		}
-		else if (codigo == 47) { //Cliente envia "47/IDPartida/NombreQuienCrea/YA" el que crea la partida.
+		else if (codigo ==47) { //Cliente envia "47/IDPartida/NombreQuienCrea/YA" el que crea la partida.
 			//Servidor envia "47/IDPartida/YA" al jugador que no ha crado la partida.
 			
 			int IDPartida = atoi(p);
@@ -945,7 +993,7 @@ void *AtenderCliente (void *socket){
 			sprintf(notificacion, "46/%d/%s", IDPartida, Msn);
 		}
 		
-		else if (codigo== 48)
+		else if (codigo ==48)
 		{
 			p =strtok(NULL,"/");
 			int IDPartida = atoi(p);

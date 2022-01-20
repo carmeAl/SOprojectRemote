@@ -217,7 +217,7 @@ namespace Cliente_SOproject
             while (true)
             {
                 //Recibimos mensaje del servidor
-                byte[] msg2 = new byte[80];
+                byte[] msg2 = new byte[300];
                 server.Receive(msg2);
                 string[] trozos = Encoding.ASCII.GetString(msg2).Split('\0');
                 string[] trozos1 = trozos[0].Split('/');
@@ -686,6 +686,19 @@ namespace Cliente_SOproject
             }
         }
 
+        private void pictureBoxMPDarseBaja_Click(object sender, EventArgs e)
+        {
+            if (conectado)
+            {
+                string mensaje = "22/" + id_usuario;
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                tabControl1.SelectedTab = tabPageLogin;
+                DesconectarServidor();
+            }
+        }
+
 
         //NAVIEGACION
         private void pictureBoxMCrearPartida_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageCrearPartida;
@@ -753,6 +766,8 @@ namespace Cliente_SOproject
         private void pictureBoxPRVolver_MouseLeave(object sender, EventArgs e) => pictureBoxPRVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 1000);
         private void pictureBoxPVolver_MouseEnter(object sender, EventArgs e) => pictureBoxPVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 150);
         private void pictureBoxPVolver_MouseLeave(object sender, EventArgs e) => pictureBoxPVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 1000);
+        private void pictureBoxMPDarseBaja_MouseEnter(object sender, EventArgs e) => pictureBoxMPDarseBaja.Image = SetAlpha((Bitmap)pictureBoxMPDarseBaja.Image, 150);
+        private void pictureBoxMPDarseBaja_MouseLeave(object sender, EventArgs e) => pictureBoxMPDarseBaja.Image = Properties.Resources.DarseDeBaja;
 
         private void textBoxLNombre_Enter(object sender, EventArgs e)
         {
@@ -872,6 +887,8 @@ namespace Cliente_SOproject
         {
 
         }
+
+       
     }
 }
 
