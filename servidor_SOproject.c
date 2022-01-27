@@ -46,7 +46,7 @@ typedef struct {
 
 TEntrada TablaPartidasActivas [100];
 
-void Inicializar (TEntrada tabla[100])
+void Inicializar (TEntrada tabla[100])//inicializa la tabla 
 {
 	int i;
 	for (i=0; i<100; i++)
@@ -57,7 +57,7 @@ void Inicializar (TEntrada tabla[100])
 	}
 }
 
-void Login(char contrasena[100], char nombre[100],char respuesta[512]){
+void Login(char contrasena[100], char nombre[100],char respuesta[512]){//recibe un nombre y cotraseña y te hace el login
 	
 	int err;
 	MYSQL_RES *resultado;
@@ -86,7 +86,7 @@ void Login(char contrasena[100], char nombre[100],char respuesta[512]){
 		sprintf(respuesta,"11/0/%s",row[0]);
 	}
 }
-void RandomizeV(int n,int v[12],char listafrase[512]){
+void RandomizeV(int n,int v[12],char listafrase[512]){//crea el vector random de las cartas 
 	int i,aux,k;
 	time_t t;
 	n = 12;
@@ -121,7 +121,7 @@ void RandomizeV(int n,int v[12],char listafrase[512]){
 	listafrase[strlen(listafrase)-1]='\0';
 	}
 
-void Register(char contrasena[100], char nombre [100],char respuesta[512]){
+void Register(char contrasena[100], char nombre [100],char respuesta[512]){// recibe un nombre y una ocntraseña y te regista si el nombre es nuevo
 	
 	int err;
 	MYSQL_RES *resultado;
@@ -205,7 +205,7 @@ void BuscarIdUsurio(char *nombre,char *idJ){//Busca el id del jugador con el nom
 		strcpy(idJ, row[0]);
 	}
 }
-void PartidasConsecutivas( char nombre [100],char respuesta[512]){
+void PartidasConsecutivas( char nombre [100],char respuesta[512]){//te da el número de patidas consecutivas qua has ganado consecutivamente
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -254,7 +254,7 @@ void PartidasConsecutivas( char nombre [100],char respuesta[512]){
 	}
 }
 
-void PuntosTotales(char nombre[100],char respuesta[512]){
+void PuntosTotales(char nombre[100],char respuesta[512]){// te da los puntos totales del nombre recivido
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -278,7 +278,7 @@ void PuntosTotales(char nombre[100],char respuesta[512]){
 	}
 }
 
-int MaxPuntos(char nombre[100]){
+int MaxPuntos(char nombre[100]){// develve los máximos puntos,de una persona, de todo el juego
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -312,7 +312,7 @@ int MaxPuntos(char nombre[100]){
 		return suma;
 	}
 }
-int PartidasGanadas(char *idJ,char *nombre){
+int PartidasGanadas(char *idJ,char *nombre){//te dice el numero de partidas ganadas contra la persona que se recibe como parmetro
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -335,7 +335,7 @@ int PartidasGanadas(char *idJ,char *nombre){
 		return (atoi(row[0]));
 	}
 }
-int PartidasPerdidas(char *idJ,char *nombre){
+int PartidasPerdidas(char *idJ,char *nombre){//te dice el numero de partidas perdidas contra la persona que se recibe como parmetro
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -359,7 +359,7 @@ int PartidasPerdidas(char *idJ,char *nombre){
 		return (atoi(row[0]));
 	}
 }
-int PartidasJugadas(char *idJ){
+int PartidasJugadas(char *idJ){//numero de partidas que uno ha jugado
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -382,7 +382,7 @@ int PartidasJugadas(char *idJ){
 		return (atoi(row[0]));
 	}
 }
-void CartaMasUsada(char *idJ, char *carta){
+void CartaMasUsada(char *idJ, char *carta){// busca la carta más usada por el usuario
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -407,7 +407,7 @@ void CartaMasUsada(char *idJ, char *carta){
 		strcpy(carta,row[0]);
 	}
 }
-void Ranking(char *resp){
+void Ranking(char *resp){// devueve el ranking de las personas con más puntos
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -439,7 +439,7 @@ void Ranking(char *resp){
 		resp[strlen(resp)-1]='\0';
 	}
 }
-void PerdidoContra(char nombre[100],char respuesta[512]){
+void PerdidoContra(char nombre[100],char respuesta[512]){// devuelve un vectos con las personas que has perdido en contra
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES *resultado;
@@ -477,7 +477,7 @@ void PerdidoContra(char nombre[100],char respuesta[512]){
 	}
 }
 
-void VSJugador(char nombre[100],int idUsuario,char * res){
+void VSJugador(char nombre[100],int idUsuario,char * res){// devuelve el id de la partida contra la persona seleccionada 
 	int err;
 	MYSQL_RES *resultado;
 	MYSQL_ROW rowS;
@@ -516,12 +516,12 @@ void VSJugador(char nombre[100],int idUsuario,char * res){
 		printf("Dentro codgigo: %s\n",res);
 	}
 }
-void AnadirJugadorListaConectados(char nombre[100],int socket){
+void AnadirJugadorListaConectados(char nombre[100],int socket){// añade a la lista de conectados la persona entrada
 	strcpy(miLista.Lista[miLista.num].nombre,nombre);
 	miLista.Lista[miLista.num].socket=socket;
 	miLista.num++;
 }
-void EliminarJugadorListaCon(char* nombre){
+void EliminarJugadorListaCon(char* nombre){//elimina la persona de la lista de conectados
 	int encontrado=0;
 	int i=0;
 	while((encontrado==0) && (i<miLista.num)){
@@ -569,7 +569,7 @@ int SocketNomJug(char* nombre){ //Devuelve el socket del nombre del jugador que 
 		return(-1);
 	}
 }
-void EnviarListaJugadoresConectados(char* notificacion,int ListaSockets[100],char c[3]){
+void EnviarListaJugadoresConectados(char* notificacion,int ListaSockets[100],char c[3]){//envia a los clientes la lista de las personas conectadas
 	printf("Notificación:%s\n",notificacion);
 	char cabecera[512]="36/0/";
 	
@@ -584,7 +584,7 @@ void EnviarListaJugadoresConectados(char* notificacion,int ListaSockets[100],cha
 	}
 	sprintf(c,"%d",contador);
 }
-void EnviarInvitacion(char *p,char *notificacion,char *nombre,int ListaSockets[100],char * c){
+void EnviarInvitacion(char *p,char *notificacion,char *nombre,int ListaSockets[100],char * c){// envia a la persona seleccionada la invitacion de la partida
 	char *NomInv=strtok(p,",");
 /*	strcpy(notificacion,"41/0/");*/
 /*	strcat(notificacion,nombre);*/
@@ -604,6 +604,8 @@ void EnviarInvitacion(char *p,char *notificacion,char *nombre,int ListaSockets[1
 	sprintf(c,"%d",contador);
 }
 void EnviarIDPartida(char *notificacion,char *nombreCreador,char *nombreInvitado,int IDpartida,int ListaSockets[100],char *c,char *NumForm){
+	//endia el id de la partida a los dos jugadores
+	
 /*	strcpy(notificacion,"43/");*/
 /*	strcat(notificacion,NumForm);*/
 /*	strcat(notificacion,"/");*/
@@ -625,7 +627,7 @@ void EnviarIDPartida(char *notificacion,char *nombreCreador,char *nombreInvitado
 	sprintf(c,"%d",2);
 }
 
-int PonerPartidaATablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
+int PonerPartidaATablaPartidasActivas(char *nombreCreador,char *nombreInvitado){//busca un sitio libre en la tabla de partidas y selecciona un hueco libre como ocupado
 	int encontrado=0;
 	int i=0;
 	int IDPartida=-1;
@@ -654,10 +656,14 @@ int PonerPartidaATablaPartidasActivas(char *nombreCreador,char *nombreInvitado){
 	
 	
 }
-void EliminarPartdiaDeTablaPartidasActivas(int IDPartida){
+void EliminarPartdiaDeTablaPartidasActivas(int IDPartida){//elimina la partida de la tabla
+	pthread_mutex_lock(&mutex);
 	TablaPartidasActivas[IDPartida].oc=0;
+	TablaPartidasActivas[IDPartida].carta1=-1;
+	TablaPartidasActivas[IDPartida].carta2=-1;
+	pthread_mutex_unlock(&mutex);
 }
-void EnviarMSN(char * notificacion,int idP,char *nombre,char *msn,int ListaSockets[100],char *c){
+void EnviarMSN(char * notificacion,int idP,char *nombre,char *msn,int ListaSockets[100],char *c){// envia el mensaje de texto al rival de la partida
 	int contador=0;
 	sprintf(notificacion,"44/%d/%s/%s",idP,nombre,msn);
 	
@@ -678,7 +684,7 @@ void EnviarMSN(char * notificacion,int idP,char *nombre,char *msn,int ListaSocke
 	}
 	sprintf(c,"%d",contador);
 }
-void EnviarCancelacion(char * notificacion,int IDPartida,char *nombre,int ListaSockets[100],char * c){
+void EnviarCancelacion(char * notificacion,int IDPartida,char *nombre,int ListaSockets[100],char * c){// envia la cancelación de la partida el que invita
 	strcpy(notificacion,"45/0/");
 	int contador=0;
 	if(strcmp(nombre,TablaPartidasActivas[IDPartida].nombre1)==0){
@@ -735,7 +741,8 @@ int EliminarDatosJugBaseDatos(char * idJ){//Elimina los datos del jugador con el
 	return 0;
 }
 
-void Pasar_datos(int IDPartida,char nombre_mandado,char nombre_rival,char ganador){
+void Pasar_datos(int IDPartida,char nombre_mandado[100],char nombre_rival[100],char ganador[100]){//inserta el resultado de la partida en ña base de datos y elimina 
+	//la partida de la tabla 
 	
 	int err;
 	MYSQL_RES *resultado;
@@ -743,54 +750,33 @@ void Pasar_datos(int IDPartida,char nombre_mandado,char nombre_rival,char ganado
 	char consulta[100];
 	int puntos1;
 	int puntos2;
-	int idj1;
-	int idj2;
 	int id1;
+	char idJ1[100];
+	char idJ2[100];
 	int id2;
 	
-	strcpy (consulta,"Select jugador.id FROM (jugador) WHERE jugador.nombre= '"); 
-	strcat (consulta, nombre_mandado);
-	strcat (consulta,"'");
+	BuscarIdUsurio(nombre_mandado,idJ1);
+	id1=atoi(idJ1);
+	BuscarIdUsurio(nombre_rival,idJ2);
+	id2=atoi(idJ2);
 	
-	err=mysql_query (conn, consulta); 
+	char select[100];
+	strcpy(select,"Select MAX(partidas.id) FROM (partidas)");
+	err=mysql_query (conn, select); 
 	if (err!=0) {
 		printf ("Error al consultar datos de la base %u %s\n",
 				mysql_errno(conn), mysql_error(conn));
 		exit (1);
 	}
+	//recogemos el resultado de la consulta 
 	resultado = mysql_store_result (conn); 
 	row = mysql_fetch_row (resultado);
-	idj1=row;
-	
-	strcpy (consulta,"Select jugador.id FROM (jugador) WHERE jugador.nombre= '"); 
-	strcat (consulta, nombre_rival);
-	strcat (consulta,"'");
-		err=mysql_query (conn, consulta); 
-	if (err!=0) {
-		printf ("Error al consultar datos de la base %u %s\n",
-				mysql_errno(conn), mysql_error(conn));
-		exit (1);
-	}
-
-	resultado = mysql_store_result (conn); 
-	row=  mysql_fetch_row (resultado);
-	idj2=row;
-/*	if (row == NULL){*/
-/*		char select[100];*/
-/*		strcpy(select,"Select MAX(jugador.id) FROM (jugador)");*/
-/*		err=mysql_query (conn, select); */
-/*		if (err!=0) {*/
-/*			printf ("Error al consultar datos de la base %u %s\n",*/
-/*					mysql_errno(conn), mysql_error(conn));*/
-/*			exit (1);*/
-/*		}*/
-		//recogemos el resultado de la consulta 
-/*		resultado = mysql_store_result (conn); */
-/*		row = mysql_fetch_row (resultado);*/
-/*		int idJugador=atoi(row[0])+1;*/
+	int idPartida=atoi(row[0])+1;
+		
+	printf("1\n");
 		char insert[100];
-		strcpy (insert,"Insert INTO partida(id,ganador) values(");
-		sprintf(insert,"%s%d",insert,IDPartida);
+		strcpy (insert,"Insert INTO partidas(id,ganador) values(");
+		sprintf(insert,"%s%d",insert,idPartida);
 		strcat (insert,",'");
 		strcat (insert, ganador);
 		strcat (insert,"')");
@@ -801,57 +787,46 @@ void Pasar_datos(int IDPartida,char nombre_mandado,char nombre_rival,char ganado
 					mysql_errno(conn), mysql_error(conn));
 			exit (1);
 							}
-			
 		pthread_mutex_unlock(&mutex);
+		printf("%s\n",insert);
 		
 		if (strcmp(ganador,"dos")==0){
 			puntos1=5;
 			puntos2=5;
-			id1=idj1;
-			id2=idj2;
 		}
 		else if (strcmp(nombre_mandado,TablaPartidasActivas[IDPartida].nombre1)==0){
 			puntos1=10;
 			puntos2=0;
-			id1=idj1;
-			id2=idj2;
 		}
 		else{
 			puntos1=0;
 			puntos2=10;
-			id1=idj2;
-			id2=idj1;
 		}
+	
+		strcpy (insert,"Insert INTO participacion(idJ,idP,puntos) values(");
+		sprintf(insert,"%s%d",insert,id1);
+		strcat (insert,",");
+		sprintf(insert, "%s%d",insert,idPartida); 
+		strcat (insert,",");
+		sprintf(insert, "%s%d",insert, puntos1);
+		strcat (insert,")");
+		pthread_mutex_lock(&mutex);
+		err=mysql_query (conn, insert); 
+		if (err!=0) {
+			printf ("Error al insertar datos de la base %u %s\n",
+					mysql_errno(conn), mysql_error(conn));
+			exit (1);
+		}
+		pthread_mutex_unlock(&mutex);
+		printf("%s\n",insert);
 		
 		strcpy (insert,"Insert INTO participacion(idJ,idP,puntos) values(");
-		
-		sprintf(insert,"%s%d",insert,id1);
-		strcat (insert,",'");
-		strcat (insert, IDPartida);
-		strcat (insert,",'");
-		strcat (insert, puntos1);
-		strcat (insert,"')");
-		pthread_mutex_lock(&mutex);
-		err=mysql_query (conn, insert); 
-		
-		pthread_mutex_lock(&mutex);
-		err=mysql_query (conn, insert); 
-		if (err!=0) {
-			printf ("Error al insertar datos de la base %u %s\n",
-					mysql_errno(conn), mysql_error(conn));
-			exit (1);
-		}
-		pthread_mutex_unlock(&mutex);
-		
 		sprintf(insert,"%s%d",insert,id2);
-		strcat (insert,",'");
-		strcat (insert, IDPartida);
-		strcat (insert,",'");
-		strcat (insert, puntos2);
-		strcat (insert,"')");
-		pthread_mutex_lock(&mutex);
-		err=mysql_query (conn, insert); 
-		
+		strcat (insert,",");
+		sprintf(insert, "%s%d",insert,idPartida); 
+		strcat (insert,",");
+		sprintf(insert, "%s%d",insert, puntos2);
+		strcat (insert,")");
 		pthread_mutex_lock(&mutex);
 		err=mysql_query (conn, insert); 
 		if (err!=0) {
@@ -860,14 +835,14 @@ void Pasar_datos(int IDPartida,char nombre_mandado,char nombre_rival,char ganado
 			exit (1);
 		}
 		pthread_mutex_unlock(&mutex);
-/*	}*/
-/*	else{*/
-/*		sprintf(respuesta,"21/0/NO");*/
-/*	}*/
-	
-	
+		printf("%s\n",insert);
+		pthread_mutex_lock(&mutex);
+		TablaPartidasActivas[IDPartida].oc=0;
+		TablaPartidasActivas[IDPartida].carta1=-1;
+		TablaPartidasActivas[IDPartida].carta2=-1;
+		pthread_mutex_unlock(&mutex);
 }
-void *AtenderCliente (void *socket){
+void *AtenderCliente (void *socket){// el thread del servidor
 	//bucle de atencion al cliente
 	int terminar=0;
 	int sock_conn, ret;
@@ -1129,8 +1104,9 @@ void *AtenderCliente (void *socket){
 			sprintf(notificacion, "46/%d/%s", IDPartida, Msn);
 		}
 		
-		else if (codigo ==48)
-		{
+		else if (codigo ==48) //Cliente envia "47/Nform/IDPartida/Nombre/id-carta"
+			
+		{//Servidor envia "48/nombre1/carta1/nombre2/carta2" a los jugadores cuando los dos mandan su carta seccionada.
 			p =strtok(NULL,"/");
 			int IDPartida = atoi(p);
 			p = strtok(NULL,"/");
@@ -1164,8 +1140,8 @@ void *AtenderCliente (void *socket){
 			}
 		}
 		
-		else if (codigo== 50)
-		{
+		else if (codigo== 50)//{ //Cliente envia "50/IDPartida/Nombre/Si-No/vidas" un usuario manda si a ganado la patida con x vidas o si ha perdido.
+		{//Servidor envia "50/IDPartida/nombre/resultado/vidas" al rival
 			p =strtok(NULL,"/");
 			int IDPartida = atoi(p);
 			p = strtok(NULL,"/");
@@ -1187,7 +1163,8 @@ void *AtenderCliente (void *socket){
 		
 			
 		}
-		else if (codigo== 60)
+		else if (codigo== 60)//Cliente envia "60/IDPartida/Nombre/nombre rival/quien_ha_ganado"
+			//Servidor guarda el resultado en la base de datos y elimina la partida de la tabla
 		{
 			p =strtok(NULL,"/");
 			int IDPartida = atoi(p);
@@ -1199,7 +1176,7 @@ void *AtenderCliente (void *socket){
 			strcpy(nombre_rival,p);
 			p= strtok(NULL,"/");
 			char ganador[100];
-			strcpy(resultado,p);
+			strcpy(ganador,p);
 			Pasar_datos(IDPartida,nombre_mandado,nombre_rival,ganador);
 			
 		}

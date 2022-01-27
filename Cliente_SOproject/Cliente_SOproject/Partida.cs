@@ -18,8 +18,11 @@ namespace Cliente_SOproject
 {
     public partial class Partida : Form
     {
+        //El numero de formularios que tendrá el cliente
         int Nform;
+        // El soquet tendrá el nombre de server
         Socket server;
+
         string nombreUsuario;
         public int id_partida;
         public string rival;
@@ -35,6 +38,7 @@ namespace Cliente_SOproject
         bool tiempo = false;
         bool inicio_partida = false;
         int id_carta;
+       
         //Parametros partida
         string sugerirPreguntas;
         string mapa;
@@ -45,6 +49,7 @@ namespace Cliente_SOproject
         int carta_inicial=0;
         bool[] UPCCarta2 = { false,false,false,false,false,false,false,false,false,
         false,false,false};
+        public string[] ListaNombres = { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a" };
         public string[] ListaImagenes = { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a" };
         string mensaje_not;
         int id_carta_rival;
@@ -69,6 +74,7 @@ namespace Cliente_SOproject
         delegate void DelegadoParaEscribir2(string nombre);
         delegate void DelegadoParaVisibleLabel(Label nameLabel, bool SINO);
 
+        //Este es el contructor del form con el nombre "Partida" que tiene todos estos parametros puestos aquí
         public Partida(int Nform, Socket server, string nombreUsuario,
             int id_partida, string nivel, string sugerirPreguntas, string mapa,
             string limitePreguntas, string limiteTiempo, string creador_partida, string invitado)
@@ -89,6 +95,7 @@ namespace Cliente_SOproject
 
         }
 
+        //Funciones de los delegados
         public void EscribirLabel(string msn, Label nameLabel)
         {
             nameLabel.Text = msn;
@@ -110,6 +117,8 @@ namespace Cliente_SOproject
             return (Bitmap)rm.GetObject(imageName);
 
         }
+
+        //Esta función se utiliza para cambiar al estado de partida iniciada del Form, cambia el Tab de la pagina y establece los datos de las fotos
         public void CambiarTab()
         {
             comboBoxPTChat.Text = "Extienda la lista para seleccionar pregunta";
@@ -120,31 +129,45 @@ namespace Cliente_SOproject
                 for (int i = 1; i < 13; i++)
                 {
                     ListaImagenes[i - 1] = "animal_" + ListaRandom[i];
+                    ListaNombres[i - 1] = "animal_nombre_" + ListaRandom[i];
                 }
+
                 pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
-                poner_nombre_fotos(0, pictureBoxNombre1, "animal");
+                pictureBoxNombre1.Image = GetImageByName(ListaNombres[0]);
+
                 pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
-                poner_nombre_fotos(1, pictureBoxNombre2, "animal");
+                pictureBoxNombre2.Image = GetImageByName(ListaNombres[1]);
+
                 pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
-                poner_nombre_fotos(2, pictureBoxNombre3, "animal");
+                pictureBoxNombre3.Image = GetImageByName(ListaNombres[2]);
+
                 pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
-                poner_nombre_fotos(3, pictureBoxNombre4, "animal");
+                pictureBoxNombre4.Image = GetImageByName(ListaNombres[3]);
+
                 pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
-                poner_nombre_fotos(4, pictureBoxNombre5, "animal");
+                pictureBoxNombre5.Image = GetImageByName(ListaNombres[4]);
+
                 pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
-                poner_nombre_fotos(5, pictureBoxNombre6, "animal");
+                pictureBoxNombre6.Image = GetImageByName(ListaNombres[5]);
+
                 pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
-                poner_nombre_fotos(6, pictureBoxNombre7, "animal");
+                pictureBoxNombre7.Image = GetImageByName(ListaNombres[6]);
+
                 pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
-                poner_nombre_fotos(7, pictureBoxNombre8, "animal");
+                pictureBoxNombre8.Image = GetImageByName(ListaNombres[7]);
+
                 pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
-                poner_nombre_fotos(8, pictureBoxNombre9, "animal");
+                pictureBoxNombre9.Image = GetImageByName(ListaNombres[8]);
+
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
-                poner_nombre_fotos(9, pictureBoxNombre10, "animal");
+                pictureBoxNombre10.Image = GetImageByName(ListaNombres[9]);
+
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
-                poner_nombre_fotos(10, pictureBoxNombre11, "animal");
+                pictureBoxNombre11.Image = GetImageByName(ListaNombres[10]);
+
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
-                poner_nombre_fotos(11, pictureBoxNombre12, "animal");
+                pictureBoxNombre12.Image = GetImageByName(ListaNombres[11]);
+
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -164,31 +187,45 @@ namespace Cliente_SOproject
                 for (int i = 1; i < 13; i++)
                 {
                     ListaImagenes[i - 1] = "clase_" + ListaRandom[i];
+                    ListaNombres[i - 1] = "clase_nombre_" + ListaRandom[i];
                 }
+
                 pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
-                poner_nombre_fotos(0, pictureBoxNombre1, "clase");
+                pictureBoxNombre1.Image = GetImageByName(ListaNombres[0]);
+                
                 pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
-                poner_nombre_fotos(1, pictureBoxNombre2, "clase");
+                pictureBoxNombre2.Image = GetImageByName(ListaNombres[1]);
+                
                 pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
-                poner_nombre_fotos(2, pictureBoxNombre3, "clase");
+                pictureBoxNombre3.Image = GetImageByName(ListaNombres[2]);
+               
                 pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
-                poner_nombre_fotos(3, pictureBoxNombre4, "clase");
+                pictureBoxNombre4.Image = GetImageByName(ListaNombres[3]);
+                
                 pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
-                poner_nombre_fotos(4, pictureBoxNombre5, "clase");
+                pictureBoxNombre5.Image = GetImageByName(ListaNombres[4]);
+                
                 pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
-                poner_nombre_fotos(5, pictureBoxNombre6, "clase");
+                pictureBoxNombre6.Image = GetImageByName(ListaNombres[5]);
+                
                 pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
-                poner_nombre_fotos(6, pictureBoxNombre7, "clase");
+                pictureBoxNombre7.Image = GetImageByName(ListaNombres[6]);
+                
                 pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
-                poner_nombre_fotos(7, pictureBoxNombre8, "clase");
+                pictureBoxNombre8.Image = GetImageByName(ListaNombres[7]);
+                
                 pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
-                poner_nombre_fotos(8, pictureBoxNombre9, "clase");
+                pictureBoxNombre9.Image = GetImageByName(ListaNombres[8]);
+                
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
-                poner_nombre_fotos(9, pictureBoxNombre10, "clase");
+                pictureBoxNombre10.Image = GetImageByName(ListaNombres[9]);
+                
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
-                poner_nombre_fotos(10, pictureBoxNombre11, "clase");
+                pictureBoxNombre11.Image = GetImageByName(ListaNombres[10]);
+                
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
-                poner_nombre_fotos(11, pictureBoxNombre12, "clase");
+                pictureBoxNombre12.Image = GetImageByName(ListaNombres[11]);
+
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -207,32 +244,45 @@ namespace Cliente_SOproject
                 for (int i = 1; i < 13; i++)
                 {
                     ListaImagenes[i - 1] = "pais_" + ListaRandom[i];
+                    ListaNombres[i - 1] = "pais_nombre_" + ListaRandom[i];
                 }
                 pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
-                poner_nombre_fotos(0, pictureBoxNombre1, "pais");
+                pictureBoxNombre1.Image = GetImageByName(ListaNombres[0]);
+                
                 pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
-                poner_nombre_fotos(1, pictureBoxNombre2, "pais");
+                pictureBoxNombre2.Image = GetImageByName(ListaNombres[1]);
+                
                 pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
-                poner_nombre_fotos(2, pictureBoxNombre3, "pais");
+                pictureBoxNombre3.Image = GetImageByName(ListaNombres[2]);
+               
                 pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
-                poner_nombre_fotos(3, pictureBoxNombre4, "pais");
+                pictureBoxNombre4.Image = GetImageByName(ListaNombres[3]);
+                
                 pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
-                poner_nombre_fotos(4, pictureBoxNombre5, "pais");
+                pictureBoxNombre5.Image = GetImageByName(ListaNombres[4]);
+                
                 pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
-                poner_nombre_fotos(5, pictureBoxNombre6, "pais");
+                pictureBoxNombre6.Image = GetImageByName(ListaNombres[5]);
+                
                 pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
-                poner_nombre_fotos(6, pictureBoxNombre7, "pais");
+                pictureBoxNombre7.Image = GetImageByName(ListaNombres[6]);
+                
                 pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
-                poner_nombre_fotos(7, pictureBoxNombre8, "pais");
+                pictureBoxNombre8.Image = GetImageByName(ListaNombres[7]);
+               
                 pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
-                poner_nombre_fotos(8, pictureBoxNombre9, "pais");
+                pictureBoxNombre9.Image = GetImageByName(ListaNombres[8]);
+                
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
-                poner_nombre_fotos(9, pictureBoxNombre10, "pais");
+                pictureBoxNombre10.Image = GetImageByName(ListaNombres[9]);
+               
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
-                poner_nombre_fotos(10, pictureBoxNombre11, "pais");
+                pictureBoxNombre11.Image = GetImageByName(ListaNombres[10]);
+                
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
-                poner_nombre_fotos(11, pictureBoxNombre12, "pais");
-     
+                pictureBoxNombre12.Image = GetImageByName(ListaNombres[11]);
+                
+
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -250,12 +300,7 @@ namespace Cliente_SOproject
             //MessageBox.Show("Escoge una carta");
             Star_Stop = 1;
             timerTurno.Start();
-
-         
-
         }
-
-
         //////////
         //FUNCIONES
         //////////
@@ -276,7 +321,6 @@ namespace Cliente_SOproject
         }
         public void PrepararTiempo_Turno (int bloqueo_turno)
         {
-
             this.bloqueo_turno = bloqueo_turno;
         }
         public void PasarListaRandom(string lista)
@@ -322,6 +366,7 @@ namespace Cliente_SOproject
                 MessageBox.Show("Espera a que empiece la partida");
             }
         }
+        // Según el tipo de partida elegido y la lista randomizada de numeros, se ponen los nombres debajo de su pictureBox correspondiente. 
         public void poner_nombre_fotos(int i, PictureBox picturebox, string tipo)
         {
             if (tipo == "animal")
@@ -639,6 +684,7 @@ namespace Cliente_SOproject
             }
         }
 
+        //Esta función cambia los cuadrados del tablero del contrincante mostrado a la derecha para conseguir que el usiario vea las cartas que ha girado el rival.
         internal void CambiarColorTableroContrincante(string num)
         {
             string textBoxName = "pictureBoxPTTableroContrincante" + num;
@@ -741,8 +787,9 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
+                    /*
                     if (carta_inicial == 0)
-                    {
+                    { 
                         id_carta = 0;
                         DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
                         if (r == DialogResult.Yes)
@@ -758,6 +805,8 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
+
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 0;
@@ -859,6 +908,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 1;
@@ -876,6 +926,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
 
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
@@ -976,6 +1027,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 2;
@@ -993,6 +1045,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 2;
@@ -1091,7 +1144,7 @@ namespace Cliente_SOproject
                 if (carta_inicial != 3)
                 {
 
-
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 3;
@@ -1109,6 +1162,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         segundos = a;
@@ -1208,6 +1262,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 4;
@@ -1225,6 +1280,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         segundos = a;
@@ -1324,7 +1380,7 @@ namespace Cliente_SOproject
                 if (carta_inicial != 3)
                 {
 
-
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 5;
@@ -1342,6 +1398,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
 
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
@@ -1441,7 +1498,7 @@ namespace Cliente_SOproject
                 if (carta_inicial != 3)
                 {
 
-
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 6;
@@ -1459,6 +1516,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 6;
@@ -1554,6 +1612,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 7;
@@ -1571,6 +1630,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 7;
@@ -1668,6 +1728,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 8;
@@ -1685,6 +1746,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 8;
@@ -1782,6 +1844,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 9;
@@ -1799,6 +1862,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 9;
@@ -1896,8 +1960,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-
-
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 10;
@@ -1915,6 +1978,7 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 10;
@@ -2013,8 +2077,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-
-
+                    /*
                     if (carta_inicial == 0)
                     {
                         id_carta = 11;
@@ -2032,6 +2095,8 @@ namespace Cliente_SOproject
                             MessageBox.Show("Escoge otra carta, porfi UwU");
                         }
                     }
+                    */
+
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 11;
@@ -2154,9 +2219,17 @@ namespace Cliente_SOproject
             }
             label_tiempo.Text = conteo.ToString();
 
-            if (carta_inicial != 1 && conteo == 0 && inicio_partida == false)
+            if (carta_inicial == 0)
             {
-                
+                Random rnd = new Random();
+                id_carta = rnd.Next(11);
+                // MessageBox.Show("Tu carta es: " + id_carta);
+                mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                server.Send(msg);
+                carta_inicial = 1;
+                inicio_partida = true;
+                /*
                 if (y == 2)
                 {
                     MessageBox.Show("Escoge una carta,tienes 10 segundos, sino se escogera de forma random");
@@ -2174,13 +2247,16 @@ namespace Cliente_SOproject
                     server.Send(msg);
                     carta_inicial = 1;
                 }
+                */
             }
+            /*
             if (carta_inicial == 1 && conteo == 0 && inicio_partida==false)
             {
                 conteo = 1000;
                 MessageBox.Show("Esperando al rival");
                 tiempo = true;
             }
+            */
             if (conteo <= 0)
             {
                 conteo = Convert.ToInt32(limiteTiempo);
@@ -2310,7 +2386,7 @@ namespace Cliente_SOproject
             
             this.id_carta_rival= Convert.ToInt32(carta);
             inicio_partida = true;
-            MessageBox.Show("Carta rival :" + id_carta_rival);
+            //MessageBox.Show("Carta rival :" + id_carta_rival);
             if (nombreUsuario == creador_partida)
             {
                 turno = true;
@@ -2377,7 +2453,9 @@ namespace Cliente_SOproject
                 MessageBox.Show("Enorabuena, has ganado a " + rival);
                 // Partida_FormClosed(Partida,Close);
                 terminado = 1;
-               
+                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + nombreUsuario;
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                server.Send(msg);
 
 
             }
