@@ -65,6 +65,8 @@ namespace Cliente_SOproject
         public int y=0;
         public int terminado=0;
 
+        private Menu FormMenu;
+
         static readonly object _object = new object();
 
         delegate void DelegadoParaEscribir(string rival, string texto);
@@ -77,7 +79,7 @@ namespace Cliente_SOproject
         //Este es el contructor del form con el nombre "Partida" que tiene todos estos parametros puestos aquí
         public Partida(int Nform, Socket server, string nombreUsuario,
             int id_partida, string nivel, string sugerirPreguntas, string mapa,
-            string limitePreguntas, string limiteTiempo, string creador_partida, string invitado)
+            string limitePreguntas, string limiteTiempo, string creador_partida, string invitado, Menu FormMenu)
         {
             InitializeComponent();
             this.Nform = Nform;
@@ -91,6 +93,7 @@ namespace Cliente_SOproject
             this.creador_partida = creador_partida;
             this.nombreInvitado = invitado;
             this.girar = 0;
+            this.FormMenu = FormMenu;
            
 
         }
@@ -2503,6 +2506,7 @@ namespace Cliente_SOproject
                 server.Send(msg);
 
             }
+            FormMenu.StopMusicGame(Nform);
             
 
         }
