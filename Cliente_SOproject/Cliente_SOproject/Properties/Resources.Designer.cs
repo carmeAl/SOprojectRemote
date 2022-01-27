@@ -653,6 +653,16 @@ namespace Cliente_SOproject.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CloseEye {
+            get {
+                object obj = ResourceManager.GetObject("CloseEye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cross {
             get {
                 object obj = ResourceManager.GetObject("Cross", resourceCulture);
@@ -686,6 +696,16 @@ namespace Cliente_SOproject.Properties {
         internal static System.Drawing.Bitmap Iconos_Menu {
             get {
                 object obj = ResourceManager.GetObject("Iconos Menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OpenEye {
+            get {
+                object obj = ResourceManager.GetObject("OpenEye", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

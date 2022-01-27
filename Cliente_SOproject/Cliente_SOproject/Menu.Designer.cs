@@ -30,9 +30,10 @@ namespace Cliente_SOproject
             private void InitializeComponent()
             {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
+            this.buttonLPassword = new System.Windows.Forms.Button();
             this.labelLUsuarioNoEncontrado = new System.Windows.Forms.Label();
             this.labelLRegistrar = new System.Windows.Forms.Label();
             this.pictureBoxLIniciar = new System.Windows.Forms.PictureBox();
@@ -40,11 +41,12 @@ namespace Cliente_SOproject
             this.textBoxLNombre = new System.Windows.Forms.TextBox();
             this.pictureBoxLLFondo = new System.Windows.Forms.PictureBox();
             this.tabPageRegister = new System.Windows.Forms.TabPage();
+            this.buttonRPassword = new System.Windows.Forms.Button();
             this.labelRUsuarioError = new System.Windows.Forms.Label();
-            this.pictureBoxRVolver = new System.Windows.Forms.PictureBox();
-            this.pictureBoxRRegistrarse = new System.Windows.Forms.PictureBox();
             this.textBoxRContraseña = new System.Windows.Forms.TextBox();
             this.textBoxRUsuario = new System.Windows.Forms.TextBox();
+            this.pictureBoxRVolver = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRRegistrarse = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabPageMenu = new System.Windows.Forms.TabPage();
             this.labelMUsuarioNoEncontrado = new System.Windows.Forms.Label();
@@ -56,13 +58,11 @@ namespace Cliente_SOproject
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPageCrearPartida = new System.Windows.Forms.TabPage();
             this.labelCError = new System.Windows.Forms.Label();
-            this.pictureBoxCInvitar = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridViewListaCon = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBoxCVolver = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxCLimTiempo = new System.Windows.Forms.TextBox();
@@ -76,6 +76,8 @@ namespace Cliente_SOproject
             this.panel1 = new System.Windows.Forms.Panel();
             this.comboBoxCSugPreg = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBoxCInvitar = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCVolver = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPageSocial = new System.Windows.Forms.TabPage();
             this.pictureBoxSVolver = new System.Windows.Forms.PictureBox();
@@ -119,7 +121,6 @@ namespace Cliente_SOproject
             this.labelPRPartidasGanadasVs = new System.Windows.Forms.Label();
             this.labelPRPartGanVs = new System.Windows.Forms.Label();
             this.labelPRPartPerdVs = new System.Windows.Forms.Label();
-            this.pictureBoxPRVolver = new System.Windows.Forms.PictureBox();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -142,6 +143,7 @@ namespace Cliente_SOproject
             this.label35 = new System.Windows.Forms.Label();
             this.labelPRNombre = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
+            this.pictureBoxPRVolver = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panelNombres = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -161,14 +163,14 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPageCrearPartida.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCInvitar)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListaCon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCVolver)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCInvitar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCVolver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPageSocial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSVolver)).BeginInit();
@@ -185,11 +187,11 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tabPagePerfilRival.SuspendLayout();
             this.panel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPRVolver)).BeginInit();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPRVolver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
@@ -215,6 +217,7 @@ namespace Cliente_SOproject
             // tabPageLogin
             // 
             this.tabPageLogin.BackColor = System.Drawing.Color.White;
+            this.tabPageLogin.Controls.Add(this.buttonLPassword);
             this.tabPageLogin.Controls.Add(this.labelLUsuarioNoEncontrado);
             this.tabPageLogin.Controls.Add(this.labelLRegistrar);
             this.tabPageLogin.Controls.Add(this.pictureBoxLIniciar);
@@ -226,6 +229,17 @@ namespace Cliente_SOproject
             this.tabPageLogin.Size = new System.Drawing.Size(554, 220);
             this.tabPageLogin.TabIndex = 0;
             this.tabPageLogin.Text = "Login";
+            // 
+            // buttonLPassword
+            // 
+            this.buttonLPassword.BackgroundImage = global::Cliente_SOproject.Properties.Resources.OpenEye;
+            this.buttonLPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonLPassword.Location = new System.Drawing.Point(337, 106);
+            this.buttonLPassword.Name = "buttonLPassword";
+            this.buttonLPassword.Size = new System.Drawing.Size(28, 26);
+            this.buttonLPassword.TabIndex = 11;
+            this.buttonLPassword.UseVisualStyleBackColor = true;
+            this.buttonLPassword.Click += new System.EventHandler(this.buttonLPassword_Click);
             // 
             // labelLUsuarioNoEncontrado
             // 
@@ -313,11 +327,12 @@ namespace Cliente_SOproject
             // 
             // tabPageRegister
             // 
+            this.tabPageRegister.Controls.Add(this.buttonRPassword);
             this.tabPageRegister.Controls.Add(this.labelRUsuarioError);
-            this.tabPageRegister.Controls.Add(this.pictureBoxRVolver);
-            this.tabPageRegister.Controls.Add(this.pictureBoxRRegistrarse);
             this.tabPageRegister.Controls.Add(this.textBoxRContraseña);
             this.tabPageRegister.Controls.Add(this.textBoxRUsuario);
+            this.tabPageRegister.Controls.Add(this.pictureBoxRVolver);
+            this.tabPageRegister.Controls.Add(this.pictureBoxRRegistrarse);
             this.tabPageRegister.Controls.Add(this.pictureBox3);
             this.tabPageRegister.Location = new System.Drawing.Point(4, 24);
             this.tabPageRegister.Name = "tabPageRegister";
@@ -326,6 +341,17 @@ namespace Cliente_SOproject
             this.tabPageRegister.TabIndex = 1;
             this.tabPageRegister.Text = "Register";
             this.tabPageRegister.UseVisualStyleBackColor = true;
+            // 
+            // buttonRPassword
+            // 
+            this.buttonRPassword.BackgroundImage = global::Cliente_SOproject.Properties.Resources.OpenEye;
+            this.buttonRPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonRPassword.Location = new System.Drawing.Point(341, 108);
+            this.buttonRPassword.Name = "buttonRPassword";
+            this.buttonRPassword.Size = new System.Drawing.Size(28, 26);
+            this.buttonRPassword.TabIndex = 17;
+            this.buttonRPassword.UseVisualStyleBackColor = true;
+            this.buttonRPassword.Click += new System.EventHandler(this.buttonRPassword_Click);
             // 
             // labelRUsuarioError
             // 
@@ -339,6 +365,30 @@ namespace Cliente_SOproject
             this.labelRUsuarioError.TabIndex = 16;
             this.labelRUsuarioError.Text = "Usuario no encontrado, escriba bien el usuario y/o la contraseña, o registrase";
             this.labelRUsuarioError.Visible = false;
+            // 
+            // textBoxRContraseña
+            // 
+            this.textBoxRContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxRContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
+            this.textBoxRContraseña.Location = new System.Drawing.Point(206, 107);
+            this.textBoxRContraseña.Name = "textBoxRContraseña";
+            this.textBoxRContraseña.Size = new System.Drawing.Size(129, 26);
+            this.textBoxRContraseña.TabIndex = 11;
+            this.textBoxRContraseña.Text = "CONTRASEÑA";
+            this.textBoxRContraseña.Enter += new System.EventHandler(this.textBoxRContraseña_Enter);
+            this.textBoxRContraseña.Leave += new System.EventHandler(this.textBoxRContraseña_Leave);
+            // 
+            // textBoxRUsuario
+            // 
+            this.textBoxRUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxRUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
+            this.textBoxRUsuario.Location = new System.Drawing.Point(206, 71);
+            this.textBoxRUsuario.Name = "textBoxRUsuario";
+            this.textBoxRUsuario.Size = new System.Drawing.Size(129, 26);
+            this.textBoxRUsuario.TabIndex = 10;
+            this.textBoxRUsuario.Text = "USUARIO";
+            this.textBoxRUsuario.Enter += new System.EventHandler(this.textBoxRUsuario_Enter);
+            this.textBoxRUsuario.Leave += new System.EventHandler(this.textBoxRUsuario_Leave);
             // 
             // pictureBoxRVolver
             // 
@@ -366,30 +416,6 @@ namespace Cliente_SOproject
             this.pictureBoxRRegistrarse.Click += new System.EventHandler(this.pictureBoxRRegistrarse_Click);
             this.pictureBoxRRegistrarse.MouseEnter += new System.EventHandler(this.pictureBoxRRegistrarse_MouseEnter);
             this.pictureBoxRRegistrarse.MouseLeave += new System.EventHandler(this.pictureBoxRRegistrarse_MouseLeave);
-            // 
-            // textBoxRContraseña
-            // 
-            this.textBoxRContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxRContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
-            this.textBoxRContraseña.Location = new System.Drawing.Point(206, 107);
-            this.textBoxRContraseña.Name = "textBoxRContraseña";
-            this.textBoxRContraseña.Size = new System.Drawing.Size(129, 26);
-            this.textBoxRContraseña.TabIndex = 11;
-            this.textBoxRContraseña.Text = "CONTRASEÑA";
-            this.textBoxRContraseña.Enter += new System.EventHandler(this.textBoxRContraseña_Enter);
-            this.textBoxRContraseña.Leave += new System.EventHandler(this.textBoxRContraseña_Leave);
-            // 
-            // textBoxRUsuario
-            // 
-            this.textBoxRUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxRUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
-            this.textBoxRUsuario.Location = new System.Drawing.Point(206, 71);
-            this.textBoxRUsuario.Name = "textBoxRUsuario";
-            this.textBoxRUsuario.Size = new System.Drawing.Size(129, 26);
-            this.textBoxRUsuario.TabIndex = 10;
-            this.textBoxRUsuario.Text = "USUARIO";
-            this.textBoxRUsuario.Enter += new System.EventHandler(this.textBoxRUsuario_Enter);
-            this.textBoxRUsuario.Leave += new System.EventHandler(this.textBoxRUsuario_Leave);
             // 
             // pictureBox3
             // 
@@ -521,13 +547,13 @@ namespace Cliente_SOproject
             // tabPageCrearPartida
             // 
             this.tabPageCrearPartida.Controls.Add(this.labelCError);
-            this.tabPageCrearPartida.Controls.Add(this.pictureBoxCInvitar);
             this.tabPageCrearPartida.Controls.Add(this.panel5);
-            this.tabPageCrearPartida.Controls.Add(this.pictureBoxCVolver);
             this.tabPageCrearPartida.Controls.Add(this.panel4);
             this.tabPageCrearPartida.Controls.Add(this.panel3);
             this.tabPageCrearPartida.Controls.Add(this.panel2);
             this.tabPageCrearPartida.Controls.Add(this.panel1);
+            this.tabPageCrearPartida.Controls.Add(this.pictureBoxCInvitar);
+            this.tabPageCrearPartida.Controls.Add(this.pictureBoxCVolver);
             this.tabPageCrearPartida.Controls.Add(this.pictureBox1);
             this.tabPageCrearPartida.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tabPageCrearPartida.Location = new System.Drawing.Point(4, 24);
@@ -550,19 +576,6 @@ namespace Cliente_SOproject
             this.labelCError.TabIndex = 20;
             this.labelCError.Text = "No se ha podido conectar con el servidor";
             this.labelCError.Visible = false;
-            // 
-            // pictureBoxCInvitar
-            // 
-            this.pictureBoxCInvitar.Image = global::Cliente_SOproject.Properties.Resources.Purple_and_Black_Neon_Sci_Fi_Twitch_Panel;
-            this.pictureBoxCInvitar.Location = new System.Drawing.Point(387, 192);
-            this.pictureBoxCInvitar.Name = "pictureBoxCInvitar";
-            this.pictureBoxCInvitar.Size = new System.Drawing.Size(107, 29);
-            this.pictureBoxCInvitar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCInvitar.TabIndex = 18;
-            this.pictureBoxCInvitar.TabStop = false;
-            this.pictureBoxCInvitar.Click += new System.EventHandler(this.pictureBoxCInvitar_Click);
-            this.pictureBoxCInvitar.MouseEnter += new System.EventHandler(this.pictureBoxCInvitar_MouseEnter);
-            this.pictureBoxCInvitar.MouseLeave += new System.EventHandler(this.pictureBoxCInvitar_MouseLeave);
             // 
             // panel5
             // 
@@ -594,8 +607,8 @@ namespace Cliente_SOproject
             // 
             // Column1
             // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column1.HeaderText = "Jugadores conectados";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -621,19 +634,6 @@ namespace Cliente_SOproject
             this.label6.Size = new System.Drawing.Size(144, 15);
             this.label6.TabIndex = 0;
             this.label6.Text = "LISTA CONECTADOS:";
-            // 
-            // pictureBoxCVolver
-            // 
-            this.pictureBoxCVolver.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
-            this.pictureBoxCVolver.Location = new System.Drawing.Point(3, 192);
-            this.pictureBoxCVolver.Name = "pictureBoxCVolver";
-            this.pictureBoxCVolver.Size = new System.Drawing.Size(107, 29);
-            this.pictureBoxCVolver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCVolver.TabIndex = 16;
-            this.pictureBoxCVolver.TabStop = false;
-            this.pictureBoxCVolver.Click += new System.EventHandler(this.pictureBoxCVolver_Click);
-            this.pictureBoxCVolver.MouseEnter += new System.EventHandler(this.pictureBoxCVolver_MouseEnter);
-            this.pictureBoxCVolver.MouseLeave += new System.EventHandler(this.pictureBoxCVolver_MouseLeave);
             // 
             // panel4
             // 
@@ -778,6 +778,32 @@ namespace Cliente_SOproject
             this.label1.TabIndex = 0;
             this.label1.Text = "SUGERIR PREGUNTAS?";
             // 
+            // pictureBoxCInvitar
+            // 
+            this.pictureBoxCInvitar.Image = global::Cliente_SOproject.Properties.Resources.Purple_and_Black_Neon_Sci_Fi_Twitch_Panel;
+            this.pictureBoxCInvitar.Location = new System.Drawing.Point(387, 192);
+            this.pictureBoxCInvitar.Name = "pictureBoxCInvitar";
+            this.pictureBoxCInvitar.Size = new System.Drawing.Size(107, 29);
+            this.pictureBoxCInvitar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCInvitar.TabIndex = 18;
+            this.pictureBoxCInvitar.TabStop = false;
+            this.pictureBoxCInvitar.Click += new System.EventHandler(this.pictureBoxCInvitar_Click);
+            this.pictureBoxCInvitar.MouseEnter += new System.EventHandler(this.pictureBoxCInvitar_MouseEnter);
+            this.pictureBoxCInvitar.MouseLeave += new System.EventHandler(this.pictureBoxCInvitar_MouseLeave);
+            // 
+            // pictureBoxCVolver
+            // 
+            this.pictureBoxCVolver.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
+            this.pictureBoxCVolver.Location = new System.Drawing.Point(3, 192);
+            this.pictureBoxCVolver.Name = "pictureBoxCVolver";
+            this.pictureBoxCVolver.Size = new System.Drawing.Size(107, 29);
+            this.pictureBoxCVolver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCVolver.TabIndex = 16;
+            this.pictureBoxCVolver.TabStop = false;
+            this.pictureBoxCVolver.Click += new System.EventHandler(this.pictureBoxCVolver_Click);
+            this.pictureBoxCVolver.MouseEnter += new System.EventHandler(this.pictureBoxCVolver_MouseEnter);
+            this.pictureBoxCVolver.MouseLeave += new System.EventHandler(this.pictureBoxCVolver_MouseLeave);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -852,7 +878,7 @@ namespace Cliente_SOproject
             this.dataGridViewRanquing.RowTemplate.Height = 25;
             this.dataGridViewRanquing.Size = new System.Drawing.Size(224, 155);
             this.dataGridViewRanquing.TabIndex = 0;
-            this.dataGridViewRanquing.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRanquing_CellClick);
+            this.dataGridViewRanquing.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRanquing_CellContentClick);
             // 
             // Nombre
             // 
@@ -1172,11 +1198,11 @@ namespace Cliente_SOproject
             // tabPagePerfilRival
             // 
             this.tabPagePerfilRival.Controls.Add(this.panel16);
-            this.tabPagePerfilRival.Controls.Add(this.pictureBoxPRVolver);
             this.tabPagePerfilRival.Controls.Add(this.panel12);
             this.tabPagePerfilRival.Controls.Add(this.panel13);
             this.tabPagePerfilRival.Controls.Add(this.panel14);
             this.tabPagePerfilRival.Controls.Add(this.panel15);
+            this.tabPagePerfilRival.Controls.Add(this.pictureBoxPRVolver);
             this.tabPagePerfilRival.Controls.Add(this.pictureBox6);
             this.tabPagePerfilRival.Location = new System.Drawing.Point(4, 24);
             this.tabPagePerfilRival.Name = "tabPagePerfilRival";
@@ -1259,19 +1285,6 @@ namespace Cliente_SOproject
             this.labelPRPartPerdVs.Size = new System.Drawing.Size(187, 15);
             this.labelPRPartPerdVs.TabIndex = 2;
             this.labelPRPartPerdVs.Text = "Partidas perdidas vs Carme:";
-            // 
-            // pictureBoxPRVolver
-            // 
-            this.pictureBoxPRVolver.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
-            this.pictureBoxPRVolver.Location = new System.Drawing.Point(7, 187);
-            this.pictureBoxPRVolver.Name = "pictureBoxPRVolver";
-            this.pictureBoxPRVolver.Size = new System.Drawing.Size(107, 29);
-            this.pictureBoxPRVolver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPRVolver.TabIndex = 22;
-            this.pictureBoxPRVolver.TabStop = false;
-            this.pictureBoxPRVolver.Click += new System.EventHandler(this.pictureBoxPRVolver_Click);
-            this.pictureBoxPRVolver.MouseEnter += new System.EventHandler(this.pictureBoxPRVolver_MouseEnter);
-            this.pictureBoxPRVolver.MouseLeave += new System.EventHandler(this.pictureBoxPRVolver_MouseLeave);
             // 
             // panel12
             // 
@@ -1499,6 +1512,19 @@ namespace Cliente_SOproject
             this.label37.TabIndex = 0;
             this.label37.Text = "Nombre: ";
             // 
+            // pictureBoxPRVolver
+            // 
+            this.pictureBoxPRVolver.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
+            this.pictureBoxPRVolver.Location = new System.Drawing.Point(7, 187);
+            this.pictureBoxPRVolver.Name = "pictureBoxPRVolver";
+            this.pictureBoxPRVolver.Size = new System.Drawing.Size(107, 29);
+            this.pictureBoxPRVolver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPRVolver.TabIndex = 22;
+            this.pictureBoxPRVolver.TabStop = false;
+            this.pictureBoxPRVolver.Click += new System.EventHandler(this.pictureBoxPRVolver_Click);
+            this.pictureBoxPRVolver.MouseEnter += new System.EventHandler(this.pictureBoxPRVolver_MouseEnter);
+            this.pictureBoxPRVolver.MouseLeave += new System.EventHandler(this.pictureBoxPRVolver_MouseLeave);
+            // 
             // pictureBox6
             // 
             this.pictureBox6.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -1560,11 +1586,9 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPageCrearPartida.ResumeLayout(false);
             this.tabPageCrearPartida.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCInvitar)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListaCon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCVolver)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1573,6 +1597,8 @@ namespace Cliente_SOproject
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCInvitar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCVolver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPageSocial.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSVolver)).EndInit();
@@ -1595,7 +1621,6 @@ namespace Cliente_SOproject
             this.tabPagePerfilRival.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPRVolver)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             this.panel13.ResumeLayout(false);
@@ -1604,6 +1629,7 @@ namespace Cliente_SOproject
             this.panel14.PerformLayout();
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPRVolver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
@@ -1725,6 +1751,8 @@ namespace Cliente_SOproject
             private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBoxMPDarseBaja;
+        private System.Windows.Forms.Button buttonLPassword;
+        private System.Windows.Forms.Button buttonRPassword;
     }
     }
 
