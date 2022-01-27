@@ -1545,7 +1545,7 @@ namespace Cliente_SOproject
             this.panelNombres.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNombres.Location = new System.Drawing.Point(0, 0);
             this.panelNombres.Name = "panelNombres";
-            this.panelNombres.Size = new System.Drawing.Size(562, 10);
+            this.panelNombres.Size = new System.Drawing.Size(562, 30);
             this.panelNombres.TabIndex = 1;
             // 
             // timer1

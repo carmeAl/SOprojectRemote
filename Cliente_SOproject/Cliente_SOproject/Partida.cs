@@ -65,8 +65,6 @@ namespace Cliente_SOproject
         public int y=0;
         public int terminado=0;
 
-        private Menu FormMenu;
-
         static readonly object _object = new object();
 
         delegate void DelegadoParaEscribir(string rival, string texto);
@@ -79,7 +77,7 @@ namespace Cliente_SOproject
         //Este es el contructor del form con el nombre "Partida" que tiene todos estos parametros puestos aquí
         public Partida(int Nform, Socket server, string nombreUsuario,
             int id_partida, string nivel, string sugerirPreguntas, string mapa,
-            string limitePreguntas, string limiteTiempo, string creador_partida, string invitado, Menu FormMenu)
+            string limitePreguntas, string limiteTiempo, string creador_partida, string invitado)
         {
             InitializeComponent();
             this.Nform = Nform;
@@ -93,7 +91,6 @@ namespace Cliente_SOproject
             this.creador_partida = creador_partida;
             this.nombreInvitado = invitado;
             this.girar = 0;
-            this.FormMenu = FormMenu;
            
 
         }
@@ -366,7 +363,8 @@ namespace Cliente_SOproject
             }
             else
             {
-                MessageBox.Show("Espera a que empiece la partida");
+                //MessageBox.Show("Espera a que empiece la partida");
+                label_info.Text = "Espera a que empiece la partida";
             }
         }
         // Según el tipo de partida elegido y la lista randomizada de numeros, se ponen los nombres debajo de su pictureBox correspondiente. 
@@ -838,7 +836,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (0 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -853,10 +852,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text("Lo siento, has fallado, te quedan " + vidas + " vidas");
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text("Has perdido");
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -875,7 +876,8 @@ namespace Cliente_SOproject
                     {
                         if (0 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -887,10 +889,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -958,7 +962,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (1 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -973,10 +978,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -995,7 +1002,8 @@ namespace Cliente_SOproject
                     {
                         if (1 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1007,10 +1015,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1077,7 +1087,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (2 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1089,10 +1100,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1111,7 +1124,8 @@ namespace Cliente_SOproject
                     {
                         if (2 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1122,10 +1136,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1193,7 +1209,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (3 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1208,10 +1225,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1230,7 +1249,8 @@ namespace Cliente_SOproject
                     {
                         if (3 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" ;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1241,10 +1261,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1313,7 +1335,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (4 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1325,10 +1348,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1347,7 +1372,8 @@ namespace Cliente_SOproject
                     {
                         if (4 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1358,10 +1384,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival; ;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1431,7 +1459,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (5 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1443,10 +1472,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1465,7 +1496,8 @@ namespace Cliente_SOproject
                     {
                         if (5 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" ;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1476,10 +1508,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1546,7 +1580,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (6 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1558,10 +1593,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1580,7 +1617,8 @@ namespace Cliente_SOproject
                     {
                         if (6 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1591,10 +1629,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1662,7 +1702,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (7 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1674,10 +1715,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1696,7 +1739,8 @@ namespace Cliente_SOproject
                     {
                         if (7 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" ;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1707,10 +1751,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1778,7 +1824,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (8 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1790,10 +1837,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1812,7 +1861,8 @@ namespace Cliente_SOproject
                     {
                         if (8 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" ;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1823,10 +1873,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1894,7 +1946,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (9 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1906,10 +1959,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -1928,7 +1983,8 @@ namespace Cliente_SOproject
                     {
                         if (9 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -1939,10 +1995,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -2010,7 +2068,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (10 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -2022,10 +2081,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -2044,7 +2105,8 @@ namespace Cliente_SOproject
                     {
                         if (10 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -2056,10 +2118,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -2128,7 +2192,8 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (11 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
+                            label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -2140,10 +2205,12 @@ namespace Cliente_SOproject
                         else
                         {
                             vidas = vidas - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -2162,7 +2229,8 @@ namespace Cliente_SOproject
                     {
                         if (11 == id_carta_rival)
                         {
-                            MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+                            label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
@@ -2173,10 +2241,12 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
+                            label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                MessageBox.Show("Has perdido");
+                                //MessageBox.Show("Has perdido");
+                                label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -2226,6 +2296,8 @@ namespace Cliente_SOproject
             {
                 Random rnd = new Random();
                 id_carta = rnd.Next(11);
+                pictureBoxImagenElegida.Image = GetImageByName(ListaImagenes[id_carta]);
+                pictureBoxNombreElegida.Image = GetImageByName(ListaNombres[id_carta]);
                 // MessageBox.Show("Tu carta es: " + id_carta);
                 mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
@@ -2453,7 +2525,8 @@ namespace Cliente_SOproject
             carta_inicial = 3;
             if (nombre==rival && resultado=="No")
             {
-                MessageBox.Show("Enorabuena, has ganado a " + rival);
+                //MessageBox.Show("Enorabuena, has ganado a " + rival);
+                label_info.Text = "Enorabuena, has ganado a " + rival;
                 // Partida_FormClosed(Partida,Close);
                 terminado = 1;
                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + nombreUsuario;
@@ -2467,7 +2540,8 @@ namespace Cliente_SOproject
                 if (vidas_final <= vidas)
                 {
                     intentos = vidas - vidas_final + 1;
-                    MessageBox.Show("Tienes " + intentos+ " intentos para poder empatar. Escoge la carta, tienes 60 segundos");
+                    //MessageBox.Show("Tienes " + intentos+ " intentos para poder empatar. Escoge la carta, tienes 60 segundos");
+                    label_info.Text = "Tienes " + intentos + " intentos para poder empatar. Escoge la carta, tienes 60 segundos";
                     conteo = 60;
                     final = 1;
 
@@ -2475,7 +2549,8 @@ namespace Cliente_SOproject
                 }
                 else
                 {
-                    MessageBox.Show("Has perdido ante "+ rival);
+                    //MessageBox.Show("Has perdido ante "+ rival);
+                    label_info.Text = "Has perdido ante " + rival;
                     mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/"+ rival;
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                     server.Send(msg);
@@ -2506,7 +2581,6 @@ namespace Cliente_SOproject
                 server.Send(msg);
 
             }
-            FormMenu.StopMusicGame(Nform);
             
 
         }

@@ -12,7 +12,6 @@ using System.Drawing.Drawing2D;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using System.Media;
 //using Xamarin.Forms;
 
 
@@ -31,8 +30,6 @@ namespace Cliente_SOproject
         public string contrincante;
         public string nombreInvitado;
         public int Nform;
-        public int contadorMusic=0;
-        public bool MusicMenu = true;
 
         //Parametros partida
         string nivel;
@@ -44,14 +41,10 @@ namespace Cliente_SOproject
         Socket server;
         Thread atender;
         List<Partida> formularios = new List<Partida>();
-        SoundPlayer soundM = new SoundPlayer(@".\Music_menu.wav");
-        SoundPlayer soundG = new SoundPlayer(@".\Music_game.wav");
         public Menu()
         {
             InitializeComponent();
             tabControl1.SelectedTab = tabPageLogin;
-            
-            soundM.PlayLooping();
 
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -152,7 +145,7 @@ namespace Cliente_SOproject
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado, this);
+                nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado);
             formularios.Add(FormPartida);
             Nform = formularios.Count-1;
 
@@ -161,12 +154,6 @@ namespace Cliente_SOproject
             FormPartida.CambiarTab();
             formularios[Nform].nombreInvitado = nombreInv;
             formularios[Nform].id_partida = id_partida;
-            if (MusicMenu)
-            {
-                soundM.Stop();
-                soundG.PlayLooping();
-                MusicMenu = false;
-            }
             FormPartida.ShowDialog();
 
         }
@@ -174,26 +161,10 @@ namespace Cliente_SOproject
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado,this);
+                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado);
             formularios.Add(FormPartida);
             Nform = formularios.Count - 1;
-            if (MusicMenu)
-            {
-                soundM.Stop();
-                soundG.PlayLooping();
-                MusicMenu = false;
-            }
             FormPartida.ShowDialog();
-        }
-        public void StopMusicGame(int index)
-        {
-            contadorMusic++;
-            if (formularios.Count == contadorMusic)
-            {
-                soundG.Stop();
-                soundM.PlayLooping();
-                MusicMenu = true;
-            }
         }
         public void ConectarServidor()
         {
