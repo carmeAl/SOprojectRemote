@@ -74,7 +74,7 @@ namespace Cliente_SOproject
         {
             if (mensaje != null && mensaje != "")
             {
-
+                dataGridViewListaCon.RowHeadersVisible = false;
                 dataGridViewListaCon.Rows.Clear();
                 string[] partes = mensaje.Split(',');
                 int num = Convert.ToInt32(partes[0]);
@@ -933,13 +933,6 @@ namespace Cliente_SOproject
             Font font1 = new Font("Arial", 20);
             e.Graphics.DrawString("Arial Font", font1, Brushes.Red, new PointF(10, 10));
         }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }
 

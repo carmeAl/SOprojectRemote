@@ -122,29 +122,29 @@ namespace Cliente_SOproject
                     ListaImagenes[i - 1] = "animal_" + ListaRandom[i];
                 }
                 pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
-                poner_nombre_fotos(0, label_Imagen1, "animal");
+                poner_nombre_fotos(0, pictureBoxNombre1, "animal");
                 pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
-                poner_nombre_fotos(1, label_Imagen2, "animal");
+                poner_nombre_fotos(1, pictureBoxNombre2, "animal");
                 pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
-                poner_nombre_fotos(2, label_Imagen3, "animal");
+                poner_nombre_fotos(2, pictureBoxNombre3, "animal");
                 pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
-                poner_nombre_fotos(3, label_Imagen4, "animal");
+                poner_nombre_fotos(3, pictureBoxNombre4, "animal");
                 pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
-                poner_nombre_fotos(4, label_Imagen5, "animal");
+                poner_nombre_fotos(4, pictureBoxNombre5, "animal");
                 pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
-                poner_nombre_fotos(5, label_Imagen6, "animal");
+                poner_nombre_fotos(5, pictureBoxNombre6, "animal");
                 pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
-                poner_nombre_fotos(6, label_Imagen7, "animal");
+                poner_nombre_fotos(6, pictureBoxNombre7, "animal");
                 pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
-                poner_nombre_fotos(7, label_Imagen8, "animal");
+                poner_nombre_fotos(7, pictureBoxNombre8, "animal");
                 pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
-                poner_nombre_fotos(8, label_Imagen9, "animal");
+                poner_nombre_fotos(8, pictureBoxNombre9, "animal");
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
-                poner_nombre_fotos(9, label_Imagen10, "animal");
+                poner_nombre_fotos(9, pictureBoxNombre10, "animal");
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
-                poner_nombre_fotos(10, label_Imagen11, "animal");
+                poner_nombre_fotos(10, pictureBoxNombre11, "animal");
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
-                poner_nombre_fotos(11, label_Imagen12, "animal");
+                poner_nombre_fotos(11, pictureBoxNombre12, "animal");
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -166,29 +166,29 @@ namespace Cliente_SOproject
                     ListaImagenes[i - 1] = "clase_" + ListaRandom[i];
                 }
                 pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
-                poner_nombre_fotos(0, label_Imagen1, "clase");
+                poner_nombre_fotos(0, pictureBoxNombre1, "clase");
                 pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
-                poner_nombre_fotos(1, label_Imagen2, "clase");
+                poner_nombre_fotos(1, pictureBoxNombre2, "clase");
                 pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
-                poner_nombre_fotos(2, label_Imagen3, "clase");
+                poner_nombre_fotos(2, pictureBoxNombre3, "clase");
                 pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
-                poner_nombre_fotos(3, label_Imagen4, "clase");
+                poner_nombre_fotos(3, pictureBoxNombre4, "clase");
                 pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
-                poner_nombre_fotos(4, label_Imagen5, "clase");
+                poner_nombre_fotos(4, pictureBoxNombre5, "clase");
                 pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
-                poner_nombre_fotos(5, label_Imagen6, "clase");
+                poner_nombre_fotos(5, pictureBoxNombre6, "clase");
                 pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
-                poner_nombre_fotos(6, label_Imagen7, "clase");
+                poner_nombre_fotos(6, pictureBoxNombre7, "clase");
                 pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
-                poner_nombre_fotos(7, label_Imagen8, "clase");
+                poner_nombre_fotos(7, pictureBoxNombre8, "clase");
                 pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
-                poner_nombre_fotos(8, label_Imagen9, "clase");
+                poner_nombre_fotos(8, pictureBoxNombre9, "clase");
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
-                poner_nombre_fotos(9, label_Imagen10, "clase");
+                poner_nombre_fotos(9, pictureBoxNombre10, "clase");
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
-                poner_nombre_fotos(10, label_Imagen11, "clase");
+                poner_nombre_fotos(10, pictureBoxNombre11, "clase");
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
-                poner_nombre_fotos(11, label_Imagen12, "clase");
+                poner_nombre_fotos(11, pictureBoxNombre12, "clase");
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -209,29 +209,29 @@ namespace Cliente_SOproject
                     ListaImagenes[i - 1] = "pais_" + ListaRandom[i];
                 }
                 pictureBoxImage1.Image = GetImageByName(ListaImagenes[0]);
-                poner_nombre_fotos(0, label_Imagen1, "pais");
+                poner_nombre_fotos(0, pictureBoxNombre1, "pais");
                 pictureBoxImage2.Image = GetImageByName(ListaImagenes[1]);
-                poner_nombre_fotos(1, label_Imagen2, "pais");
+                poner_nombre_fotos(1, pictureBoxNombre2, "pais");
                 pictureBoxImage3.Image = GetImageByName(ListaImagenes[2]);
-                poner_nombre_fotos(2, label_Imagen3, "pais");
+                poner_nombre_fotos(2, pictureBoxNombre3, "pais");
                 pictureBoxImage4.Image = GetImageByName(ListaImagenes[3]);
-                poner_nombre_fotos(3, label_Imagen4, "pais");
+                poner_nombre_fotos(3, pictureBoxNombre4, "pais");
                 pictureBoxImage5.Image = GetImageByName(ListaImagenes[4]);
-                poner_nombre_fotos(4, label_Imagen5, "pais");
+                poner_nombre_fotos(4, pictureBoxNombre5, "pais");
                 pictureBoxImage6.Image = GetImageByName(ListaImagenes[5]);
-                poner_nombre_fotos(5, label_Imagen6, "pais");
+                poner_nombre_fotos(5, pictureBoxNombre6, "pais");
                 pictureBoxImage7.Image = GetImageByName(ListaImagenes[6]);
-                poner_nombre_fotos(6, label_Imagen7, "pais");
+                poner_nombre_fotos(6, pictureBoxNombre7, "pais");
                 pictureBoxImage8.Image = GetImageByName(ListaImagenes[7]);
-                poner_nombre_fotos(7, label_Imagen8, "pais");
+                poner_nombre_fotos(7, pictureBoxNombre8, "pais");
                 pictureBoxImage9.Image = GetImageByName(ListaImagenes[8]);
-                poner_nombre_fotos(8, label_Imagen9, "pais");
+                poner_nombre_fotos(8, pictureBoxNombre9, "pais");
                 pictureBoxImage10.Image = GetImageByName(ListaImagenes[9]);
-                poner_nombre_fotos(9, label_Imagen10, "pais");
+                poner_nombre_fotos(9, pictureBoxNombre10, "pais");
                 pictureBoxImage11.Image = GetImageByName(ListaImagenes[10]);
-                poner_nombre_fotos(10, label_Imagen11, "pais");
+                poner_nombre_fotos(10, pictureBoxNombre11, "pais");
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
-                poner_nombre_fotos(11, label_Imagen12, "pais");
+                poner_nombre_fotos(11, pictureBoxNombre12, "pais");
      
                 if (sugerirPreguntas == "SI")
                 {
@@ -322,319 +322,319 @@ namespace Cliente_SOproject
                 MessageBox.Show("Espera a que empiece la partida");
             }
         }
-        public void poner_nombre_fotos(int i, Label label, string tipo)
+        public void poner_nombre_fotos(int i, PictureBox picturebox, string tipo)
         {
             if (tipo == "animal")
             {
                 if (ListaImagenes[i] == "animal_0")
                 {
-                    EscribirLabel("Mariposa", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_0");
                 }
                 else if (ListaImagenes[i] == "animal_1")
                 {
-                    EscribirLabel("Murcielago", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_1");
                 }
                 else if (ListaImagenes[i] == "animal_2")
                 {
-                    EscribirLabel("Oso", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_2");
                 }
                 else if (ListaImagenes[i] == "animal_3")
                 {
-                    EscribirLabel("Camello", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_3");
                 }
                 else if (ListaImagenes[i] == "animal_4")
                 {
-                    EscribirLabel("Camaleon", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_4");
                 }
                 else if (ListaImagenes[i] == "animal_5")
                 {
-                    EscribirLabel("Cangrejo", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_5");
                 }
                 else if (ListaImagenes[i] == "animal_6")
                 {
-                    EscribirLabel("Elefante", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_6");
                 }
                 else if (ListaImagenes[i] == "animal_7")
                 {
-                    EscribirLabel("Flamenco", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_7");
                 }
                 else if (ListaImagenes[i] == "animal_8")
                 {
-                    EscribirLabel("Zorro", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_8");
                 }
                 else if (ListaImagenes[i] == "animal_9")
                 {
-                    EscribirLabel("Rana", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_9");
                 }
                 else if (ListaImagenes[i] == "animal_10")
                 {
-                    EscribirLabel("Girafa", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_10");
                 }
                 else if (ListaImagenes[i] == "animal_11")
                 {
-                    EscribirLabel("Erizo", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_11");
                 }
                 else if (ListaImagenes[i] == "animal_12")
                 {
-                    EscribirLabel("Canguro", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_12");
                 }
                 else if (ListaImagenes[i] == "animal_13")
                 {
-                    EscribirLabel("Leon", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_13");
                 }
                 else if (ListaImagenes[i] == "animal_14")
                 {
-                    EscribirLabel("Mono", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_14");
                 }
                 else if (ListaImagenes[i] == "animal_15")
                 {
-                    EscribirLabel("Raton", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_15");
                 }
                 else if (ListaImagenes[i] == "animal_16")
                 {
-                    EscribirLabel("Pulpo", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_16");
                 }
                 else if (ListaImagenes[i] == "animal_17")
                 {
-                    EscribirLabel("Pingüino", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_17");
                 }
                 else if (ListaImagenes[i] == "animal_18")
                 {
-                    EscribirLabel("Cerdo", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_18");
                 }
                 else if (ListaImagenes[i] == "animal_19")
                 {
-                    EscribirLabel("Conejo", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_19");
                 }
                 else if (ListaImagenes[i] == "animal_20")
                 {
-                    EscribirLabel("Rinoceronte", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_20");
                 }
                 else if (ListaImagenes[i] == "animal_21")
                 {
-                    EscribirLabel("Tiburon", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_21");
                 }
                 else if (ListaImagenes[i] == "animal_22")
                 {
-                    EscribirLabel("Perezoso", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_22");
                 }
                 else if (ListaImagenes[i] == "animal_23")
                 {
-                    EscribirLabel("Caracol", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_23");
                 }
                 else if (ListaImagenes[i] == "animal_24")
                 {
-                    EscribirLabel("Serpiente", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_24");
                 }
                 else if (ListaImagenes[i] == "animal_25")
                 {
-                    EscribirLabel("Ballena", label);
+                    pictureBoxImage1.Image = GetImageByName("animal_nombre_25");
                 }
             }
             if (tipo == "pais")
             {
                 if (ListaImagenes[i] == "pais_0")
                 {
-                    EscribirLabel("Grecia", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_0");
                 }
                 else if (ListaImagenes[i] == "pais_1")
                 {
-                    EscribirLabel("Afghanistan", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_1");
                 }
                 else if (ListaImagenes[i] == "pais_2")
                 {
-                    EscribirLabel("Andorra", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_2");
                 }
                 else if (ListaImagenes[i] == "pais_3")
                 {
-                    EscribirLabel("Argentina", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_3");
                 }
                 else if (ListaImagenes[i] == "pais_4")
                 {
-                    EscribirLabel("Australia", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_4");
                 }
                 else if (ListaImagenes[i] == "pais_5")
                 {
-                    EscribirLabel("Belgica", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_5");
                 }
                 else if (ListaImagenes[i] == "pais_6")
                 {
-                    EscribirLabel("Brasil", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_6");
                 }
                 else if (ListaImagenes[i] == "pais_7")
                 {
-                    EscribirLabel("Canada", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_7");
                 }
                 else if (ListaImagenes[i] == "pais_8")
                 {
-                    EscribirLabel("Chile", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_8");
                 }
                 else if (ListaImagenes[i] == "pais_9")
                 {
-                    EscribirLabel("China", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_9");
                 }
                 else if (ListaImagenes[i] == "pais_10")
                 {
-                    EscribirLabel("Costa Rica", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_10");
                 }
                 else if (ListaImagenes[i] == "pais_11")
                 {
-                    EscribirLabel("Egipcio", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_11");
                 }
                 else if (ListaImagenes[i] == "pais_12")
                 {
-                    EscribirLabel("Inglaterra", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_12");
                 }
                 else if (ListaImagenes[i] == "pais_13")
                 {
-                    EscribirLabel("Francia", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_13");
                 }
                 else if (ListaImagenes[i] == "pais_14")
                 {
-                    EscribirLabel("Alemania", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_14");
                 }
                 else if (ListaImagenes[i] == "pais_15")
                 {
-                    EscribirLabel("India", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_15");
                 }
                 else if (ListaImagenes[i] == "pais_16")
                 {
-                    EscribirLabel("Italia", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_16");
                 }
                 else if (ListaImagenes[i] == "pais_17")
                 {
-                    EscribirLabel("Japon", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_17");
                 }
                 else if (ListaImagenes[i] == "pais_18")
                 {
-                    EscribirLabel("Mexico", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_18");
                 }
                 else if (ListaImagenes[i] == "pais_19")
                 {
-                    EscribirLabel("Conejo", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_19");
                 }
                 else if (ListaImagenes[i] == "pais_20")
                 {
-                    EscribirLabel("Rinoceronte", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_20");
                 }
                 else if (ListaImagenes[i] == "pais_21")
                 {
-                    EscribirLabel("Tiburon", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_21");
                 }
                 else if (ListaImagenes[i] == "pais_22")
                 {
-                    EscribirLabel("Perezoso", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_22");
                 }
                 else if (ListaImagenes[i] == "pais_23")
                 {
-                    EscribirLabel("Caracol", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_23");
                 }
                 else if (ListaImagenes[i] == "pais_24")
                 {
-                    EscribirLabel("Serpiente", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_24");
                 }
                 else if (ListaImagenes[i] == "pais_25")
                 {
-                    EscribirLabel("Ballena", label);
+                    pictureBoxImage1.Image = GetImageByName("pais_nombre_25");
                 }
             }
             if (tipo == "clase")
             {
                 if (ListaImagenes[i] == "clase_0")
                 {
-                    EscribirLabel("Genís", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_0");
                 }
                 else if (ListaImagenes[i] == "clase_1")
                 {
-                    EscribirLabel("Guillem", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_1");
                 }
                 else if (ListaImagenes[i] == "clase_2")
                 {
-                    EscribirLabel("Alba", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_2");
                 }
                 else if (ListaImagenes[i] == "clase_3")
                 {
-                    EscribirLabel("Alex", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_3");
                 }
                 else if (ListaImagenes[i] == "clase_4")
                 {
-                    EscribirLabel("Angela", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_4");
                 }
                 else if (ListaImagenes[i] == "clase_5")
                 {
-                    EscribirLabel("Arnau", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_5");
                 }
                 else if (ListaImagenes[i] == "clase_6")
                 {
-                    EscribirLabel("Biel", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_6");
                 }
                 else if (ListaImagenes[i] == "clase_7")
                 {
-                    EscribirLabel("Carmen", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_7");
                 }
                 else if (ListaImagenes[i] == "clase_8")
                 {
-                    EscribirLabel("Ismael", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_8");
                 }
                 else if (ListaImagenes[i] == "clase_9")
                 {
-                    EscribirLabel("Itziar", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_9");
                 }
                 else if (ListaImagenes[i] == "clase_10")
                 {
-                    EscribirLabel("Jonathan", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_10");
                 }
                 else if (ListaImagenes[i] == "clase_11")
                 {
-                    EscribirLabel("Miguel", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_11");
                 }
                 else if (ListaImagenes[i] == "clase_12")
                 {
-                    EscribirLabel("Paula C.", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_12");
                 }
                 else if (ListaImagenes[i] == "clase_13")
                 {
-                    EscribirLabel("Júlia", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_13");
                 }
                 else if (ListaImagenes[i] == "clase_14")
                 {
-                    EscribirLabel("Maria", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_14");
                 }
                 else if (ListaImagenes[i] == "clase_15")
                 {
-                    EscribirLabel("Paula S.", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_15");
                 }
                 else if (ListaImagenes[i] == "clase_16")
                 {
-                    EscribirLabel("Laia", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_16");
                 }
                 else if (ListaImagenes[i] == "clase_17")
                 {
-                    EscribirLabel("Raúl", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_17");
                 }
                 else if (ListaImagenes[i] == "clase_18")
                 {
-                    EscribirLabel("Pau", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_18");
                 }
                 else if (ListaImagenes[i] == "clase_19")
                 {
-                    EscribirLabel("Victor F.", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_19");
                 }
                 else if (ListaImagenes[i] == "clase_20")
                 {
-                    EscribirLabel("Marc", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_20");
                 }
                 else if (ListaImagenes[i] == "clase_21")
                 {
-                    EscribirLabel("Xavier", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_21");
                 }
                 else if (ListaImagenes[i] == "clase_22")
                 {
-                    EscribirLabel("Borja", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_22");
                 }
                 else if (ListaImagenes[i] == "clase_23")
                 {
-                    EscribirLabel("Victòria", label);
+                    pictureBoxImage1.Image = GetImageByName("clase_nombre_23");
                 }
             }
         }
@@ -2359,11 +2359,6 @@ namespace Cliente_SOproject
             // Envias el mensaje  
         }
 
-        private void groupBoxChat_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void Boton_respuesta_Click(object sender, EventArgs e)
         {
             if (final == 0 && terminado!=1)
@@ -2372,16 +2367,6 @@ namespace Cliente_SOproject
                 carta_inicial = 3;
                 MessageBox.Show("Escoge la carta del rival");
             }
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
 
         }
         public void Fasefinal(string nombre,string resultado,int vidas_final)
@@ -2441,16 +2426,6 @@ namespace Cliente_SOproject
 
             }
             
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_tiempo_Click(object sender, EventArgs e)
-        {
 
         }
     }
