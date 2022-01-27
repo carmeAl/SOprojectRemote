@@ -149,13 +149,13 @@ namespace Cliente_SOproject
             formularios.Add(FormPartida);
             Nform = formularios.Count-1;
 
-            FormPartida.rival = rival;
+            formularios[Nform].rival = rival;
             FormPartida.PasarListaRandom(lista);
             FormPartida.CambiarTab();
-            FormPartida.nombreInvitado = nombreInv;
-            FormPartida.id_partida = Convert.ToInt32(IdPartida);
+            formularios[Nform].nombreInvitado = nombreInv;
+            formularios[Nform].id_partida = id_partida;
             FormPartida.ShowDialog();
-            
+
         }
         public void PonerEnMarchaForm()
         {
@@ -461,6 +461,7 @@ namespace Cliente_SOproject
                         formularios[i].PrepararTiempo_Turno(turno);
                         break;
                     case 48:
+                        id_partida = Convert.ToInt32(trozos1[1]);
                         string nombre1 = trozos1[2];
                         string carta1 = trozos1[3];
                   
@@ -471,7 +472,7 @@ namespace Cliente_SOproject
                         encontrado = 0;
                         while ((i < formularios.Count) && (encontrado == 0))
                         {
-                            if (formularios[i].id_partida == Convert.ToInt32(trozos1[1]))
+                            if (formularios[i].id_partida == id_partida)
                             {
                                 encontrado = 1;
                             }

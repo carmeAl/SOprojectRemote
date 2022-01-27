@@ -87,3 +87,14 @@ C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Clien
 C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
 C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
 C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
