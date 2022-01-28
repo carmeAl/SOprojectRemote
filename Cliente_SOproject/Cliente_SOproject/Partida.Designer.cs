@@ -33,33 +33,15 @@ namespace Cliente_SOproject
             this.components = new System.ComponentModel.Container();
             this.tabControlPartida = new System.Windows.Forms.TabControl();
             this.tabPageEsperando = new System.Windows.Forms.TabPage();
-            this.labelPE = new System.Windows.Forms.Label();
-            this.tabPageTablero = new System.Windows.Forms.TabPage();
-            this.groupBoxPTTableroContrincante = new System.Windows.Forms.GroupBox();
-            this.groupBoxChat = new System.Windows.Forms.GroupBox();
-            this.Boton_respuesta = new System.Windows.Forms.Button();
-            this.button_Nose = new System.Windows.Forms.Button();
-            this.button_No = new System.Windows.Forms.Button();
-            this.button_Si = new System.Windows.Forms.Button();
-            this.comboBoxPTChat = new System.Windows.Forms.ComboBox();
-            this.button_enviar = new System.Windows.Forms.Button();
-            this.textBox_con = new System.Windows.Forms.TextBox();
-            this.conversacion = new System.Windows.Forms.ListBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label_turno = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label_tiempo = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.timerFlip = new System.Windows.Forms.Timer(this.components);
-            this.Stop = new System.Windows.Forms.Timer(this.components);
-            this.timerTurno = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBoxPEGif = new System.Windows.Forms.PictureBox();
+            this.labelPE = new System.Windows.Forms.Label();
             this.pictureBoxPEBoton = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.tabPageTablero = new System.Windows.Forms.TabPage();
+            this.label_info = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxNombreElegida = new System.Windows.Forms.PictureBox();
+            this.pictureBoxImagenElegida = new System.Windows.Forms.PictureBox();
             this.pictureBoxNombre12 = new System.Windows.Forms.PictureBox();
             this.pictureBoxNombre11 = new System.Windows.Forms.PictureBox();
             this.pictureBoxNombre10 = new System.Windows.Forms.PictureBox();
@@ -72,10 +54,9 @@ namespace Cliente_SOproject
             this.pictureBoxNombre3 = new System.Windows.Forms.PictureBox();
             this.pictureBoxNombre2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxNombre1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxNombreElegida = new System.Windows.Forms.PictureBox();
+            this.groupBoxPTTableroContrincante = new System.Windows.Forms.GroupBox();
             this.pictureBoxPTTableroContrincante12 = new System.Windows.Forms.PictureBox();
             this.pictureBoxPTTableroContrincante11 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxImagenElegida = new System.Windows.Forms.PictureBox();
             this.pictureBoxPTTableroContrincante10 = new System.Windows.Forms.PictureBox();
             this.pictureBoxPTTableroContrincante9 = new System.Windows.Forms.PictureBox();
             this.pictureBoxPTTableroContrincante8 = new System.Windows.Forms.PictureBox();
@@ -97,19 +78,37 @@ namespace Cliente_SOproject
             this.pictureBoxImage4 = new System.Windows.Forms.PictureBox();
             this.pictureBoxImage3 = new System.Windows.Forms.PictureBox();
             this.pictureBoxImage1 = new System.Windows.Forms.PictureBox();
+            this.groupBoxChat = new System.Windows.Forms.GroupBox();
+            this.Boton_respuesta = new System.Windows.Forms.Button();
+            this.button_Nose = new System.Windows.Forms.Button();
+            this.button_No = new System.Windows.Forms.Button();
+            this.button_Si = new System.Windows.Forms.Button();
+            this.comboBoxPTChat = new System.Windows.Forms.ComboBox();
+            this.button_enviar = new System.Windows.Forms.Button();
+            this.textBox_con = new System.Windows.Forms.TextBox();
+            this.conversacion = new System.Windows.Forms.ListBox();
             this.pictureBoxImage2 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label_turno = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label_tiempo = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.timerFlip = new System.Windows.Forms.Timer(this.components);
+            this.Stop = new System.Windows.Forms.Timer(this.components);
+            this.timerTurno = new System.Windows.Forms.Timer(this.components);
             this.tabControlPartida.SuspendLayout();
             this.tabPageEsperando.SuspendLayout();
-            this.tabPageTablero.SuspendLayout();
-            this.groupBoxPTTableroContrincante.SuspendLayout();
-            this.groupBoxChat.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPEGif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPEBoton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            this.tabPageTablero.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombreElegida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagenElegida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre10)).BeginInit();
@@ -122,10 +121,9 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombreElegida)).BeginInit();
+            this.groupBoxPTTableroContrincante.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagenElegida)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante8)).BeginInit();
@@ -147,7 +145,12 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage1)).BeginInit();
+            this.groupBoxChat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage2)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPartida
@@ -159,7 +162,7 @@ namespace Cliente_SOproject
             this.tabControlPartida.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlPartida.Name = "tabControlPartida";
             this.tabControlPartida.SelectedIndex = 0;
-            this.tabControlPartida.Size = new System.Drawing.Size(608, 377);
+            this.tabControlPartida.Size = new System.Drawing.Size(608, 409);
             this.tabControlPartida.TabIndex = 1;
             // 
             // tabPageEsperando
@@ -171,10 +174,21 @@ namespace Cliente_SOproject
             this.tabPageEsperando.Location = new System.Drawing.Point(4, 22);
             this.tabPageEsperando.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageEsperando.Name = "tabPageEsperando";
-            this.tabPageEsperando.Size = new System.Drawing.Size(600, 351);
+            this.tabPageEsperando.Size = new System.Drawing.Size(600, 383);
             this.tabPageEsperando.TabIndex = 0;
             this.tabPageEsperando.Text = "Esperando";
             this.tabPageEsperando.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxPEGif
+            // 
+            this.pictureBoxPEGif.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(7)))), ((int)(((byte)(173)))));
+            this.pictureBoxPEGif.Image = global::Cliente_SOproject.Properties.Resources.RelojArena;
+            this.pictureBoxPEGif.Location = new System.Drawing.Point(453, 119);
+            this.pictureBoxPEGif.Name = "pictureBoxPEGif";
+            this.pictureBoxPEGif.Size = new System.Drawing.Size(47, 40);
+            this.pictureBoxPEGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPEGif.TabIndex = 21;
+            this.pictureBoxPEGif.TabStop = false;
             // 
             // labelPE
             // 
@@ -189,9 +203,35 @@ namespace Cliente_SOproject
             this.labelPE.TabIndex = 20;
             this.labelPE.Text = "ESPERANDO ";
             // 
+            // pictureBoxPEBoton
+            // 
+            this.pictureBoxPEBoton.Image = global::Cliente_SOproject.Properties.Resources.CancelarPartida;
+            this.pictureBoxPEBoton.Location = new System.Drawing.Point(399, 181);
+            this.pictureBoxPEBoton.Name = "pictureBoxPEBoton";
+            this.pictureBoxPEBoton.Size = new System.Drawing.Size(172, 63);
+            this.pictureBoxPEBoton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPEBoton.TabIndex = 19;
+            this.pictureBoxPEBoton.TabStop = false;
+            this.pictureBoxPEBoton.Click += new System.EventHandler(this.pictureBoxPEBoton_Click);
+            this.pictureBoxPEBoton.MouseEnter += new System.EventHandler(this.pictureBoxPEBoton_MouseEnter);
+            this.pictureBoxPEBoton.MouseLeave += new System.EventHandler(this.pictureBoxPEBoton_MouseLeave);
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox13.Image = global::Cliente_SOproject.Properties.Resources.BackForm2_2;
+            this.pictureBox13.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(600, 383);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox13.TabIndex = 0;
+            this.pictureBox13.TabStop = false;
+            // 
             // tabPageTablero
             // 
             this.tabPageTablero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(9)))), ((int)(((byte)(179)))));
+            this.tabPageTablero.Controls.Add(this.label_info);
+            this.tabPageTablero.Controls.Add(this.groupBox1);
             this.tabPageTablero.Controls.Add(this.pictureBoxNombre12);
             this.tabPageTablero.Controls.Add(this.pictureBoxNombre11);
             this.tabPageTablero.Controls.Add(this.pictureBoxNombre10);
@@ -221,279 +261,51 @@ namespace Cliente_SOproject
             this.tabPageTablero.Location = new System.Drawing.Point(4, 22);
             this.tabPageTablero.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageTablero.Name = "tabPageTablero";
-            this.tabPageTablero.Size = new System.Drawing.Size(600, 351);
+            this.tabPageTablero.Size = new System.Drawing.Size(600, 383);
             this.tabPageTablero.TabIndex = 1;
             this.tabPageTablero.Text = "Tablero";
             // 
-            // groupBoxPTTableroContrincante
+            // label_info
             // 
-            this.groupBoxPTTableroContrincante.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(9)))), ((int)(((byte)(179)))));
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxNombreElegida);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante12);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante11);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxImagenElegida);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante10);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante9);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante8);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante7);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante6);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante5);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante4);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante3);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante2);
-            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante1);
-            this.groupBoxPTTableroContrincante.Location = new System.Drawing.Point(331, 19);
-            this.groupBoxPTTableroContrincante.Name = "groupBoxPTTableroContrincante";
-            this.groupBoxPTTableroContrincante.Size = new System.Drawing.Size(253, 101);
-            this.groupBoxPTTableroContrincante.TabIndex = 40;
-            this.groupBoxPTTableroContrincante.TabStop = false;
-            this.groupBoxPTTableroContrincante.Text = "groupBox1";
+            this.label_info.AutoSize = true;
+            this.label_info.BackColor = System.Drawing.Color.Black;
+            this.label_info.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_info.ForeColor = System.Drawing.Color.Red;
+            this.label_info.Location = new System.Drawing.Point(8, 358);
+            this.label_info.Name = "label_info";
+            this.label_info.Size = new System.Drawing.Size(0, 20);
+            this.label_info.TabIndex = 3;
+            this.label_info.Visible = false;
             // 
-            // groupBoxChat
+            // groupBox1
             // 
-            this.groupBoxChat.Controls.Add(this.Boton_respuesta);
-            this.groupBoxChat.Controls.Add(this.button_Nose);
-            this.groupBoxChat.Controls.Add(this.button_No);
-            this.groupBoxChat.Controls.Add(this.button_Si);
-            this.groupBoxChat.Controls.Add(this.comboBoxPTChat);
-            this.groupBoxChat.Controls.Add(this.button_enviar);
-            this.groupBoxChat.Controls.Add(this.textBox_con);
-            this.groupBoxChat.Controls.Add(this.conversacion);
-            this.groupBoxChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxChat.ForeColor = System.Drawing.Color.White;
-            this.groupBoxChat.Location = new System.Drawing.Point(331, 124);
-            this.groupBoxChat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBoxChat.Name = "groupBoxChat";
-            this.groupBoxChat.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBoxChat.Size = new System.Drawing.Size(253, 220);
-            this.groupBoxChat.TabIndex = 14;
-            this.groupBoxChat.TabStop = false;
-            this.groupBoxChat.Text = "Chat";
+            this.groupBox1.Controls.Add(this.pictureBoxNombreElegida);
+            this.groupBox1.Controls.Add(this.pictureBoxImagenElegida);
+            this.groupBox1.Location = new System.Drawing.Point(489, 20);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(108, 100);
+            this.groupBox1.TabIndex = 54;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tu personaje:";
             // 
-            // Boton_respuesta
+            // pictureBoxNombreElegida
             // 
-            this.Boton_respuesta.ForeColor = System.Drawing.Color.Black;
-            this.Boton_respuesta.Location = new System.Drawing.Point(65, 182);
-            this.Boton_respuesta.Margin = new System.Windows.Forms.Padding(2);
-            this.Boton_respuesta.Name = "Boton_respuesta";
-            this.Boton_respuesta.Size = new System.Drawing.Size(126, 28);
-            this.Boton_respuesta.TabIndex = 7;
-            this.Boton_respuesta.Text = "¡ Lo sé ! ";
-            this.Boton_respuesta.UseVisualStyleBackColor = true;
-            this.Boton_respuesta.Click += new System.EventHandler(this.Boton_respuesta_Click);
+            this.pictureBoxNombreElegida.Location = new System.Drawing.Point(14, 72);
+            this.pictureBoxNombreElegida.Name = "pictureBoxNombreElegida";
+            this.pictureBoxNombreElegida.Size = new System.Drawing.Size(87, 24);
+            this.pictureBoxNombreElegida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxNombreElegida.TabIndex = 55;
+            this.pictureBoxNombreElegida.TabStop = false;
             // 
-            // button_Nose
+            // pictureBoxImagenElegida
             // 
-            this.button_Nose.ForeColor = System.Drawing.Color.Black;
-            this.button_Nose.Location = new System.Drawing.Point(88, 155);
-            this.button_Nose.Name = "button_Nose";
-            this.button_Nose.Size = new System.Drawing.Size(75, 23);
-            this.button_Nose.TabIndex = 6;
-            this.button_Nose.Text = "NO SE";
-            this.button_Nose.UseVisualStyleBackColor = true;
-            this.button_Nose.Click += new System.EventHandler(this.button_Nose_Click);
-            // 
-            // button_No
-            // 
-            this.button_No.ForeColor = System.Drawing.Color.Black;
-            this.button_No.Location = new System.Drawing.Point(141, 132);
-            this.button_No.Name = "button_No";
-            this.button_No.Size = new System.Drawing.Size(75, 23);
-            this.button_No.TabIndex = 5;
-            this.button_No.Text = "NO";
-            this.button_No.UseVisualStyleBackColor = true;
-            this.button_No.Click += new System.EventHandler(this.button_No_Click);
-            // 
-            // button_Si
-            // 
-            this.button_Si.ForeColor = System.Drawing.Color.Black;
-            this.button_Si.Location = new System.Drawing.Point(30, 132);
-            this.button_Si.Name = "button_Si";
-            this.button_Si.Size = new System.Drawing.Size(75, 23);
-            this.button_Si.TabIndex = 4;
-            this.button_Si.Text = "SI";
-            this.button_Si.UseVisualStyleBackColor = true;
-            this.button_Si.Click += new System.EventHandler(this.button_Si_Click);
-            // 
-            // comboBoxPTChat
-            // 
-            this.comboBoxPTChat.FormattingEnabled = true;
-            this.comboBoxPTChat.Location = new System.Drawing.Point(6, 16);
-            this.comboBoxPTChat.Name = "comboBoxPTChat";
-            this.comboBoxPTChat.Size = new System.Drawing.Size(238, 21);
-            this.comboBoxPTChat.TabIndex = 3;
-            this.comboBoxPTChat.Visible = false;
-            this.comboBoxPTChat.SelectedIndexChanged += new System.EventHandler(this.comboBoxPTChat_SelectedIndexChanged);
-            // 
-            // button_enviar
-            // 
-            this.button_enviar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button_enviar.ForeColor = System.Drawing.Color.Black;
-            this.button_enviar.Location = new System.Drawing.Point(47, 155);
-            this.button_enviar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button_enviar.Name = "button_enviar";
-            this.button_enviar.Size = new System.Drawing.Size(168, 21);
-            this.button_enviar.TabIndex = 2;
-            this.button_enviar.Text = "Enviar";
-            this.button_enviar.UseVisualStyleBackColor = true;
-            this.button_enviar.Click += new System.EventHandler(this.button_enviar_Click);
-            // 
-            // textBox_con
-            // 
-            this.textBox_con.Location = new System.Drawing.Point(7, 134);
-            this.textBox_con.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox_con.Name = "textBox_con";
-            this.textBox_con.Size = new System.Drawing.Size(237, 19);
-            this.textBox_con.TabIndex = 1;
-            // 
-            // conversacion
-            // 
-            this.conversacion.Enabled = false;
-            this.conversacion.FormattingEnabled = true;
-            this.conversacion.Location = new System.Drawing.Point(6, 42);
-            this.conversacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.conversacion.Name = "conversacion";
-            this.conversacion.Size = new System.Drawing.Size(238, 82);
-            this.conversacion.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.label_turno);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label_tiempo);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(608, 10);
-            this.panel1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(560, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(11, 0, 11, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "Rendirse";
-            // 
-            // label_turno
-            // 
-            this.label_turno.AutoSize = true;
-            this.label_turno.Location = new System.Drawing.Point(79, 11);
-            this.label_turno.Name = "label_turno";
-            this.label_turno.Size = new System.Drawing.Size(59, 13);
-            this.label_turno.TabIndex = 3;
-            this.label_turno.Text = "label_turno";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(429, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "TIEMPO:";
-            // 
-            // label_tiempo
-            // 
-            this.label_tiempo.AutoSize = true;
-            this.label_tiempo.Location = new System.Drawing.Point(504, 14);
-            this.label_tiempo.Name = "label_tiempo";
-            this.label_tiempo.Size = new System.Drawing.Size(66, 13);
-            this.label_tiempo.TabIndex = 1;
-            this.label_tiempo.Text = "label_tiempo";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "TURNO:";
-            // 
-            // timerFlip
-            // 
-            this.timerFlip.Interval = 1;
-            this.timerFlip.Tick += new System.EventHandler(this.timerFlip_Tick_1);
-            // 
-            // Stop
-            // 
-            this.Stop.Interval = 2000;
-            // 
-            // timerTurno
-            // 
-            this.timerTurno.Interval = 1000;
-            this.timerTurno.Tick += new System.EventHandler(this.timerTurno_Tick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(339, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 43);
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(260, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(75, 43);
-            this.pictureBox2.TabIndex = 42;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(175, 0);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(82, 43);
-            this.pictureBox3.TabIndex = 43;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBoxPEGif
-            // 
-            this.pictureBoxPEGif.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(7)))), ((int)(((byte)(173)))));
-            this.pictureBoxPEGif.Image = global::Cliente_SOproject.Properties.Resources.RelojArena;
-            this.pictureBoxPEGif.Location = new System.Drawing.Point(453, 119);
-            this.pictureBoxPEGif.Name = "pictureBoxPEGif";
-            this.pictureBoxPEGif.Size = new System.Drawing.Size(47, 40);
-            this.pictureBoxPEGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPEGif.TabIndex = 21;
-            this.pictureBoxPEGif.TabStop = false;
-            // 
-            // pictureBoxPEBoton
-            // 
-            this.pictureBoxPEBoton.Image = global::Cliente_SOproject.Properties.Resources.CancelarPartida;
-            this.pictureBoxPEBoton.Location = new System.Drawing.Point(399, 181);
-            this.pictureBoxPEBoton.Name = "pictureBoxPEBoton";
-            this.pictureBoxPEBoton.Size = new System.Drawing.Size(172, 63);
-            this.pictureBoxPEBoton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPEBoton.TabIndex = 19;
-            this.pictureBoxPEBoton.TabStop = false;
-            this.pictureBoxPEBoton.MouseEnter += new System.EventHandler(this.pictureBoxPEBoton_MouseEnter);
-            this.pictureBoxPEBoton.MouseLeave += new System.EventHandler(this.pictureBoxPEBoton_MouseLeave);
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox13.Image = global::Cliente_SOproject.Properties.Resources.BackForm2_2;
-            this.pictureBox13.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(600, 351);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox13.TabIndex = 0;
-            this.pictureBox13.TabStop = false;
+            this.pictureBoxImagenElegida.Location = new System.Drawing.Point(14, 18);
+            this.pictureBoxImagenElegida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxImagenElegida.Name = "pictureBoxImagenElegida";
+            this.pictureBoxImagenElegida.Size = new System.Drawing.Size(87, 49);
+            this.pictureBoxImagenElegida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxImagenElegida.TabIndex = 54;
+            this.pictureBoxImagenElegida.TabStop = false;
             // 
             // pictureBoxNombre12
             // 
@@ -603,13 +415,27 @@ namespace Cliente_SOproject
             this.pictureBoxNombre1.TabIndex = 41;
             this.pictureBoxNombre1.TabStop = false;
             // 
-            // pictureBoxNombreElegida
+            // groupBoxPTTableroContrincante
             // 
-            this.pictureBoxNombreElegida.Location = new System.Drawing.Point(157, 72);
-            this.pictureBoxNombreElegida.Name = "pictureBoxNombreElegida";
-            this.pictureBoxNombreElegida.Size = new System.Drawing.Size(87, 24);
-            this.pictureBoxNombreElegida.TabIndex = 55;
-            this.pictureBoxNombreElegida.TabStop = false;
+            this.groupBoxPTTableroContrincante.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(9)))), ((int)(((byte)(179)))));
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante12);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante11);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante10);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante9);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante8);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante7);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante6);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante5);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante4);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante3);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante2);
+            this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante1);
+            this.groupBoxPTTableroContrincante.Location = new System.Drawing.Point(331, 19);
+            this.groupBoxPTTableroContrincante.Name = "groupBoxPTTableroContrincante";
+            this.groupBoxPTTableroContrincante.Size = new System.Drawing.Size(152, 101);
+            this.groupBoxPTTableroContrincante.TabIndex = 40;
+            this.groupBoxPTTableroContrincante.TabStop = false;
+            this.groupBoxPTTableroContrincante.Text = "groupBox1";
             // 
             // pictureBoxPTTableroContrincante12
             // 
@@ -628,16 +454,6 @@ namespace Cliente_SOproject
             this.pictureBoxPTTableroContrincante11.Size = new System.Drawing.Size(16, 13);
             this.pictureBoxPTTableroContrincante11.TabIndex = 10;
             this.pictureBoxPTTableroContrincante11.TabStop = false;
-            // 
-            // pictureBoxImagenElegida
-            // 
-            this.pictureBoxImagenElegida.Location = new System.Drawing.Point(157, 18);
-            this.pictureBoxImagenElegida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxImagenElegida.Name = "pictureBoxImagenElegida";
-            this.pictureBoxImagenElegida.Size = new System.Drawing.Size(87, 49);
-            this.pictureBoxImagenElegida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxImagenElegida.TabIndex = 54;
-            this.pictureBoxImagenElegida.TabStop = false;
             // 
             // pictureBoxPTTableroContrincante10
             // 
@@ -850,6 +666,113 @@ namespace Cliente_SOproject
             this.pictureBoxImage1.TabStop = false;
             this.pictureBoxImage1.Click += new System.EventHandler(this.pictureBoxImage1_Click);
             // 
+            // groupBoxChat
+            // 
+            this.groupBoxChat.Controls.Add(this.Boton_respuesta);
+            this.groupBoxChat.Controls.Add(this.button_Nose);
+            this.groupBoxChat.Controls.Add(this.button_No);
+            this.groupBoxChat.Controls.Add(this.button_Si);
+            this.groupBoxChat.Controls.Add(this.comboBoxPTChat);
+            this.groupBoxChat.Controls.Add(this.button_enviar);
+            this.groupBoxChat.Controls.Add(this.textBox_con);
+            this.groupBoxChat.Controls.Add(this.conversacion);
+            this.groupBoxChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxChat.ForeColor = System.Drawing.Color.White;
+            this.groupBoxChat.Location = new System.Drawing.Point(331, 124);
+            this.groupBoxChat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxChat.Name = "groupBoxChat";
+            this.groupBoxChat.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxChat.Size = new System.Drawing.Size(253, 220);
+            this.groupBoxChat.TabIndex = 14;
+            this.groupBoxChat.TabStop = false;
+            this.groupBoxChat.Text = "Chat";
+            // 
+            // Boton_respuesta
+            // 
+            this.Boton_respuesta.ForeColor = System.Drawing.Color.Black;
+            this.Boton_respuesta.Location = new System.Drawing.Point(65, 182);
+            this.Boton_respuesta.Margin = new System.Windows.Forms.Padding(2);
+            this.Boton_respuesta.Name = "Boton_respuesta";
+            this.Boton_respuesta.Size = new System.Drawing.Size(126, 28);
+            this.Boton_respuesta.TabIndex = 7;
+            this.Boton_respuesta.Text = "¡ Lo sé ! ";
+            this.Boton_respuesta.UseVisualStyleBackColor = true;
+            this.Boton_respuesta.Click += new System.EventHandler(this.Boton_respuesta_Click);
+            // 
+            // button_Nose
+            // 
+            this.button_Nose.ForeColor = System.Drawing.Color.Black;
+            this.button_Nose.Location = new System.Drawing.Point(88, 155);
+            this.button_Nose.Name = "button_Nose";
+            this.button_Nose.Size = new System.Drawing.Size(75, 23);
+            this.button_Nose.TabIndex = 6;
+            this.button_Nose.Text = "NO SE";
+            this.button_Nose.UseVisualStyleBackColor = true;
+            this.button_Nose.Click += new System.EventHandler(this.button_Nose_Click);
+            // 
+            // button_No
+            // 
+            this.button_No.ForeColor = System.Drawing.Color.Black;
+            this.button_No.Location = new System.Drawing.Point(141, 132);
+            this.button_No.Name = "button_No";
+            this.button_No.Size = new System.Drawing.Size(75, 23);
+            this.button_No.TabIndex = 5;
+            this.button_No.Text = "NO";
+            this.button_No.UseVisualStyleBackColor = true;
+            this.button_No.Click += new System.EventHandler(this.button_No_Click);
+            // 
+            // button_Si
+            // 
+            this.button_Si.ForeColor = System.Drawing.Color.Black;
+            this.button_Si.Location = new System.Drawing.Point(30, 132);
+            this.button_Si.Name = "button_Si";
+            this.button_Si.Size = new System.Drawing.Size(75, 23);
+            this.button_Si.TabIndex = 4;
+            this.button_Si.Text = "SI";
+            this.button_Si.UseVisualStyleBackColor = true;
+            this.button_Si.Click += new System.EventHandler(this.button_Si_Click);
+            // 
+            // comboBoxPTChat
+            // 
+            this.comboBoxPTChat.FormattingEnabled = true;
+            this.comboBoxPTChat.Location = new System.Drawing.Point(6, 16);
+            this.comboBoxPTChat.Name = "comboBoxPTChat";
+            this.comboBoxPTChat.Size = new System.Drawing.Size(238, 21);
+            this.comboBoxPTChat.TabIndex = 3;
+            this.comboBoxPTChat.Visible = false;
+            this.comboBoxPTChat.SelectedIndexChanged += new System.EventHandler(this.comboBoxPTChat_SelectedIndexChanged);
+            // 
+            // button_enviar
+            // 
+            this.button_enviar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.button_enviar.ForeColor = System.Drawing.Color.Black;
+            this.button_enviar.Location = new System.Drawing.Point(47, 155);
+            this.button_enviar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_enviar.Name = "button_enviar";
+            this.button_enviar.Size = new System.Drawing.Size(168, 21);
+            this.button_enviar.TabIndex = 2;
+            this.button_enviar.Text = "Enviar";
+            this.button_enviar.UseVisualStyleBackColor = true;
+            this.button_enviar.Click += new System.EventHandler(this.button_enviar_Click);
+            // 
+            // textBox_con
+            // 
+            this.textBox_con.Location = new System.Drawing.Point(7, 134);
+            this.textBox_con.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox_con.Name = "textBox_con";
+            this.textBox_con.Size = new System.Drawing.Size(237, 19);
+            this.textBox_con.TabIndex = 1;
+            // 
+            // conversacion
+            // 
+            this.conversacion.Enabled = false;
+            this.conversacion.FormattingEnabled = true;
+            this.conversacion.Location = new System.Drawing.Point(6, 42);
+            this.conversacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.conversacion.Name = "conversacion";
+            this.conversacion.Size = new System.Drawing.Size(238, 82);
+            this.conversacion.TabIndex = 0;
+            // 
             // pictureBoxImage2
             // 
             this.pictureBoxImage2.Location = new System.Drawing.Point(98, 15);
@@ -861,11 +784,116 @@ namespace Cliente_SOproject
             this.pictureBoxImage2.TabStop = false;
             this.pictureBoxImage2.Click += new System.EventHandler(this.pictureBoxImage2_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Controls.Add(this.label_turno);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label_tiempo);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(608, 10);
+            this.panel1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(560, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(11, 0, 11, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Rendirse";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(339, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(82, 43);
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(260, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(75, 43);
+            this.pictureBox2.TabIndex = 42;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(175, 0);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(82, 43);
+            this.pictureBox3.TabIndex = 43;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label_turno
+            // 
+            this.label_turno.AutoSize = true;
+            this.label_turno.Location = new System.Drawing.Point(79, 11);
+            this.label_turno.Name = "label_turno";
+            this.label_turno.Size = new System.Drawing.Size(59, 13);
+            this.label_turno.TabIndex = 3;
+            this.label_turno.Text = "label_turno";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(429, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 16);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "TIEMPO:";
+            // 
+            // label_tiempo
+            // 
+            this.label_tiempo.AutoSize = true;
+            this.label_tiempo.Location = new System.Drawing.Point(504, 14);
+            this.label_tiempo.Name = "label_tiempo";
+            this.label_tiempo.Size = new System.Drawing.Size(66, 13);
+            this.label_tiempo.TabIndex = 1;
+            this.label_tiempo.Text = "label_tiempo";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(7, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "TURNO:";
+            // 
+            // timerFlip
+            // 
+            this.timerFlip.Interval = 1;
+            this.timerFlip.Tick += new System.EventHandler(this.timerFlip_Tick_1);
+            // 
+            // Stop
+            // 
+            this.Stop.Interval = 2000;
+            // 
+            // timerTurno
+            // 
+            this.timerTurno.Interval = 1000;
+            this.timerTurno.Tick += new System.EventHandler(this.timerTurno_Tick);
+            // 
             // Partida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 377);
+            this.ClientSize = new System.Drawing.Size(608, 409);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControlPartida);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -877,18 +905,14 @@ namespace Cliente_SOproject
             this.tabControlPartida.ResumeLayout(false);
             this.tabPageEsperando.ResumeLayout(false);
             this.tabPageEsperando.PerformLayout();
-            this.tabPageTablero.ResumeLayout(false);
-            this.groupBoxPTTableroContrincante.ResumeLayout(false);
-            this.groupBoxChat.ResumeLayout(false);
-            this.groupBoxChat.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPEGif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPEBoton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            this.tabPageTablero.ResumeLayout(false);
+            this.tabPageTablero.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombreElegida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagenElegida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre10)).EndInit();
@@ -901,10 +925,9 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombre1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNombreElegida)).EndInit();
+            this.groupBoxPTTableroContrincante.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagenElegida)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPTTableroContrincante8)).EndInit();
@@ -926,7 +949,14 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage1)).EndInit();
+            this.groupBoxChat.ResumeLayout(false);
+            this.groupBoxChat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -982,9 +1012,6 @@ namespace Cliente_SOproject
         private System.Windows.Forms.PictureBox pictureBoxPTTableroContrincante1;
         private System.Windows.Forms.Label label_turno;
         private System.Windows.Forms.Button Boton_respuesta;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBoxNombre1;
         private System.Windows.Forms.PictureBox pictureBoxNombre12;
@@ -998,7 +1025,12 @@ namespace Cliente_SOproject
         private System.Windows.Forms.PictureBox pictureBoxNombre4;
         private System.Windows.Forms.PictureBox pictureBoxNombre3;
         private System.Windows.Forms.PictureBox pictureBoxNombre2;
-        private System.Windows.Forms.PictureBox pictureBoxNombreElegida;
         private System.Windows.Forms.PictureBox pictureBoxImagenElegida;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBoxNombreElegida;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label_info;
     }
 }

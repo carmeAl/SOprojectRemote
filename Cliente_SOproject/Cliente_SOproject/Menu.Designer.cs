@@ -30,7 +30,7 @@ namespace Cliente_SOproject
             private void InitializeComponent()
             {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
             this.buttonLPassword = new System.Windows.Forms.Button();
@@ -91,8 +91,7 @@ namespace Cliente_SOproject
             this.pictureBoxMPDarseBaja = new System.Windows.Forms.PictureBox();
             this.pictureBoxPVolver = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.pictureBoxRPersonaje = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelPPartidasJugadas = new System.Windows.Forms.Label();
@@ -122,7 +121,7 @@ namespace Cliente_SOproject
             this.labelPRPartGanVs = new System.Windows.Forms.Label();
             this.labelPRPartPerdVs = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.pictureBoxPRPersonaje = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -145,8 +144,9 @@ namespace Cliente_SOproject
             this.label37 = new System.Windows.Forms.Label();
             this.pictureBoxPRVolver = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.panelNombres = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panelNombres = new System.Windows.Forms.Panel();
+            this.buttonMMusic = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLIniciar)).BeginInit();
@@ -181,6 +181,7 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMPDarseBaja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPVolver)).BeginInit();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRPersonaje)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -188,11 +189,13 @@ namespace Cliente_SOproject
             this.tabPagePerfilRival.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPRPersonaje)).BeginInit();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPRVolver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panelNombres.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -607,8 +610,8 @@ namespace Cliente_SOproject
             // 
             // Column1
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column1.HeaderText = "Jugadores conectados";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -958,30 +961,21 @@ namespace Cliente_SOproject
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
-            this.panel9.Controls.Add(this.label9);
-            this.panel9.Controls.Add(this.label25);
+            this.panel9.Controls.Add(this.pictureBoxRPersonaje);
             this.panel9.Controls.Add(this.label26);
             this.panel9.Location = new System.Drawing.Point(386, 135);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(144, 81);
             this.panel9.TabIndex = 10;
             // 
-            // label9
+            // pictureBoxRPersonaje
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 24);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "label9";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(51, 3);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(0, 13);
-            this.label25.TabIndex = 1;
+            this.pictureBoxRPersonaje.Location = new System.Drawing.Point(22, 21);
+            this.pictureBoxRPersonaje.Name = "pictureBoxRPersonaje";
+            this.pictureBoxRPersonaje.Size = new System.Drawing.Size(100, 50);
+            this.pictureBoxRPersonaje.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRPersonaje.TabIndex = 1;
+            this.pictureBoxRPersonaje.TabStop = false;
             // 
             // label26
             // 
@@ -1289,7 +1283,7 @@ namespace Cliente_SOproject
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(220)))), ((int)(((byte)(243)))));
-            this.panel12.Controls.Add(this.label12);
+            this.panel12.Controls.Add(this.pictureBoxPRPersonaje);
             this.panel12.Controls.Add(this.label14);
             this.panel12.Controls.Add(this.label16);
             this.panel12.Location = new System.Drawing.Point(381, 12);
@@ -1297,14 +1291,14 @@ namespace Cliente_SOproject
             this.panel12.Size = new System.Drawing.Size(144, 81);
             this.panel12.TabIndex = 21;
             // 
-            // label12
+            // pictureBoxPRPersonaje
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 24);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "label12";
+            this.pictureBoxPRPersonaje.Location = new System.Drawing.Point(14, 21);
+            this.pictureBoxPRPersonaje.Name = "pictureBoxPRPersonaje";
+            this.pictureBoxPRPersonaje.Size = new System.Drawing.Size(100, 50);
+            this.pictureBoxPRPersonaje.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPRPersonaje.TabIndex = 2;
+            this.pictureBoxPRPersonaje.TabStop = false;
             // 
             // label14
             // 
@@ -1539,20 +1533,33 @@ namespace Cliente_SOproject
             this.pictureBox6.TabIndex = 7;
             this.pictureBox6.TabStop = false;
             // 
-            // panelNombres
-            // 
-            this.panelNombres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(210)))));
-            this.panelNombres.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelNombres.Location = new System.Drawing.Point(0, 0);
-            this.panelNombres.Name = "panelNombres";
-            this.panelNombres.Size = new System.Drawing.Size(562, 10);
-            this.panelNombres.TabIndex = 1;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // panelNombres
+            // 
+            this.panelNombres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(210)))));
+            this.panelNombres.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelNombres.Controls.Add(this.buttonMMusic);
+            this.panelNombres.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelNombres.Location = new System.Drawing.Point(0, 0);
+            this.panelNombres.Name = "panelNombres";
+            this.panelNombres.Size = new System.Drawing.Size(562, 30);
+            this.panelNombres.TabIndex = 1;
+            // 
+            // buttonMMusic
+            // 
+            this.buttonMMusic.BackgroundImage = global::Cliente_SOproject.Properties.Resources.MusicYES;
+            this.buttonMMusic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonMMusic.Location = new System.Drawing.Point(521, 3);
+            this.buttonMMusic.Name = "buttonMMusic";
+            this.buttonMMusic.Size = new System.Drawing.Size(29, 24);
+            this.buttonMMusic.TabIndex = 0;
+            this.buttonMMusic.UseVisualStyleBackColor = true;
+            this.buttonMMusic.Click += new System.EventHandler(this.buttonMMusic_Click);
             // 
             // Menu
             // 
@@ -1610,6 +1617,7 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPVolver)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRPersonaje)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -1622,6 +1630,7 @@ namespace Cliente_SOproject
             this.panel16.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPRPersonaje)).EndInit();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             this.panel14.ResumeLayout(false);
@@ -1630,6 +1639,7 @@ namespace Cliente_SOproject
             this.panel15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPRVolver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panelNombres.ResumeLayout(false);
             this.ResumeLayout(false);
 
             }
@@ -1704,9 +1714,7 @@ namespace Cliente_SOproject
             private System.Windows.Forms.Label label23;
             private System.Windows.Forms.PictureBox pictureBoxPVolver;
             private System.Windows.Forms.Panel panel9;
-            private System.Windows.Forms.Label label25;
             private System.Windows.Forms.Label label26;
-            private System.Windows.Forms.Label label9;
             private System.Windows.Forms.PictureBox pictureBoxSVolver;
             private System.Windows.Forms.Panel panel10;
             private System.Windows.Forms.Label label10;
@@ -1724,7 +1732,6 @@ namespace Cliente_SOproject
             private System.Windows.Forms.Label labelPRPartGanVs;
             private System.Windows.Forms.PictureBox pictureBoxPRVolver;
             private System.Windows.Forms.Panel panel12;
-            private System.Windows.Forms.Label label12;
             private System.Windows.Forms.Label label14;
             private System.Windows.Forms.Label label16;
             private System.Windows.Forms.Panel panel13;
@@ -1752,6 +1759,9 @@ namespace Cliente_SOproject
         private System.Windows.Forms.PictureBox pictureBoxMPDarseBaja;
         private System.Windows.Forms.Button buttonLPassword;
         private System.Windows.Forms.Button buttonRPassword;
+        private System.Windows.Forms.PictureBox pictureBoxRPersonaje;
+        private System.Windows.Forms.PictureBox pictureBoxPRPersonaje;
+        private System.Windows.Forms.Button buttonMMusic;
     }
     }
 
