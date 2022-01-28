@@ -2542,7 +2542,7 @@ namespace Cliente_SOproject
                 {
                     intentos = vidas - vidas_final + 1;
                     //MessageBox.Show("Tienes " + intentos+ " intentos para poder empatar. Escoge la carta, tienes 60 segundos");
-                    label_info.Text = "Tienes " + intentos + " intentos para poder empatar. Escoge la carta, tienes 60 segundos";
+                    this.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { "Tienes " + intentos + " intentos para poder empatar. Escoge la carta, tienes 60 segundos", label_info });
                     conteo = 60;
                     final = 1;
 
@@ -2551,7 +2551,7 @@ namespace Cliente_SOproject
                 else
                 {
                     //MessageBox.Show("Has perdido ante "+ rival);
-                    label_info.Text = "Has perdido ante " + rival;
+                    this.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { "Has perdido ante " + rival, label_info });
                     mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/"+ rival+"/"+ ListaImagenes[id_carta];
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                     server.Send(msg);

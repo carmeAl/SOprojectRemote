@@ -1022,7 +1022,10 @@ namespace Cliente_SOproject
             e.Graphics.DrawString("Arial Font", font1, Brushes.Red, new PointF(10, 10));
         }
 
-        
+        private void pictureBoxMConfiguracion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
