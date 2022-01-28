@@ -30,7 +30,7 @@ namespace Cliente_SOproject
             private void InitializeComponent()
             {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
             this.buttonLPassword = new System.Windows.Forms.Button();
@@ -228,7 +228,7 @@ namespace Cliente_SOproject
             this.tabPageLogin.Controls.Add(this.textBoxLNombre);
             this.tabPageLogin.Controls.Add(this.pictureBoxLLFondo);
             this.tabPageLogin.Location = new System.Drawing.Point(4, 24);
-            this.tabPageLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageLogin.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageLogin.Name = "tabPageLogin";
             this.tabPageLogin.Size = new System.Drawing.Size(741, 277);
             this.tabPageLogin.TabIndex = 0;
@@ -239,7 +239,7 @@ namespace Cliente_SOproject
             this.buttonLPassword.BackgroundImage = global::Cliente_SOproject.Properties.Resources.OpenEye;
             this.buttonLPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonLPassword.Location = new System.Drawing.Point(449, 130);
-            this.buttonLPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonLPassword.Margin = new System.Windows.Forms.Padding(4);
             this.buttonLPassword.Name = "buttonLPassword";
             this.buttonLPassword.Size = new System.Drawing.Size(37, 32);
             this.buttonLPassword.TabIndex = 11;
@@ -284,7 +284,7 @@ namespace Cliente_SOproject
             this.pictureBoxLIniciar.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxLIniciar.Image = global::Cliente_SOproject.Properties.Resources._3;
             this.pictureBoxLIniciar.Location = new System.Drawing.Point(269, 172);
-            this.pictureBoxLIniciar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxLIniciar.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxLIniciar.Name = "pictureBoxLIniciar";
             this.pictureBoxLIniciar.Size = new System.Drawing.Size(172, 44);
             this.pictureBoxLIniciar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -299,7 +299,7 @@ namespace Cliente_SOproject
             this.textBoxLContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
             this.textBoxLContraseña.Location = new System.Drawing.Point(269, 130);
-            this.textBoxLContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxLContraseña.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxLContraseña.Name = "textBoxLContraseña";
             this.textBoxLContraseña.Size = new System.Drawing.Size(171, 30);
             this.textBoxLContraseña.TabIndex = 8;
@@ -312,7 +312,7 @@ namespace Cliente_SOproject
             this.textBoxLNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
             this.textBoxLNombre.Location = new System.Drawing.Point(269, 85);
-            this.textBoxLNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxLNombre.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxLNombre.Name = "textBoxLNombre";
             this.textBoxLNombre.Size = new System.Drawing.Size(171, 30);
             this.textBoxLNombre.TabIndex = 7;
@@ -345,9 +345,9 @@ namespace Cliente_SOproject
             this.tabPageRegister.Controls.Add(this.pictureBoxRRegistrarse);
             this.tabPageRegister.Controls.Add(this.pictureBox3);
             this.tabPageRegister.Location = new System.Drawing.Point(4, 24);
-            this.tabPageRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageRegister.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageRegister.Name = "tabPageRegister";
-            this.tabPageRegister.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageRegister.Padding = new System.Windows.Forms.Padding(4);
             this.tabPageRegister.Size = new System.Drawing.Size(741, 277);
             this.tabPageRegister.TabIndex = 1;
             this.tabPageRegister.Text = "Register";
@@ -358,7 +358,7 @@ namespace Cliente_SOproject
             this.buttonRPassword.BackgroundImage = global::Cliente_SOproject.Properties.Resources.OpenEye;
             this.buttonRPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonRPassword.Location = new System.Drawing.Point(455, 133);
-            this.buttonRPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRPassword.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRPassword.Name = "buttonRPassword";
             this.buttonRPassword.Size = new System.Drawing.Size(37, 32);
             this.buttonRPassword.TabIndex = 17;
@@ -384,7 +384,7 @@ namespace Cliente_SOproject
             this.textBoxRContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxRContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
             this.textBoxRContraseña.Location = new System.Drawing.Point(275, 132);
-            this.textBoxRContraseña.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxRContraseña.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxRContraseña.Name = "textBoxRContraseña";
             this.textBoxRContraseña.Size = new System.Drawing.Size(171, 30);
             this.textBoxRContraseña.TabIndex = 11;
@@ -397,7 +397,7 @@ namespace Cliente_SOproject
             this.textBoxRUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxRUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
             this.textBoxRUsuario.Location = new System.Drawing.Point(275, 87);
-            this.textBoxRUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxRUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxRUsuario.Name = "textBoxRUsuario";
             this.textBoxRUsuario.Size = new System.Drawing.Size(171, 30);
             this.textBoxRUsuario.TabIndex = 10;
@@ -409,7 +409,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxRVolver.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
             this.pictureBoxRVolver.Location = new System.Drawing.Point(7, 233);
-            this.pictureBoxRVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxRVolver.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxRVolver.Name = "pictureBoxRVolver";
             this.pictureBoxRVolver.Size = new System.Drawing.Size(143, 36);
             this.pictureBoxRVolver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -424,7 +424,7 @@ namespace Cliente_SOproject
             this.pictureBoxRRegistrarse.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxRRegistrarse.Image = global::Cliente_SOproject.Properties.Resources._21;
             this.pictureBoxRRegistrarse.Location = new System.Drawing.Point(275, 174);
-            this.pictureBoxRRegistrarse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxRRegistrarse.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxRRegistrarse.Name = "pictureBoxRRegistrarse";
             this.pictureBoxRRegistrarse.Size = new System.Drawing.Size(172, 44);
             this.pictureBoxRRegistrarse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -458,9 +458,9 @@ namespace Cliente_SOproject
             this.tabPageMenu.Controls.Add(this.pictureBoxMSocial);
             this.tabPageMenu.Controls.Add(this.pictureBox2);
             this.tabPageMenu.Location = new System.Drawing.Point(4, 24);
-            this.tabPageMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageMenu.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageMenu.Name = "tabPageMenu";
-            this.tabPageMenu.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageMenu.Padding = new System.Windows.Forms.Padding(4);
             this.tabPageMenu.Size = new System.Drawing.Size(741, 277);
             this.tabPageMenu.TabIndex = 2;
             this.tabPageMenu.Text = "Menu";
@@ -485,7 +485,7 @@ namespace Cliente_SOproject
             this.pictureBoxMCrearPartida.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxMCrearPartida.Image = global::Cliente_SOproject.Properties.Resources._2;
             this.pictureBoxMCrearPartida.Location = new System.Drawing.Point(76, 30);
-            this.pictureBoxMCrearPartida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxMCrearPartida.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxMCrearPartida.Name = "pictureBoxMCrearPartida";
             this.pictureBoxMCrearPartida.Size = new System.Drawing.Size(180, 50);
             this.pictureBoxMCrearPartida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -500,7 +500,7 @@ namespace Cliente_SOproject
             this.pictureBoxMPerfil.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxMPerfil.Image = global::Cliente_SOproject.Properties.Resources._12;
             this.pictureBoxMPerfil.Location = new System.Drawing.Point(76, 174);
-            this.pictureBoxMPerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxMPerfil.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxMPerfil.Name = "pictureBoxMPerfil";
             this.pictureBoxMPerfil.Size = new System.Drawing.Size(180, 50);
             this.pictureBoxMPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -515,7 +515,7 @@ namespace Cliente_SOproject
             this.pictureBoxMDesconectar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxMDesconectar.Image = global::Cliente_SOproject.Properties.Resources._14;
             this.pictureBoxMDesconectar.Location = new System.Drawing.Point(448, 101);
-            this.pictureBoxMDesconectar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxMDesconectar.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxMDesconectar.Name = "pictureBoxMDesconectar";
             this.pictureBoxMDesconectar.Size = new System.Drawing.Size(180, 50);
             this.pictureBoxMDesconectar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -530,7 +530,7 @@ namespace Cliente_SOproject
             this.pictureBoxMConfiguracion.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxMConfiguracion.Image = global::Cliente_SOproject.Properties.Resources._4;
             this.pictureBoxMConfiguracion.Location = new System.Drawing.Point(448, 30);
-            this.pictureBoxMConfiguracion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxMConfiguracion.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxMConfiguracion.Name = "pictureBoxMConfiguracion";
             this.pictureBoxMConfiguracion.Size = new System.Drawing.Size(180, 50);
             this.pictureBoxMConfiguracion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -545,7 +545,7 @@ namespace Cliente_SOproject
             this.pictureBoxMSocial.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBoxMSocial.Image = global::Cliente_SOproject.Properties.Resources._8;
             this.pictureBoxMSocial.Location = new System.Drawing.Point(76, 101);
-            this.pictureBoxMSocial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxMSocial.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxMSocial.Name = "pictureBoxMSocial";
             this.pictureBoxMSocial.Size = new System.Drawing.Size(180, 50);
             this.pictureBoxMSocial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -610,7 +610,7 @@ namespace Cliente_SOproject
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Location = new System.Drawing.Point(472, 9);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(256, 220);
             this.panel5.TabIndex = 17;
@@ -625,7 +625,7 @@ namespace Cliente_SOproject
             this.dataGridViewListaCon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
             this.dataGridViewListaCon.Location = new System.Drawing.Point(4, 55);
-            this.dataGridViewListaCon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewListaCon.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewListaCon.Name = "dataGridViewListaCon";
             this.dataGridViewListaCon.ReadOnly = true;
             this.dataGridViewListaCon.RowHeadersWidth = 51;
@@ -635,8 +635,8 @@ namespace Cliente_SOproject
             // 
             // Column1
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column1.HeaderText = "Jugadores conectados";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -672,7 +672,7 @@ namespace Cliente_SOproject
             this.panel4.Controls.Add(this.textBoxCLimTiempo);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(11, 143);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(341, 46);
             this.panel4.TabIndex = 11;
@@ -693,7 +693,7 @@ namespace Cliente_SOproject
             this.textBoxCLimTiempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCLimTiempo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
             this.textBoxCLimTiempo.Location = new System.Drawing.Point(229, 10);
-            this.textBoxCLimTiempo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCLimTiempo.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCLimTiempo.Name = "textBoxCLimTiempo";
             this.textBoxCLimTiempo.Size = new System.Drawing.Size(107, 24);
             this.textBoxCLimTiempo.TabIndex = 11;
@@ -718,7 +718,7 @@ namespace Cliente_SOproject
             this.panel3.Controls.Add(this.textBoxCNumPreg);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(11, 98);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(341, 37);
             this.panel3.TabIndex = 10;
@@ -729,7 +729,7 @@ namespace Cliente_SOproject
             this.textBoxCNumPreg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCNumPreg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(188)))), ((int)(((byte)(236)))));
             this.textBoxCNumPreg.Location = new System.Drawing.Point(229, 7);
-            this.textBoxCNumPreg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCNumPreg.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCNumPreg.Name = "textBoxCNumPreg";
             this.textBoxCNumPreg.Size = new System.Drawing.Size(107, 24);
             this.textBoxCNumPreg.TabIndex = 11;
@@ -754,7 +754,7 @@ namespace Cliente_SOproject
             this.panel2.Controls.Add(this.comboBoxCMapa);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(11, 12);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(341, 37);
             this.panel2.TabIndex = 9;
@@ -768,7 +768,7 @@ namespace Cliente_SOproject
             "COMPANEROS CLASE",
             "CAPITALES MUNDIALES"});
             this.comboBoxCMapa.Location = new System.Drawing.Point(139, 4);
-            this.comboBoxCMapa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxCMapa.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCMapa.Name = "comboBoxCMapa";
             this.comboBoxCMapa.Size = new System.Drawing.Size(195, 26);
             this.comboBoxCMapa.TabIndex = 8;
@@ -791,7 +791,7 @@ namespace Cliente_SOproject
             this.panel1.Controls.Add(this.comboBoxCSugPreg);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(11, 53);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(341, 37);
             this.panel1.TabIndex = 8;
@@ -804,7 +804,7 @@ namespace Cliente_SOproject
             "SI",
             "NO"});
             this.comboBoxCSugPreg.Location = new System.Drawing.Point(241, 5);
-            this.comboBoxCSugPreg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxCSugPreg.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxCSugPreg.Name = "comboBoxCSugPreg";
             this.comboBoxCSugPreg.Size = new System.Drawing.Size(95, 26);
             this.comboBoxCSugPreg.TabIndex = 8;
@@ -825,7 +825,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxCInvitar.Image = global::Cliente_SOproject.Properties.Resources.Purple_and_Black_Neon_Sci_Fi_Twitch_Panel;
             this.pictureBoxCInvitar.Location = new System.Drawing.Point(516, 236);
-            this.pictureBoxCInvitar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxCInvitar.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxCInvitar.Name = "pictureBoxCInvitar";
             this.pictureBoxCInvitar.Size = new System.Drawing.Size(143, 36);
             this.pictureBoxCInvitar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -839,7 +839,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxCVolver.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
             this.pictureBoxCVolver.Location = new System.Drawing.Point(4, 236);
-            this.pictureBoxCVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxCVolver.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxCVolver.Name = "pictureBoxCVolver";
             this.pictureBoxCVolver.Size = new System.Drawing.Size(143, 36);
             this.pictureBoxCVolver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -880,7 +880,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxSVolver.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
             this.pictureBoxSVolver.Location = new System.Drawing.Point(4, 236);
-            this.pictureBoxSVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxSVolver.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxSVolver.Name = "pictureBoxSVolver";
             this.pictureBoxSVolver.Size = new System.Drawing.Size(143, 36);
             this.pictureBoxSVolver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -895,7 +895,7 @@ namespace Cliente_SOproject
             this.panel10.Controls.Add(this.label10);
             this.panel10.Controls.Add(this.dataGridViewRanquing);
             this.panel10.Location = new System.Drawing.Point(228, 30);
-            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(329, 236);
             this.panel10.TabIndex = 6;
@@ -920,7 +920,7 @@ namespace Cliente_SOproject
             this.Nombre,
             this.Puntos});
             this.dataGridViewRanquing.Location = new System.Drawing.Point(13, 30);
-            this.dataGridViewRanquing.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewRanquing.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewRanquing.MultiSelect = false;
             this.dataGridViewRanquing.Name = "dataGridViewRanquing";
             this.dataGridViewRanquing.ReadOnly = true;
@@ -972,9 +972,9 @@ namespace Cliente_SOproject
             this.tabPagePerfil.Controls.Add(this.panel6);
             this.tabPagePerfil.Controls.Add(this.pictureBox4);
             this.tabPagePerfil.Location = new System.Drawing.Point(4, 24);
-            this.tabPagePerfil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPagePerfil.Margin = new System.Windows.Forms.Padding(4);
             this.tabPagePerfil.Name = "tabPagePerfil";
-            this.tabPagePerfil.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPagePerfil.Padding = new System.Windows.Forms.Padding(4);
             this.tabPagePerfil.Size = new System.Drawing.Size(741, 277);
             this.tabPagePerfil.TabIndex = 5;
             this.tabPagePerfil.Text = "Perfil";
@@ -984,7 +984,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxMPDarseBaja.Image = global::Cliente_SOproject.Properties.Resources.DarseDeBaja;
             this.pictureBoxMPDarseBaja.Location = new System.Drawing.Point(259, 210);
-            this.pictureBoxMPDarseBaja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxMPDarseBaja.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxMPDarseBaja.Name = "pictureBoxMPDarseBaja";
             this.pictureBoxMPDarseBaja.Size = new System.Drawing.Size(168, 50);
             this.pictureBoxMPDarseBaja.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -998,7 +998,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPVolver.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
             this.pictureBoxPVolver.Location = new System.Drawing.Point(11, 225);
-            this.pictureBoxPVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxPVolver.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPVolver.Name = "pictureBoxPVolver";
             this.pictureBoxPVolver.Size = new System.Drawing.Size(143, 36);
             this.pictureBoxPVolver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1014,7 +1014,7 @@ namespace Cliente_SOproject
             this.panel9.Controls.Add(this.pictureBoxRPersonaje);
             this.panel9.Controls.Add(this.label26);
             this.panel9.Location = new System.Drawing.Point(515, 166);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(192, 100);
             this.panel9.TabIndex = 10;
@@ -1022,7 +1022,7 @@ namespace Cliente_SOproject
             // pictureBoxRPersonaje
             // 
             this.pictureBoxRPersonaje.Location = new System.Drawing.Point(29, 26);
-            this.pictureBoxRPersonaje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxRPersonaje.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxRPersonaje.Name = "pictureBoxRPersonaje";
             this.pictureBoxRPersonaje.Size = new System.Drawing.Size(133, 62);
             this.pictureBoxRPersonaje.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1050,7 +1050,7 @@ namespace Cliente_SOproject
             this.panel8.Controls.Add(this.labelPPartidasGanadas);
             this.panel8.Controls.Add(this.label23);
             this.panel8.Location = new System.Drawing.Point(9, 122);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(693, 38);
             this.panel8.TabIndex = 9;
@@ -1130,7 +1130,7 @@ namespace Cliente_SOproject
             this.panel7.Controls.Add(this.labelPPuntosActuales);
             this.panel7.Controls.Add(this.label15);
             this.panel7.Location = new System.Drawing.Point(9, 76);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(468, 38);
             this.panel7.TabIndex = 8;
@@ -1197,7 +1197,7 @@ namespace Cliente_SOproject
             this.panel6.Controls.Add(this.labelPNombre);
             this.panel6.Controls.Add(this.label8);
             this.panel6.Location = new System.Drawing.Point(9, 26);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(213, 44);
             this.panel6.TabIndex = 7;
@@ -1270,9 +1270,9 @@ namespace Cliente_SOproject
             this.tabPagePerfilRival.Controls.Add(this.pictureBoxPRVolver);
             this.tabPagePerfilRival.Controls.Add(this.pictureBox6);
             this.tabPagePerfilRival.Location = new System.Drawing.Point(4, 24);
-            this.tabPagePerfilRival.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPagePerfilRival.Margin = new System.Windows.Forms.Padding(4);
             this.tabPagePerfilRival.Name = "tabPagePerfilRival";
-            this.tabPagePerfilRival.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPagePerfilRival.Padding = new System.Windows.Forms.Padding(4);
             this.tabPagePerfilRival.Size = new System.Drawing.Size(741, 277);
             this.tabPagePerfilRival.TabIndex = 6;
             this.tabPagePerfilRival.Text = "PerfilRival";
@@ -1288,7 +1288,7 @@ namespace Cliente_SOproject
             this.panel16.Controls.Add(this.labelPRPartGanVs);
             this.panel16.Controls.Add(this.labelPRPartPerdVs);
             this.panel16.Location = new System.Drawing.Point(9, 166);
-            this.panel16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel16.Margin = new System.Windows.Forms.Padding(4);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(693, 57);
             this.panel16.TabIndex = 23;
@@ -1366,7 +1366,7 @@ namespace Cliente_SOproject
             this.panel12.Controls.Add(this.label14);
             this.panel12.Controls.Add(this.label16);
             this.panel12.Location = new System.Drawing.Point(508, 15);
-            this.panel12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel12.Margin = new System.Windows.Forms.Padding(4);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(192, 100);
             this.panel12.TabIndex = 21;
@@ -1374,7 +1374,7 @@ namespace Cliente_SOproject
             // pictureBoxPRPersonaje
             // 
             this.pictureBoxPRPersonaje.Location = new System.Drawing.Point(19, 26);
-            this.pictureBoxPRPersonaje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxPRPersonaje.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPRPersonaje.Name = "pictureBoxPRPersonaje";
             this.pictureBoxPRPersonaje.Size = new System.Drawing.Size(133, 62);
             this.pictureBoxPRPersonaje.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1411,7 +1411,7 @@ namespace Cliente_SOproject
             this.panel13.Controls.Add(this.labelPRPartidasGanadas);
             this.panel13.Controls.Add(this.label28);
             this.panel13.Location = new System.Drawing.Point(9, 122);
-            this.panel13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel13.Margin = new System.Windows.Forms.Padding(4);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(693, 38);
             this.panel13.TabIndex = 20;
@@ -1491,7 +1491,7 @@ namespace Cliente_SOproject
             this.panel14.Controls.Add(this.labelPRPuntosActuales);
             this.panel14.Controls.Add(this.label33);
             this.panel14.Location = new System.Drawing.Point(9, 76);
-            this.panel14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel14.Margin = new System.Windows.Forms.Padding(4);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(468, 38);
             this.panel14.TabIndex = 19;
@@ -1558,7 +1558,7 @@ namespace Cliente_SOproject
             this.panel15.Controls.Add(this.labelPRNombre);
             this.panel15.Controls.Add(this.label37);
             this.panel15.Location = new System.Drawing.Point(9, 26);
-            this.panel15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel15.Margin = new System.Windows.Forms.Padding(4);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(192, 44);
             this.panel15.TabIndex = 18;
@@ -1611,7 +1611,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPRVolver.Image = global::Cliente_SOproject.Properties.Resources.Iconos_Menu;
             this.pictureBoxPRVolver.Location = new System.Drawing.Point(9, 230);
-            this.pictureBoxPRVolver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxPRVolver.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxPRVolver.Name = "pictureBoxPRVolver";
             this.pictureBoxPRVolver.Size = new System.Drawing.Size(143, 36);
             this.pictureBoxPRVolver.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1648,9 +1648,9 @@ namespace Cliente_SOproject
             this.panelNombres.Controls.Add(this.buttonMMusic);
             this.panelNombres.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNombres.Location = new System.Drawing.Point(0, 0);
-            this.panelNombres.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelNombres.Margin = new System.Windows.Forms.Padding(4);
             this.panelNombres.Name = "panelNombres";
-            this.panelNombres.Size = new System.Drawing.Size(749, 10);
+            this.panelNombres.Size = new System.Drawing.Size(749, 42);
             this.panelNombres.TabIndex = 1;
             // 
             // buttonMMusic
@@ -1658,7 +1658,7 @@ namespace Cliente_SOproject
             this.buttonMMusic.BackgroundImage = global::Cliente_SOproject.Properties.Resources.MusicYES;
             this.buttonMMusic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonMMusic.Location = new System.Drawing.Point(695, 4);
-            this.buttonMMusic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonMMusic.Margin = new System.Windows.Forms.Padding(4);
             this.buttonMMusic.Name = "buttonMMusic";
             this.buttonMMusic.Size = new System.Drawing.Size(39, 30);
             this.buttonMMusic.TabIndex = 0;
@@ -1673,7 +1673,7 @@ namespace Cliente_SOproject
             this.Controls.Add(this.panelNombres);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu";
             this.Text = "NombreJuego";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMenu_FormClosed);

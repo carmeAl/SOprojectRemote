@@ -33,7 +33,7 @@ namespace Cliente_SOproject
         bool turno=false;
         bool inicio_partida = false;
         int id_carta;
-       
+        int label = 0;
         //Parametros partida
         string sugerirPreguntas;
         string mapa;
@@ -57,6 +57,9 @@ namespace Cliente_SOproject
         public int bloqueo_turno = 0;
         public int y=0;
         public int terminado=0;
+        public string nombre_label;
+        public string resultado_label;
+        public int nombres = 0;
 
         private Menu FormMenu;
 
@@ -877,7 +880,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+
+                            id_carta = -1;
 
 
                         }
@@ -894,7 +898,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+                                id_carta = -1;
+
 
                             }
 
@@ -1003,7 +1008,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+                            id_carta = -1;
+
 
 
                         }
@@ -1020,7 +1026,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+                                id_carta = -1;
+
 
                             }
                         }
@@ -1125,7 +1132,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+
+                            id_carta = -1;
 
                         }
                         else
@@ -1141,7 +1149,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+                                id_carta = -1;
+
 
                             }
 
@@ -1250,7 +1259,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+
+                            id_carta = -1;
 
                         }
                         else
@@ -1266,7 +1276,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+                                id_carta = -1;
+
 
                             }
 
@@ -1373,7 +1384,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+
+                            id_carta = -1;
 
                         }
                         else
@@ -1389,7 +1401,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+                                id_carta = -1;
+
 
                             }
 
@@ -1497,7 +1510,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+
+                            id_carta = -1;
 
                         }
                         else
@@ -1513,7 +1527,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+                                id_carta = -1;
+
 
                             }
 
@@ -1618,7 +1633,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+                            id_carta = -1;
+
 
                         }
                         else
@@ -1634,7 +1650,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+
+                                id_carta = -1;
 
                             }
 
@@ -1740,7 +1757,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+
+                            id_carta = -1;
 
                         }
                         else
@@ -1756,7 +1774,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+
+                                id_carta = -1;
 
                             }
 
@@ -1862,7 +1881,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+                            id_carta = -1;
+
 
                         }
                         else
@@ -1878,7 +1898,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+                                id_carta = -1;
+
 
                             }
 
@@ -1984,7 +2005,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+                            id_carta = -1;
+
 
                         }
                         else
@@ -2000,7 +2022,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+
+                                id_carta = -1;
 
                             }
 
@@ -2106,7 +2129,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+
+                            id_carta = -1;
 
 
                         }
@@ -2123,7 +2147,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+                                id_carta = -1;
+
 
                             }
 
@@ -2230,7 +2255,8 @@ namespace Cliente_SOproject
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            
+                            id_carta = -1;
+
 
                         }
                         else
@@ -2246,7 +2272,8 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                
+                                id_carta = -1;
+
 
                             }
 
@@ -2282,14 +2309,16 @@ namespace Cliente_SOproject
         }
 
         private void timerTurno_Tick(object sender, EventArgs e)
-        { 
-            if (terminado == 0) 
-            { 
+        {
+            
+            if (terminado == 0)
+            {
                 conteo = conteo - 1;
+               
             }
             else
             {
-                
+
             }
             label_tiempo.Text = conteo.ToString();
 
@@ -2340,7 +2369,7 @@ namespace Cliente_SOproject
                 {
                     CambiarTurno();
                 }
-                
+
             }
             else if (conteo <= 5)
             {
@@ -2354,51 +2383,65 @@ namespace Cliente_SOproject
             if (inicio_partida)
             {
 
-                    if (turno == true)
+                if (turno == true)
+                {
+                    groupBoxChat.Visible = true;
+                    conversacion.Visible = true;
+                    if (nombreUsuario == creador_partida)
                     {
-                        groupBoxChat.Visible = true;
-                        conversacion.Visible = true;
-                        if (nombreUsuario == creador_partida)
-                        {
-                            label_turno.Text = rival;
-                        }
-                        else
-                        {
                         label_turno.Text = rival;
-                        }   
-                        comboBoxPTChat.Visible = false;
-                        button_Nose.Visible = true;
-                        button_Si.Visible = true;
-                        button_No.Visible = true;
-                        textBox_con.Visible = false;
-                        button_enviar.Visible = false;
-                       
-                }
-                    else
-                        {
-                        groupBoxChat.Visible = true;
-                        conversacion.Visible = true;
-                        if (nombreUsuario != creador_partida)
-                        {
-                            label_turno.Text = nombreUsuario;
-                        }
-                        else
-                        {
-                        label_turno.Text = creador_partida;
-                        }
-                       
-                        comboBoxPTChat.Visible = true;
-                        button_Nose.Visible = false;
-                        button_No.Visible = false;
-                        button_Si.Visible = false;
-                        textBox_con.Visible = true;
-                        button_enviar.Visible = true;
-                       
                     }
+                    else
+                    {
+                        label_turno.Text = rival;
+                    }
+                    comboBoxPTChat.Visible = false;
+                    button_Nose.Visible = true;
+                    button_Si.Visible = true;
+                    button_No.Visible = true;
+                    textBox_con.Visible = false;
+                    button_enviar.Visible = false;
+
+                }
+                else
+                {
+                    groupBoxChat.Visible = true;
+                    conversacion.Visible = true;
+                    if (nombreUsuario != creador_partida)
+                    {
+                        label_turno.Text = nombreUsuario;
+                    }
+                    else
+                    {
+                        label_turno.Text = creador_partida;
+                    }
+
+                    comboBoxPTChat.Visible = true;
+                    button_Nose.Visible = false;
+                    button_No.Visible = false;
+                    button_Si.Visible = false;
+                    textBox_con.Visible = true;
+                    button_enviar.Visible = true;
+
+                }
             }
+            if (nombre_label == rival && resultado_label == "No" && label==0)
+            {
+                label_info.Text = "Enorabuena, has ganado a " + rival;
+                label = 1;
+            }
+            else if (nombre_label == rival && resultado_label == "Si" && intentos>0 && label == 0)
+            {
+                label_info.Text = "Tienes " + intentos + " intentos para poder empatar. Escoge la carta, tienes 60 segundos";
+                label = 1;
+            }
+            else if (nombre_label == rival && resultado_label == "Si" && intentos < 0 && label == 0)
+            {
+                label_info.Text = "Has perdido ante " + rival;
+                label = 1;
 
+            }
         }
-
         private void button_Si_Click(object sender, EventArgs e)
         {
             if (inicio_partida == true)
@@ -2462,6 +2505,7 @@ namespace Cliente_SOproject
             this.id_carta_rival= Convert.ToInt32(carta);
             inicio_partida = true;
             //MessageBox.Show("Carta rival :" + id_carta_rival);
+            //MessageBox.Show(nombreUsuario);
             if (nombreUsuario == creador_partida)
             {
                 turno = true;
@@ -2523,17 +2567,17 @@ namespace Cliente_SOproject
         public void Fasefinal(string nombre,string resultado,int vidas_final)
         {
             carta_inicial = 3;
+            nombre_label = nombre;
+            resultado_label = resultado;
             if (nombre==rival && resultado=="No")
             {
-                //MessageBox.Show("Enorabuena, has ganado a " + rival);
-                //label_info.Text = "Enorabuena, has ganado a " + rival;
-                this.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { "Enorabuena, has ganado a " + rival, label_info });
-                // Partida_FormClosed(Partida,Close);
+               
                 terminado = 1;
                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + nombreUsuario+"/"+ ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                 server.Send(msg);
-
+                label = 0;
+               id_carta = -1;
 
             }
             else if(nombre == rival && resultado == "Si")
@@ -2542,22 +2586,23 @@ namespace Cliente_SOproject
                 {
                     intentos = vidas - vidas_final + 1;
                     //MessageBox.Show("Tienes " + intentos+ " intentos para poder empatar. Escoge la carta, tienes 60 segundos");
-                    this.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { "Tienes " + intentos + " intentos para poder empatar. Escoge la carta, tienes 60 segundos", label_info });
+                    
                     conteo = 60;
                     final = 1;
-
+                    label = 0;
 
                 }
                 else
                 {
                     //MessageBox.Show("Has perdido ante "+ rival);
-                    this.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { "Has perdido ante " + rival, label_info });
+                    
                     mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/"+ rival+"/"+ ListaImagenes[id_carta];
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                     server.Send(msg);
                     terminado = 1;
+                    id_carta = -1;
 
-
+                    label = 0;
                 }
             }
         }
