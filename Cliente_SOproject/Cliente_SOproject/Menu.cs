@@ -12,11 +12,16 @@ using System.Drawing.Drawing2D;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Media;
+//using Xamarin.Forms;
+
 
 namespace Cliente_SOproject
 {
-    public partial class FormMenu : Form
+    public partial class Menu : Form
     {
+
+
         public int id_usuario;
         public string nombreUsuario;
         public string creador_partida;
@@ -24,20 +29,42 @@ namespace Cliente_SOproject
         public bool conectado = false;
         public int id_partida;
         public string contrincante;
+        public string nombreInvitado;
+        public int Nform;
+        public int contadorMusic = 0;
+        public bool MusicMenu = true;
+        public bool Sound = true;
+        public bool Cancelado = false;
+
+        //Parametros partida
+        string sugerirPreguntas;
+        string mapa;
+        string limitePreguntas;
+        string limiteTiempo;
+
         Socket server;
         Thread atender;
         List<Partida> formularios = new List<Partida>();
-        public FormMenu()
+        SoundPlayer soundM = new SoundPlayer(@".\Music_menu.wav");
+        SoundPlayer soundG = new SoundPlayer(@".\Music_game.wav");
+
+        public Menu()
         {
             InitializeComponent();
             tabControl1.SelectedTab = tabPageLogin;
-            
+            soundM.PlayLooping();
         }
-
-
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelLUsuarioNoEncontrado.Visible = false;
+            labelRUsuarioError.Visible = false;
+            labelCError.Visible = false;
+        }
 
         //FUNCIONAMIENTO
 
+
+        //Delegados
         delegate void DelegadoDGV(DataGridView mensaje);
         delegate void DelegadoParaEscribir(string mensaje);
         delegate void DelegadoParaCambiarTab(TabPage nameTab);
@@ -45,12 +72,27 @@ namespace Cliente_SOproject
         delegate void DelegadoColorLabel(Label nameLabel, Color color);
         delegate void DelegadoParaEscribirLabel(string msn, Label nameLabel);
         delegate void DelegadoPartida(Partida partida);
-      
-        public void PonDataGridView(string mensaje)
+        delegate void DelegadoIniciarPartida();
+        delegate void DelegadoImageBox(string imagen, PictureBox PB);
+
+
+
+        
+        public void PonImgen(string imagen, PictureBox PB) //Pone en el PicutureBox PB la imagen con con nombre imagen, sin .formato
+        {
+            if (imagen == "0")
+            {
+                PB.Image = GetImageByName("NotImage");
+            }
+            else
+            PB.Image = GetImageByName(imagen);
+        }
+        public void PonDataGridView(string mensaje) //Rellena el dataGridViewListaCon con lo que recibe de mensaje
+            //Formato mensaje "NumeroPersonas,P1,P2,P3"
         {
             if (mensaje != null && mensaje != "")
             {
-
+                dataGridViewListaCon.RowHeadersVisible = false;
                 dataGridViewListaCon.Rows.Clear();
                 string[] partes = mensaje.Split(',');
                 int num = Convert.ToInt32(partes[0]);
@@ -61,21 +103,21 @@ namespace Cliente_SOproject
                     dataGridViewListaCon.Rows[n].Cells[0].Value = partes[i + 1];
                     i++;
                 }
-            }
-            else
-            {
-                MessageBox.Show("Ha ocurrido un error");
+                dataGridViewListaCon.Sort(Column1, System.ComponentModel.ListSortDirection.Ascending);
             }
 
         }
-        public void PonDataGridViewRanking(string mensaje)
+        public void PonDataGridViewRanking(string mensaje) //Rellena dataGridViewRanquind con lo que recibe de mensaje
+            //Formato mensaje "NombrePersona1,PuntosPersona1,NP2,PP2,NP3,PP3"
+            //Si recibe los Puntos -1, pone los puntos en 0
         {
             if (mensaje != null && mensaje != "")
             {
+                dataGridViewRanquing.RowHeadersVisible = false;
                 dataGridViewRanquing.Rows.Clear();
                 string[] partes = mensaje.Split(',');
                 int i = 0;
-                while (i < partes.Length)
+                while (i < partes.Length) 
                 {
                     int n = dataGridViewRanquing.Rows.Add();
                     dataGridViewRanquing.Rows[n].Cells[0].Value = partes[i];
@@ -117,15 +159,71 @@ namespace Cliente_SOproject
         {
             nameLabel.ForeColor = color;
         }
-        public void IniciarPartida()
+        public void IniciarPartida(string lista, string nombreInv, string IdPartida, string rival) //Abre un nuevo form de Partida desde thread
+            //Añade el nuevo form a la lista formularios
+            //Pasa la "lista" de random para hacer el tablero
+            //Cambia el soundTrack del juego
         {
-            int cont = formularios.Count+1;
-            Partida partida = new Partida(cont, server, nombreUsuario, id_partida);
-            formularios.Add(partida);
-            partida.ShowDialog();
-            
+            int cont = formularios.Count;
+            Partida FormPartida = new Partida(Cancelado,cont, server, nombreUsuario, id_partida,
+                sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado, this);
+            formularios.Add(FormPartida);
+            Nform = formularios.Count-1;
+
+            formularios[Nform].rival = rival;
+            FormPartida.PasarListaRandom(lista);
+            FormPartida.CambiarTab();
+            formularios[Nform].nombreInvitado = nombreInv;
+            formularios[Nform].id_partida = id_partida;
+            if (MusicMenu)
+            {
+                if (Sound)
+                {
+                    soundM.Stop();
+                    soundG.PlayLooping();
+                }
+                MusicMenu = false;
+            }
+            FormPartida.ShowDialog();
+
         }
-            public void ConectarServidor()
+        public void PonerEnMarchaForm()//Abre un nuevo form de Partida desde fuera del thread
+                                       //Añade el nuevo form a la lista formularios
+                                       //Pasa la "lista" de random para hacer el tablero
+                                       //Cambia el soundTrack del juego
+        {
+            int cont = formularios.Count;
+            Partida FormPartida = new Partida(Cancelado,cont, server, nombreUsuario, id_partida
+                    , sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado, this);
+            formularios.Add(FormPartida);
+            Nform = formularios.Count - 1;
+            if (MusicMenu)
+            {
+                if (Sound)
+                {
+                    soundM.Stop();
+                    soundG.PlayLooping();
+                }
+                MusicMenu = false;
+            }
+            FormPartida.ShowDialog();
+        }
+        public void StopMusicGame(int index)//Funcion para saber cuando cambiar el soundTrak de la partida al del menu
+            //index es el numero de form, el indice donde se encuentra el form en la lista formularios NForm
+        {
+            contadorMusic++;
+            if (formularios.Count == contadorMusic)
+            {
+                if (Sound)
+                {
+                    soundG.Stop();
+                    soundM.PlayLooping();
+                }
+                
+                MusicMenu = true;
+            }
+        }
+        public void ConectarServidor()
         {
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
@@ -144,7 +242,6 @@ namespace Cliente_SOproject
             catch (SocketException)
             {
                 //Si hay excepcion imprimimos error y salimos del programa con return 
-                MessageBox.Show("No he podido conectar con el servidor");
                 return;
             }
             //pongo en marcha el thread que atenderà los mensajes del servidor 
@@ -164,11 +261,14 @@ namespace Cliente_SOproject
 
                 // Nos desconectamos
                 atender.Abort();
+
                 server.Shutdown(SocketShutdown.Both);
                 server.Close();
                 conectado = false;
             }
         }
+
+
 
         //THREAD
         private void AtenderServidor()
@@ -176,22 +276,20 @@ namespace Cliente_SOproject
             while (true)
             {
                 //Recibimos mensaje del servidor
-                byte[] msg2 = new byte[80];
+                byte[] msg2 = new byte[300];
                 server.Receive(msg2);
                 string[] trozos = Encoding.ASCII.GetString(msg2).Split('\0');
                 string[] trozos1 = trozos[0].Split('/');
                 int codigo = Convert.ToInt32(trozos1[0]);
-                int Nform = Convert.ToInt32(trozos1[1]);
+                //int Nform = Convert.ToInt32(trozos1[1]);
                 string mensaje = trozos1[2];
-                
-
 
 
                 switch (codigo)
                 {
 
                     case 11: // respuesta a iniciar
-                        
+
                         if (mensaje != "NO")
                         {
                             id_usuario = Convert.ToInt32(mensaje);
@@ -202,7 +300,7 @@ namespace Cliente_SOproject
                         }
                         else
                         {
-                            
+
                             DelegadoParaEscribirLabel delegado113 = new DelegadoParaEscribirLabel(EscribirLabel);
                             labelLUsuarioNoEncontrado.Invoke(delegado113, new object[] { "Usuario no encontrado, escriba bien el usuario y/o la contraseña, o registrase", labelLUsuarioNoEncontrado });
                             DelegadoLabel delegado114 = new DelegadoLabel(PonVisibleLabel);
@@ -231,14 +329,14 @@ namespace Cliente_SOproject
                             DelegadoLabel delegado216 = new DelegadoLabel(PonVisibleLabel);
                             labelRUsuarioError.Invoke(delegado216, new object[] { labelRUsuarioError });
                             DesconectarServidor();
-                        } 
+                        }
                         break;
 
                     case 36: //respuesta lista de conectados
                         DelegadoParaEscribir delegado36 = new DelegadoParaEscribir(PonDataGridView);
                         dataGridViewListaCon.Invoke(delegado36, new object[] { mensaje });
                         break;
-                    case 37:
+                    case 37: //codigo para rellenar datos perfil
                         DelegadoParaEscribirLabel delegado371 = new DelegadoParaEscribirLabel(EscribirLabel);
                         if (trozos1[2] != "-1")
                         {
@@ -262,33 +360,33 @@ namespace Cliente_SOproject
                         }
                         if (trozos1[7] != "-1")
                         {
-                            label9.Invoke(delegado371, new object[] { trozos1[7], label9 });
+                            pictureBoxRPersonaje.Invoke(new DelegadoImageBox(PonImgen), new object[] { trozos1[7], pictureBoxRPersonaje });
                         }
                         DelegadoParaCambiarTab delegado372 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfil.Invoke(delegado372, new object[] { tabPagePerfil });
                         break;
-                    case 38:
+                    case 38://codigo para rellenar la tabla del ranking del tab social
                         DelegadoParaEscribir delegado381 = new DelegadoParaEscribir(PonDataGridViewRanking);
                         dataGridViewListaCon.Invoke(delegado381, new object[] { mensaje });
                         DelegadoParaCambiarTab delegado382 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPageSocial.Invoke(delegado382, new object[] { tabPageSocial });
                         break;
-                    case 39:
+                    case 39://codigo para rellenar datos perfil rival
                         DelegadoParaEscribirLabel delegado391 = new DelegadoParaEscribirLabel(EscribirLabel);
-                        labelPRNombre.Invoke(delegado391, new object[] { trozos1[1], labelPRNombre });
-                        labelPRId.Invoke(delegado391, new object[] { trozos1[2], labelPRId });
-                        labelPRPuntosActuales.Invoke(delegado391, new object[] { trozos1[3], labelPRPuntosActuales });
-                        labelPRMaxPuntos.Invoke(delegado391, new object[] { trozos1[4], labelPRMaxPuntos });
-                        labelPRPartidasGanadas.Invoke(delegado391, new object[] { trozos1[5], labelPRPartidasGanadas });
-                        labelPRPartidasPerdidas.Invoke(delegado391, new object[] { trozos1[6], labelPRPartidasPerdidas });
-                        labelPRPartidasJugadas.Invoke(delegado391, new object[] { trozos1[7], labelPRPartidasJugadas });
-                        labelPRPartidasGanadasVs.Invoke(delegado391, new object[] { trozos1[8], labelPRPartidasGanadasVs });
-                        labelPRPartGanVs.Invoke(delegado391, new object[] { "Partidas ganadas VS "+trozos1[1] + ":", labelPRPartGanVs });
-                        labelPRPartidasPerdidasVs.Invoke(delegado391, new object[] { trozos1[9], labelPRPartidasPerdidasVs });
-                        labelPRPartPerdVs.Invoke(delegado391, new object[] { "Partidas perdidas VS " + trozos1[1] + ":", labelPRPartPerdVs });
-                        labelPRPartidasJugadasVs.Invoke(delegado391, new object[] { trozos1[10], labelPRPartidasJugadasVs });
-                        labelPRPartJugVs.Invoke(delegado391, new object[] { "Partidas jugadas VS " + trozos1[1] + ":", labelPRPartJugVs });
-                        label12.Invoke(delegado391, new object[] { trozos1[11], label12 });
+                        labelPRNombre.Invoke(delegado391, new object[] { trozos1[2], labelPRNombre });
+                        labelPRId.Invoke(delegado391, new object[] { trozos1[3], labelPRId });
+                        labelPRPuntosActuales.Invoke(delegado391, new object[] { trozos1[4], labelPRPuntosActuales });
+                        labelPRMaxPuntos.Invoke(delegado391, new object[] { trozos1[5], labelPRMaxPuntos });
+                        labelPRPartidasGanadas.Invoke(delegado391, new object[] { trozos1[6], labelPRPartidasGanadas });
+                        labelPRPartidasPerdidas.Invoke(delegado391, new object[] { trozos1[7], labelPRPartidasPerdidas });
+                        labelPRPartidasJugadas.Invoke(delegado391, new object[] { trozos1[8], labelPRPartidasJugadas });
+                        labelPRPartidasGanadasVs.Invoke(delegado391, new object[] { trozos1[9], labelPRPartidasGanadasVs });
+                        labelPRPartGanVs.Invoke(delegado391, new object[] { "Partidas ganadas VS " + trozos1[2] + ":", labelPRPartGanVs });
+                        labelPRPartidasPerdidasVs.Invoke(delegado391, new object[] { trozos1[10], labelPRPartidasPerdidasVs });
+                        labelPRPartPerdVs.Invoke(delegado391, new object[] { "Partidas perdidas VS " + trozos1[2] + ":", labelPRPartPerdVs });
+                        labelPRPartidasJugadasVs.Invoke(delegado391, new object[] { trozos1[11], labelPRPartidasJugadasVs });
+                        labelPRPartJugVs.Invoke(delegado391, new object[] { "Partidas jugadas VS " + trozos1[2] + ":", labelPRPartJugVs });
+                        pictureBoxPRPersonaje.Invoke(new DelegadoImageBox(PonImgen), new object[] { trozos1[12], pictureBoxPRPersonaje });
                         DelegadoParaCambiarTab delegado392 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfilRival.Invoke(delegado392, new object[] { tabPagePerfilRival });
                         break;
@@ -299,77 +397,193 @@ namespace Cliente_SOproject
                         string[] trozos2 = trozos1[3].Split(',');
                         //id_partida = Convert.ToInt32(trozos1[4]);
                         DialogResult r = MessageBox.Show(nombre + " te ha invitado a un juego.\n " + "\n"
-                            + "Nivel: " + trozos2[0] + "\n"
-                            + "Sugerir preguntas? " + trozos2[1] + "\n"
-                            + "Mapa: " + trozos2[2] + "\n"
-                            + "Límite preguntas: " + trozos2[3] + "\n"
-                            + "Límite tiempo turno: " + trozos2[4] + "segundos" + "\n" + "\n"
+                            + "Mapa: " + trozos2[1] + "\n"
+                            + "Sugerir preguntas? " + trozos2[0] + "\n"
+                            + "Límite preguntas: " + trozos2[2] + "\n"
+                            + "Límite tiempo turno: " + trozos2[3] + " segundos" + "\n" + "\n"
                             + "¿Quieres aceptar?", "Invitacion", MessageBoxButtons.YesNo);
+
+                        sugerirPreguntas = trozos2[0];
+                        mapa = trozos2[1];
+                        limitePreguntas = trozos2[2];
+                        limiteTiempo = trozos2[3];
+
                         if (r == DialogResult.Yes)
                         {
 
-                            mensaje_not = "42/" + nombre + "/" + nombreUsuario + "/Si";
+                            mensaje_not = "42/" + trozos1[1] + "/" + nombre + "/" + nombreUsuario + "/Si";
 
-                            ThreadStart ts = delegate { IniciarPartida(); };
-                            Thread T = new Thread(ts);
-                            T.Start();
+                            nombreInvitado = nombreUsuario;
+
                         }
                         else
                         {
-                            mensaje_not = "42/" + nombre + "/" + nombreUsuario + "/No";
+                            mensaje_not = "42/" + trozos1[1] + "/" + nombre + "/" + nombreUsuario + "/No";
                         }
                         // Enviamos al servidor el nombre tecleado con un vector de bytes
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
                         break;
-                    case 42:
-                        string mensaje2 = trozos1[3];
-                        if (mensaje2 == "Si")
-                        {
-                            ThreadStart ts = delegate { IniciarPartida(); };
-                            Thread T = new Thread(ts);
-                            T.Start();
-
-                        }
-                        else
-                        {
-                            MessageBox.Show(trozos1[2] + " ha rechazado tu invitación");
-                        }
-                        break;
-                    case 43: //enviar texto
-                        id_partida = Convert.ToInt32(trozos1[4]);
+                    case 42: //Recibir la respuesta de la invitacion
                         creador_partida = trozos1[2];
-                        if (creador_partida == nombreUsuario)
+                        
+                        if (trozos1[4] == "Si")
                         {
-                            contrincante = trozos1[3];
+                            id_partida = Convert.ToInt32(trozos1[5]);
+                            if (creador_partida == nombreUsuario)
+                            {
+                                nombreInvitado= trozos1[3];
+                                formularios[Nform].PasarListaRandom(trozos1[6]);
+                                formularios[Nform].rival = trozos1[3];
+                                formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
+                                formularios[Nform].id_partida = id_partida;
+                            }
+                            else
+                            {
+                                ThreadStart ts = delegate { IniciarPartida(trozos1[6], trozos1[3], trozos1[5], trozos1[2]); };
+                                Thread T = new Thread(ts);
+                                T.Start();
+                            }
                         }
                         else
                         {
-                            contrincante = trozos1[2];
+                            if (creador_partida == nombreUsuario)
+                            {
+                                formularios[Nform].RespuestaInvitacion(trozos1[3], trozos1[4]);
+
+                            }
                         }
 
                         break;
-                    case 44:
+                    case 44: //Enviar al formulario correspondiente su id de partida
                         mensaje = trozos1[3];
-                        formularios[Nform-1].EnviarTexto(mensaje, contrincante);
+                        int IdPartida = Convert.ToInt32(trozos1[1]);
+                        contrincante = trozos1[2];
+                        int i = 0;
+                        int encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == IdPartida)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+
+                        }
+                        formularios[i].EnviarTexto(mensaje, contrincante);
 
                         break;
-                    case 51:
-                        formularios[Nform-1].MoverCarta(mensaje);
+                    case 46: //Codigo que se recibe para marcar la carta que ha girado el contrincante en el
+                             //tablero del contricante (tablero pequeño, arriba derecha)
+                        IdPartida = Convert.ToInt32(trozos1[1]);
+                        string num = trozos1[2];
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == id_partida)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+
+                        }
+                        formularios[i].CambiarColorTableroContrincante(num);
+                        break;
+                    case 47: //Codigo que sirve para sincronizar los tiempos entre partidas
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == Convert.ToInt32(trozos1[1]))
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                        int turno = 1;
+                        formularios[i].PrepararTiempo_Turno(turno);
+                        break;
+                    case 48://Codigo para iniciar la partida y determina que personaje secreto te ha tocado
+                        id_partida = Convert.ToInt32(trozos1[1]);
+                        string nombre1 = trozos1[2];
+                        string carta1 = trozos1[3];
+                  
+                        string nombre2 = trozos1[4];
+                        string carta2 = trozos1[5];
+                     
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == id_partida)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                        if (nombre1 == nombreUsuario)
+                        {
+                            formularios[i].IniciarPartida(carta2);
+                        }
+                        else
+                        {
+                            formularios[i].IniciarPartida(carta1);
+                        }
+                        break;
+                    case 49: //Codigo que recibes si el creador de la partida ha cancelado la invitacion
+                        Cancelado = true;
+                        
+                        MessageBox.Show("");
+                        break;
+                    case 50: //codigo cuando el contrincante a acertado la carta
+                        id_partida= Convert.ToInt32(trozos1[1]);
+                        string persona = trozos1[2];
+                        string resultado = trozos1[3];
+                        int vidas = Convert.ToInt32(trozos1[4]);
+                        i = 0;
+                        encontrado = 0;
+                        while ((i < formularios.Count) && (encontrado == 0))
+                        {
+                            if (formularios[i].id_partida == id_partida)
+                            {
+                                encontrado = 1;
+                            }
+                            else
+                            {
+                                i++;
+                            }
+                        }
+                        formularios[i].Fasefinal(persona, resultado,vidas);
                         break;
                 }
             }
         }
 
-        
-        private void pictureBoxLIniciar_Click(object sender, EventArgs e)
+
+
+        //COMNICACIONES CON SERVIDOR
+        private void pictureBoxLIniciar_Click(object sender, EventArgs e) //Se conecta al servidor
+            //Envia el mensaje para iniciar sesion al servidor
         {
 
             ConectarServidor();
             nombreUsuario = textBoxLNombre.Text;
             if (conectado)
             {
-                if ((textBoxLNombre.ForeColor != Color.FromArgb(173, 188, 236) ) && (textBoxLContraseña.ForeColor != Color.FromArgb(173, 188, 236)))
+                if ((textBoxLNombre.ForeColor != Color.FromArgb(173, 188, 236)) && (textBoxLContraseña.ForeColor != Color.FromArgb(173, 188, 236)))
                 {
                     string mensaje = "11/" + nombreUsuario + "/" + textBoxLContraseña.Text;
                     // Enviamos al servidor el nombre tecleado
@@ -378,7 +592,7 @@ namespace Cliente_SOproject
                 }
                 else
                 {
-                    labelLUsuarioNoEncontrado.Text="Los campos de nombre o contraseña estan vacios";
+                    labelLUsuarioNoEncontrado.Text = "Los campos de nombre o contraseña estan vacios";
                     labelLUsuarioNoEncontrado.Visible = true;
                 }
             }
@@ -388,12 +602,13 @@ namespace Cliente_SOproject
                 labelLUsuarioNoEncontrado.Visible = true;
             }
         }
-        private void pictureBoxRRegistrarse_Click(object sender, EventArgs e)
+        private void pictureBoxRRegistrarse_Click(object sender, EventArgs e) //Se conecta al servidor
+            //Envia el mensage para registrarse al servidor
         {
             ConectarServidor();
             if (conectado)
             {
-                if ((textBoxRUsuario.ForeColor != Color.FromArgb(173, 188, 236)) && (textBoxRContraseña.ForeColor != Color.FromArgb(173, 188, 236)) && (textBoxRUsuario.TextLength>1)&&(textBoxRContraseña.TextLength > 1))
+                if ((textBoxRUsuario.ForeColor != Color.FromArgb(173, 188, 236)) && (textBoxRContraseña.ForeColor != Color.FromArgb(173, 188, 236)) && (textBoxRUsuario.TextLength > 1) && (textBoxRContraseña.TextLength > 1))
                 {
                     //Puede que de error porque debe ser superior a un caracter
                     string mensaje = "21/" + textBoxRUsuario.Text + "/" + textBoxRContraseña.Text;
@@ -405,6 +620,7 @@ namespace Cliente_SOproject
                 {
                     labelRUsuarioError.Text = "El nombre debe tener mas de un caracter";
                     labelRUsuarioError.Visible = true;
+
                 }
             }
             else
@@ -412,48 +628,20 @@ namespace Cliente_SOproject
                 labelLUsuarioNoEncontrado.Text = "Error al conectarse con el servidor";
             }
         }
-
-        private void FormMenu_FormClosed(object sender, FormClosedEventArgs e)
+        private void FormMenu_FormClosed(object sender, FormClosedEventArgs e) //Nos desconectamos del servidor y cerramos la aplicacion
+        {
+            DesconectarServidor();
+            Environment.Exit(1);
+        }
+        private void pictureBoxMPerfil_Click(object sender, EventArgs e)//Se envia al servidor un mensaje para que el servidor nos
+            //envie los datos personales de nuestro perfil
         {
             if (conectado)
             {
-                //Mensaje de desconexión
-                string mensaje = "0/" + textBoxLNombre.Text;
-
+                string mensaje = "37/" + nombreUsuario + "/" + id_usuario;
+                // Enviamos al servidor el nombre tecleado
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
-
-                // Nos desconectamos
-                atender.Abort();
-                this.BackColor = Color.Gray;
-                server.Shutdown(SocketShutdown.Both);
-                server.Close();
-                conectado = false;
-
-            }
-            this.Close();
-        }
-
-
-        private void labelLRegistrar_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPageRegister; 
-            labelLUsuarioNoEncontrado.Visible = false;
-        }
-        private void pictureBoxRVolver_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPageLogin;
-            DesconectarServidor();
-        }
-       
-        private void pictureBoxMPerfil_Click(object sender, EventArgs e)
-        {
-            if (conectado)
-            {
-                    string mensaje = "37/" + nombreUsuario + "/" + id_usuario;
-                    // Enviamos al servidor el nombre tecleado
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                    server.Send(msg);
             }
             else
             {
@@ -464,25 +652,8 @@ namespace Cliente_SOproject
             labelPId.Text = Convert.ToString(id_usuario);
 
         }
-        private void pictureBoxMDesconectar_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPageLogin;
-            if (conectado)
-            {
-                //Mensaje de desconexión
-                string mensaje = "0/" + textBoxLNombre.Text;
-
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-
-                // Nos desconectamos
-                atender.Abort();
-                server.Shutdown(SocketShutdown.Both);
-                server.Close();
-                conectado = false;
-            }
-        }
-        private void pictureBoxMSocial_Click(object sender, EventArgs e)
+        private void pictureBoxMSocial_Click(object sender, EventArgs e)//Se envia al servidor un mensaje para que el servidor
+             //nos envie los datos del nombre de todos los jugadores registrados y sus puntos
         {
             if (conectado)
             {
@@ -497,28 +668,44 @@ namespace Cliente_SOproject
                 labelMUsuarioNoEncontrado.Visible = true;
             }
         }
-        private void dataGridViewRanquing_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewRanquing_CellContentClick(object sender, DataGridViewCellEventArgs e)//Se envia al servidor un mensaje para que el servidor
+             //nos envie los datos personales del perfil del contricante que hemos seleccionado
         {
-            if ((conectado) && (Convert.ToString(dataGridViewRanquing.CurrentRow.Cells[0].Value)!=nombreUsuario))
+            try
             {
-                string mensaje = "39/" + nombreUsuario + "/" + id_usuario + "/" + dataGridViewRanquing.CurrentRow.Cells[0].Value;
-                // Enviamos al servidor el nombre tecleado
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-            }
-            else
-            {
-                //labelMUsuarioNoEncontrado.Text = "Error al conectarse con el servidor";
-                //labelMUsuarioNoEncontrado.Visible = true;
-            }
+                if ((conectado) &&
+                (Convert.ToString(dataGridViewRanquing.Rows[e.RowIndex].Cells[0].Value) != nombreUsuario) &&
+                (Convert.ToString(dataGridViewRanquing.Rows[e.RowIndex].Cells[0].Value) != "NOMBRE"))
+                {
+                    string mensaje = "39/" + nombreUsuario + "/" + id_usuario + "/" + dataGridViewRanquing.CurrentRow.Cells[0].Value;
+                    // Enviamos al servidor el nombre tecleado
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+                }
+                else
+                {
+                    if (conectado)
+                    {
+                        string mensaje = "37/" + nombreUsuario + "/" + id_usuario;
+                        // Enviamos al servidor el nombre tecleado
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                        server.Send(msg);
+                    }
 
+                }
+            }
+            catch
+            {
+
+            }
         }
-        private void pictureBoxCInvitar_Click(object sender, EventArgs e)
+        private void pictureBoxCInvitar_Click(object sender, EventArgs e) //Envia la invitacion de la partida nueva
+                                                                          //al jugador seleccionado
         {
             try
             {
 
-                if (dataGridViewListaCon.CurrentRow.Cells[0].Value == null)//.ToString()
+                if (dataGridViewListaCon.CurrentRow.Cells[0].Value == null)
                 {
                     MessageBox.Show("Selecciona a alguien");
                 }
@@ -528,18 +715,29 @@ namespace Cliente_SOproject
                     invitado = dataGridViewListaCon.CurrentRow.Cells[0].Value.ToString();
                     if (invitado == nombreUsuario)
                     {
-                        labelCError.Text="No te puedes invitar a ti mismo";
+                        labelCError.Text = "No te puedes invitar a ti mismo";
                         labelCError.Visible = true;
 
                     }
                     else
                     {
                         labelCError.Visible = false;
-                        string mensaje = "41/" + nombreUsuario + "/" + invitado + "/" + comboBoxCNivel.Text + "," + comboBoxCSugPreg.Text + "," + comboBoxCMapa.Text + "," + textBoxCNumPreg.Text + "," + textBoxCLimTiempo.Text;
+                        string mensaje = "41/" + formularios.Count + "/" + nombreUsuario + "/" + invitado +
+                        "/" + comboBoxCSugPreg.Text + "," + comboBoxCMapa.Text +
+                        "," + textBoxCNumPreg.Text + "," + textBoxCLimTiempo.Text;
                         // Enviamos al servidor el nombre tecleado
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                         server.Send(msg);
 
+                        sugerirPreguntas = comboBoxCSugPreg.Text;
+                        mapa = comboBoxCMapa.Text;
+                        limitePreguntas = textBoxCNumPreg.Text;
+                        limiteTiempo = textBoxCLimTiempo.Text;
+
+                        ThreadStart ts = delegate { PonerEnMarchaForm(); };
+                        Thread T = new Thread(ts);
+                        T.Start();
+                        creador_partida = nombreUsuario;
                     }
 
                 }
@@ -550,8 +748,37 @@ namespace Cliente_SOproject
                 labelCError.Visible = true;
             }
         }
+        private void pictureBoxMPDarseBaja_Click(object sender, EventArgs e)//Boton que da de baja al usuario que tiene la sesion iniciada
+        {
+            if (conectado)
+            {
+                string mensaje = "22/" + id_usuario;
+                // Enviamos al servidor el nombre tecleado
+                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+                tabControl1.SelectedTab = tabPageLogin;
+                DesconectarServidor();
+            }
+        }
+        
 
-        //NAVIEGACION
+
+        //NAVIEGACION POR EL MENU
+        private void pictureBoxMDesconectar_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageLogin;
+            DesconectarServidor();
+        }
+        private void labelLRegistrar_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageRegister;
+            labelLUsuarioNoEncontrado.Visible = false;
+        }
+        private void pictureBoxRVolver_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageLogin;
+            DesconectarServidor();
+        }
         private void pictureBoxMCrearPartida_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageCrearPartida;
         private void pictureBoxCVolver_Click(object sender, EventArgs e)
         {
@@ -565,8 +792,45 @@ namespace Cliente_SOproject
 
 
 
-        //DISEÑO
-        static Bitmap SetAlpha(Bitmap bmpIn, int alpha)
+        //EFECTOS DE OBJECTOS
+        private void buttonMMusic_Click(object sender, EventArgs e)//Activa o desactiva el SoundTrack
+        {
+            if (Sound)
+            {
+                if (MusicMenu)
+                {
+                    soundM.Stop();
+                }
+                else
+                {
+                    soundG.Stop();
+                }
+                buttonMMusic.BackgroundImage = Properties.Resources.MusicNO;
+                Sound = false;
+            }
+            else
+            {
+                if (MusicMenu)
+                {
+                    soundM.PlayLooping();
+                }
+                else
+                {
+                    soundG.PlayLooping();
+                }
+                buttonMMusic.BackgroundImage = Properties.Resources.MusicYES;
+                Sound = true;
+            }
+        }
+        public static Bitmap GetImageByName(string imageName) //Funcion que pasa el string del nombre de
+               //una imagen a la imagen para ponerla en alguna propiedad de imagen de algun objeto
+        {
+            System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
+            string resourceName = asm.GetName().Name + ".Properties.Resources";
+            var rm = new System.Resources.ResourceManager(resourceName, asm);
+            return (Bitmap)rm.GetObject(imageName);
+        }
+        static Bitmap SetAlpha(Bitmap bmpIn, int alpha) //Funcion para blanquear la imagen
         {
             Bitmap bmpOut = new Bitmap(bmpIn.Width, bmpIn.Height);
             float a = alpha / 255f;
@@ -589,11 +853,11 @@ namespace Cliente_SOproject
 
             return bmpOut;
         }
-        private void pictureBox7_MouseEnter(object sender, EventArgs e)=>pictureBoxMDesconectar.Image = SetAlpha((Bitmap)pictureBoxMDesconectar.Image, 150);
+        private void pictureBox7_MouseEnter(object sender, EventArgs e) => pictureBoxMDesconectar.Image = SetAlpha((Bitmap)pictureBoxMDesconectar.Image, 150);
         private void pictureBox7_MouseLeave(object sender, EventArgs e) => pictureBoxMDesconectar.Image = SetAlpha((Bitmap)pictureBoxMDesconectar.Image, 1000);
         private void pictureBoxLIniciar_MouseEnter(object sender, EventArgs e) => pictureBoxLIniciar.Image = SetAlpha((Bitmap)pictureBoxLIniciar.Image, 150);
         private void pictureBoxLIniciar_MouseLeave(object sender, EventArgs e) => pictureBoxLIniciar.Image = SetAlpha((Bitmap)pictureBoxLIniciar.Image, 1000);
-        private void labelLRegistrar_MouseEnter(object sender, EventArgs e) => labelLRegistrar.BackColor = Color.FromArgb(69, 69, 69); 
+        private void labelLRegistrar_MouseEnter(object sender, EventArgs e) => labelLRegistrar.BackColor = Color.FromArgb(69, 69, 69);
         private void labelLRegistrar_MouseLeave(object sender, EventArgs e) => labelLRegistrar.BackColor = Color.Black;
         private void pictureBoxRVolver_MouseEnter(object sender, EventArgs e) => pictureBoxRVolver.Image = SetAlpha((Bitmap)pictureBoxRVolver.Image, 150);
         private void pictureBoxRVolver_MouseLeave(object sender, EventArgs e) => pictureBoxRVolver.Image = SetAlpha((Bitmap)pictureBoxRVolver.Image, 1000);
@@ -611,13 +875,14 @@ namespace Cliente_SOproject
         private void pictureBoxCVolver_MouseLeave(object sender, EventArgs e) => pictureBoxCVolver.Image = SetAlpha((Bitmap)pictureBoxCVolver.Image, 1000);
         private void pictureBoxCInvitar_MouseEnter(object sender, EventArgs e) => pictureBoxCInvitar.Image = SetAlpha((Bitmap)pictureBoxCInvitar.Image, 150);
         private void pictureBoxCInvitar_MouseLeave(object sender, EventArgs e) => pictureBoxCInvitar.Image = SetAlpha((Bitmap)pictureBoxCInvitar.Image, 1000);
-        private void pictureBoxSVolver_MouseEnter(object sender, EventArgs e)=> pictureBoxSVolver.Image = SetAlpha((Bitmap)pictureBoxSVolver.Image, 150);
+        private void pictureBoxSVolver_MouseEnter(object sender, EventArgs e) => pictureBoxSVolver.Image = SetAlpha((Bitmap)pictureBoxSVolver.Image, 150);
         private void pictureBoxSVolver_MouseLeave(object sender, EventArgs e) => pictureBoxSVolver.Image = SetAlpha((Bitmap)pictureBoxSVolver.Image, 1000);
         private void pictureBoxPRVolver_MouseEnter(object sender, EventArgs e) => pictureBoxPRVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 150);
         private void pictureBoxPRVolver_MouseLeave(object sender, EventArgs e) => pictureBoxPRVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 1000);
         private void pictureBoxPVolver_MouseEnter(object sender, EventArgs e) => pictureBoxPVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 150);
         private void pictureBoxPVolver_MouseLeave(object sender, EventArgs e) => pictureBoxPVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 1000);
-
+        private void pictureBoxMPDarseBaja_MouseEnter(object sender, EventArgs e) => pictureBoxMPDarseBaja.Image = SetAlpha((Bitmap)pictureBoxMPDarseBaja.Image, 150);
+        private void pictureBoxMPDarseBaja_MouseLeave(object sender, EventArgs e) => pictureBoxMPDarseBaja.Image = Properties.Resources.DarseDeBaja;
         private void textBoxLNombre_Enter(object sender, EventArgs e)
         {
             if (textBoxLNombre.Text == "USUARIO")
@@ -626,7 +891,6 @@ namespace Cliente_SOproject
                 textBoxLNombre.ForeColor = Color.Black;
             }
         }
-
         private void textBoxLNombre_Leave(object sender, EventArgs e)
         {
             if (textBoxLNombre.Text == "")
@@ -635,25 +899,24 @@ namespace Cliente_SOproject
                 textBoxLNombre.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
         private void textBoxLContraseña_Enter(object sender, EventArgs e)
         {
             if (textBoxLContraseña.Text == "CONTRASEÑA")
             {
                 textBoxLContraseña.Text = "";
+                textBoxLContraseña.UseSystemPasswordChar = true;
                 textBoxLContraseña.ForeColor = Color.Black;
             }
         }
-
         private void textBoxLContraseña_Leave(object sender, EventArgs e)
         {
             if (textBoxLContraseña.Text == "")
             {
+                textBoxLContraseña.UseSystemPasswordChar = false;
                 textBoxLContraseña.Text = "CONTRASEÑA";
                 textBoxLContraseña.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
         private void textBoxRUsuario_Enter(object sender, EventArgs e)
         {
             if (textBoxRUsuario.Text == "USUARIO")
@@ -662,7 +925,6 @@ namespace Cliente_SOproject
                 textBoxRUsuario.ForeColor = Color.Black;
             }
         }
-
         private void textBoxRUsuario_Leave(object sender, EventArgs e)
         {
             if (textBoxRUsuario.Text == "")
@@ -671,25 +933,58 @@ namespace Cliente_SOproject
                 textBoxRUsuario.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
         private void textBoxRContraseña_Enter(object sender, EventArgs e)
         {
             if (textBoxRContraseña.Text == "CONTRASEÑA")
             {
                 textBoxRContraseña.Text = "";
+                textBoxRContraseña.UseSystemPasswordChar = true;
                 textBoxRContraseña.ForeColor = Color.Black;
             }
         }
-
         private void textBoxRContraseña_Leave(object sender, EventArgs e)
         {
             if (textBoxRContraseña.Text == "")
             {
+                textBoxRContraseña.UseSystemPasswordChar = false;
                 textBoxRContraseña.Text = "CONTRASEÑA";
                 textBoxRContraseña.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
+        private void buttonLPassword_Click(object sender, EventArgs e) //Funcion para aplicar o no los caracteres de incognito
+                                                                       //en la contraseña del LOGIN
+        {
+            if (textBoxLContraseña.Text != "CONTRASEÑA")
+            {
+                if(textBoxLContraseña.UseSystemPasswordChar == false)
+                {
+                    textBoxLContraseña.UseSystemPasswordChar = true;
+                    buttonLPassword.BackgroundImage = Properties.Resources.OpenEye;
+                }
+                else
+                {
+                    textBoxLContraseña.UseSystemPasswordChar = false;
+                    buttonLPassword.BackgroundImage = Properties.Resources.CloseEye;
+                }
+            }
+        }
+        private void buttonRPassword_Click(object sender, EventArgs e)//Funcion para aplicar o no los caracteres de incognito
+                                                                      //en la contraseña del REGISTER
+        {
+            if (textBoxRContraseña.Text != "CONTRASEÑA")
+            {
+                if (textBoxRContraseña.UseSystemPasswordChar == false)
+                {
+                    textBoxRContraseña.UseSystemPasswordChar = true;
+                    buttonRPassword.BackgroundImage = Properties.Resources.OpenEye;
+                }
+                else
+                {
+                    textBoxRContraseña.UseSystemPasswordChar = false;
+                    buttonRPassword.BackgroundImage = Properties.Resources.CloseEye;
+                }
+            }
+        }
         private void textBoxCNumPreg_Enter(object sender, EventArgs e)
         {
             if (textBoxCNumPreg.Text == "10")
@@ -698,7 +993,6 @@ namespace Cliente_SOproject
                 textBoxCNumPreg.ForeColor = Color.Black;
             }
         }
-
         private void textBoxCNumPreg_Leave(object sender, EventArgs e)
         {
             if (textBoxCNumPreg.Text == "")
@@ -707,7 +1001,6 @@ namespace Cliente_SOproject
                 textBoxCNumPreg.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
         private void textBoxCLimTiempo_Enter(object sender, EventArgs e)
         {
             if (textBoxCLimTiempo.Text == "60")
@@ -716,7 +1009,6 @@ namespace Cliente_SOproject
                 textBoxCLimTiempo.ForeColor = Color.Black;
             }
         }
-
         private void textBoxCLimTiempo_Leave(object sender, EventArgs e)
         {
             if (textBoxCLimTiempo.Text == "")
@@ -725,8 +1017,11 @@ namespace Cliente_SOproject
                 textBoxCLimTiempo.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
-        
     }
 }
+
+
+
+
+
 

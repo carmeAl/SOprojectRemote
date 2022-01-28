@@ -1,0 +1,178 @@
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.AssemblyReference.cache
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\calca\Downloads\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.AssemblyReference.cache
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Fuentes\VT323-Regular.ttf
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.AssemblyReference.cache
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\Jana\Desktop\SO\VersionFinal\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (6)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (7)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Desktop\bfouw vowl\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Desktop\j qujv\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (10)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.AssemblyReference.cache
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.AssemblyReference.cache
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_game.wav
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_menu.wav
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_game.wav
+C:\Users\GENIS\OneDrive\Escritorio\ProyectoBueno\SOprojectRemote-ClienteMenu (1)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_menu.wav
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_game.wav
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_menu.wav
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.AssemblyReference.cache
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_game.wav
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_menu.wav
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_game.wav
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_menu.wav
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Downloads\SOprojectRemote-ClienteMenu (12)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_game.wav
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_menu.wav
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe.config
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\bin\Debug\Cliente_SOproject.pdb
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csprojAssemblyReference.cache
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Menu.resources
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Partida.resources
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.Properties.Resources.resources
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.GenerateResource.cache
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
+C:\Users\xavi\Desktop\jkvbvhgcx\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
