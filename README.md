@@ -38,3 +38,10 @@ Protección Cross-Threading y Múltiples Formularios
 - Verificada por Xavier
 - Comunicada por Genis(https://drive.google.com/file/d/1nd3Dgfq-6PmCckaASzJN0SZ3JScNjBKU/view?ts=61a2c597)
 - Descanso por Carme
+
+### Versión 6
+Versión Final
+- Generada por Xavier
+- Verificada por Victoria
+- Comunicada por Genis(https://drive.google.com/file/d/1aFes9GrmCXrJAx1UzO2wPSLu4w02rnqt/view)
+- Descanso por Carme
