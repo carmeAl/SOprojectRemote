@@ -38,6 +38,7 @@ namespace Cliente_SOproject
             this.pictureBoxPEBoton = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.tabPageTablero = new System.Windows.Forms.TabPage();
+            this.label_info = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxNombreElegida = new System.Windows.Forms.PictureBox();
             this.pictureBoxImagenElegida = new System.Windows.Forms.PictureBox();
@@ -89,6 +90,9 @@ namespace Cliente_SOproject
             this.pictureBoxImage2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label_turno = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label_tiempo = new System.Windows.Forms.Label();
@@ -96,10 +100,6 @@ namespace Cliente_SOproject
             this.timerFlip = new System.Windows.Forms.Timer(this.components);
             this.Stop = new System.Windows.Forms.Timer(this.components);
             this.timerTurno = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label_info = new System.Windows.Forms.Label();
             this.tabControlPartida.SuspendLayout();
             this.tabPageEsperando.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPEGif)).BeginInit();
@@ -148,9 +148,9 @@ namespace Cliente_SOproject
             this.groupBoxChat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage2)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPartida
@@ -263,6 +263,18 @@ namespace Cliente_SOproject
             this.tabPageTablero.Size = new System.Drawing.Size(600, 383);
             this.tabPageTablero.TabIndex = 1;
             this.tabPageTablero.Text = "Tablero";
+            // 
+            // label_info
+            // 
+            this.label_info.AutoSize = true;
+            this.label_info.BackColor = System.Drawing.Color.Black;
+            this.label_info.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_info.ForeColor = System.Drawing.Color.Red;
+            this.label_info.Location = new System.Drawing.Point(8, 358);
+            this.label_info.Name = "label_info";
+            this.label_info.Size = new System.Drawing.Size(0, 20);
+            this.label_info.TabIndex = 3;
+            this.label_info.Visible = false;
             // 
             // groupBox1
             // 
@@ -784,7 +796,7 @@ namespace Cliente_SOproject
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(608, 36);
+            this.panel1.Size = new System.Drawing.Size(608, 10);
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -796,6 +808,33 @@ namespace Cliente_SOproject
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 41;
             this.label1.Text = "Rendirse";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(339, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(82, 43);
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(260, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(75, 43);
+            this.pictureBox2.TabIndex = 42;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(175, 0);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(82, 43);
+            this.pictureBox3.TabIndex = 43;
+            this.pictureBox3.TabStop = false;
             // 
             // label_turno
             // 
@@ -848,45 +887,6 @@ namespace Cliente_SOproject
             // 
             this.timerTurno.Interval = 1000;
             this.timerTurno.Tick += new System.EventHandler(this.timerTurno_Tick);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(175, 0);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(82, 43);
-            this.pictureBox3.TabIndex = 43;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(260, 0);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(75, 43);
-            this.pictureBox2.TabIndex = 42;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(339, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 43);
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label_info
-            // 
-            this.label_info.AutoSize = true;
-            this.label_info.BackColor = System.Drawing.Color.Black;
-            this.label_info.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_info.ForeColor = System.Drawing.Color.Red;
-            this.label_info.Location = new System.Drawing.Point(8, 358);
-            this.label_info.Name = "label_info";
-            this.label_info.Size = new System.Drawing.Size(0, 20);
-            this.label_info.TabIndex = 3;
-            this.label_info.Visible = false;
             // 
             // Partida
             // 
@@ -953,9 +953,9 @@ namespace Cliente_SOproject
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
             }

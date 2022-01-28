@@ -12,6 +12,7 @@ using System.Drawing.Drawing2D;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Media;
 //using Xamarin.Forms;
 
 
@@ -30,6 +31,9 @@ namespace Cliente_SOproject
         public string contrincante;
         public string nombreInvitado;
         public int Nform;
+        public int contadorMusic = 0;
+        public bool MusicMenu = true;
+        public bool Sound = true;
 
         //Parametros partida
         string nivel;
@@ -41,11 +45,14 @@ namespace Cliente_SOproject
         Socket server;
         Thread atender;
         List<Partida> formularios = new List<Partida>();
+        SoundPlayer soundM = new SoundPlayer(@".\Music_menu.wav");
+        SoundPlayer soundG = new SoundPlayer(@".\Music_game.wav");
+
         public Menu()
         {
             InitializeComponent();
             tabControl1.SelectedTab = tabPageLogin;
-
+            soundM.PlayLooping();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -64,12 +71,16 @@ namespace Cliente_SOproject
         delegate void DelegadoParaEscribirLabel(string msn, Label nameLabel);
         delegate void DelegadoPartida(Partida partida);
         delegate void DelegadoIniciarPartida();
+        delegate void DelegadoImageBox(string imagen, PictureBox PB);
 
 
 
         //public Font(System.Drawing.FontFamily family, float emSize, System.Drawing.FontStyle style, System.Drawing.GraphicsUnit unit, byte gdiCharSet);
 
-
+        public void PonImgen(string imagen, PictureBox PB)
+        {
+            PB.Image = GetImageByName(imagen);
+        }
         public void PonDataGridView(string mensaje)
         {
             if (mensaje != null && mensaje != "")
@@ -145,7 +156,7 @@ namespace Cliente_SOproject
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado);
+                nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado, this);
             formularios.Add(FormPartida);
             Nform = formularios.Count-1;
 
@@ -154,6 +165,15 @@ namespace Cliente_SOproject
             FormPartida.CambiarTab();
             formularios[Nform].nombreInvitado = nombreInv;
             formularios[Nform].id_partida = id_partida;
+            if (MusicMenu)
+            {
+                if (Sound)
+                {
+                    soundM.Stop();
+                    soundG.PlayLooping();
+                }
+                MusicMenu = false;
+            }
             FormPartida.ShowDialog();
 
         }
@@ -161,10 +181,29 @@ namespace Cliente_SOproject
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado);
+                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado, this);
             formularios.Add(FormPartida);
             Nform = formularios.Count - 1;
+            if (MusicMenu)
+            {
+                if (Sound)
+                {
+                    soundM.Stop();
+                    soundG.PlayLooping();
+                }
+                MusicMenu = false;
+            }
             FormPartida.ShowDialog();
+        }
+        public void StopMusicGame(int index)
+        {
+            contadorMusic++;
+            if (formularios.Count == contadorMusic)
+            {
+                soundG.Stop();
+                soundM.PlayLooping();
+                MusicMenu = true;
+            }
         }
         public void ConectarServidor()
         {
@@ -301,7 +340,7 @@ namespace Cliente_SOproject
                         }
                         if (trozos1[7] != "-1")
                         {
-                            label9.Invoke(delegado371, new object[] { trozos1[7], label9 });
+                            pictureBoxRPersonaje.Invoke(new DelegadoImageBox(PonImgen), new object[] { trozos1[7], pictureBoxRPersonaje });
                         }
                         DelegadoParaCambiarTab delegado372 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfil.Invoke(delegado372, new object[] { tabPagePerfil });
@@ -327,7 +366,7 @@ namespace Cliente_SOproject
                         labelPRPartPerdVs.Invoke(delegado391, new object[] { "Partidas perdidas VS " + trozos1[2] + ":", labelPRPartPerdVs });
                         labelPRPartidasJugadasVs.Invoke(delegado391, new object[] { trozos1[11], labelPRPartidasJugadasVs });
                         labelPRPartJugVs.Invoke(delegado391, new object[] { "Partidas jugadas VS " + trozos1[2] + ":", labelPRPartJugVs });
-                        label12.Invoke(delegado391, new object[] { trozos1[12], label12 });
+                        pictureBoxPRPersonaje.Invoke(new DelegadoImageBox(PonImgen), new object[] { trozos1[7], pictureBoxPRPersonaje });
                         DelegadoParaCambiarTab delegado392 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfilRival.Invoke(delegado392, new object[] { tabPagePerfilRival });
                         break;
@@ -714,6 +753,35 @@ namespace Cliente_SOproject
                 DesconectarServidor();
             }
         }
+        private void buttonMMusic_Click(object sender, EventArgs e)
+        {
+            if (Sound)
+            {
+                if (MusicMenu)
+                {
+                    soundM.Stop();
+                }
+                else
+                {
+                    soundG.Stop();
+                }
+                buttonMMusic.BackgroundImage = Properties.Resources.MusicNO;
+                Sound = false;
+            }
+            else
+            {
+                if (MusicMenu)
+                {
+                    soundM.PlayLooping();
+                }
+                else
+                {
+                    soundG.PlayLooping();
+                }
+                buttonMMusic.BackgroundImage = Properties.Resources.MusicYES;
+                Sound = true;
+            }
+        }
 
 
         //NAVIEGACION
@@ -728,7 +796,14 @@ namespace Cliente_SOproject
         private void pictureBoxPRVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageSocial;
 
 
+        public static Bitmap GetImageByName(string imageName)
+        {
+            System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
+            string resourceName = asm.GetName().Name + ".Properties.Resources";
+            var rm = new System.Resources.ResourceManager(resourceName, asm);
+            return (Bitmap)rm.GetObject(imageName);
 
+        }
 
         //DISEÑO
         static Bitmap SetAlpha(Bitmap bmpIn, int alpha)
@@ -933,6 +1008,8 @@ namespace Cliente_SOproject
             Font font1 = new Font("Arial", 20);
             e.Graphics.DrawString("Arial Font", font1, Brushes.Red, new PointF(10, 10));
         }
+
+        
     }
 }
 

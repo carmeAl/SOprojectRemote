@@ -367,6 +367,8 @@
     <None Include="Resources\clase_23.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\MusicNO.png" />
+    <None Include="Resources\MusicYES.png" />
     <None Include="Resources\pais_nombre_25.png" />
     <None Include="Resources\pais_nombre_24.png" />
     <None Include="Resources\pais_nombre_23.png" />
@@ -446,6 +448,12 @@
     <None Include="Resources\clase_nombre_21.png" />
     <None Include="Resources\clase_nombre_22.png" />
     <None Include="Resources\clase_nombre_23.png" />
+    <Content Include="Music_game.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music_menu.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\foto corazon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

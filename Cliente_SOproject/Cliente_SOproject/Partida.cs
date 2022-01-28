@@ -65,6 +65,8 @@ namespace Cliente_SOproject
         public int y=0;
         public int terminado=0;
 
+        private Menu FormMenu;
+
         static readonly object _object = new object();
 
         delegate void DelegadoParaEscribir(string rival, string texto);
@@ -77,7 +79,7 @@ namespace Cliente_SOproject
         //Este es el contructor del form con el nombre "Partida" que tiene todos estos parametros puestos aquí
         public Partida(int Nform, Socket server, string nombreUsuario,
             int id_partida, string nivel, string sugerirPreguntas, string mapa,
-            string limitePreguntas, string limiteTiempo, string creador_partida, string invitado)
+            string limitePreguntas, string limiteTiempo, string creador_partida, string invitado, Menu FormMenu)
         {
             InitializeComponent();
             this.Nform = Nform;
@@ -91,7 +93,8 @@ namespace Cliente_SOproject
             this.creador_partida = creador_partida;
             this.nombreInvitado = invitado;
             this.girar = 0;
-           
+            this.FormMenu = FormMenu;
+
 
         }
 
@@ -853,11 +856,11 @@ namespace Cliente_SOproject
                         {
                             vidas = vidas - 1;
                             //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
-                            label_info.Text("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            label_info.Text="Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
                                 //MessageBox.Show("Has perdido");
-                                label_info.Text("Has perdido");
+                                label_info.Text="Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
@@ -2526,7 +2529,7 @@ namespace Cliente_SOproject
             if (nombre==rival && resultado=="No")
             {
                 //MessageBox.Show("Enorabuena, has ganado a " + rival);
-                label_info.Text = "Enorabuena, has ganado a " + rival;
+                label_info.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { "Enorabuena, has ganado a " + rival, label_info });
                 // Partida_FormClosed(Partida,Close);
                 terminado = 1;
                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + nombreUsuario;
@@ -2579,9 +2582,8 @@ namespace Cliente_SOproject
                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                 server.Send(msg);
-
             }
-            
+            FormMenu.StopMusicGame(Nform);
 
         }
     }

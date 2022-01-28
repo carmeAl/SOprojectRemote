@@ -131,3 +131,5 @@ C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOpr
 C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
 C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
 C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_game.wav
+C:\Users\calca\Google Drive (calcalabejaranouni1@gmail.com)\2021-2022-1\SO\V6\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_menu.wav
