@@ -388,7 +388,7 @@ void CartaMasUsada(char *idJ, char *carta){// busca la carta más usada por el us
 	MYSQL_RES *resultado;
 	MYSQL_ROW row;
 	char consulta [200];
-	sprintf(consulta,"SELECT (participacion.personaje) FROM (participacion) WHERE participacion.idJ = %s ORDER BY participacion.personaje DESC LIMIT 1", idJ);
+	sprintf(consulta,"select personaje, COUNT(personaje) as total from participacion where idJ=%s group by personaje order by total desc limit 1;", idJ);
 
 	err=mysql_query (conn, consulta); 
 	if (err!=0) {
@@ -741,7 +741,7 @@ int EliminarDatosJugBaseDatos(char * idJ){//Elimina los datos del jugador con el
 	return 0;
 }
 
-void Pasar_datos(int IDPartida,char nombre_mandado[100],char nombre_rival[100],char ganador[100]){//inserta el resultado de la partida en ña base de datos y elimina 
+void Pasar_datos(int IDPartida,char nombre_mandado[100],char nombre_rival[100],char ganador[100],char * personaje1, char * personaje2){//inserta el resultado de la partida en ña base de datos y elimina 
 	//la partida de la tabla 
 	
 	int err;
@@ -803,13 +803,15 @@ void Pasar_datos(int IDPartida,char nombre_mandado[100],char nombre_rival[100],c
 			puntos2=10;
 		}
 	
-		strcpy (insert,"Insert INTO participacion(idJ,idP,puntos) values(");
+		strcpy (insert,"Insert INTO participacion(idJ,idP,puntos,personaje) values(");
 		sprintf(insert,"%s%d",insert,id1);
 		strcat (insert,",");
 		sprintf(insert, "%s%d",insert,idPartida); 
 		strcat (insert,",");
 		sprintf(insert, "%s%d",insert, puntos1);
-		strcat (insert,")");
+		strcat (insert,",'");
+		sprintf(insert, "%s%s",insert, personaje1);
+		strcat (insert,"')");
 		pthread_mutex_lock(&mutex);
 		err=mysql_query (conn, insert); 
 		if (err!=0) {
@@ -820,13 +822,15 @@ void Pasar_datos(int IDPartida,char nombre_mandado[100],char nombre_rival[100],c
 		pthread_mutex_unlock(&mutex);
 		printf("%s\n",insert);
 		
-		strcpy (insert,"Insert INTO participacion(idJ,idP,puntos) values(");
+		strcpy (insert,"Insert INTO participacion(idJ,idP,puntos,personaje) values(");
 		sprintf(insert,"%s%d",insert,id2);
 		strcat (insert,",");
 		sprintf(insert, "%s%d",insert,idPartida); 
 		strcat (insert,",");
 		sprintf(insert, "%s%d",insert, puntos2);
-		strcat (insert,")");
+		strcat (insert,",'");
+		sprintf(insert, "%s%s",insert, personaje2);
+		strcat (insert,"')");
 		pthread_mutex_lock(&mutex);
 		err=mysql_query (conn, insert); 
 		if (err!=0) {
@@ -1139,7 +1143,16 @@ void *AtenderCliente (void *socket){// el thread del servidor
 				id_para_error=IDPartida;
 			}
 		}
-		
+		else if (codigo 49)//Cliente envia "49/NForm/NombreUsuario/nombrerival" 
+		{
+			p =strtok(NULL,"/");
+			char nombre_manda[100];
+			strcpy(nombre_manda,p);
+			p =strtok(NULL,"/");
+			char nombre_Cancelado[100];
+			strcpy(nombre_Cancelado,p);
+			sprintf(notificacion,"49/%d/%s/%s/%d",IDPartida,TablaPartidasActivas[IDPartida].nombre1,resultado,vidas);
+		}
 		else if (codigo== 50)//{ //Cliente envia "50/IDPartida/Nombre/Si-No/vidas" un usuario manda si a ganado la patida con x vidas o si ha perdido.
 		{//Servidor envia "50/IDPartida/nombre/resultado/vidas" al rival
 			p =strtok(NULL,"/");
@@ -1177,7 +1190,13 @@ void *AtenderCliente (void *socket){// el thread del servidor
 			p= strtok(NULL,"/");
 			char ganador[100];
 			strcpy(ganador,p);
-			Pasar_datos(IDPartida,nombre_mandado,nombre_rival,ganador);
+			p= strtok(NULL,"/");
+			char personaje1[100];
+			strcpy(personaje1,p);
+			p= strtok(NULL,"/");
+			char personaje2[100];
+			strcpy(personaje2,p);
+			Pasar_datos(IDPartida,nombre_mandado,nombre_rival,ganador,personaje1,personaje2);
 			
 		}
 		printf ("Respuesta: %s\n", respuesta);

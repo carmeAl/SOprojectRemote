@@ -1223,6 +1223,16 @@ namespace Cliente_SOproject.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NotImage {
+            get {
+                object obj = ResourceManager.GetObject("NotImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OpenEye {
             get {
                 object obj = ResourceManager.GetObject("OpenEye", resourceCulture);

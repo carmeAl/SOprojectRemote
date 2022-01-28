@@ -34,9 +34,9 @@ namespace Cliente_SOproject
         public int contadorMusic = 0;
         public bool MusicMenu = true;
         public bool Sound = true;
+        public bool Cancelado = false;
 
         //Parametros partida
-        string nivel;
         string sugerirPreguntas;
         string mapa;
         string limitePreguntas;
@@ -79,6 +79,11 @@ namespace Cliente_SOproject
 
         public void PonImgen(string imagen, PictureBox PB)
         {
+            if (imagen == "0")
+            {
+                PB.Image = GetImageByName("NotImage");
+            }
+            else
             PB.Image = GetImageByName(imagen);
         }
         public void PonDataGridView(string mensaje)
@@ -96,10 +101,7 @@ namespace Cliente_SOproject
                     dataGridViewListaCon.Rows[n].Cells[0].Value = partes[i + 1];
                     i++;
                 }
-            }
-            else
-            {
-                MessageBox.Show("Ha ocurrido un error");
+                dataGridViewListaCon.Sort(Column1, System.ComponentModel.ListSortDirection.Ascending);
             }
 
         }
@@ -155,8 +157,8 @@ namespace Cliente_SOproject
         public void IniciarPartida(string lista, string nombreInv, string IdPartida, string rival)
         {
             int cont = formularios.Count;
-            Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado, this);
+            Partida FormPartida = new Partida(Cancelado,cont, server, nombreUsuario, id_partida,
+                sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado, this);
             formularios.Add(FormPartida);
             Nform = formularios.Count-1;
 
@@ -180,8 +182,8 @@ namespace Cliente_SOproject
         public void PonerEnMarchaForm()
         {
             int cont = formularios.Count;
-            Partida FormPartida = new Partida(cont, server, nombreUsuario, id_partida,
-                    nivel, sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado, this);
+            Partida FormPartida = new Partida(Cancelado,cont, server, nombreUsuario, id_partida
+                    , sugerirPreguntas, mapa, limitePreguntas, limiteTiempo, creador_partida,nombreInvitado, this);
             formularios.Add(FormPartida);
             Nform = formularios.Count - 1;
             if (MusicMenu)
@@ -200,8 +202,12 @@ namespace Cliente_SOproject
             contadorMusic++;
             if (formularios.Count == contadorMusic)
             {
-                soundG.Stop();
-                soundM.PlayLooping();
+                if (Sound)
+                {
+                    soundG.Stop();
+                    soundM.PlayLooping();
+                }
+                
                 MusicMenu = true;
             }
         }
@@ -366,7 +372,7 @@ namespace Cliente_SOproject
                         labelPRPartPerdVs.Invoke(delegado391, new object[] { "Partidas perdidas VS " + trozos1[2] + ":", labelPRPartPerdVs });
                         labelPRPartidasJugadasVs.Invoke(delegado391, new object[] { trozos1[11], labelPRPartidasJugadasVs });
                         labelPRPartJugVs.Invoke(delegado391, new object[] { "Partidas jugadas VS " + trozos1[2] + ":", labelPRPartJugVs });
-                        pictureBoxPRPersonaje.Invoke(new DelegadoImageBox(PonImgen), new object[] { trozos1[7], pictureBoxPRPersonaje });
+                        pictureBoxPRPersonaje.Invoke(new DelegadoImageBox(PonImgen), new object[] { trozos1[12], pictureBoxPRPersonaje });
                         DelegadoParaCambiarTab delegado392 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfilRival.Invoke(delegado392, new object[] { tabPagePerfilRival });
                         break;
@@ -529,6 +535,11 @@ namespace Cliente_SOproject
                             formularios[i].IniciarPartida(carta1);
                         }
                         break;
+                    case 49:
+                        Cancelado = true;
+                        
+                        MessageBox.Show("");
+                        break;
                     case 50:
                         id_partida= Convert.ToInt32(trozos1[1]);
                         string persona = trozos1[2];
@@ -609,6 +620,7 @@ namespace Cliente_SOproject
         private void FormMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             DesconectarServidor();
+            Environment.Exit(1);
         }
 
 

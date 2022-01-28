@@ -28,14 +28,9 @@ namespace Cliente_SOproject
         public string rival;
         public string nombreInvitado;
         string texto;
-        int girar;
-        int bloqueo = 0;
-        int pesao;
+        bool Cancelado;
         int conteo = 0;
         bool turno=false;
-        bool Star_Start;
-        int Star_Stop=0;
-        bool tiempo = false;
         bool inicio_partida = false;
         int id_carta;
        
@@ -55,8 +50,6 @@ namespace Cliente_SOproject
         int id_carta_rival;
         int carta_seleccionada=-1;
         int vidas = 3;
-        int seguridad=1;
-        string resultado;
         int final = 0;
         int intentos;
         int rondas=0;
@@ -77,11 +70,12 @@ namespace Cliente_SOproject
         delegate void DelegadoParaVisibleLabel(Label nameLabel, bool SINO);
 
         //Este es el contructor del form con el nombre "Partida" que tiene todos estos parametros puestos aquí
-        public Partida(int Nform, Socket server, string nombreUsuario,
-            int id_partida, string nivel, string sugerirPreguntas, string mapa,
+        public Partida(bool Cancelado,int Nform, Socket server, string nombreUsuario,
+            int id_partida, string sugerirPreguntas, string mapa,
             string limitePreguntas, string limiteTiempo, string creador_partida, string invitado, Menu FormMenu)
         {
             InitializeComponent();
+            this.Cancelado = Cancelado;
             this.Nform = Nform;
             this.server = server;
             this.nombreUsuario = nombreUsuario;
@@ -92,7 +86,6 @@ namespace Cliente_SOproject
             this.limiteTiempo = limiteTiempo;
             this.creador_partida = creador_partida;
             this.nombreInvitado = invitado;
-            this.girar = 0;
             this.FormMenu = FormMenu;
 
 
@@ -301,7 +294,6 @@ namespace Cliente_SOproject
             }
             groupBoxPTTableroContrincante.Text = "Tablero de " + rival;
             //MessageBox.Show("Escoge una carta");
-            Star_Stop = 1;
             timerTurno.Start();
         }
         //////////
@@ -850,7 +842,7 @@ namespace Cliente_SOproject
                                 carta_inicial = 1;
                             }
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -865,7 +857,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -881,11 +873,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos"+"/"+ ListaImagenes[id_carta];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
 
                         }
@@ -898,11 +890,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival+"/"+ ListaImagenes[id_carta]+"/"+ ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -976,7 +968,7 @@ namespace Cliente_SOproject
                                 carta_inicial = 1;
                             }
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -991,7 +983,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1007,11 +999,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos"+ "/"+ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
 
                         }
@@ -1024,11 +1016,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival+"/"+ ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
                         }
@@ -1098,7 +1090,7 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -1113,7 +1105,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1129,11 +1121,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos"+"/"+ ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
                         }
                         else
@@ -1145,11 +1137,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -1223,7 +1215,7 @@ namespace Cliente_SOproject
                             }
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -1238,7 +1230,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1254,11 +1246,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" ;
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
                         }
                         else
@@ -1270,11 +1262,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -1346,7 +1338,7 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -1361,7 +1353,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1377,11 +1369,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
                         }
                         else
@@ -1393,11 +1385,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival; ;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -1470,7 +1462,7 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -1485,7 +1477,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1501,11 +1493,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" ;
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
                         }
                         else
@@ -1517,11 +1509,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -1591,7 +1583,7 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -1606,7 +1598,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1622,11 +1614,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
                         }
                         else
@@ -1638,11 +1630,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -1713,7 +1705,7 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -1728,7 +1720,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1744,11 +1736,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" ;
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
                         }
                         else
@@ -1760,11 +1752,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -1835,7 +1827,7 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -1850,7 +1842,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1866,11 +1858,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" ;
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
                         }
                         else
@@ -1882,11 +1874,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -1957,7 +1949,7 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -1972,7 +1964,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -1988,11 +1980,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
                         }
                         else
@@ -2004,11 +1996,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -2079,7 +2071,7 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -2094,7 +2086,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -2110,11 +2102,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
 
                         }
@@ -2127,11 +2119,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -2203,7 +2195,7 @@ namespace Cliente_SOproject
                             carta_seleccionada = -1;
                             carta_inicial = 1;
                             terminado = 1;
-                            label1.Visible = false;
+                            
                         }
                         else
                         {
@@ -2218,7 +2210,7 @@ namespace Cliente_SOproject
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
                             }
                             carta_seleccionada = -1;
                             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -2234,11 +2226,11 @@ namespace Cliente_SOproject
                         {
                             //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
-                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos";
+                            mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos" + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                             server.Send(msg);
                             terminado = 1;
-                            label1.Visible = false;
+                            
 
                         }
                         else
@@ -2250,11 +2242,11 @@ namespace Cliente_SOproject
                             {
                                 //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
-                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival;
+                                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival + "/" + ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                                 server.Send(msg);
                                 terminado = 1;
-                                label1.Visible = false;
+                                
 
                             }
 
@@ -2267,15 +2259,21 @@ namespace Cliente_SOproject
 
         private void Partida_Load(object sender, EventArgs e)
         {
-            Stop.Start();
-            conteo = Convert.ToInt32(limiteTiempo);
-            groupBoxChat.Visible = false;
-            label_turno.Visible = true;
-            label_tiempo.Visible = true;
-            label_turno.Text = creador_partida;
-            label_tiempo.Text = limiteTiempo;
-            label2.Visible = true;
-            label3.Visible = true;
+            if (!Cancelado)
+            {
+                Stop.Start();
+                conteo = Convert.ToInt32(limiteTiempo);
+                groupBoxChat.Visible = false;
+                label_turno.Visible = true;
+                label_tiempo.Visible = true;
+                label_turno.Text = creador_partida;
+                label_tiempo.Text = limiteTiempo;
+                label2.Visible = true;
+                label3.Visible = true;
+            }
+            else {
+                this.Close();
+            }
         }
 
         private void comboBoxPTChat_SelectedIndexChanged(object sender, EventArgs e)
@@ -2291,7 +2289,7 @@ namespace Cliente_SOproject
             }
             else
             {
-                label1.Visible = false;
+                
             }
             label_tiempo.Text = conteo.ToString();
 
@@ -2338,7 +2336,6 @@ namespace Cliente_SOproject
             if (conteo <= 0)
             {
                 conteo = Convert.ToInt32(limiteTiempo);
-                tiempo = true;
                 if (final == 0)
                 {
                     CambiarTurno();
@@ -2529,10 +2526,11 @@ namespace Cliente_SOproject
             if (nombre==rival && resultado=="No")
             {
                 //MessageBox.Show("Enorabuena, has ganado a " + rival);
-                label_info.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { "Enorabuena, has ganado a " + rival, label_info });
+                //label_info.Text = "Enorabuena, has ganado a " + rival;
+                this.Invoke(new DelegadoParaEscribirLabel(EscribirLabel), new object[] { "Enorabuena, has ganado a " + rival, label_info });
                 // Partida_FormClosed(Partida,Close);
                 terminado = 1;
-                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + nombreUsuario;
+                mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + nombreUsuario+"/"+ ListaImagenes[id_carta] + "/" + ListaImagenes[id_carta_rival];
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                 server.Send(msg);
 
@@ -2554,7 +2552,7 @@ namespace Cliente_SOproject
                 {
                     //MessageBox.Show("Has perdido ante "+ rival);
                     label_info.Text = "Has perdido ante " + rival;
-                    mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/"+ rival;
+                    mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/"+ rival+"/"+ ListaImagenes[id_carta];
                     byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                     server.Send(msg);
                     terminado = 1;
@@ -2576,15 +2574,27 @@ namespace Cliente_SOproject
 
         private void Partida_FormClosed(object sender, FormClosedEventArgs e)
         {
-           
-            if (terminado==0 && inicio_partida ==true)
+            if (!Cancelado)
             {
-                mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
-                byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                server.Send(msg);
+                if (terminado == 0 && inicio_partida == true)
+                {
+                    mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+                    server.Send(msg);
+                }
+                FormMenu.StopMusicGame(Nform);
             }
-            FormMenu.StopMusicGame(Nform);
+        }
 
+        private void pictureBoxPEBoton_Click(object sender, EventArgs e)
+        {
+
+            mensaje_not = "49/" + Nform + "/" + nombreUsuario +"/"+ rival;
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
+            server.Send(msg);
+            Cancelado = true;
+            FormMenu.StopMusicGame(Nform);
+            this.Close();
         }
     }
 }
