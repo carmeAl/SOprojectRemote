@@ -148,3 +148,5 @@ C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-Cliente
 C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.csproj.CoreCompileInputs.cache
 C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.exe
 C:\Users\calca\Downloads\SOprojectRemote-ClienteMenu (4)\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\obj\Debug\Cliente_SOproject.pdb
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_game.wav
+C:\Users\Jana\Desktop\SOprojectRemote-ClienteMenu\Cliente_SOproject\Cliente_SOproject\bin\Debug\Music_menu.wav

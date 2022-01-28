@@ -30,7 +30,7 @@ namespace Cliente_SOproject
             private void InitializeComponent()
             {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageLogin = new System.Windows.Forms.TabPage();
             this.buttonLPassword = new System.Windows.Forms.Button();
@@ -84,6 +84,8 @@ namespace Cliente_SOproject
             this.panel10 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.dataGridViewRanquing = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Puntos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tabPagePerfil = new System.Windows.Forms.TabPage();
             this.pictureBoxMPDarseBaja = new System.Windows.Forms.PictureBox();
@@ -145,8 +147,6 @@ namespace Cliente_SOproject
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelNombres = new System.Windows.Forms.Panel();
             this.buttonMMusic = new System.Windows.Forms.Button();
-            this.Nombre = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Puntos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPageLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLIniciar)).BeginInit();
@@ -610,8 +610,8 @@ namespace Cliente_SOproject
             // 
             // Column1
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column1.HeaderText = "Jugadores conectados";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -883,6 +883,24 @@ namespace Cliente_SOproject
             this.dataGridViewRanquing.Size = new System.Drawing.Size(224, 155);
             this.dataGridViewRanquing.TabIndex = 0;
             this.dataGridViewRanquing.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRanquing_CellContentClick);
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Nombre.HeaderText = "NOMBRE";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 60;
+            // 
+            // Puntos
+            // 
+            this.Puntos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Puntos.HeaderText = "PUNTOS";
+            this.Puntos.MinimumWidth = 6;
+            this.Puntos.Name = "Puntos";
+            this.Puntos.ReadOnly = true;
+            this.Puntos.Width = 77;
             // 
             // pictureBox5
             // 
@@ -1530,7 +1548,7 @@ namespace Cliente_SOproject
             this.panelNombres.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNombres.Location = new System.Drawing.Point(0, 0);
             this.panelNombres.Name = "panelNombres";
-            this.panelNombres.Size = new System.Drawing.Size(562, 10);
+            this.panelNombres.Size = new System.Drawing.Size(562, 31);
             this.panelNombres.TabIndex = 1;
             // 
             // buttonMMusic
@@ -1543,24 +1561,6 @@ namespace Cliente_SOproject
             this.buttonMMusic.TabIndex = 0;
             this.buttonMMusic.UseVisualStyleBackColor = true;
             this.buttonMMusic.Click += new System.EventHandler(this.buttonMMusic_Click);
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Nombre.HeaderText = "NOMBRE";
-            this.Nombre.MinimumWidth = 6;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 60;
-            // 
-            // Puntos
-            // 
-            this.Puntos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Puntos.HeaderText = "PUNTOS";
-            this.Puntos.MinimumWidth = 6;
-            this.Puntos.Name = "Puntos";
-            this.Puntos.ReadOnly = true;
-            this.Puntos.Width = 77;
             // 
             // Menu
             // 

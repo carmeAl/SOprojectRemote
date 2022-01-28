@@ -109,6 +109,7 @@ namespace Cliente_SOproject
         {
             if (mensaje != null && mensaje != "")
             {
+                dataGridViewRanquing.RowHeadersVisible = false;
                 dataGridViewRanquing.Rows.Clear();
                 string[] partes = mensaje.Split(',');
                 int i = 0;

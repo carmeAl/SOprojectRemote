@@ -785,7 +785,7 @@ namespace Cliente_SOproject
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(608, 10);
+            this.panel1.Size = new System.Drawing.Size(608, 32);
             this.panel1.TabIndex = 2;
             // 
             // label_turno
