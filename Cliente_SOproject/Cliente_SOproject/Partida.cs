@@ -94,7 +94,7 @@ namespace Cliente_SOproject
 
         }
 
-        //Funciones de los delegados
+        //Funciones de delegados
         public void EscribirLabel(string msn, Label nameLabel)
         {
             nameLabel.Text = msn;
@@ -108,6 +108,7 @@ namespace Cliente_SOproject
             nameLabel.Visible = SINO;
         }
 
+        //Función que obtiene la imagen a través de su nombre
         public static Bitmap GetImageByName(string imageName)
         {
             System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
@@ -117,11 +118,12 @@ namespace Cliente_SOproject
 
         }
 
-        //Esta función se utiliza para cambiar al estado de partida iniciada del Form, cambia el Tab de la pagina y establece los datos de las fotos
+        //Esta función se utiliza para cambiar al estado de partida iniciada del Form, cambia el Tab de la pagina y establece los datos de las fotos (usando la función anterior)
         public void CambiarTab()
         {
             comboBoxPTChat.Text = "Extienda la lista para seleccionar pregunta";
             tabControlPartida.SelectedTab = tabPageTablero;
+            //Según el mapa que escogemos se ponen unas imagenes o otras
             if (mapa == "ANIMALES")
             {
 
@@ -167,6 +169,7 @@ namespace Cliente_SOproject
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
                 pictureBoxNombre12.Image = GetImageByName(ListaNombres[11]);
 
+                //Si el parametro de sugerir preguntas está activado, estaas apareceran durante la partida
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -225,6 +228,8 @@ namespace Cliente_SOproject
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
                 pictureBoxNombre12.Image = GetImageByName(ListaNombres[11]);
 
+                //Si el parametro de sugerir preguntas está activado, estaas apareceran durante la partida
+
                 if (sugerirPreguntas == "SI")
                 {
                     comboBoxPTChat.Visible = true;
@@ -280,7 +285,8 @@ namespace Cliente_SOproject
                 
                 pictureBoxImage12.Image = GetImageByName(ListaImagenes[11]);
                 pictureBoxNombre12.Image = GetImageByName(ListaNombres[11]);
-                
+
+                //Si el parametro de sugerir preguntas está activado, estaas apareceran durante la partida
 
                 if (sugerirPreguntas == "SI")
                 {
@@ -296,13 +302,14 @@ namespace Cliente_SOproject
                 }
             }
             groupBoxPTTableroContrincante.Text = "Tablero de " + rival;
-            //MessageBox.Show("Escoge una carta");
             timerTurno.Start();
         }
+
         //////////
         //FUNCIONES
         //////////
 
+        //Esta función se encarga de ponerte en el tab de partida en el caso de que se haya aceptado la solicitud, o de avisarte de que se ha rechazado la invitación mostrando el mensaje acorde
         public void RespuestaInvitacion(string nombreInvitado, string SiNo)
         {
             if (SiNo == "Si")
@@ -317,14 +324,20 @@ namespace Cliente_SOproject
                 pictureBoxPEBoton.Invoke(new DelegadoPicureBox(PonNoVisiblePictureBox), new object[] { pictureBoxPEBoton });
             }
         }
+
+        //Esta función es usada para poner el tiempo de turno en la partida
         public void PrepararTiempo_Turno (int bloqueo_turno)
         {
             this.bloqueo_turno = bloqueo_turno;
         }
+
+        //Te convierte la variable grobal "ListaRandom" en un vector de strings (el numero correspondiente a las fotos proveniente del randomizador) a partir de la lista de numeros separados por comas. 
         public void PasarListaRandom(string lista)
         {
             ListaRandom = lista.Split(',');
         }
+
+        //Esta función se encarga de meter en el chat el mensaje correctamente enviado por el contrincante
         public void EnviarTexto(string mensaje, string rival)
         {
             this.rival = rival;
@@ -332,10 +345,15 @@ namespace Cliente_SOproject
             DelegadoParaEscribir delegado441 = new DelegadoParaEscribir(PonMSN);
             conversacion.Invoke(delegado441, new object[] { rival, texto });
         }
+
+        //Esta función es utilizada con el objetivo de meter en el chat el mensaje correctamente (Esta accionada por un delegado)
+
         public void PonMSN(string rival, string mensaje)
         {
             conversacion.Items.Insert(0, rival + ": " + mensaje);
         }
+
+        //Este es el click del botón que sirve para enviar los mensajes al contrincante, a la vez que los mete en el chat
         private void button_enviar_Click(object sender, EventArgs e)
         {
             if (inicio_partida == true)
@@ -352,10 +370,6 @@ namespace Cliente_SOproject
                     button_enviar.Visible = false;
                     textBox_con.Visible = false;
                    
-                }
-                else
-                {
-                    //Poner aqui que aparezca arriba un label que diga que escriba algo
                 }
                 
             }
@@ -702,6 +716,8 @@ namespace Cliente_SOproject
         //////////
         //MOVIMIENTOS
         //////////
+        
+        //Esta función es la que es usada por funciones posteriores para cambiar la opacidad de botones
         static Bitmap SetAlpha(Bitmap bmpIn, int alpha)
         {
             Bitmap bmpOut = new Bitmap(bmpIn.Width, bmpIn.Height);
@@ -725,7 +741,7 @@ namespace Cliente_SOproject
 
             return bmpOut;
         }
-
+        //En esta función lo que se hace es enviar el numero de carta que se ha girado para que el rival vea que hacer
         private void EnviarNumCartaServer(int numeroCarta)
         {
             // Envias el mensaje
@@ -745,7 +761,7 @@ namespace Cliente_SOproject
         double  a = 1;
         double segundos = 0;
 
-
+        //Este timer se encarga de mirar qeu no se le dé rapidamente a las cartas para que no se pueda colapasar el servidor al dar repetidamente por los mensajes de giro de carta
         private void timerFlip_Tick_1(object sender, EventArgs e)
         {
             
@@ -780,32 +796,13 @@ namespace Cliente_SOproject
 
         }
 
+        //Este codigo se encarga de todo lo relacionado con cada una del as fotos (los pictureboxes) y los eventos que suceden cuando son clickados
         private void pictureBoxImage1_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
             {
                 if (carta_inicial != 3)
                 {
-                    /*
-                    if (carta_inicial == 0)
-                    { 
-                        id_carta = 0;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
-
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 0;
@@ -834,7 +831,6 @@ namespace Cliente_SOproject
                         carta_seleccionada = id_carta;
                         if (0 == id_carta_rival)
                         {
-                            //MessageBox.Show("Enorabuena has acertado, ahora le toca al rival...");
                             label_info.Text = "Enorabuena has acertado, ahora le toca al rival...";
                             mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/Si" + "/" + vidas;
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
@@ -845,16 +841,15 @@ namespace Cliente_SOproject
                                 carta_inicial = 1;
                             }
                             terminado = 1;
-                            
                         }
                         else
                         {
                             vidas = vidas - 1;
-                            //MessageBox.Show("Lo siento, has fallado, te quedan " + vidas + " vidas");
+                            
                             label_info.Text="Lo siento, has fallado, te quedan " + vidas + " vidas";
                             if (vidas == 0)
                             {
-                                //MessageBox.Show("Has perdido");
+
                                 label_info.Text="Has perdido";
                                 mensaje_not = "50/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/No" + "/" + vidas;
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
@@ -874,7 +869,7 @@ namespace Cliente_SOproject
                     {
                         if (0 == id_carta_rival)
                         {
-                            //MessageBox.Show("Enorabuena has acertado, habeis ganado los dos!!");
+
                             label_info.Text = "Enorabuena has acertado, habeis ganado los dos!!";
                             mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/dos"+"/"+ ListaImagenes[id_carta];
                             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
@@ -888,11 +883,9 @@ namespace Cliente_SOproject
                         else
                         {
                             intentos = intentos - 1;
-                            //MessageBox.Show("Lo siento, has fallado, te quedan " + intentos + " intentos");
                             label_info.Text = "Lo siento, has fallado, te quedan " + intentos + " intentos";
                             if (intentos == 0)
                             {
-                                //MessageBox.Show("Has perdido");
                                 label_info.Text = "Has perdido";
                                 mensaje_not = "60/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + rival + "/" + rival+"/"+ ListaImagenes[id_carta]+"/"+ ListaImagenes[id_carta_rival];
                                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
@@ -915,25 +908,6 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 1;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
 
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
@@ -1042,25 +1016,6 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 2;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 2;
@@ -1165,27 +1120,7 @@ namespace Cliente_SOproject
             if (terminado == 0)
             {
                 if (carta_inicial != 3)
-                {
-
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 3;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
+                { 
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         segundos = a;
@@ -1293,25 +1228,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 4;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
+                   
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         segundos = a;
@@ -1419,26 +1336,6 @@ namespace Cliente_SOproject
                 if (carta_inicial != 3)
                 {
 
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 5;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
-
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 5;
@@ -1545,25 +1442,6 @@ namespace Cliente_SOproject
                 if (carta_inicial != 3)
                 {
 
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 6;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 6;
@@ -1667,25 +1545,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 7;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
+                 
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 7;
@@ -1791,25 +1651,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 8;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
+                
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 8;
@@ -1915,25 +1757,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 9;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
+                 
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 9;
@@ -2039,25 +1863,7 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 10;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
+                  
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
                         numCarta = 10;
@@ -2164,25 +1970,6 @@ namespace Cliente_SOproject
             {
                 if (carta_inicial != 3)
                 {
-                    /*
-                    if (carta_inicial == 0)
-                    {
-                        id_carta = 11;
-                        DialogResult r = MessageBox.Show("Estas seguro", ":", MessageBoxButtons.YesNo);
-                        if (r == DialogResult.Yes)
-                        {
-                            mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                            server.Send(msg);
-                            carta_inicial = 2;
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Escoge otra carta, porfi UwU");
-                        }
-                    }
-                    */
 
                     if (Opacidad >= 500 && carta_inicial == 1)
                     {
@@ -2283,7 +2070,7 @@ namespace Cliente_SOproject
             }
     }
 
-
+        //Esta es la función que se encarga del inicio, que hace que empiece el contador del reloj 
         private void Partida_Load(object sender, EventArgs e)
         {
             if (!Cancelado)
@@ -2303,11 +2090,13 @@ namespace Cliente_SOproject
             }
         }
 
+        //Esta función ...
         private void comboBoxPTChat_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox_con.Text = comboBoxPTChat.Text;
         }
 
+        //Este es el timer del juego que va conteando el turno, además de usarse para elegir la carta que te toca de forma aleatoria
         private void timerTurno_Tick(object sender, EventArgs e)
         {
             
@@ -2334,34 +2123,9 @@ namespace Cliente_SOproject
                 server.Send(msg);
                 carta_inicial = 1;
                 inicio_partida = true;
-                /*
-                if (y == 2)
-                {
-                    MessageBox.Show("Escoge una carta,tienes 10 segundos, sino se escogera de forma random");
-                    conteo = 10;
-                    tiempo = true;
-                    y = 2;
-                }
-                else
-                {
-                    Random rnd = new Random();
-                    id_carta = rnd.Next(11);
-                    MessageBox.Show("Tu carta es: " + id_carta);
-                    mensaje_not = "48/" + Nform + "/" + id_partida + "/" + nombreUsuario + "/" + id_carta;
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
-                    server.Send(msg);
-                    carta_inicial = 1;
-                }
-                */
+              
             }
-            /*
-            if (carta_inicial == 1 && conteo == 0 && inicio_partida==false)
-            {
-                conteo = 1000;
-                MessageBox.Show("Esperando al rival");
-                tiempo = true;
-            }
-            */
+           
             if (conteo <= 0)
             {
                 conteo = Convert.ToInt32(limiteTiempo);
@@ -2442,6 +2206,8 @@ namespace Cliente_SOproject
 
             }
         }
+
+        //Esta funcion pone un si cuando al rival le toca el turno de preguntar
         private void button_Si_Click(object sender, EventArgs e)
         {
             if (inicio_partida == true)
@@ -2457,6 +2223,8 @@ namespace Cliente_SOproject
             }
             
         }
+
+        //Esta funcion pone un No cuando al rival le toca el turno de preguntar
 
         private void button_No_Click(object sender, EventArgs e)
         {
@@ -2474,6 +2242,7 @@ namespace Cliente_SOproject
             
         }
 
+        //Esta funcion pone un No se cuando al rival le toca el turno de preguntar
         private void button_Nose_Click(object sender, EventArgs e)
         {
             if (inicio_partida == true)
@@ -2490,15 +2259,19 @@ namespace Cliente_SOproject
            
         }
 
+        //Esta función cambia la opacidad los botones cuando pones el raton sobre ellos para más feedback
         private void pictureBoxPEBoton_MouseEnter(object sender, EventArgs e)
         {
             pictureBoxPEBoton.Image = SetAlpha((Bitmap)pictureBoxPEBoton.Image, 150);
         }
 
+        //Reestablece la opacidad del botón cuando el ratón deja de pasar por encima
         private void pictureBoxPEBoton_MouseLeave(object sender, EventArgs e)
         {
             pictureBoxPEBoton.Image = SetAlpha((Bitmap)pictureBoxPEBoton.Image, 1000);
         }
+
+        // Se inicia partida en el momento en el que se consigue saber que carta tiene que adivinar el usuario
         public void IniciarPartida(string carta)
         {
             
@@ -2517,6 +2290,8 @@ namespace Cliente_SOproject
                
             }
         }
+
+        //Esta función es usada por el reloj para cambiar de turno
         public void CambiarTurno()
         {
             if (rondas < Convert.ToInt32(limitePreguntas))
@@ -2554,6 +2329,7 @@ namespace Cliente_SOproject
             // Envias el mensaje  
         }
 
+        //Este es el botón de ya lo sé, avisa al jugador de que debe escoger una carta en el caso de que crea que una es la correcta, si acierta ha ganado, tiene 3 vidas
         private void Boton_respuesta_Click(object sender, EventArgs e)
         {
             if (final == 0 && terminado!=1)
@@ -2564,6 +2340,8 @@ namespace Cliente_SOproject
             }
 
         }
+
+        //Esta Función se encarga de mandarle al servidor el resultado de la partida
         public void Fasefinal(string nombre,string resultado,int vidas_final)
         {
             carta_inicial = 3;
@@ -2607,6 +2385,7 @@ namespace Cliente_SOproject
             }
         }
 
+        //Esto alomejor se tiene que eliminar
         private void button1_Click(object sender, EventArgs e)
         {
             /*DialogResult r = MessageBox.Show("Quieres pasar de turno?", "Cambio de turno", MessageBoxButtons.YesNo);
@@ -2617,6 +2396,7 @@ namespace Cliente_SOproject
             }*/
         }
 
+        //Esto se activa en cuanto se cierra el formulario
         private void Partida_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!Cancelado)
@@ -2630,6 +2410,8 @@ namespace Cliente_SOproject
                 FormMenu.StopMusicGame(Nform);
             }
         }
+
+        //Este es el botón para cancelar una invitación a partida
 
         private void pictureBoxPEBoton_Click(object sender, EventArgs e)
         {
