@@ -63,6 +63,8 @@ namespace Cliente_SOproject
 
         //FUNCIONAMIENTO
 
+
+        //Delegados
         delegate void DelegadoDGV(DataGridView mensaje);
         delegate void DelegadoParaEscribir(string mensaje);
         delegate void DelegadoParaCambiarTab(TabPage nameTab);
@@ -75,9 +77,8 @@ namespace Cliente_SOproject
 
 
 
-        //public Font(System.Drawing.FontFamily family, float emSize, System.Drawing.FontStyle style, System.Drawing.GraphicsUnit unit, byte gdiCharSet);
-
-        public void PonImgen(string imagen, PictureBox PB)
+        
+        public void PonImgen(string imagen, PictureBox PB) //Pone en el PicutureBox PB la imagen con con nombre imagen, sin .formato
         {
             if (imagen == "0")
             {
@@ -86,7 +87,8 @@ namespace Cliente_SOproject
             else
             PB.Image = GetImageByName(imagen);
         }
-        public void PonDataGridView(string mensaje)
+        public void PonDataGridView(string mensaje) //Rellena el dataGridViewListaCon con lo que recibe de mensaje
+            //Formato mensaje "NumeroPersonas,P1,P2,P3"
         {
             if (mensaje != null && mensaje != "")
             {
@@ -105,7 +107,9 @@ namespace Cliente_SOproject
             }
 
         }
-        public void PonDataGridViewRanking(string mensaje)
+        public void PonDataGridViewRanking(string mensaje) //Rellena dataGridViewRanquind con lo que recibe de mensaje
+            //Formato mensaje "NombrePersona1,PuntosPersona1,NP2,PP2,NP3,PP3"
+            //Si recibe los Puntos -1, pone los puntos en 0
         {
             if (mensaje != null && mensaje != "")
             {
@@ -155,7 +159,10 @@ namespace Cliente_SOproject
         {
             nameLabel.ForeColor = color;
         }
-        public void IniciarPartida(string lista, string nombreInv, string IdPartida, string rival)
+        public void IniciarPartida(string lista, string nombreInv, string IdPartida, string rival) //Abre un nuevo form de Partida desde thread
+            //Añade el nuevo form a la lista formularios
+            //Pasa la "lista" de random para hacer el tablero
+            //Cambia el soundTrack del juego
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(Cancelado,cont, server, nombreUsuario, id_partida,
@@ -180,7 +187,10 @@ namespace Cliente_SOproject
             FormPartida.ShowDialog();
 
         }
-        public void PonerEnMarchaForm()
+        public void PonerEnMarchaForm()//Abre un nuevo form de Partida desde fuera del thread
+                                       //Añade el nuevo form a la lista formularios
+                                       //Pasa la "lista" de random para hacer el tablero
+                                       //Cambia el soundTrack del juego
         {
             int cont = formularios.Count;
             Partida FormPartida = new Partida(Cancelado,cont, server, nombreUsuario, id_partida
@@ -198,7 +208,8 @@ namespace Cliente_SOproject
             }
             FormPartida.ShowDialog();
         }
-        public void StopMusicGame(int index)
+        public void StopMusicGame(int index)//Funcion para saber cuando cambiar el soundTrak de la partida al del menu
+            //index es el numero de form, el indice donde se encuentra el form en la lista formularios NForm
         {
             contadorMusic++;
             if (formularios.Count == contadorMusic)
@@ -256,6 +267,8 @@ namespace Cliente_SOproject
                 conectado = false;
             }
         }
+
+
 
         //THREAD
         private void AtenderServidor()
@@ -323,7 +336,7 @@ namespace Cliente_SOproject
                         DelegadoParaEscribir delegado36 = new DelegadoParaEscribir(PonDataGridView);
                         dataGridViewListaCon.Invoke(delegado36, new object[] { mensaje });
                         break;
-                    case 37:
+                    case 37: //codigo para rellenar datos perfil
                         DelegadoParaEscribirLabel delegado371 = new DelegadoParaEscribirLabel(EscribirLabel);
                         if (trozos1[2] != "-1")
                         {
@@ -352,13 +365,13 @@ namespace Cliente_SOproject
                         DelegadoParaCambiarTab delegado372 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPagePerfil.Invoke(delegado372, new object[] { tabPagePerfil });
                         break;
-                    case 38:
+                    case 38://codigo para rellenar la tabla del ranking del tab social
                         DelegadoParaEscribir delegado381 = new DelegadoParaEscribir(PonDataGridViewRanking);
                         dataGridViewListaCon.Invoke(delegado381, new object[] { mensaje });
                         DelegadoParaCambiarTab delegado382 = new DelegadoParaCambiarTab(CambiarTab);
                         tabPageSocial.Invoke(delegado382, new object[] { tabPageSocial });
                         break;
-                    case 39:
+                    case 39://codigo para rellenar datos perfil rival
                         DelegadoParaEscribirLabel delegado391 = new DelegadoParaEscribirLabel(EscribirLabel);
                         labelPRNombre.Invoke(delegado391, new object[] { trozos1[2], labelPRNombre });
                         labelPRId.Invoke(delegado391, new object[] { trozos1[3], labelPRId });
@@ -411,7 +424,7 @@ namespace Cliente_SOproject
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje_not);
                         server.Send(msg);
                         break;
-                    case 42:
+                    case 42: //Recibir la respuesta de la invitacion
                         creador_partida = trozos1[2];
                         
                         if (trozos1[4] == "Si")
@@ -430,8 +443,6 @@ namespace Cliente_SOproject
                                 ThreadStart ts = delegate { IniciarPartida(trozos1[6], trozos1[3], trozos1[5], trozos1[2]); };
                                 Thread T = new Thread(ts);
                                 T.Start();
-                                
-                                //MessageBox.Show("No se porque va si pongo esto");
                             }
                         }
                         else
@@ -443,13 +454,8 @@ namespace Cliente_SOproject
                             }
                         }
 
-                        //else if (trozos1[4] == "Si")
-                        //{
-
-                        //}
-
                         break;
-                    case 44:
+                    case 44: //Enviar al formulario correspondiente su id de partida
                         mensaje = trozos1[3];
                         int IdPartida = Convert.ToInt32(trozos1[1]);
                         contrincante = trozos1[2];
@@ -470,7 +476,8 @@ namespace Cliente_SOproject
                         formularios[i].EnviarTexto(mensaje, contrincante);
 
                         break;
-                    case 46:
+                    case 46: //Codigo que se recibe para marcar la carta que ha girado el contrincante en el
+                             //tablero del contricante (tablero pequeño, arriba derecha)
                         IdPartida = Convert.ToInt32(trozos1[1]);
                         string num = trozos1[2];
                         i = 0;
@@ -489,7 +496,7 @@ namespace Cliente_SOproject
                         }
                         formularios[i].CambiarColorTableroContrincante(num);
                         break;
-                    case 47:
+                    case 47: //Codigo que sirve para sincronizar los tiempos entre partidas
                         i = 0;
                         encontrado = 0;
                         while ((i < formularios.Count) && (encontrado == 0))
@@ -506,7 +513,7 @@ namespace Cliente_SOproject
                         int turno = 1;
                         formularios[i].PrepararTiempo_Turno(turno);
                         break;
-                    case 48:
+                    case 48://Codigo para iniciar la partida y determina que personaje secreto te ha tocado
                         id_partida = Convert.ToInt32(trozos1[1]);
                         string nombre1 = trozos1[2];
                         string carta1 = trozos1[3];
@@ -536,12 +543,12 @@ namespace Cliente_SOproject
                             formularios[i].IniciarPartida(carta1);
                         }
                         break;
-                    case 49:
+                    case 49: //Codigo que recibes si el creador de la partida ha cancelado la invitacion
                         Cancelado = true;
                         
                         MessageBox.Show("");
                         break;
-                    case 50:
+                    case 50: //codigo cuando el contrincante a acertado la carta
                         id_partida= Convert.ToInt32(trozos1[1]);
                         string persona = trozos1[2];
                         string resultado = trozos1[3];
@@ -566,7 +573,10 @@ namespace Cliente_SOproject
         }
 
 
-        private void pictureBoxLIniciar_Click(object sender, EventArgs e)
+
+        //COMNICACIONES CON SERVIDOR
+        private void pictureBoxLIniciar_Click(object sender, EventArgs e) //Se conecta al servidor
+            //Envia el mensaje para iniciar sesion al servidor
         {
 
             ConectarServidor();
@@ -592,7 +602,8 @@ namespace Cliente_SOproject
                 labelLUsuarioNoEncontrado.Visible = true;
             }
         }
-        private void pictureBoxRRegistrarse_Click(object sender, EventArgs e)
+        private void pictureBoxRRegistrarse_Click(object sender, EventArgs e) //Se conecta al servidor
+            //Envia el mensage para registrarse al servidor
         {
             ConectarServidor();
             if (conectado)
@@ -617,26 +628,13 @@ namespace Cliente_SOproject
                 labelLUsuarioNoEncontrado.Text = "Error al conectarse con el servidor";
             }
         }
-
-        private void FormMenu_FormClosed(object sender, FormClosedEventArgs e)
+        private void FormMenu_FormClosed(object sender, FormClosedEventArgs e) //Nos desconectamos del servidor y cerramos la aplicacion
         {
             DesconectarServidor();
             Environment.Exit(1);
         }
-
-
-        private void labelLRegistrar_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPageRegister;
-            labelLUsuarioNoEncontrado.Visible = false;
-        }
-        private void pictureBoxRVolver_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPageLogin;
-            DesconectarServidor();
-        }
-
-        private void pictureBoxMPerfil_Click(object sender, EventArgs e)
+        private void pictureBoxMPerfil_Click(object sender, EventArgs e)//Se envia al servidor un mensaje para que el servidor nos
+            //envie los datos personales de nuestro perfil
         {
             if (conectado)
             {
@@ -654,12 +652,8 @@ namespace Cliente_SOproject
             labelPId.Text = Convert.ToString(id_usuario);
 
         }
-        private void pictureBoxMDesconectar_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPageLogin;
-            DesconectarServidor();
-        }
-        private void pictureBoxMSocial_Click(object sender, EventArgs e)
+        private void pictureBoxMSocial_Click(object sender, EventArgs e)//Se envia al servidor un mensaje para que el servidor
+             //nos envie los datos del nombre de todos los jugadores registrados y sus puntos
         {
             if (conectado)
             {
@@ -674,8 +668,8 @@ namespace Cliente_SOproject
                 labelMUsuarioNoEncontrado.Visible = true;
             }
         }
-        
-        private void dataGridViewRanquing_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewRanquing_CellContentClick(object sender, DataGridViewCellEventArgs e)//Se envia al servidor un mensaje para que el servidor
+             //nos envie los datos personales del perfil del contricante que hemos seleccionado
         {
             try
             {
@@ -705,12 +699,13 @@ namespace Cliente_SOproject
 
             }
         }
-        private void pictureBoxCInvitar_Click(object sender, EventArgs e)
+        private void pictureBoxCInvitar_Click(object sender, EventArgs e) //Envia la invitacion de la partida nueva
+                                                                          //al jugador seleccionado
         {
             try
             {
 
-                if (dataGridViewListaCon.CurrentRow.Cells[0].Value == null)//.ToString()
+                if (dataGridViewListaCon.CurrentRow.Cells[0].Value == null)
                 {
                     MessageBox.Show("Selecciona a alguien");
                 }
@@ -753,8 +748,7 @@ namespace Cliente_SOproject
                 labelCError.Visible = true;
             }
         }
-
-        private void pictureBoxMPDarseBaja_Click(object sender, EventArgs e)
+        private void pictureBoxMPDarseBaja_Click(object sender, EventArgs e)//Boton que da de baja al usuario que tiene la sesion iniciada
         {
             if (conectado)
             {
@@ -766,7 +760,40 @@ namespace Cliente_SOproject
                 DesconectarServidor();
             }
         }
-        private void buttonMMusic_Click(object sender, EventArgs e)
+        
+
+
+        //NAVIEGACION POR EL MENU
+        private void pictureBoxMDesconectar_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageLogin;
+            DesconectarServidor();
+        }
+        private void labelLRegistrar_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageRegister;
+            labelLUsuarioNoEncontrado.Visible = false;
+        }
+        private void pictureBoxRVolver_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageLogin;
+            DesconectarServidor();
+        }
+        private void pictureBoxMCrearPartida_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageCrearPartida;
+        private void pictureBoxCVolver_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabPageMenu;
+            labelCError.Visible = false;
+        }
+        private void pictureBoxPVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageMenu;
+        private void pictureBoxSVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageMenu;
+        private void pictureBoxPRVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageSocial;
+
+
+
+
+        //EFECTOS DE OBJECTOS
+        private void buttonMMusic_Click(object sender, EventArgs e)//Activa o desactiva el SoundTrack
         {
             if (Sound)
             {
@@ -795,31 +822,15 @@ namespace Cliente_SOproject
                 Sound = true;
             }
         }
-
-
-        //NAVIEGACION
-        private void pictureBoxMCrearPartida_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageCrearPartida;
-        private void pictureBoxCVolver_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectedTab = tabPageMenu;
-            labelCError.Visible = false;
-        }
-        private void pictureBoxPVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageMenu;
-        private void pictureBoxSVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageMenu;
-        private void pictureBoxPRVolver_Click(object sender, EventArgs e) => tabControl1.SelectedTab = tabPageSocial;
-
-
-        public static Bitmap GetImageByName(string imageName)
+        public static Bitmap GetImageByName(string imageName) //Funcion que pasa el string del nombre de
+               //una imagen a la imagen para ponerla en alguna propiedad de imagen de algun objeto
         {
             System.Reflection.Assembly asm = System.Reflection.Assembly.GetExecutingAssembly();
             string resourceName = asm.GetName().Name + ".Properties.Resources";
             var rm = new System.Resources.ResourceManager(resourceName, asm);
             return (Bitmap)rm.GetObject(imageName);
-
         }
-
-        //DISEÑO
-        static Bitmap SetAlpha(Bitmap bmpIn, int alpha)
+        static Bitmap SetAlpha(Bitmap bmpIn, int alpha) //Funcion para blanquear la imagen
         {
             Bitmap bmpOut = new Bitmap(bmpIn.Width, bmpIn.Height);
             float a = alpha / 255f;
@@ -872,7 +883,6 @@ namespace Cliente_SOproject
         private void pictureBoxPVolver_MouseLeave(object sender, EventArgs e) => pictureBoxPVolver.Image = SetAlpha((Bitmap)pictureBoxPRVolver.Image, 1000);
         private void pictureBoxMPDarseBaja_MouseEnter(object sender, EventArgs e) => pictureBoxMPDarseBaja.Image = SetAlpha((Bitmap)pictureBoxMPDarseBaja.Image, 150);
         private void pictureBoxMPDarseBaja_MouseLeave(object sender, EventArgs e) => pictureBoxMPDarseBaja.Image = Properties.Resources.DarseDeBaja;
-
         private void textBoxLNombre_Enter(object sender, EventArgs e)
         {
             if (textBoxLNombre.Text == "USUARIO")
@@ -881,7 +891,6 @@ namespace Cliente_SOproject
                 textBoxLNombre.ForeColor = Color.Black;
             }
         }
-
         private void textBoxLNombre_Leave(object sender, EventArgs e)
         {
             if (textBoxLNombre.Text == "")
@@ -890,7 +899,6 @@ namespace Cliente_SOproject
                 textBoxLNombre.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
         private void textBoxLContraseña_Enter(object sender, EventArgs e)
         {
             if (textBoxLContraseña.Text == "CONTRASEÑA")
@@ -900,7 +908,6 @@ namespace Cliente_SOproject
                 textBoxLContraseña.ForeColor = Color.Black;
             }
         }
-
         private void textBoxLContraseña_Leave(object sender, EventArgs e)
         {
             if (textBoxLContraseña.Text == "")
@@ -910,7 +917,6 @@ namespace Cliente_SOproject
                 textBoxLContraseña.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
         private void textBoxRUsuario_Enter(object sender, EventArgs e)
         {
             if (textBoxRUsuario.Text == "USUARIO")
@@ -919,7 +925,6 @@ namespace Cliente_SOproject
                 textBoxRUsuario.ForeColor = Color.Black;
             }
         }
-
         private void textBoxRUsuario_Leave(object sender, EventArgs e)
         {
             if (textBoxRUsuario.Text == "")
@@ -928,7 +933,6 @@ namespace Cliente_SOproject
                 textBoxRUsuario.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
         private void textBoxRContraseña_Enter(object sender, EventArgs e)
         {
             if (textBoxRContraseña.Text == "CONTRASEÑA")
@@ -938,7 +942,6 @@ namespace Cliente_SOproject
                 textBoxRContraseña.ForeColor = Color.Black;
             }
         }
-
         private void textBoxRContraseña_Leave(object sender, EventArgs e)
         {
             if (textBoxRContraseña.Text == "")
@@ -948,7 +951,8 @@ namespace Cliente_SOproject
                 textBoxRContraseña.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-        private void buttonLPassword_Click(object sender, EventArgs e)
+        private void buttonLPassword_Click(object sender, EventArgs e) //Funcion para aplicar o no los caracteres de incognito
+                                                                       //en la contraseña del LOGIN
         {
             if (textBoxLContraseña.Text != "CONTRASEÑA")
             {
@@ -964,7 +968,8 @@ namespace Cliente_SOproject
                 }
             }
         }
-        private void buttonRPassword_Click(object sender, EventArgs e)
+        private void buttonRPassword_Click(object sender, EventArgs e)//Funcion para aplicar o no los caracteres de incognito
+                                                                      //en la contraseña del REGISTER
         {
             if (textBoxRContraseña.Text != "CONTRASEÑA")
             {
@@ -988,7 +993,6 @@ namespace Cliente_SOproject
                 textBoxCNumPreg.ForeColor = Color.Black;
             }
         }
-
         private void textBoxCNumPreg_Leave(object sender, EventArgs e)
         {
             if (textBoxCNumPreg.Text == "")
@@ -997,7 +1001,6 @@ namespace Cliente_SOproject
                 textBoxCNumPreg.ForeColor = Color.FromArgb(173, 188, 236);
             }
         }
-
         private void textBoxCLimTiempo_Enter(object sender, EventArgs e)
         {
             if (textBoxCLimTiempo.Text == "60")
@@ -1006,7 +1009,6 @@ namespace Cliente_SOproject
                 textBoxCLimTiempo.ForeColor = Color.Black;
             }
         }
-
         private void textBoxCLimTiempo_Leave(object sender, EventArgs e)
         {
             if (textBoxCLimTiempo.Text == "")
@@ -1014,17 +1016,6 @@ namespace Cliente_SOproject
                 textBoxCLimTiempo.Text = "60";
                 textBoxCLimTiempo.ForeColor = Color.FromArgb(173, 188, 236);
             }
-        }
-
-        private void ConstructFontWithString(PaintEventArgs e)
-        {
-            Font font1 = new Font("Arial", 20);
-            e.Graphics.DrawString("Arial Font", font1, Brushes.Red, new PointF(10, 10));
-        }
-
-        private void pictureBoxMConfiguracion_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

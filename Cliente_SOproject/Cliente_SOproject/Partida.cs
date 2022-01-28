@@ -901,7 +901,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage2_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1009,7 +1008,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage3_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1114,7 +1112,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage4_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1221,7 +1218,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage5_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1328,7 +1324,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage6_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1434,7 +1429,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage7_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1538,7 +1532,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage8_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1644,7 +1637,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage9_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1750,7 +1742,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage10_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1856,7 +1847,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage11_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -1963,7 +1953,6 @@ namespace Cliente_SOproject
                 }
             }
         }
-
         private void pictureBoxImage12_Click(object sender, EventArgs e)
         {
             if (terminado == 0)
@@ -2412,7 +2401,6 @@ namespace Cliente_SOproject
         }
 
         //Este es el botón para cancelar una invitación a partida
-
         private void pictureBoxPEBoton_Click(object sender, EventArgs e)
         {
 

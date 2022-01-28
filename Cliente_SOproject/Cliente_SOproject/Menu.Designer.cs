@@ -536,7 +536,6 @@ namespace Cliente_SOproject
             this.pictureBoxMConfiguracion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxMConfiguracion.TabIndex = 10;
             this.pictureBoxMConfiguracion.TabStop = false;
-            this.pictureBoxMConfiguracion.Click += new System.EventHandler(this.pictureBoxMConfiguracion_Click);
             this.pictureBoxMConfiguracion.MouseEnter += new System.EventHandler(this.pictureBoxMConfiguracion_MouseEnter);
             this.pictureBoxMConfiguracion.MouseLeave += new System.EventHandler(this.pictureBoxMConfiguracion_MouseLeave);
             // 
