@@ -177,7 +177,7 @@ namespace Cliente_SOproject
             this.pictureBoxPEGif.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(7)))), ((int)(((byte)(173)))));
             this.pictureBoxPEGif.Image = global::Cliente_SOproject.Properties.Resources.RelojArena;
             this.pictureBoxPEGif.Location = new System.Drawing.Point(604, 146);
-            this.pictureBoxPEGif.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPEGif.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPEGif.Name = "pictureBoxPEGif";
             this.pictureBoxPEGif.Size = new System.Drawing.Size(63, 49);
             this.pictureBoxPEGif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -202,7 +202,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPEBoton.Image = global::Cliente_SOproject.Properties.Resources.CancelarPartida;
             this.pictureBoxPEBoton.Location = new System.Drawing.Point(532, 223);
-            this.pictureBoxPEBoton.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPEBoton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPEBoton.Name = "pictureBoxPEBoton";
             this.pictureBoxPEBoton.Size = new System.Drawing.Size(229, 78);
             this.pictureBoxPEBoton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -217,7 +217,7 @@ namespace Cliente_SOproject
             this.pictureBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox13.Image = global::Cliente_SOproject.Properties.Resources.BackForm2_2;
             this.pictureBox13.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox13.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox13.Name = "pictureBox13";
             this.pictureBox13.Size = new System.Drawing.Size(803, 474);
             this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -279,9 +279,9 @@ namespace Cliente_SOproject
             this.groupBox1.Controls.Add(this.pictureBoxNombreElegida);
             this.groupBox1.Controls.Add(this.pictureBoxImagenElegida);
             this.groupBox1.Location = new System.Drawing.Point(652, 25);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Size = new System.Drawing.Size(144, 123);
             this.groupBox1.TabIndex = 54;
             this.groupBox1.TabStop = false;
@@ -290,7 +290,7 @@ namespace Cliente_SOproject
             // pictureBoxNombreElegida
             // 
             this.pictureBoxNombreElegida.Location = new System.Drawing.Point(19, 89);
-            this.pictureBoxNombreElegida.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombreElegida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombreElegida.Name = "pictureBoxNombreElegida";
             this.pictureBoxNombreElegida.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombreElegida.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -323,9 +323,9 @@ namespace Cliente_SOproject
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante2);
             this.groupBoxPTTableroContrincante.Controls.Add(this.pictureBoxPTTableroContrincante1);
             this.groupBoxPTTableroContrincante.Location = new System.Drawing.Point(441, 23);
-            this.groupBoxPTTableroContrincante.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBoxPTTableroContrincante.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxPTTableroContrincante.Name = "groupBoxPTTableroContrincante";
-            this.groupBoxPTTableroContrincante.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxPTTableroContrincante.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBoxPTTableroContrincante.Size = new System.Drawing.Size(203, 124);
             this.groupBoxPTTableroContrincante.TabIndex = 40;
             this.groupBoxPTTableroContrincante.TabStop = false;
@@ -335,7 +335,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante12.Location = new System.Drawing.Point(116, 94);
-            this.pictureBoxPTTableroContrincante12.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante12.Name = "pictureBoxPTTableroContrincante12";
             this.pictureBoxPTTableroContrincante12.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante12.TabIndex = 11;
@@ -345,7 +345,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante11.Location = new System.Drawing.Point(87, 94);
-            this.pictureBoxPTTableroContrincante11.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante11.Name = "pictureBoxPTTableroContrincante11";
             this.pictureBoxPTTableroContrincante11.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante11.TabIndex = 10;
@@ -355,7 +355,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante10.Location = new System.Drawing.Point(56, 94);
-            this.pictureBoxPTTableroContrincante10.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante10.Name = "pictureBoxPTTableroContrincante10";
             this.pictureBoxPTTableroContrincante10.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante10.TabIndex = 9;
@@ -365,7 +365,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante9.Location = new System.Drawing.Point(116, 70);
-            this.pictureBoxPTTableroContrincante9.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante9.Name = "pictureBoxPTTableroContrincante9";
             this.pictureBoxPTTableroContrincante9.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante9.TabIndex = 8;
@@ -375,7 +375,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante8.Location = new System.Drawing.Point(87, 70);
-            this.pictureBoxPTTableroContrincante8.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante8.Name = "pictureBoxPTTableroContrincante8";
             this.pictureBoxPTTableroContrincante8.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante8.TabIndex = 7;
@@ -385,7 +385,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante7.Location = new System.Drawing.Point(56, 70);
-            this.pictureBoxPTTableroContrincante7.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante7.Name = "pictureBoxPTTableroContrincante7";
             this.pictureBoxPTTableroContrincante7.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante7.TabIndex = 6;
@@ -395,7 +395,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante6.Location = new System.Drawing.Point(116, 47);
-            this.pictureBoxPTTableroContrincante6.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante6.Name = "pictureBoxPTTableroContrincante6";
             this.pictureBoxPTTableroContrincante6.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante6.TabIndex = 5;
@@ -405,7 +405,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante5.Location = new System.Drawing.Point(87, 47);
-            this.pictureBoxPTTableroContrincante5.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante5.Name = "pictureBoxPTTableroContrincante5";
             this.pictureBoxPTTableroContrincante5.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante5.TabIndex = 4;
@@ -415,7 +415,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante4.Location = new System.Drawing.Point(56, 47);
-            this.pictureBoxPTTableroContrincante4.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante4.Name = "pictureBoxPTTableroContrincante4";
             this.pictureBoxPTTableroContrincante4.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante4.TabIndex = 3;
@@ -425,7 +425,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante3.Location = new System.Drawing.Point(116, 23);
-            this.pictureBoxPTTableroContrincante3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante3.Name = "pictureBoxPTTableroContrincante3";
             this.pictureBoxPTTableroContrincante3.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante3.TabIndex = 2;
@@ -435,7 +435,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante2.Location = new System.Drawing.Point(87, 23);
-            this.pictureBoxPTTableroContrincante2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante2.Name = "pictureBoxPTTableroContrincante2";
             this.pictureBoxPTTableroContrincante2.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante2.TabIndex = 1;
@@ -445,7 +445,7 @@ namespace Cliente_SOproject
             // 
             this.pictureBoxPTTableroContrincante1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(64)))), ((int)(((byte)(230)))));
             this.pictureBoxPTTableroContrincante1.Location = new System.Drawing.Point(56, 23);
-            this.pictureBoxPTTableroContrincante1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxPTTableroContrincante1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxPTTableroContrincante1.Name = "pictureBoxPTTableroContrincante1";
             this.pictureBoxPTTableroContrincante1.Size = new System.Drawing.Size(21, 16);
             this.pictureBoxPTTableroContrincante1.TabIndex = 0;
@@ -488,7 +488,7 @@ namespace Cliente_SOproject
             // 
             this.button_Nose.ForeColor = System.Drawing.Color.Black;
             this.button_Nose.Location = new System.Drawing.Point(117, 191);
-            this.button_Nose.Margin = new System.Windows.Forms.Padding(4);
+            this.button_Nose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Nose.Name = "button_Nose";
             this.button_Nose.Size = new System.Drawing.Size(100, 28);
             this.button_Nose.TabIndex = 6;
@@ -500,7 +500,7 @@ namespace Cliente_SOproject
             // 
             this.button_No.ForeColor = System.Drawing.Color.Black;
             this.button_No.Location = new System.Drawing.Point(188, 162);
-            this.button_No.Margin = new System.Windows.Forms.Padding(4);
+            this.button_No.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_No.Name = "button_No";
             this.button_No.Size = new System.Drawing.Size(100, 28);
             this.button_No.TabIndex = 5;
@@ -512,7 +512,7 @@ namespace Cliente_SOproject
             // 
             this.button_Si.ForeColor = System.Drawing.Color.Black;
             this.button_Si.Location = new System.Drawing.Point(40, 162);
-            this.button_Si.Margin = new System.Windows.Forms.Padding(4);
+            this.button_Si.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button_Si.Name = "button_Si";
             this.button_Si.Size = new System.Drawing.Size(100, 28);
             this.button_Si.TabIndex = 4;
@@ -524,7 +524,7 @@ namespace Cliente_SOproject
             // 
             this.comboBoxPTChat.FormattingEnabled = true;
             this.comboBoxPTChat.Location = new System.Drawing.Point(8, 20);
-            this.comboBoxPTChat.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxPTChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxPTChat.Name = "comboBoxPTChat";
             this.comboBoxPTChat.Size = new System.Drawing.Size(316, 24);
             this.comboBoxPTChat.TabIndex = 3;
@@ -566,7 +566,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre12
             // 
             this.pictureBoxNombre12.Location = new System.Drawing.Point(256, 382);
-            this.pictureBoxNombre12.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre12.Name = "pictureBoxNombre12";
             this.pictureBoxNombre12.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -576,7 +576,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre11
             // 
             this.pictureBoxNombre11.Location = new System.Drawing.Point(132, 382);
-            this.pictureBoxNombre11.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre11.Name = "pictureBoxNombre11";
             this.pictureBoxNombre11.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -586,7 +586,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre10
             // 
             this.pictureBoxNombre10.Location = new System.Drawing.Point(8, 382);
-            this.pictureBoxNombre10.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre10.Name = "pictureBoxNombre10";
             this.pictureBoxNombre10.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -596,7 +596,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre9
             // 
             this.pictureBoxNombre9.Location = new System.Drawing.Point(256, 279);
-            this.pictureBoxNombre9.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre9.Name = "pictureBoxNombre9";
             this.pictureBoxNombre9.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -606,7 +606,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre8
             // 
             this.pictureBoxNombre8.Location = new System.Drawing.Point(131, 279);
-            this.pictureBoxNombre8.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre8.Name = "pictureBoxNombre8";
             this.pictureBoxNombre8.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -616,7 +616,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre7
             // 
             this.pictureBoxNombre7.Location = new System.Drawing.Point(8, 279);
-            this.pictureBoxNombre7.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre7.Name = "pictureBoxNombre7";
             this.pictureBoxNombre7.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -626,7 +626,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre6
             // 
             this.pictureBoxNombre6.Location = new System.Drawing.Point(255, 172);
-            this.pictureBoxNombre6.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre6.Name = "pictureBoxNombre6";
             this.pictureBoxNombre6.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -636,7 +636,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre5
             // 
             this.pictureBoxNombre5.Location = new System.Drawing.Point(131, 172);
-            this.pictureBoxNombre5.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre5.Name = "pictureBoxNombre5";
             this.pictureBoxNombre5.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -646,7 +646,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre4
             // 
             this.pictureBoxNombre4.Location = new System.Drawing.Point(8, 172);
-            this.pictureBoxNombre4.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre4.Name = "pictureBoxNombre4";
             this.pictureBoxNombre4.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -656,7 +656,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre3
             // 
             this.pictureBoxNombre3.Location = new System.Drawing.Point(256, 78);
-            this.pictureBoxNombre3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre3.Name = "pictureBoxNombre3";
             this.pictureBoxNombre3.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -666,7 +666,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre2
             // 
             this.pictureBoxNombre2.Location = new System.Drawing.Point(131, 78);
-            this.pictureBoxNombre2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre2.Name = "pictureBoxNombre2";
             this.pictureBoxNombre2.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -676,7 +676,7 @@ namespace Cliente_SOproject
             // pictureBoxNombre1
             // 
             this.pictureBoxNombre1.Location = new System.Drawing.Point(8, 78);
-            this.pictureBoxNombre1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxNombre1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxNombre1.Name = "pictureBoxNombre1";
             this.pictureBoxNombre1.Size = new System.Drawing.Size(116, 30);
             this.pictureBoxNombre1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -823,7 +823,7 @@ namespace Cliente_SOproject
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(811, 42);
             this.panel1.TabIndex = 2;
